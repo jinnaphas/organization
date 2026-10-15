@@ -7,7 +7,7 @@
 <meta name="description" content="เครื่องมือออกแบบและจัดเก็บโครงสร้างองค์กรของกลุ่มบริษัท พร้อมเวอร์ชัน Active / Draft / Inactive และบันทึกผ่าน GitHub">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=Tinos:wght@400;700&family=Noto+Serif+Thai:wght@400;700&family=Carlito:wght@400;700&display=swap">
 <style>
 /* Layout: app shell — company bar on top; version rail | drafting canvas (blueprint dots) | inspector. */
 :root{
@@ -21,6 +21,10 @@
   --f-display:"Bai Jamjuree","IBM Plex Sans Thai","Noto Sans Thai",system-ui,sans-serif;
   --f-body:"IBM Plex Sans Thai","Noto Sans Thai","Leelawadee UI",Tahoma,system-ui,sans-serif;
   --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  /* org chart sheet: same look as the Excel source, identical in light and dark mode */
+  --paper:#ffffff; --paper-ink:#000000; --bevel:#bfbfbf;
+  --f-doc:"Times New Roman",Tinos,Times,"Noto Serif Thai",Tahoma,serif;
+  --f-legend:Calibri,Carlito,"IBM Plex Sans Thai",Arial,sans-serif;
   color-scheme:light;
 }
 @media (prefers-color-scheme: dark){
@@ -135,13 +139,9 @@ details.dd>summary::-webkit-details-marker{display:none}
 .cc-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
 .cc-code{font:700 22px/1 var(--f-display);letter-spacing:.02em}
 .cc-name{font-size:13px;color:var(--muted);min-height:1.5em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.thumb{width:100%;height:96px;display:block;background:var(--bg);border-radius:8px;border:1px solid var(--line)}
-.thumb .tl path{fill:none;stroke:var(--line-strong);stroke-width:1;vector-effect:non-scaling-stroke}
-.thumb rect{fill:var(--surface);stroke:var(--line-strong);stroke-width:1;vector-effect:non-scaling-stroke}
-.thumb .th-board{fill:var(--ink);stroke:var(--ink)} .thumb .th-executive{fill:var(--accent);stroke:var(--accent)}
-.thumb .th-committee{fill:var(--surface-3)} .thumb .th-division{fill:var(--surface-3)}
-.thumb .th-line,.thumb .th-office{fill:var(--accent-weak);stroke:var(--accent)}
-.thumb .th-platform{fill:var(--plat-weak);stroke:var(--plat)} .thumb .th-company{stroke:var(--ink-2)} .thumb .th-ai{fill:var(--copper-weak);stroke:var(--copper)} .thumb .th-partner{fill:var(--partner-weak);stroke:var(--partner)}
+.thumb{width:100%;height:96px;display:block;background:var(--paper);border-radius:8px;border:1px solid var(--line)}
+.thumb .tl path{fill:none;stroke-width:1;vector-effect:non-scaling-stroke}
+.thumb rect{stroke-width:1;vector-effect:non-scaling-stroke}
 .cc-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0}
 .cc-stats div{display:grid}
 .cc-stats dt{font-size:11.5px;color:var(--muted);order:2}
@@ -211,64 +211,54 @@ textarea.inp{min-height:84px;resize:vertical;line-height:1.5}
 .mono-in{font-family:var(--f-mono);font-size:12.5px}
 
 .body{flex:1;min-height:0;display:flex;flex-direction:column;position:relative}
-.canvas{position:relative;flex:1;min-height:0;overflow:hidden;background-color:var(--bg);background-image:radial-gradient(circle,var(--grid) 1.3px,transparent 1.4px);background-size:22px 22px;cursor:grab;touch-action:none;outline:none}
+.canvas{position:relative;flex:1;min-height:0;overflow:hidden;background:var(--paper);cursor:grab;touch-action:none;outline:none}
 .canvas.panning{cursor:grabbing}
-.stage{position:absolute;left:0;top:0;transform-origin:0 0}
+.stage{position:absolute;left:0;top:0;transform-origin:0 0;background:var(--paper);color:var(--paper-ink)}
 .links{position:absolute;left:0;top:0;overflow:visible;pointer-events:none}
-.lk{fill:none;stroke:var(--line-strong);stroke-width:1.5}
-.lk.dash{stroke-dasharray:6 4;stroke:var(--partner)}
-.lk.dot{stroke-dasharray:2 3;stroke:var(--copper)}
+.lk{fill:none;stroke-width:1.25}
+.lk.dash{stroke-dasharray:6 4}
+.lk.dot{stroke-dasharray:2 3}
 
-.node{position:absolute;width:200px;height:88px;border-radius:9px;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);padding:7px 10px 8px;display:flex;flex-direction:column;gap:2px;cursor:pointer;user-select:none;-webkit-user-select:none}
-.node:hover{border-color:var(--accent)}
+/* unit boxes: colours, weight and alignment come from each unit's style (taken from the Excel charts) */
+.node{position:absolute;width:200px;height:88px;padding:5px 8px;display:flex;flex-direction:column;justify-content:safe center;cursor:pointer;user-select:none;-webkit-user-select:none;font-family:var(--f-doc);line-height:1.17;overflow:visible}
+.node:hover{box-shadow:0 0 0 2px rgba(13,102,114,.35)}
 .node.sel{outline:2.5px solid var(--accent);outline-offset:3px}
 .node.dragging{opacity:.35}
 .node.drop{outline:2.5px dashed var(--accent);outline-offset:4px}
-.n-top{display:flex;justify-content:space-between;align-items:center;gap:6px;font-size:10.5px;letter-spacing:.03em;color:var(--muted);line-height:1.4}
-.n-type{font-weight:600;display:flex;align-items:center;gap:5px;white-space:nowrap;overflow:hidden}
-.n-type::before{content:"";width:7px;height:7px;border-radius:2px;background:var(--tc);flex:none}
-.n-code{font-family:var(--f-mono);font-size:10.5px}
-.n-r{display:flex;align-items:center;gap:5px;min-width:0}
-.n-hl{width:8px;height:8px;border-radius:50%;background:var(--danger);box-shadow:0 0 0 1.5px var(--surface);flex:none;display:inline-block}
-.n-name{font-weight:600;font-size:13.5px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;flex:1;word-break:break-word}
-.n-foot{display:flex;justify-content:space-between;align-items:center;gap:6px;font-size:11.5px;color:var(--ink-2);line-height:1.4}
-.n-head{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
-.n-hc{font-family:var(--f-mono);font-size:10.5px;border:1px solid var(--line);border-radius:4px;padding:0 5px;white-space:nowrap;font-variant-numeric:tabular-nums}
-.n-tog{position:absolute;left:50%;bottom:-11px;transform:translateX(-50%);min-width:24px;height:20px;padding:0 6px;border-radius:999px;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink-2);font:500 11px/1 var(--f-mono);cursor:pointer;display:grid;place-items:center}
+.x-txt{display:flex;flex-direction:column;gap:2px;max-height:100%;overflow:hidden;min-width:0}
+.x-name,.x-en{overflow-wrap:anywhere}
+.x-sub{font-size:.86em;font-weight:400;opacity:.85}
+.x-pill{position:absolute;right:4px;bottom:3px;font:400 10px/1 var(--f-mono);color:#555;background:rgba(255,255,255,.85);padding:1px 3px}
+.n-tog{position:absolute;left:50%;bottom:-11px;transform:translateX(-50%);min-width:24px;height:20px;padding:0 6px;border-radius:999px;border:1px solid #9aa5ab;background:#fff;color:#33424c;font:500 11px/1 var(--f-mono);cursor:pointer;display:grid;place-items:center}
 .n-tog:hover{border-color:var(--accent);color:var(--accent-ink)}
 .n-add{position:absolute;right:-11px;bottom:-11px;width:24px;height:24px;border-radius:50%;border:0;background:var(--accent);color:var(--on-accent);display:none;place-items:center;cursor:pointer;padding:0;box-shadow:var(--shadow)}
 .n-add svg{width:14px;height:14px}
 .node.sel .n-add{display:grid}
-.n-badge{position:absolute;top:-10px;right:8px;font-size:10.5px;font-weight:600;padding:1px 7px;border-radius:5px;color:var(--surface);line-height:1.5}
-.b-added{background:var(--ok)} .b-moved{background:var(--plat)} .b-renamed,.b-changed{background:var(--warn)}
-.node.d-added{box-shadow:0 0 0 3px var(--ok-weak)} .node.d-moved{box-shadow:0 0 0 3px var(--plat-weak)} .node.d-renamed,.node.d-changed{box-shadow:0 0 0 3px var(--warn-weak)}
+.n-badge{position:absolute;top:-10px;right:8px;font:600 10.5px/1.5 var(--f-body);padding:1px 7px;border-radius:5px;color:#fff}
+.b-added{background:#1c7a47} .b-moved{background:#3a59a8} .b-renamed,.b-changed{background:#94600f}
+.node.d-added{box-shadow:0 0 0 4px rgba(28,122,71,.35)} .node.d-moved{box-shadow:0 0 0 4px rgba(58,89,168,.35)} .node.d-renamed,.node.d-changed{box-shadow:0 0 0 4px rgba(148,96,15,.35)}
+
+/* sheet frame copied from the Excel layout: bevelled title banner, abbreviation legend, footer table */
+.sh-title{position:absolute;background:#fff;border:1px solid #000;box-shadow:inset -11px -11px 0 var(--bevel)}
+.sh-face{position:absolute;inset:10px 11px 11px 10px;border:1px solid #000;background:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;font:700 30px/1.2 var(--f-doc);text-align:center;padding:0 16px}
+.sh-legend{position:absolute;border:1px solid #000;background:#fff;padding:10px 12px;font:400 16px/1.4 var(--f-legend);color:#000;white-space:pre}
+.sh-foot{position:absolute;display:grid;border:1px solid #000;background:#fff}
+.sh-cell{border-left:1px solid #000;padding:10px 8px;font:400 13px/1.35 var(--f-doc);color:#000;text-align:center;display:flex;flex-direction:column;justify-content:center;gap:4px;min-width:0}
+.sh-cell:first-child{border-left:0}
+.sh-rule{display:block;border-bottom:1px solid #000;margin:10px 12% 0}
 
 /* node type tones (structure encoded by fill weight) */
 .tc-board{--tc:var(--ink)} .tc-committee{--tc:var(--ink-2)} .tc-executive{--tc:var(--accent)} .tc-line{--tc:var(--accent)} .tc-office{--tc:var(--accent-ink)}
 .tc-platform{--tc:var(--plat)} .tc-division{--tc:var(--ink-2)} .tc-department{--tc:var(--muted)} .tc-section{--tc:var(--line-strong)} .tc-team{--tc:var(--ok)}
 .tc-position{--tc:var(--muted)} .tc-ai{--tc:var(--copper)} .tc-partner{--tc:var(--partner)} .tc-company{--tc:var(--ink)}
-.node.t-board{background:var(--ink);border-color:var(--ink);color:var(--bg)}
-.node.t-executive{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
-.node.t-board .n-top,.node.t-board .n-foot,.node.t-executive .n-top,.node.t-executive .n-foot{color:inherit;opacity:.82}
-.node.t-board .n-type::before,.node.t-executive .n-type::before{background:currentColor}
-.node.t-board .n-hc,.node.t-executive .n-hc{border-color:currentColor}
-.node.t-committee{background:var(--surface-3);border-color:var(--ink-2)}
-.node.t-line,.node.t-office{background:var(--accent-weak);border-color:var(--accent)}
-.node.t-platform{background:var(--plat-weak);border-color:var(--plat)}
-.node.t-division{background:var(--surface-2);border-color:var(--line-strong)}
-.node.t-position{border-style:dashed}
-.node.t-ai{background:var(--copper-weak);border-color:var(--copper);border-style:dashed}
-.node.t-partner{background:var(--partner-weak);border-color:var(--partner);border-style:dashed}
-.node.t-company{border:1.5px solid var(--ink-2);box-shadow:3px 3px 0 var(--surface-3)}
+.n-hl{width:8px;height:8px;border-radius:50%;background:#FF0000;flex:none;display:inline-block}
 .dot{width:9px;height:9px;border-radius:3px;background:var(--tc);flex:none;display:inline-block}
 
-.rename{position:absolute;width:200px;height:88px;z-index:5;border:2px solid var(--accent);border-radius:9px;padding:24px 10px 8px;font:600 13.5px/1.3 var(--f-body);background:var(--surface);color:var(--ink);resize:none;outline:none;box-shadow:var(--shadow)}
+.rename{position:absolute;width:200px;height:88px;z-index:5;border:2px solid var(--accent);padding:8px;font:700 13.5px/1.25 var(--f-doc);background:#fff;color:#000;resize:none;outline:none;box-shadow:var(--shadow)}
 .drag-ghost{position:fixed;left:0;top:0;pointer-events:none;z-index:200;opacity:.9;box-shadow:var(--shadow);transform-origin:0 0}
 
 .zoomctl{position:absolute;right:max(12px,env(safe-area-inset-right,0px));bottom:max(12px,env(safe-area-inset-bottom,0px));display:flex;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:9px;box-shadow:var(--shadow);padding:2px}
 .zoomctl .zv{font:500 12px/1 var(--f-mono);min-width:48px;text-align:center;border:0;background:none;cursor:pointer;color:var(--ink-2);padding:8px 2px}
-.legend{position:absolute;left:12px;bottom:12px;display:flex;gap:4px 12px;flex-wrap:wrap;max-width:min(560px,calc(100% - 200px));background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:6px 10px;font-size:11.5px;color:var(--ink-2)}
-.legend span{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
 
 /* outline */
 .outline{flex:1;overflow:auto;background:var(--surface)}
@@ -335,6 +325,12 @@ textarea.inp{min-height:84px;resize:vertical;line-height:1.5}
 .dbadge{font-size:10.5px;font-weight:600;border-radius:4px;padding:0 6px;color:var(--surface);white-space:nowrap}
 .dbadge.added{background:var(--ok)} .dbadge.removed{background:var(--danger)} .dbadge.moved{background:var(--plat)} .dbadge.renamed,.dbadge.changed{background:var(--warn)}
 .ip-close{display:none}
+.swatches{display:flex;flex-wrap:wrap;gap:6px}
+.sw{width:34px;height:26px;border-width:1.5px;border-style:solid;font:700 12px/1 var(--f-doc);cursor:pointer;padding:0}
+.sw:hover{outline:2px solid var(--accent);outline-offset:1px}
+.row3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.row3 label{display:grid;gap:3px;font-size:12px;color:var(--muted)}
+.row3 input[type=color]{width:100%;height:30px;border:1px solid var(--line-strong);border-radius:6px;background:var(--surface);padding:2px;cursor:pointer}
 
 /* empty state */
 .empty-state{margin:auto;max-width:440px;text-align:center;padding:32px 16px;display:grid;gap:10px;justify-items:center}
@@ -420,7 +416,6 @@ details.help ol,details.help ul{margin:8px 0 2px;padding-left:20px;display:grid;
   .tools{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
   .tools::-webkit-scrollbar{display:none}
   .tools-r{margin-left:8px}
-  .legend{display:none}
   .imp{grid-template-columns:minmax(0,1fr)}
 }
 @media (max-width:640px){
@@ -489,6 +484,44 @@ const MODELS = [
   { k: 'ecosystem',  en: 'Ecosystem',  th: 'เครือข่ายพันธมิตร คน และ AI' },
 ];
 const EXTERNAL = new Set(['ai', 'partner', 'company']);
+// Box look follows the Excel charts; units without a stored style get the plain Excel default
+const okColor = c => (typeof c === 'string' && /^#[0-9a-fA-F]{6}$/.test(c) ? c : null);
+const DASH = { dash: 'dashed', sysDash: 'dashed', lgDash: 'dashed', dashDot: 'dashed', dot: 'dotted', sysDot: 'dotted' };
+const PALETTE = [
+  { name: 'ขาว เส้นดำ', fill: '#FFFFFF', line: '#000000', text: '#000000' },
+  { name: 'สายการเงิน (เส้นฟ้า)', fill: '#FFFFFF', line: '#4472C4', text: '#000000' },
+  { name: 'สายเทคโนโลยี (เส้นส้ม)', fill: '#FFFFFF', line: '#ED7D31', text: '#000000' },
+  { name: 'สายปฏิบัติการ (เส้นเขียว)', fill: '#FFFFFF', line: '#70AD47', text: '#000000' },
+  { name: 'ไฮไลต์ (พื้นส้มอ่อน ตัวแดง)', fill: '#FBE5D6', line: null, text: '#FF0000' },
+  { name: 'หน่วยธุรกิจ (พื้นเหลือง ตัวน้ำเงิน)', fill: '#FFE699', line: '#70AD47', text: '#0000FF' },
+  { name: 'ผู้บริหาร (พื้นเหลือง ตัวน้ำเงิน เส้นฟ้า)', fill: '#FFE699', line: '#4472C4', text: '#0000FF' },
+  { name: 'คณะกรรมการ (พื้นกรมท่า ตัวขาว)', fill: '#002060', line: '#4472C4', text: '#FFFFFF' },
+  { name: 'พื้นฟ้าอ่อน', fill: '#DAE3F3', line: '#000000', text: '#000000' },
+  { name: 'พื้นเขียวอ่อน', fill: '#E2F0D9', line: '#000000', text: '#000000' },
+  { name: 'พื้นเหลืองอ่อน ตัวแดง', fill: '#FFF2CC', line: '#000000', text: '#FF0000' },
+];
+function styleOf(n) {
+  const top = n.type === 'board' || n.type === 'executive';
+  const st = Object.assign({ fill: '#FFFFFF', line: '#000000', lw: 1.33, text: '#000000', bold: top, size: top ? 16 : 12, align: top ? 'c' : 'l' }, n.style || {});
+  st.fill = st.fill === null ? null : okColor(st.fill) || '#FFFFFF';
+  st.line = st.line === null ? null : okColor(st.line) || '#000000';
+  st.text = okColor(st.text) || '#000000';
+  return st;
+}
+function fontPx(st, n) {
+  const pt = +st.size || 12;
+  let px = pt >= 16 ? 15 : pt >= 13 ? 13.5 : pt >= 11 ? 12.5 : 11.5;
+  const len = (n.name || '').length + (n.type === 'company' ? 0 : (n.nameEn || '').length);
+  if (len > 120) px -= 2; else if (len > 75) px -= 1;
+  return Math.max(9.5, px);
+}
+function linkColor(n, inherited) {
+  const own = okColor(n.link);
+  if (own) return own;
+  const st = n.style && okColor(n.style.line);
+  if (st && st.toUpperCase() !== '#000000') return st;
+  return inherited || '#000000';
+}
 const DIFF_LABEL = { added: 'ใหม่', moved: 'ย้ายสังกัด', renamed: 'เปลี่ยนชื่อ', changed: 'แก้ไข' };
 
 /* ============================================================
@@ -921,48 +954,64 @@ function measure(n, col) {
   M.set(n, { w: maxX - minX, h: maxY, ax: px - minX + NW / 2, items, groups, mode, childTop });
 }
 function linkCls(n) { return n.type === 'partner' ? 'dash' : n.type === 'ai' ? 'dot' : ''; }
-function place(n, ox, oy, out) {
+function place(n, ox, oy, out, inh) {
   const m = M.get(n);
   const x = ox + m.ax - NW / 2, y = oy;
   out.nodes.push({ n, x, y });
   const cx = x + NW / 2, bottom = y + NH;
-  const lineItems = m.items.filter(i => i.kind === 'line'), staffItems = m.items.filter(i => i.kind === 'staff');
   const box = it => ({ x: ox + it.x + M.get(it.n).ax - NW / 2, y: oy + it.y });
-  let spineEnd = bottom;
-  staffItems.forEach(it => {
+  // one elbow line per unit, in the colour of its Excel connector (shared trunks overlap, as in Excel)
+  const push = (d, c) => out.links.push({ d, cls: linkCls(c), color: linkColor(c, inh) });
+  m.items.filter(i => i.kind === 'staff').forEach(it => {
     const b = box(it), my = b.y + NH / 2;
-    out.links.push({ d: `M${cx} ${my}H${it.side === 'R' ? b.x : b.x + NW}`, cls: linkCls(it.n) });
-    spineEnd = Math.max(spineEnd, my);
+    push(`M${cx} ${bottom}V${my}H${it.side === 'R' ? b.x : b.x + NW}`, it.n);
   });
   if (m.mode === 'h') {
     const busY = oy + m.childTop - G.v / 2;
-    const anchors = m.groups.map(g => ox + g.ax);
-    out.links.push({ d: `M${cx} ${bottom}V${busY}` });
-    if (anchors.length > 1) out.links.push({ d: `M${Math.min(...anchors)} ${busY}H${Math.max(...anchors)}` });
-    m.groups.forEach((g, i) => {
-      if (!g.stack) { out.links.push({ d: `M${anchors[i]} ${busY}V${oy + g.items[0].y}`, cls: linkCls(g.items[0].n) }); return; }
-      let last = busY;
-      g.items.forEach(it => { const b = box(it), my = b.y + NH / 2; out.links.push({ d: `M${anchors[i]} ${my}H${b.x}`, cls: linkCls(it.n) }); last = my; });
-      out.links.push({ d: `M${anchors[i]} ${busY}V${last}` });
+    m.groups.forEach(g => {
+      const ax = ox + g.ax;
+      if (!g.stack) { push(`M${cx} ${bottom}V${busY}H${ax}V${oy + g.items[0].y}`, g.items[0].n); return; }
+      g.items.forEach(it => { const b = box(it), my = b.y + NH / 2; push(`M${cx} ${bottom}V${busY}H${ax}V${my}H${b.x}`, it.n); });
     });
-  } else if (staffItems.length) {
-    out.links.push({ d: `M${cx} ${bottom}V${spineEnd}` });
-  }
-  if (m.mode === 'v') {
+  } else if (m.mode === 'v') {
     const vx = x + 14;
-    let last = bottom;
-    lineItems.forEach(it => { const b = box(it), my = b.y + NH / 2; out.links.push({ d: `M${vx} ${my}H${b.x}`, cls: linkCls(it.n) }); last = my; });
-    out.links.push({ d: `M${vx} ${bottom}V${last}` });
+    m.items.filter(i => i.kind === 'line').forEach(it => { const b = box(it), my = b.y + NH / 2; push(`M${vx} ${bottom}V${my}H${b.x}`, it.n); });
   }
-  m.items.forEach(it => place(it.n, ox + it.x, oy + it.y, out));
+  m.items.forEach(it => place(it.n, ox + it.x, oy + it.y, out, linkColor(it.n, inh)));
 }
-function layoutTree(root, col) {
+const isRule = line => /^[\s_\/]+$/.test(line) && /_{3,}/.test(line);
+function layoutTree(root, col, doc) {
   measure(root, col);
   const out = { nodes: [], links: [] };
-  place(root, PAD, PAD, out);
   const m = M.get(root);
-  out.w = m.w + PAD * 2;
-  out.h = m.h + PAD * 2;
+  const chartW = m.w + PAD * 2, chartH = m.h + PAD * 2;
+  const hasFrame = !!(doc && (doc.title || (doc.footer && doc.footer.length) || doc.legend));
+  if (!hasFrame) {
+    place(root, PAD, PAD, out, null);
+    out.w = chartW; out.h = chartH;
+    return out;
+  }
+  // sheet frame like the Excel tab: title banner on top, chart, then legend and footer table
+  const W = Math.max(chartW, 1100);
+  const titleLines = String(doc.title || '').split('\n').map(t => t.trim()).filter(Boolean);
+  const titleBox = titleLines.length ? 21 + 28 + titleLines.length * 40 : 0;   // bevel + face padding + lines
+  const titleH = titleBox ? titleBox + 40 : 0;
+  place(root, (W - chartW) / 2 + PAD, titleH + PAD, out, null);
+  let y = titleH + chartH;
+  const legendLines = String(doc.legend || '').split('\n').filter(t => t.trim());
+  let legend = null, footer = null;
+  if (legendLines.length) {
+    legend = { x: PAD, y, w: Math.min(W - PAD * 2, 40 + Math.max(...legendLines.map(t => t.length)) * 8.6), h: 22 + legendLines.length * 22.4, lines: legendLines };
+    y += legend.h + 28;
+  }
+  const cells = (doc.footer || []).filter(c => c && c.length);
+  if (cells.length) {
+    footer = { x: PAD, y, w: W - PAD * 2, h: 24 + Math.max(...cells.map(c => c.reduce((h, l) => h + (isRule(l) ? 22 : 18), 0))), cells };
+    y += footer.h + PAD;
+  }
+  out.w = W;
+  out.h = Math.max(y, titleH + chartH);
+  out.frame = { title: titleLines.length ? { x: 16, y: 16, w: W - 32, h: titleBox, lines: titleLines, color: okColor(doc.titleColor) || '#FF0000' } : null, legend, footer };
   return out;
 }
 
@@ -996,7 +1045,7 @@ function diffVersions(a, b) {
 /* ============================================================
    Mutations (edits only happen on Draft versions)
    ============================================================ */
-function snapshot(v) { return { vid: v.id, json: JSON.stringify({ root: v.root, name: v.name, note: v.note, model: v.model, plannedDate: v.plannedDate }) }; }
+function snapshot(v) { return { vid: v.id, json: JSON.stringify({ root: v.root, name: v.name, note: v.note, model: v.model, plannedDate: v.plannedDate, doc: v.doc }) }; }
 function pushUndo(v) { S.undo.push(snapshot(v)); if (S.undo.length > 100) S.undo.shift(); S.redo.length = 0; }
 let persistTimer = null;
 function persistLocal() {
@@ -1059,11 +1108,26 @@ function redo() {
   refresh();
 }
 
+function copyLook(c, from) {
+  if (from.style) c.style = clone(from.style);
+  if (from.link) c.link = from.link;
+  if (from.hl) c.hl = true;
+  return c;
+}
+function childLook(c, parent) {
+  const sib = parent.children.find(x => !!x.staff === !!c.staff && x.style);
+  if (sib) return copyLook(c, sib);
+  if (!parent.style) return c;
+  const branch = okColor(parent.link) || okColor(parent.style.line) || '#000000';
+  c.style = { fill: '#FFFFFF', line: branch, lw: 1.33, text: '#000000', bold: false, size: 12, align: 'l' };
+  if (branch.toUpperCase() !== '#000000') c.link = branch;
+  return c;
+}
 const opAddChild = (id, o = {}) => mutate(o.staff ? 'เพิ่มหน่วยงานขึ้นตรง' : 'เพิ่มหน่วยงาน', v => {
   const f = find(v.root, id || S.selected || v.root.id);
   if (!f) return undefined;
   const type = o.type || (o.staff ? 'office' : TYPES[f.node.type].child);
-  const c = N(type, TYPES[type].nn, { staff: !!o.staff });
+  const c = childLook(N(type, TYPES[type].nn, { staff: !!o.staff }), f.node);
   f.node.children.push(c);
   colSet(v.id).delete(f.node.id);
   return c.id;
@@ -1075,7 +1139,7 @@ function opAddSibling(id) {
   if (!f.parent) { toast('หน่วยบนสุดมีได้หน่วยเดียว ใช้ “แทรกระดับเหนือ” แทน'); return undefined; }
   return mutate('เพิ่มหน่วยงาน', v2 => {
     const g = find(v2.root, f.node.id);
-    const c = N(g.node.type, TYPES[g.node.type].nn, { staff: g.node.staff });
+    const c = copyLook(N(g.node.type, TYPES[g.node.type].nn, { staff: g.node.staff }), g.node);
     g.parent.children.splice(g.index + 1, 0, c);
     return c.id;
   });
@@ -1084,7 +1148,8 @@ const opInsertParent = id => mutate('แทรกระดับเหนือ�
   const f = find(v.root, id || S.selected);
   if (!f) return undefined;
   const type = TYPES[f.node.type].up;
-  const p = N(type, TYPES[type].nn, { staff: f.node.staff }, [f.node]);
+  const p = copyLook(N(type, TYPES[type].nn, { staff: f.node.staff }, [f.node]), f.node);
+  if (p.style) p.style.bold = true;
   f.node.staff = false;
   if (f.parent) f.parent.children.splice(f.index, 1, p); else v.root = p;
   return p.id;
@@ -1178,10 +1243,16 @@ function createDraft(code, src, name) {
   else if (src === 'tpl:functional') root = tplFunctional(1);
   else if (src === 'tpl:platform') { root = tplPlatform(); model = 'platform'; }
   else root = tplBlank();
+  const co = company(code) || { code };
+  const frameFrom = (base && base.doc) || (activeOf(code) && activeOf(code).doc);
+  const doc = frameFrom ? clone(frameFrom) : {
+    title: `${(co.nameEn || co.nameTh || code).toUpperCase()}${co.nameEn ? ` (${code})` : ''} ${new Date().getFullYear() + 1}`,
+    titleColor: '#FF0000', footer: [], legend: '',
+  };
   const v = {
     id: uid('v'), companyCode: code, versionNo: nextNo(code), name, status: 'draft', model,
     effectiveDate: null, endDate: null, plannedDate: '', note: '', approvalRef: '', basedOn,
-    createdAt: nowISO(), createdBy: who(), updatedAt: nowISO(), updatedBy: who(), root,
+    createdAt: nowISO(), createdBy: who(), updatedAt: nowISO(), updatedBy: who(), doc, root,
   };
   S.data.versions.push(v);
   markDirty(`${code}: สร้าง Draft v${v.versionNo} “${name}”`);
@@ -1300,8 +1371,8 @@ function bannerHTML() {
 /* ---------- home ---------- */
 function thumbSVG(root) {
   const L = layoutTree(root, new Set());
-  const links = L.links.map(l => `<path d="${l.d}"/>`).join('');
-  const rects = L.nodes.map(it => `<rect x="${it.x}" y="${it.y}" width="${NW}" height="${NH}" rx="12" class="th-${it.n.type}"/>`).join('');
+  const links = L.links.map(l => `<path d="${l.d}" stroke="${l.color}"/>`).join('');
+  const rects = L.nodes.map(it => { const st = styleOf(it.n); return `<rect x="${it.x}" y="${it.y}" width="${NW}" height="${NH}" fill="${st.fill || '#FFFFFF'}" stroke="${st.line || st.fill || '#000000'}"/>`; }).join('');
   return `<svg class="thumb" viewBox="${-20} ${-20} ${L.w + 40} ${L.h + 40}" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><g class="tl">${links}</g>${rects}</svg>`;
 }
 function homeHTML() {
@@ -1342,7 +1413,6 @@ function workspaceHTML() {
   let body;
   if (!v) body = emptyHTML();
   else if (S.tab === 'chart') body = `<div class="canvas" id="canvas" tabindex="0" aria-label="แผนผังโครงสร้างองค์กร"><div class="stage" id="stage"></div>
-      <div class="legend" aria-hidden="true">${legendHTML(v)}</div>
       <div class="zoomctl"><button class="ibtn" data-act="zoom-out" title="ย่อ" aria-label="ย่อ">${I.minus}</button><button class="zv" data-act="zoom-reset" id="zv" title="ขนาดจริง 100%">100%</button><button class="ibtn" data-act="zoom-in" title="ขยาย" aria-label="ขยาย">${I.plus}</button><button class="ibtn" data-act="zoom-fit" title="พอดีหน้าจอ" aria-label="พอดีหน้าจอ">${I.fit}</button></div></div>`;
   else body = `<div class="outline" id="outline">${outlineHTML(v)}</div>`;
   return `<div class="ws${S.ui.rail ? ' rail-open' : ''}${S.ui.insp ? ' insp-open' : ''}" id="ws">
@@ -1360,13 +1430,6 @@ function workspaceHTML() {
 function emptyHTML() {
   return `<div class="empty-state"><h2>ยังไม่มีโครงสร้างของ ${esc(S.route.code)}</h2><p>เริ่มจากแม่แบบโครงสร้างมาตรฐาน แม่แบบ Platform Organization หรือวางรายชื่อหน่วยงานจากเอกสาร</p>
     ${canEditApp() ? `<button class="btn primary" data-act="new-draft">${I.plus}สร้างโครงสร้างแรก</button>` : `<button class="btn" data-act="login">${I.github}เข้าสู่ระบบเพื่อสร้าง</button>`}</div>`;
-}
-function legendHTML(v) {
-  const s = stats(v.root);
-  let hl = false;
-  walk(v.root, n => { if (n.hl) hl = true; });
-  return Object.keys(TYPES).filter(k => s.byType[k]).map(k => `<span><i class="dot tc-${k}"></i>${TYPES[k].th}</span>`).join('') +
-    (hl ? '<span><i class="n-hl"></i>ไฮไลต์ (ตัวอักษรสีแดงในเอกสาร)</span>' : '');
 }
 function railHTML(code) {
   const co = company(code);
@@ -1443,28 +1506,39 @@ function renderStage() {
   const v = curVersion(), stage = $('#stage');
   if (!v || !stage) return;
   const col = colSet(v.id);
-  const L = layoutTree(v.root, col);
+  const L = layoutTree(v.root, col, v.doc);
   S.layout = L;
   const ctx = { col, roll: rollup(v.root), edit: canEdit(v), diff: S.compareWith && byId(S.compareWith) ? diffVersions(byId(S.compareWith), v) : null };
-  let html = `<svg class="links" width="${L.w}" height="${L.h}" viewBox="0 0 ${L.w} ${L.h}">${L.links.map(l => `<path class="lk ${l.cls || ''}" d="${l.d}"/>`).join('')}</svg>`;
+  let html = frameHTML(L.frame);
+  html += `<svg class="links" width="${L.w}" height="${L.h}" viewBox="0 0 ${L.w} ${L.h}">${L.links.map(l => `<path class="lk ${l.cls || ''}" d="${l.d}" stroke="${l.color}"/>`).join('')}</svg>`;
   html += L.nodes.map(it => nodeHTML(it, ctx)).join('');
   stage.style.width = L.w + 'px';
   stage.style.height = L.h + 'px';
   stage.innerHTML = html;
   if (!S.views[v.id]) initialView(); else applyView();
 }
+function frameHTML(fr) {
+  if (!fr) return '';
+  const pos = b => `left:${b.x}px;top:${b.y}px;width:${b.w}px;height:${b.h}px`;
+  let h = '';
+  if (fr.title) h += `<div class="sh-title" style="${pos(fr.title)}"><div class="sh-face" style="color:${fr.title.color}">${fr.title.lines.map(l => `<div>${esc(l)}</div>`).join('')}</div></div>`;
+  if (fr.legend) h += `<div class="sh-legend" style="${pos(fr.legend)}">${fr.legend.lines.map(esc).join('\n')}</div>`;
+  if (fr.footer) h += `<div class="sh-foot" style="${pos(fr.footer)};grid-template-columns:repeat(${fr.footer.cells.length},minmax(0,1fr))">${fr.footer.cells.map(c =>
+    `<div class="sh-cell">${c.map((l, k) => isRule(l) ? '<span class="sh-rule"></span>' : `<span>${esc(l)}${k === 0 && c.length > 1 && !/:\s*$/.test(l) ? ' :' : ''}</span>`).join('')}</div>`).join('')}</div>`;
+  return h;
+}
 function nodeHTML(it, ctx) {
-  const n = it.n, t = TYPES[n.type];
+  const n = it.n, st = styleOf(n);
   const collapsed = ctx.col.has(n.id);
   const total = ctx.roll.get(n.id);
   const d = ctx.diff ? ctx.diff.map[n.id] : null;
-  const foot = n.head ? n.head : n.title;
-  const pill = n.type === 'ai' ? 'AI' : n.type === 'partner' ? 'ภายนอก' : n.type === 'company' ? '' : (total ? fmtNum(total) + ' คน' : '');
-  const tip = [n.name, n.nameEn, n.title && n.head ? n.title + ': ' + n.head : '', n.note].filter(Boolean).join('\n');
-  return `<div class="node t-${n.type} tc-${n.type}${n.id === S.selected ? ' sel' : ''}${d ? ' d-' + d : ''}" data-id="${n.id}" style="left:${it.x}px;top:${it.y}px" title="${esc(tip)}">
-    <div class="n-top"><span class="n-type">${esc(t.th)}${n.staff ? ' · Staff' : ''}</span><span class="n-r">${n.hl ? '<i class="n-hl" title="ไฮไลต์"></i>' : ''}${n.code ? `<span class="n-code">${esc(n.code)}</span>` : ''}</span></div>
-    <div class="n-name">${esc(n.name || 'ไม่มีชื่อ')}</div>
-    <div class="n-foot"><span class="n-head">${esc(foot)}</span>${pill ? `<span class="n-hc">${pill}</span>` : ''}</div>
+  const sub = n.head || n.title;
+  const pill = EXTERNAL.has(n.type) ? '' : (total ? fmtNum(total) + ' คน' : '');
+  const tip = [n.name, n.nameEn, TYPES[n.type].th + (n.staff ? ' · Staff' : '') + (n.code ? ' · ' + n.code : ''), n.title && n.head ? n.title + ': ' + n.head : '', n.note].filter(Boolean).join('\n');
+  const css = `left:${it.x}px;top:${it.y}px;background:${st.fill || 'transparent'};border:${st.line ? Math.max(1, +st.lw || 1) : 1}px ${DASH[st.dash] || 'solid'} ${st.line || 'transparent'};color:${st.text};font-weight:${st.bold ? 700 : 400};font-size:${fontPx(st, n)}px;text-align:${st.align === 'c' ? 'center' : st.align === 'r' ? 'right' : 'left'}`;
+  return `<div class="node${n.id === S.selected ? ' sel' : ''}${d ? ' d-' + d : ''}" data-id="${n.id}" style="${css}" title="${esc(tip)}">
+    <div class="x-txt"><span class="x-name">${esc(n.name || 'ไม่มีชื่อ')}</span>${n.nameEn && n.type !== 'company' ? `<span class="x-en">${esc(n.nameEn)}</span>` : ''}${sub ? `<span class="x-sub">${esc(sub)}</span>` : ''}</div>
+    ${pill ? `<span class="x-pill">${pill}</span>` : ''}
     ${d ? `<span class="n-badge b-${d}">${DIFF_LABEL[d]}</span>` : ''}
     ${n.children.length ? `<button class="n-tog" data-act="toggle" data-id="${n.id}" aria-label="${collapsed ? 'แสดง' : 'ซ่อน'}หน่วยย่อย" title="${collapsed ? 'แสดง' : 'ซ่อน'}หน่วยย่อย">${collapsed ? '+' + countDesc(n) : '−'}</button>` : ''}
     ${ctx.edit ? `<button class="n-add" data-act="add-child" data-id="${n.id}" title="เพิ่มหน่วยย่อย" aria-label="เพิ่มหน่วยย่อย">${I.plus}</button>` : ''}
@@ -1476,8 +1550,6 @@ function applyView() {
   if (!st || !cv) return;
   const w = view();
   st.style.transform = `translate(${w.x}px, ${w.y}px) scale(${w.z})`;
-  cv.style.backgroundSize = `${22 * w.z}px ${22 * w.z}px`;
-  cv.style.backgroundPosition = `${w.x}px ${w.y}px`;
   const zv = $('#zv'); if (zv) zv.textContent = Math.round(w.z * 100) + '%';
 }
 function fitView() {
@@ -1497,7 +1569,8 @@ function initialView() {
   const min = isNarrow() ? 0.45 : 0.6;
   if (!r.width || fit >= min) { fitView(); return; }
   const root = L.nodes[0];
-  S.views[S.versionId] = { z: min, x: r.width / 2 - (root.x + NW / 2) * min, y: 12 - (root.y - PAD) * min };
+  // open on the sheet title (or the top unit when there is no frame), centred on the top unit
+  S.views[S.versionId] = { z: min, x: r.width / 2 - (root.x + NW / 2) * min, y: 12 - (L.frame ? 0 : (root.y - PAD) * min) };
   applyView();
 }
 function zoomTo(z, cx, cy) {
@@ -1757,6 +1830,9 @@ function versionPanelHTML(v) {
     ${edit ? `<label class="field"><span>ชื่อเวอร์ชัน</span><input class="inp" id="vf-name" data-vf="name" value="${esc(v.name)}"></label>
       <label class="field"><span>วันที่วางแผนให้มีผล</span><input class="inp" id="vf-planned" type="date" data-vf="plannedDate" value="${esc(v.plannedDate || '')}"></label>` : ''}
     <div class="field"><span>รูปแบบองค์กร</span><div class="steps">${steps}</div></div>
+    ${edit ? `<label class="field"><span>หัวกระดาษบนผัง</span><textarea class="inp" id="vd-title" data-vd="title" rows="2">${esc((v.doc && v.doc.title) || '')}</textarea></label>
+      <label class="field"><span>ตารางท้ายผัง <small class="muted">1 บรรทัด = 1 ช่อง · ใช้ | ขึ้นบรรทัดใหม่ในช่อง · ____ = เส้นลงนาม</small></span><textarea class="inp mono-in" id="vd-footer" data-vd="footer" rows="5" placeholder="REVENUE STREAM | Power Distribution &amp; Energy Management">${esc(((v.doc && v.doc.footer) || []).map(c => c.join(' | ')).join('\n'))}</textarea></label>
+      <label class="field"><span>คำอธิบายตัวย่อ</span><textarea class="inp" id="vd-legend" data-vd="legend" rows="3" placeholder="PEM = Precise Electric Manufacturing Co., Ltd.">${esc((v.doc && v.doc.legend) || '')}</textarea></label>` : ''}
     ${edit ? `<label class="field"><span>เหตุผลการปรับโครงสร้าง / หมายเหตุ</span><textarea class="inp" id="vf-note" data-vf="note" rows="4" placeholder="เช่น รองรับกลยุทธ์ปี 2570 รวมงานสนับสนุนเป็นแพลตฟอร์มบริการร่วม">${esc(v.note || '')}</textarea></label>`
       : (v.note ? `<div class="field"><span>หมายเหตุเวอร์ชัน</span><p class="note">${esc(v.note)}</p></div>` : '')}
   </section>
@@ -1802,7 +1878,7 @@ function nodePanelHTML(v, f) {
     <div class="row2"><label class="field"><span>ผู้ดำรงตำแหน่ง</span><input class="inp" id="nf-head" data-f="head" value="${esc(n.head)}" placeholder="ว่าง"></label>
       <label class="field"><span>อัตรากำลัง (คน)</span><input class="inp" id="nf-hc" data-f="hc" type="number" min="0" inputmode="numeric" value="${n.hc || ''}" placeholder="0" ${EXTERNAL.has(n.type) ? 'disabled' : ''}></label></div>
     ${f.parent ? `<label class="check"><input type="checkbox" id="nf-staff" data-f="staff" ${n.staff ? 'checked' : ''}><span>หน่วยงานขึ้นตรง (Staff)<small>วางไว้ด้านข้างสายบังคับบัญชา เช่น สำนักตรวจสอบภายใน เลขานุการ</small></span></label>` : ''}
-    <label class="check"><input type="checkbox" id="nf-hl" data-f="hl" ${n.hl ? 'checked' : ''}><span>ไฮไลต์หน่วยงานนี้<small>เช่น หน่วยงานใหม่หรือปรับปรุงในรอบนี้ (ในไฟล์ต้นฉบับใช้ตัวอักษรสีแดง)</small></span></label>
+    ${styleControls(n)}
     ${subsidiaryLink(n)}
     <label class="field"><span>การจัดวางหน่วยย่อย</span><select class="inp" id="nf-layout" data-f="layout">
       <option value="auto" ${n.layout === 'auto' ? 'selected' : ''}>อัตโนมัติ</option><option value="h" ${n.layout === 'h' ? 'selected' : ''}>แนวนอน (เรียงข้างกัน)</option><option value="v" ${n.layout === 'v' ? 'selected' : ''}>แนวตั้ง (เป็นรายการ)</option></select></label>
@@ -1815,6 +1891,29 @@ function nodePanelHTML(v, f) {
       <button class="btn sm" data-act="add-staff">${I.staff}Staff</button>
       ${f.parent ? `<button class="btn sm danger" data-act="delete-node">${I.trash}ลบ</button>` : ''}
     </div></section>`;
+}
+function styleControls(n) {
+  const st = styleOf(n);
+  const opt = (v, cur, label) => `<option value="${v}" ${String(v) === String(cur) ? 'selected' : ''}>${label}</option>`;
+  const size = +st.size >= 16 ? 18 : +st.size >= 13 ? 14 : +st.size >= 11 ? 12 : 10;
+  return `<div class="field"><span>สีกล่อง (ชุดสีเดียวกับผังใน Excel)</span>
+    <div class="swatches">${PALETTE.map((p, i) => `<button type="button" class="sw" data-act="swatch" data-k="${i}" title="${esc(p.name)}" aria-label="${esc(p.name)}" style="background:${p.fill};border-color:${p.line || st.line || '#000000'};color:${p.text}">ก</button>`).join('')}</div></div>
+    <div class="row3"><label>พื้น<input type="color" id="nf-fill" data-sf="fill" value="${st.fill || '#FFFFFF'}"></label><label>เส้นขอบ<input type="color" id="nf-line" data-sf="line" value="${st.line || '#000000'}"></label><label>ตัวอักษร<input type="color" id="nf-text" data-sf="text" value="${st.text}"></label></div>
+    <div class="row3"><label>ขนาดอักษร<select class="inp" id="nf-size" data-sf="size">${opt(18, size, 'ใหญ่มาก')}${opt(14, size, 'ใหญ่')}${opt(12, size, 'ปกติ')}${opt(10, size, 'เล็ก')}</select></label>
+      <label>จัดข้อความ<select class="inp" id="nf-align" data-sf="align">${opt('l', st.align, 'ชิดซ้าย')}${opt('c', st.align, 'กึ่งกลาง')}${opt('r', st.align, 'ชิดขวา')}</select></label>
+      <label class="check" style="align-self:end;padding-bottom:6px"><input type="checkbox" id="nf-bold" data-sf="bold" ${st.bold ? 'checked' : ''}><span>ตัวหนา</span></label></div>`;
+}
+function setStyle(patch) {
+  mutate('เปลี่ยนรูปแบบกล่อง', v => {
+    const f = find(v.root, S.selected);
+    if (!f) return undefined;
+    const st = Object.assign(styleOf(f.node), patch);
+    f.node.style = { fill: st.fill, line: st.line, lw: st.lw, text: st.text, bold: !!st.bold, size: +st.size || 12, align: st.align };
+    if (st.dash) f.node.style.dash = st.dash;
+    if ('line' in patch) { if (st.line && st.line.toUpperCase() !== '#000000') f.node.link = st.line; else delete f.node.link; }
+    if (st.text.toUpperCase() === '#FF0000') f.node.hl = true; else delete f.node.hl;
+    return f.node.id;
+  });
 }
 function subsidiaryLink(n) {
   if (n.type !== 'company' || !n.code || !company(n.code) || n.code === S.route.code) return '';
@@ -1879,6 +1978,17 @@ function onOutlineInput(t) {
     if (ins && ins !== t) ins.value = t.value;
     if (key === 'name') { const h = $('#insp .ip-head h2'); if (h) h.textContent = t.value || 'ไม่มีชื่อ'; }
   }
+}
+function onDocField(t) {
+  const v = curVersion();
+  if (!canEdit(v)) return;
+  beginEdit(v, v.id + 'd:' + t.dataset.vd);
+  const doc = v.doc || (v.doc = { title: '', titleColor: '#FF0000', footer: [], legend: '' });
+  const k = t.dataset.vd;
+  if (k === 'footer') doc.footer = t.value.split('\n').map(l => l.split(/\s*\|\s*/).map(x => x.trim()).filter(Boolean)).filter(c => c.length);
+  else doc[k] = t.value;
+  touch(v, 'แก้ไขหัวกระดาษ / ท้ายกระดาษของผัง');
+  scheduleStage();
 }
 function onVersionField(t) {
   const v = curVersion();
@@ -2508,12 +2618,16 @@ function exportJSON(all) {
   if (v) download(slug(v) + '.json', JSON.stringify(v, null, 2), 'application/json');
 }
 function wrapText(ctx, text, maxW, maxLines) {
-  const segs = typeof Intl !== 'undefined' && Intl.Segmenter
-    ? [...new Intl.Segmenter('th', { granularity: 'word' }).segment(text)].map(x => x.segment)
-    : text.split(/(\s+)/);
+  const seg = typeof Intl !== 'undefined' && Intl.Segmenter ? new Intl.Segmenter('th', { granularity: 'word' }) : null;
+  const tokens = [];
+  String(text).split(/(\s+)/).forEach(tok => {
+    if (!tok) return;
+    if (/\s/.test(tok) || ctx.measureText(tok).width <= maxW || !seg) { tokens.push(tok); return; }
+    [...seg.segment(tok)].forEach(x => tokens.push(x.segment));
+  });
   const lines = [''];
   let truncated = false;
-  for (const w of segs) {
+  for (const w of tokens) {
     const cur = lines[lines.length - 1];
     if (!cur || ctx.measureText(cur + w).width <= maxW) { lines[lines.length - 1] = cur + w; continue; }
     if (lines.length === maxLines) { truncated = true; break; }
@@ -2527,58 +2641,96 @@ function wrapText(ctx, text, maxW, maxLines) {
   return lines.map(l => l.trim());
 }
 async function exportPNG() {
-  const v = curVersion(), L = S.layout, stage = $('#stage');
-  if (!v || !L || !stage) { toast('เปิดแท็บ “แผนผัง” ก่อน Export ภาพ'); return; }
+  const v = curVersion(), L = S.layout;
+  if (!v || !L || !$('#stage')) { toast('เปิดแท็บ “แผนผัง” ก่อน Export ภาพ'); return; }
   try { await document.fonts.ready; } catch (e) { /* fonts api unavailable */ }
-  const cs = getComputedStyle(document.documentElement), tok = n => cs.getPropertyValue(n).trim();
-  const body = cs.getPropertyValue('--f-body'), disp = cs.getPropertyValue('--f-display'), mono = cs.getPropertyValue('--f-mono');
-  const headH = 76, scale = 2;
+  const cs = getComputedStyle(document.documentElement);
+  const fdoc = cs.getPropertyValue('--f-doc'), fleg = cs.getPropertyValue('--f-legend'), fbody = cs.getPropertyValue('--f-body'), mono = cs.getPropertyValue('--f-mono');
+  const headH = L.frame ? 0 : 70, scale = 2;
   const cvs = document.createElement('canvas');
   cvs.width = Math.ceil(L.w * scale); cvs.height = Math.ceil((L.h + headH) * scale);
   if (cvs.width * cvs.height > 120e6) { toast('แผนผังใหญ่เกินไปสำหรับภาพ PNG ลองย่อบางระดับก่อน', 'err'); return; }
   const ctx = cvs.getContext('2d');
   ctx.scale(scale, scale);
-  ctx.fillStyle = tok('--surface'); ctx.fillRect(0, 0, L.w, L.h + headH);
-  ctx.fillStyle = tok('--ink'); ctx.font = `600 20px ${disp}`; ctx.textBaseline = 'alphabetic';
-  ctx.fillText(`${v.companyCode} · ${v.name}`, PAD, 40);
-  ctx.fillStyle = tok('--muted'); ctx.font = `400 12.5px ${body}`;
-  const s = stats(v.root);
-  ctx.fillText(`v${v.versionNo} · ${ST[v.status]} · ${versionDateText(v)} · ${fmtNum(s.units)} หน่วยงาน · ${fmtNum(s.hc)} คน`, PAD, 62);
+  ctx.fillStyle = '#FFFFFF'; ctx.fillRect(0, 0, L.w, L.h + headH);
+  ctx.textBaseline = 'alphabetic';
+  if (!L.frame) {
+    ctx.fillStyle = '#000000'; ctx.font = `600 20px ${fbody}`;
+    ctx.fillText(`${v.companyCode} · ${v.name}`, PAD, 40);
+    ctx.fillStyle = '#555555'; ctx.font = `400 12.5px ${fbody}`;
+    ctx.fillText(`v${v.versionNo} · ${ST[v.status]} · ${versionDateText(v)}`, PAD, 60);
+  }
   ctx.translate(0, headH);
+  const center = (lines, x, y, w, h, lh, font, color) => {
+    ctx.font = font; ctx.fillStyle = color; ctx.textAlign = 'center';
+    const top = y + (h - lines.length * lh) / 2 + lh * 0.78;
+    lines.forEach((t, k) => ctx.fillText(t, x + w / 2, top + k * lh));
+    ctx.textAlign = 'left';
+  };
+  const fr = L.frame;
+  ctx.strokeStyle = '#000000'; ctx.lineWidth = 1;
+  if (fr && fr.title) {
+    const t = fr.title;
+    ctx.fillStyle = '#BFBFBF'; ctx.fillRect(t.x + t.w - 11, t.y, 11, t.h); ctx.fillRect(t.x, t.y + t.h - 11, t.w, 11);
+    ctx.strokeRect(t.x + .5, t.y + .5, t.w - 1, t.h - 1);
+    ctx.fillStyle = '#FFFFFF'; ctx.fillRect(t.x + 10, t.y + 10, t.w - 21, t.h - 21);
+    ctx.strokeRect(t.x + 10.5, t.y + 10.5, t.w - 22, t.h - 22);
+    center(t.lines, t.x + 10, t.y + 10, t.w - 21, t.h - 21, 40, `700 30px ${fdoc}`, t.color);
+  }
+  if (fr && fr.legend) {
+    const g = fr.legend;
+    ctx.strokeRect(g.x + .5, g.y + .5, g.w - 1, g.h - 1);
+    ctx.fillStyle = '#000000'; ctx.font = `400 16px ${fleg}`;
+    g.lines.forEach((t, k) => ctx.fillText(t, g.x + 12, g.y + 28 + k * 22.4));
+  }
+  if (fr && fr.footer) {
+    const f = fr.footer, cw = f.w / f.cells.length;
+    ctx.strokeRect(f.x + .5, f.y + .5, f.w - 1, f.h - 1);
+    f.cells.forEach((c, k) => {
+      const x = f.x + k * cw;
+      if (k) { ctx.beginPath(); ctx.moveTo(x + .5, f.y); ctx.lineTo(x + .5, f.y + f.h); ctx.stroke(); }
+      const lines = c.map((l, i) => (isRule(l) ? '' : l + (i === 0 && c.length > 1 && !/:\s*$/.test(l) ? ' :' : '')));
+      const lh = 20, top = f.y + (f.h - lines.length * lh) / 2 + 15;
+      ctx.font = `400 13px ${fdoc}`; ctx.fillStyle = '#000000'; ctx.textAlign = 'center';
+      lines.forEach((t, i) => {
+        if (isRule(c[i])) { ctx.beginPath(); ctx.moveTo(x + cw * .12, top + i * lh - 2); ctx.lineTo(x + cw * .88, top + i * lh - 2); ctx.stroke(); }
+        else ctx.fillText(wrapText(ctx, t, cw - 12, 1)[0], x + cw / 2, top + i * lh);
+      });
+      ctx.textAlign = 'left';
+    });
+  }
   L.links.forEach(l => {
-    ctx.strokeStyle = l.cls === 'dash' ? tok('--partner') : l.cls === 'dot' ? tok('--copper') : tok('--line-strong');
+    ctx.strokeStyle = l.color;
     ctx.setLineDash(l.cls === 'dash' ? [6, 4] : l.cls === 'dot' ? [2, 3] : []);
-    ctx.lineWidth = 1.5;
+    ctx.lineWidth = 1.25;
     ctx.stroke(new Path2D(l.d));
   });
   ctx.setLineDash([]);
   const roll = rollup(v.root);
   L.nodes.forEach(it => {
-    const el = stage.querySelector(`.node[data-id="${it.n.id}"]`);
-    if (!el) return;
-    const st = getComputedStyle(el);
-    const n = it.n;
-    ctx.beginPath();
-    if (ctx.roundRect) ctx.roundRect(it.x, it.y, NW, NH, 9); else ctx.rect(it.x, it.y, NW, NH);
-    ctx.fillStyle = st.backgroundColor; ctx.fill();
-    ctx.setLineDash(st.borderTopStyle === 'dashed' ? [5, 3] : []);
-    ctx.strokeStyle = st.borderTopColor; ctx.lineWidth = 1; ctx.stroke();
-    ctx.setLineDash([]);
-    const color = st.color;
-    ctx.globalAlpha = 0.75; ctx.fillStyle = color; ctx.font = `600 10.5px ${body}`;
-    ctx.fillText(TYPES[n.type].th + (n.staff ? ' · Staff' : ''), it.x + 10, it.y + 18);
-    let codeW = 0;
-    if (n.code) { ctx.font = `400 10.5px ${mono}`; codeW = ctx.measureText(n.code).width + 6; ctx.textAlign = 'right'; ctx.fillText(n.code, it.x + NW - 10, it.y + 18); ctx.textAlign = 'left'; }
-    if (n.hl) { ctx.globalAlpha = 1; ctx.fillStyle = tok('--danger'); ctx.beginPath(); ctx.arc(it.x + NW - 14 - codeW, it.y + 14.5, 4, 0, Math.PI * 2); ctx.fill(); ctx.fillStyle = color; ctx.globalAlpha = 0.75; }
-    ctx.globalAlpha = 1; ctx.font = `600 13.5px ${body}`;
-    wrapText(ctx, n.name || 'ไม่มีชื่อ', NW - 20, 2).forEach((ln, i) => ctx.fillText(ln, it.x + 10, it.y + 38 + i * 17));
-    ctx.globalAlpha = 0.85; ctx.font = `400 11.5px ${body}`;
-    const pill = n.type === 'ai' ? 'AI' : n.type === 'partner' ? 'ภายนอก' : n.type === 'company' ? '' : (roll.get(n.id) ? fmtNum(roll.get(n.id)) + ' คน' : '');
-    let pw = 0;
-    if (pill) { ctx.font = `400 10.5px ${mono}`; pw = ctx.measureText(pill).width; ctx.textAlign = 'right'; ctx.fillText(pill, it.x + NW - 10, it.y + NH - 10); ctx.textAlign = 'left'; ctx.font = `400 11.5px ${body}`; }
-    const foot = n.head || n.title;
-    if (foot) ctx.fillText(wrapText(ctx, foot, NW - 26 - pw, 1)[0], it.x + 10, it.y + NH - 10);
-    ctx.globalAlpha = 1;
+    const n = it.n, st = styleOf(n), fs = fontPx(st, n);
+    if (st.fill) { ctx.fillStyle = st.fill; ctx.fillRect(it.x, it.y, NW, NH); }
+    if (st.line) {
+      ctx.strokeStyle = st.line; ctx.lineWidth = Math.max(1, +st.lw || 1);
+      ctx.setLineDash(DASH[st.dash] === 'dashed' ? [5, 3] : DASH[st.dash] === 'dotted' ? [2, 2] : []);
+      ctx.strokeRect(it.x + .5, it.y + .5, NW - 1, NH - 1);
+      ctx.setLineDash([]);
+    }
+    const w = NW - 16, lh = fs * 1.17, max = Math.max(1, Math.floor((NH - 10) / lh));
+    const main = `${st.bold ? 700 : 400} ${fs}px ${fdoc}`, small = `400 ${(fs * .86).toFixed(1)}px ${fdoc}`;
+    ctx.font = main;
+    let lines = wrapText(ctx, n.name || 'ไม่มีชื่อ', w, max).map(t => ({ t, f: main }));
+    if (n.nameEn && n.type !== 'company' && lines.length < max) lines = lines.concat(wrapText(ctx, n.nameEn, w, max - lines.length).map(t => ({ t, f: main })));
+    const sub = n.head || n.title;
+    if (sub && lines.length < max) { ctx.font = small; lines = lines.concat(wrapText(ctx, sub, w, max - lines.length).map(t => ({ t, f: small }))); }
+    const top = it.y + (NH - lines.length * lh) / 2 + fs * .84;
+    ctx.fillStyle = st.text;
+    ctx.textAlign = st.align === 'c' ? 'center' : st.align === 'r' ? 'right' : 'left';
+    const tx = st.align === 'c' ? it.x + NW / 2 : st.align === 'r' ? it.x + NW - 8 : it.x + 8;
+    lines.forEach((ln, k) => { ctx.font = ln.f; ctx.fillText(ln.t, tx, top + k * lh); });
+    ctx.textAlign = 'left';
+    const total = roll.get(n.id);
+    if (total && !EXTERNAL.has(n.type)) { ctx.font = `400 10px ${mono}`; ctx.fillStyle = '#555555'; ctx.textAlign = 'right'; ctx.fillText(fmtNum(total) + ' คน', it.x + NW - 5, it.y + NH - 5); ctx.textAlign = 'left'; }
   });
   cvs.toBlob(b => { if (b) download(slug(v) + '.png', b); else toast('สร้างไฟล์ภาพไม่สำเร็จ', 'err'); }, 'image/png');
 }
@@ -2680,6 +2832,7 @@ const A = {
     pushUndo(v); v.model = el.dataset.k; touch(v, 'เปลี่ยนรูปแบบองค์กร'); refresh();
   },
   'select-node': el => selectNode(el.dataset.id, { reveal: true, sheet: false }),
+  'swatch': el => { const p = PALETTE[+el.dataset.k]; const patch = { fill: p.fill, text: p.text }; if (p.line) patch.line = p.line; setStyle(patch); },
   'select-row': el => selectNode(el.dataset.id),
   'ol-indent': el => outlineOp(el, 'indent'),
   'ol-outdent': el => outlineOp(el, 'outdent'),
@@ -2725,11 +2878,17 @@ document.addEventListener('input', e => {
   if (t.matches('[data-f]') && t.type !== 'checkbox' && t.tagName !== 'SELECT') onNodeFieldInput(t);
   else if (t.matches('[data-of]') && t.tagName !== 'SELECT') onOutlineInput(t);
   else if (t.matches('[data-vf]')) onVersionField(t);
+  else if (t.matches('[data-vd]')) onDocField(t);
 });
 document.addEventListener('change', e => {
   const t = e.target;
   if (t.matches('[data-change]')) { CHANGES[t.dataset.change]?.(t); return; }
   if (t.matches('select[data-of]')) { onOutlineInput(t); return; }
+  if (t.matches('[data-sf]')) {
+    const k = t.dataset.sf;
+    setStyle({ [k]: t.type === 'checkbox' ? t.checked : k === 'size' ? +t.value : t.value });
+    return;
+  }
   if (t.matches('[data-f]') && (t.type === 'checkbox' || t.tagName === 'SELECT')) {
     const key = t.dataset.f, val = nodeFieldValue(t);
     mutate('แก้ไขรายละเอียดหน่วยงาน', v => { const f = find(v.root, S.selected); if (f) f.node[key] = val; return S.selected; });
@@ -2739,7 +2898,7 @@ document.addEventListener('focusin', e => {
   const row = e.target.closest?.('.ol-row[data-id]');
   if (row && row.dataset.id !== S.selected && e.target.matches('input, select')) selectNode(row.dataset.id, { sheet: false });
 });
-document.addEventListener('focusout', e => { if (e.target.matches?.('[data-f], [data-of], [data-vf]')) S.esKey = null; });
+document.addEventListener('focusout', e => { if (e.target.matches?.('[data-f], [data-of], [data-vf], [data-vd]')) S.esKey = null; });
 $('#file-json').addEventListener('change', e => { const f = e.target.files[0]; if (f) importJSONFile(f); });
 
 // Outline keyboard flow: Enter = next unit, Tab = indent, Shift+Tab = outdent
