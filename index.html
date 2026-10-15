@@ -222,7 +222,7 @@ textarea.inp{min-height:84px;resize:vertical;line-height:1.5}
 /* unit boxes: colours, weight and alignment come from each unit's style (taken from the Excel charts) */
 .node{position:absolute;width:200px;height:88px;padding:5px 8px;display:flex;flex-direction:column;justify-content:safe center;cursor:pointer;user-select:none;-webkit-user-select:none;font-family:var(--f-doc);line-height:1.17;overflow:visible}
 .node:hover{box-shadow:0 0 0 2px rgba(13,102,114,.35)}
-.node.sel{outline:2.5px solid var(--accent);outline-offset:3px}
+.node.sel{outline:2.5px solid var(--accent);outline-offset:3px;z-index:2}
 .node.dragging{opacity:.35}
 .node.drop{outline:2.5px dashed var(--accent);outline-offset:4px}
 .x-txt{display:flex;flex-direction:column;gap:2px;max-height:100%;overflow:hidden;min-width:0}
@@ -234,16 +234,31 @@ textarea.inp{min-height:84px;resize:vertical;line-height:1.5}
 .n-add{position:absolute;right:-11px;bottom:-11px;width:24px;height:24px;border-radius:50%;border:0;background:var(--accent);color:var(--on-accent);display:none;place-items:center;cursor:pointer;padding:0;box-shadow:var(--shadow)}
 .n-add svg{width:14px;height:14px}
 .node.sel .n-add{display:grid}
+/* free layout: boxes keep their own position and size; handles on the selected box resize it */
+.stage.free .node{padding:2px 5px;line-height:1.08}
+.stage.free.editable .node{cursor:move}
+.stage.free .n-add{display:none!important}
+.stage.free .n-tog{left:18px;transform:none}
+.stage.free.editable [data-fr]{cursor:move}
+.rh{position:absolute;width:calc(10px * var(--hz,1));height:calc(10px * var(--hz,1));margin:calc(-5px * var(--hz,1));background:#fff;border:calc(1.5px * var(--hz,1)) solid var(--accent);display:none;z-index:4}
+.node.sel .rh{display:block}
+.rh-nw{left:0;top:0;cursor:nwse-resize} .rh-n{left:50%;top:0;cursor:ns-resize} .rh-ne{left:100%;top:0;cursor:nesw-resize} .rh-e{left:100%;top:50%;cursor:ew-resize}
+.rh-se{left:100%;top:100%;cursor:nwse-resize} .rh-s{left:50%;top:100%;cursor:ns-resize} .rh-sw{left:0;top:100%;cursor:nesw-resize} .rh-w{left:0;top:50%;cursor:ew-resize}
+.row4{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.row4 label{display:grid;gap:2px;font-size:11.5px;color:var(--muted)}
+.row4 input{width:100%;min-width:0;border:1px solid var(--line-strong);border-radius:6px;padding:5px 6px;font:400 12.5px var(--f-mono);background:var(--surface);color:var(--ink)}
 .n-badge{position:absolute;top:-10px;right:8px;font:600 10.5px/1.5 var(--f-body);padding:1px 7px;border-radius:5px;color:#fff}
 .b-added{background:#1c7a47} .b-moved{background:#3a59a8} .b-renamed,.b-changed{background:#94600f}
 .node.d-added{box-shadow:0 0 0 4px rgba(28,122,71,.35)} .node.d-moved{box-shadow:0 0 0 4px rgba(58,89,168,.35)} .node.d-renamed,.node.d-changed{box-shadow:0 0 0 4px rgba(148,96,15,.35)}
 
 /* sheet frame copied from the Excel layout: bevelled title banner, abbreviation legend, footer table */
+.sh-foot.abs{display:block;border:0;background:none}
+.sh-foot.abs .sh-cell{position:absolute;border:1px solid #000;background:#fff}
 .sh-title{position:absolute;background:#fff;border:1px solid #000;box-shadow:inset -11px -11px 0 var(--bevel)}
-.sh-face{position:absolute;inset:10px 11px 11px 10px;border:1px solid #000;background:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;font:700 30px/1.2 var(--f-doc);text-align:center;padding:0 16px}
-.sh-legend{position:absolute;border:1px solid #000;background:#fff;padding:10px 12px;font:400 16px/1.4 var(--f-legend);color:#000;white-space:pre}
+.sh-face{position:absolute;inset:10px 11px 11px 10px;border:1px solid #000;background:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;font-family:var(--f-doc);font-weight:700;line-height:1.2;text-align:center;padding:0 16px}
+.sh-legend{position:absolute;border:1px solid #000;background:#fff;padding:10px 12px;font-family:var(--f-legend);line-height:1.4;color:#000;white-space:pre}
 .sh-foot{position:absolute;display:grid;border:1px solid #000;background:#fff}
-.sh-cell{border-left:1px solid #000;padding:10px 8px;font:400 13px/1.35 var(--f-doc);color:#000;text-align:center;display:flex;flex-direction:column;justify-content:center;gap:4px;min-width:0}
+.sh-cell{border-left:1px solid #000;padding:10px 8px;font-family:var(--f-doc);line-height:1.35;color:#000;text-align:center;display:flex;flex-direction:column;justify-content:center;gap:4px;min-width:0}
 .sh-cell:first-child{border-left:0}
 .sh-rule{display:block;border-bottom:1px solid #000;margin:10px 12% 0}
 
@@ -522,6 +537,48 @@ function linkColor(n, inherited) {
   if (st && st.toUpperCase() !== '#000000') return st;
   return inherited || '#000000';
 }
+const SNAP = 4, MIN_W = 40, MIN_H = 22;
+const isFree = v => !!(v && v.layout === 'free');
+const okBox = b => !!(b && [b.x, b.y, b.w, b.h].every(Number.isFinite) && b.w > 0 && b.h > 0);
+const ptPx = (st, v) => (+st.size || 12) * 4 / 3 * ((v && +v.fontScale) || 1);
+// a new box in free layout goes under its lowest sibling, or under the parent when it has none
+function placeBox(c, parent, ref) {
+  const r = ref && okBox(ref.box) ? ref.box : null;
+  if (r) { c.box = { x: r.x, y: r.y + r.h + 12, w: r.w, h: r.h }; return; }
+  const pb = parent && okBox(parent.box) ? parent.box : null;
+  if (!pb) { c.box = { x: 40, y: 40, w: 220, h: 80 }; return; }
+  const sib = parent.children.filter(x => x !== c && okBox(x.box)).sort((a, b) => (a.box.y + a.box.h) - (b.box.y + b.box.h)).pop();
+  c.box = sib ? { x: sib.box.x, y: sib.box.y + sib.box.h + 12, w: sib.box.w, h: sib.box.h }
+    : { x: pb.x + 24, y: pb.y + pb.h + 28, w: Math.max(160, pb.w - 24), h: Math.max(48, Math.min(pb.h, 80)) };
+}
+function ensureBoxes(v) {
+  if (!isFree(v)) return;
+  (function rec(n, p) { if (!okBox(n.box)) placeBox(n, p); n.children.forEach(c => rec(c, n)); })(v.root, null);
+}
+function shiftBoxes(n, dx, dy) { walk(n, x => { if (okBox(x.box)) { x.box.x += dx; x.box.y += dy; } }); }
+// switch a version to free layout: every box keeps the place the automatic layout gave it
+function freezeLayout(v) {
+  const L = layoutTree(v.root, new Set(), v.doc);
+  L.nodes.forEach(it => { it.n.box = { x: it.x, y: it.y, w: it.w, h: it.h }; });
+  if (v.doc) {
+    const f = L.frame || {};
+    const cells = f.footer ? f.footer.cells.length : 0;
+    v.doc.frameBoxes = {
+      title: f.title ? { x: f.title.x, y: f.title.y, w: f.title.w, h: f.title.h } : null,
+      legend: f.legend ? { x: f.legend.x, y: f.legend.y, w: f.legend.w, h: f.legend.h } : null,
+      footer: cells ? f.footer.cells.map((c, i) => ({ x: f.footer.x + i * f.footer.w / cells, y: f.footer.y, w: f.footer.w / cells, h: f.footer.h })) : [],
+    };
+    delete v.doc.titleSize; delete v.doc.legendSize; delete v.doc.footerSize;
+  }
+  v.fontScale = 0.75;   // keeps text the size it had in the automatic layout
+  v.layout = 'free';
+}
+function unfreezeLayout(v) {
+  walk(v.root, n => { delete n.box; });
+  if (v.doc) delete v.doc.frameBoxes;
+  delete v.fontScale;
+  v.layout = 'auto';
+}
 const DIFF_LABEL = { added: 'ใหม่', moved: 'ย้ายสังกัด', renamed: 'เปลี่ยนชื่อ', changed: 'แก้ไข' };
 
 /* ============================================================
@@ -722,6 +779,7 @@ function fixNode(n) {
   n.staff = !!n.staff;
   if (!['auto', 'h', 'v'].includes(n.layout)) n.layout = 'auto';
   if (n.hl) n.hl = true; else delete n.hl;
+  if (okBox(n.box)) n.box = { x: +n.box.x, y: +n.box.y, w: +n.box.w, h: +n.box.h }; else delete n.box;
   n.children = Array.isArray(n.children) ? n.children : [];
   n.children.forEach(fixNode);
 }
@@ -862,6 +920,8 @@ function migrate(d) {
     v.versionNo = v.versionNo || 1;
     if (!v.root) v.root = tplBlank();
     fixNode(v.root);
+    v.layout = v.layout === 'free' ? 'free' : 'auto';
+    ensureBoxes(v);
     if (!d.companies.some(c => c.code === v.companyCode)) d.companies.push({ code: v.companyCode, nameTh: '', nameEn: '' });
   });
   return d;
@@ -957,7 +1017,7 @@ function linkCls(n) { return n.type === 'partner' ? 'dash' : n.type === 'ai' ? '
 function place(n, ox, oy, out, inh) {
   const m = M.get(n);
   const x = ox + m.ax - NW / 2, y = oy;
-  out.nodes.push({ n, x, y });
+  out.nodes.push({ n, x, y, w: NW, h: NH });
   const cx = x + NW / 2, bottom = y + NH;
   const box = it => ({ x: ox + it.x + M.get(it.n).ax - NW / 2, y: oy + it.y });
   // one elbow line per unit, in the colour of its Excel connector (shared trunks overlap, as in Excel)
@@ -1011,8 +1071,114 @@ function layoutTree(root, col, doc) {
   }
   out.w = W;
   out.h = Math.max(y, titleH + chartH);
-  out.frame = { title: titleLines.length ? { x: 16, y: 16, w: W - 32, h: titleBox, lines: titleLines, color: okColor(doc.titleColor) || '#FF0000' } : null, legend, footer };
+  if (legend) legend.fs = 16;
+  if (footer) footer.fs = 13;
+  out.frame = { title: titleLines.length ? { x: 16, y: 16, w: W - 32, h: titleBox, lines: titleLines, color: okColor(doc.titleColor) || '#FF0000', fs: 30 } : null, legend, footer };
   return out;
+}
+const computeLayout = (v, col) => (isFree(v) ? freeLayout(v, col) : layoutTree(v.root, col, v.doc));
+// free layout: boxes where the user put them; elbow lines routed between parent and child boxes
+function freeLayout(v, col) {
+  const out = { nodes: [], links: [], free: true };
+  const items = new Map();
+  (function rec(n, inh) {
+    const b = okBox(n.box) ? n.box : { x: 40, y: 40, w: NW, h: NH };
+    const it = { n, x: b.x, y: b.y, w: b.w, h: b.h, color: linkColor(n, inh) };
+    out.nodes.push(it);
+    items.set(n.id, it);
+    if (!col.has(n.id)) n.children.forEach(c => rec(c, it.color));
+  })(v.root, null);
+  out.nodes.forEach(P => {
+    const kids = col.has(P.n.id) ? [] : P.n.children.map(c => items.get(c.id)).filter(Boolean);
+    if (kids.length) routeChildren(P, kids, out);
+  });
+  let maxR = 0, maxB = 0;
+  out.nodes.forEach(it => { maxR = Math.max(maxR, it.x + it.w); maxB = Math.max(maxB, it.y + it.h); });
+  out.frame = freeFrame(v.doc, maxR, maxB);
+  const f = out.frame || {};
+  [f.title, f.legend].concat(f.footer ? f.footer.boxes : []).filter(Boolean).forEach(b => { maxR = Math.max(maxR, b.x + b.w); maxB = Math.max(maxB, b.y + b.h); });
+  out.w = Math.ceil(maxR + PAD);
+  out.h = Math.ceil(maxB + PAD);
+  return out;
+}
+function routeChildren(P, kids, out) {
+  const PB = P.y + P.h, PR = P.x + P.w, PCX = P.x + P.w / 2;
+  const push = (d, c) => out.links.push({ d, cls: linkCls(c.n), color: c.color });
+  const side = [], below = [], above = [];
+  kids.forEach(c => {
+    if (c.y + c.h <= P.y + 2) above.push(c);
+    else if (c.y < PB - 2 && (c.x >= PR - 2 || c.x + c.w <= P.x + 2)) side.push(c);
+    else below.push(c);
+  });
+  side.forEach(c => {   // beside the parent: straight across (Company Secretary next to the board)
+    const cm = c.y + c.h / 2, right = c.x >= PR - 2;
+    const sx = right ? PR : P.x, ex = right ? c.x : c.x + c.w;
+    const y = clamp(cm, P.y + 6, PB - 6);
+    push(Math.abs(y - cm) < 1 ? `M${sx} ${y}H${ex}` : `M${sx} ${y}H${(sx + ex) / 2}V${cm}H${ex}`, c);
+  });
+  const cols = [];   // children below, grouped into columns of boxes whose left edges line up
+  below.slice().sort((a, b) => a.x - b.x).forEach(c => {
+    const k = cols.find(q => Math.abs(q.x - c.x) <= 24);
+    if (k) k.items.push(c); else cols.push({ x: c.x, items: [c] });
+  });
+  // a list: indented under the parent and starting right below it, or right below another list of the same parent
+  // (sections under a division, teams under a C-level)
+  const indented = k => k.x > P.x + 6 && k.x < PR - 12;
+  const topOf = k => Math.min(...k.items.map(c => c.y));
+  const lists = new Set(cols.filter(k => indented(k) && topOf(k) - PB <= 36));
+  let grew = true;
+  while (grew) {
+    grew = false;
+    cols.forEach(k => {
+      if (lists.has(k) || !indented(k)) return;
+      const above = [...lists].flatMap(q => q.items).filter(c => c.y + c.h <= topOf(k) + 2);
+      if (above.length && topOf(k) - Math.max(...above.map(c => c.y + c.h)) <= 36) { lists.add(k); grew = true; }
+    });
+  }
+  const isList = k => lists.has(k);
+  const tops = cols.filter(k => !isList(k)).flatMap(k => k.items.map(c => c.y));
+  const busY = tops.length ? PB + Math.max(8, (Math.min(...tops) - PB) / 2) : PB + 16;
+  cols.forEach(k => {
+    k.items.sort((a, b) => a.y - b.y);
+    if (isList(k)) {
+      const sx = Math.max(P.x + 6, Math.min(P.x + 16, k.x - 12));
+      k.items.forEach(c => push(`M${sx} ${PB}V${c.y + c.h / 2}H${c.x}`, c));
+    } else if (k.items.length === 1) {
+      const c = k.items[0], ccx = c.x + c.w / 2;
+      push(Math.abs(ccx - PCX) < 1 ? `M${PCX} ${PB}V${c.y}` : `M${PCX} ${PB}V${busY}H${ccx}V${c.y}`, c);
+    } else {
+      const sx = k.x - 14;
+      k.items.forEach(c => push(`M${PCX} ${PB}V${busY}H${sx}V${c.y + c.h / 2}H${c.x}`, c));
+    }
+  });
+  above.forEach(c => {
+    const ccx = c.x + c.w / 2, cb = c.y + c.h;
+    push(`M${PCX} ${P.y}V${(cb + P.y) / 2}H${ccx}V${cb}`, c);
+  });
+}
+function freeFrame(doc, maxR, maxB) {
+  if (!doc) return null;
+  const fb = doc.frameBoxes || {};
+  const px = (pt, d) => (+pt > 0 ? +pt * 4 / 3 : d);
+  const W = Math.max(maxR + PAD, 1100);
+  const titleLines = String(doc.title || '').split('\n').map(t => t.trim()).filter(Boolean);
+  const legendLines = String(doc.legend || '').split('\n').filter(t => t.trim());
+  const cells = (doc.footer || []).filter(c => c && c.length);
+  const fr = { title: null, legend: null, footer: null };
+  if (titleLines.length) fr.title = Object.assign({}, okBox(fb.title) ? fb.title : { x: 16, y: 16, w: W - 32, h: 49 + titleLines.length * 40 }, { lines: titleLines, color: okColor(doc.titleColor) || '#FF0000', fs: px(doc.titleSize, 30) });
+  let y = maxB + 40;
+  if (legendLines.length) {
+    const b = okBox(fb.legend) ? fb.legend : { x: PAD, y, w: Math.min(W - PAD * 2, 40 + Math.max(...legendLines.map(t => t.length)) * 8.6), h: 22 + legendLines.length * 22.4 };
+    fr.legend = Object.assign({}, b, { lines: legendLines, fs: px(doc.legendSize, 16) });
+    y = Math.max(y, b.y + b.h + 28);
+  }
+  if (cells.length) {
+    const fs = px(doc.footerSize, 13);
+    const boxes = Array.isArray(fb.footer) && fb.footer.length === cells.length && fb.footer.every(okBox) ? fb.footer
+      : cells.map((c, i) => ({ x: PAD + i * (W - PAD * 2) / cells.length, y, w: (W - PAD * 2) / cells.length, h: 24 + Math.max(...cells.map(q => q.length)) * 20 }));
+    fr.footer = { cells, boxes, fs };
+  }
+  return fr;
 }
 
 /* ============================================================
@@ -1045,7 +1211,7 @@ function diffVersions(a, b) {
 /* ============================================================
    Mutations (edits only happen on Draft versions)
    ============================================================ */
-function snapshot(v) { return { vid: v.id, json: JSON.stringify({ root: v.root, name: v.name, note: v.note, model: v.model, plannedDate: v.plannedDate, doc: v.doc }) }; }
+function snapshot(v) { return { vid: v.id, json: JSON.stringify({ root: v.root, name: v.name, note: v.note, model: v.model, plannedDate: v.plannedDate, doc: v.doc, layout: v.layout || 'auto', fontScale: v.fontScale }) }; }
 function pushUndo(v) { S.undo.push(snapshot(v)); if (S.undo.length > 100) S.undo.shift(); S.redo.length = 0; }
 let persistTimer = null;
 function persistLocal() {
@@ -1073,11 +1239,22 @@ function mutate(desc, fn) {
   S.esKey = null;
   pushUndo(v);
   const ret = fn(v);
+  ensureBoxes(v);
   if (typeof ret === 'string') S.selected = ret;
   if (S.selected && !find(v.root, S.selected)) S.selected = null;
   touch(v, desc);
   refresh();
   return ret;
+}
+// commit a drag / resize that already changed the data live; `snap` is the state before it started
+function commitLive(desc, snap) {
+  const v = curVersion();
+  S.undo.push(snap);
+  if (S.undo.length > 100) S.undo.shift();
+  S.redo.length = 0;
+  S.esKey = null;
+  touch(v, desc);
+  refresh();
 }
 function beginEdit(v, key) {
   if (S.esKey === key) return;
@@ -1140,6 +1317,7 @@ function opAddSibling(id) {
   return mutate('เพิ่มหน่วยงาน', v2 => {
     const g = find(v2.root, f.node.id);
     const c = copyLook(N(g.node.type, TYPES[g.node.type].nn, { staff: g.node.staff }), g.node);
+    if (isFree(v2)) placeBox(c, g.parent, g.node);
     g.parent.children.splice(g.index + 1, 0, c);
     return c.id;
   });
@@ -1151,6 +1329,7 @@ const opInsertParent = id => mutate('แทรกระดับเหนือ�
   const p = copyLook(N(type, TYPES[type].nn, { staff: f.node.staff }, [f.node]), f.node);
   if (p.style) p.style.bold = true;
   f.node.staff = false;
+  if (isFree(v) && okBox(f.node.box)) { const b = f.node.box; p.box = { x: b.x, y: b.y - b.h - 24, w: b.w, h: b.h }; }
   if (f.parent) f.parent.children.splice(f.index, 1, p); else v.root = p;
   return p.id;
 });
@@ -1159,6 +1338,7 @@ const opDuplicate = id => mutate('ทำซ้ำหน่วยงาน', v =>
   if (!f || !f.parent) return undefined;
   const c = regenIds(clone(f.node));
   c.name += ' (สำเนา)';
+  if (isFree(v)) shiftBoxes(c, 24, 24);
   f.parent.children.splice(f.index + 1, 0, c);
   return c.id;
 });
@@ -1253,7 +1433,10 @@ function createDraft(code, src, name) {
     id: uid('v'), companyCode: code, versionNo: nextNo(code), name, status: 'draft', model,
     effectiveDate: null, endDate: null, plannedDate: '', note: '', approvalRef: '', basedOn,
     createdAt: nowISO(), createdBy: who(), updatedAt: nowISO(), updatedBy: who(), doc, root,
+    layout: base && isFree(base) ? 'free' : 'auto',
   };
+  if (base && base.fontScale) v.fontScale = base.fontScale;
+  ensureBoxes(v);
   S.data.versions.push(v);
   markDirty(`${code}: สร้าง Draft v${v.versionNo} “${name}”`);
   openVersion(v.id);
@@ -1369,11 +1552,13 @@ function bannerHTML() {
 }
 
 /* ---------- home ---------- */
-function thumbSVG(root) {
-  const L = layoutTree(root, new Set());
+function thumbSVG(v) {
+  const L = isFree(v) ? freeLayout(v, new Set()) : layoutTree(v.root, new Set());
+  let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+  L.nodes.forEach(it => { x0 = Math.min(x0, it.x); y0 = Math.min(y0, it.y); x1 = Math.max(x1, it.x + it.w); y1 = Math.max(y1, it.y + it.h); });
   const links = L.links.map(l => `<path d="${l.d}" stroke="${l.color}"/>`).join('');
-  const rects = L.nodes.map(it => { const st = styleOf(it.n); return `<rect x="${it.x}" y="${it.y}" width="${NW}" height="${NH}" fill="${st.fill || '#FFFFFF'}" stroke="${st.line || st.fill || '#000000'}"/>`; }).join('');
-  return `<svg class="thumb" viewBox="${-20} ${-20} ${L.w + 40} ${L.h + 40}" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><g class="tl">${links}</g>${rects}</svg>`;
+  const rects = L.nodes.map(it => { const st = styleOf(it.n); return `<rect x="${it.x}" y="${it.y}" width="${it.w}" height="${it.h}" fill="${st.fill || '#FFFFFF'}" stroke="${st.line || st.fill || '#000000'}"/>`; }).join('');
+  return `<svg class="thumb" viewBox="${x0 - 20} ${y0 - 20} ${x1 - x0 + 40} ${y1 - y0 + 40}" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><g class="tl">${links}</g>${rects}</svg>`;
 }
 function homeHTML() {
   const cos = S.data.companies;
@@ -1391,7 +1576,7 @@ function homeHTML() {
     return `<button class="co-card" data-act="co" data-code="${esc(c.code)}">
       <span class="cc-top"><span class="cc-code">${esc(c.code)}</span>${a ? `<span class="pill active">Active v${a.versionNo}</span>` : '<span class="pill inactive">ยังไม่มี Active</span>'}</span>
       <span class="cc-name">${esc(c.nameTh || c.nameEn || 'ยังไม่ได้ระบุชื่อบริษัท')}</span>
-      ${a ? thumbSVG(a.root) : '<span class="thumb" style="display:grid;place-items:center;color:var(--muted);font-size:12.5px">ยังไม่มีโครงสร้าง</span>'}
+      ${a ? thumbSVG(a) : '<span class="thumb" style="display:grid;place-items:center;color:var(--muted);font-size:12.5px">ยังไม่มีโครงสร้าง</span>'}
       <dl class="cc-stats"><div><dt>หน่วยงาน</dt><dd>${s ? fmtNum(s.units) : '—'}</dd></div><div><dt>หน่วยธุรกิจ</dt><dd>${s && s.bu ? s.bu : '—'}</dd></div><div><dt>ชั้นบังคับบัญชา</dt><dd>${s ? s.layers : '—'}</dd></div></dl>
       <span class="cc-foot">${a ? `มีผล ${fmtDate(a.effectiveDate)}` : ''}${s && s.hc ? `<span>${fmtNum(s.hc)} คน</span>` : ''}${s && s.subs ? `<span>บริษัทในเครือ ${s.subs}</span>` : ''}${model ? `<span class="pill model">${model.en}</span>` : ''}${nd ? `<span class="pill draft">Draft ${nd}</span>` : ''}${ni ? `<span class="pill inactive">เก่า ${ni}</span>` : ''}</span>
     </button>`;
@@ -1494,6 +1679,8 @@ function toolsHTML(v) {
     <div class="tabs" role="tablist"><button class="tab" role="tab" aria-selected="${S.tab === 'chart'}" data-act="tab" data-tab="chart">แผนผัง</button><button class="tab" role="tab" aria-selected="${S.tab === 'outline'}" data-act="tab" data-tab="outline">รายการ</button></div>
     ${edits}
     <div class="tools-r">
+      ${S.tab === 'chart' ? `<div class="tabs" role="group" aria-label="การจัดวางกล่อง" title="${edit ? 'จัดวางอิสระ: ลากกล่องเพื่อย้าย ลากจุดที่มุมเพื่อปรับขนาด' : 'แก้ไขได้เฉพาะ Draft'}">
+        <button class="tab" data-act="layout-auto" aria-pressed="${!isFree(v)}" aria-selected="${!isFree(v)}" ${edit ? '' : 'disabled'}>จัดอัตโนมัติ</button><button class="tab" data-act="layout-free" aria-pressed="${isFree(v)}" aria-selected="${isFree(v)}" ${edit ? '' : 'disabled'}>จัดวางอิสระ</button></div>` : ''}
       ${S.tab === 'chart' ? `<select class="inp sm" data-change="level" aria-label="ระดับที่แสดง"><option value="" ${lv === '' ? 'selected' : ''}>แสดงทุกระดับ</option><option value="2" ${lv === '2' ? 'selected' : ''}>แสดง 2 ระดับ</option><option value="3" ${lv === '3' ? 'selected' : ''}>แสดง 3 ระดับ</option><option value="4" ${lv === '4' ? 'selected' : ''}>แสดง 4 ระดับ</option></select>` : ''}
       <details class="dd"><summary class="tbtn keep" title="Export">${I.download}<span class="tl">Export</span></summary><div class="dd-menu right">
         <button data-act="export-png">${I.download}ภาพแผนผัง (PNG)</button><button data-act="export-csv">${I.download}ตารางหน่วยงาน (CSV สำหรับ Excel)</button><button data-act="export-json-version">${I.download}JSON เฉพาะเวอร์ชันนี้</button></div></details>
@@ -1506,12 +1693,14 @@ function renderStage() {
   const v = curVersion(), stage = $('#stage');
   if (!v || !stage) return;
   const col = colSet(v.id);
-  const L = layoutTree(v.root, col, v.doc);
+  const L = computeLayout(v, col);
   S.layout = L;
-  const ctx = { col, roll: rollup(v.root), edit: canEdit(v), diff: S.compareWith && byId(S.compareWith) ? diffVersions(byId(S.compareWith), v) : null };
+  const ctx = { col, roll: rollup(v.root), edit: canEdit(v), free: !!L.free, v, diff: S.compareWith && byId(S.compareWith) ? diffVersions(byId(S.compareWith), v) : null };
   let html = frameHTML(L.frame);
   html += `<svg class="links" width="${L.w}" height="${L.h}" viewBox="0 0 ${L.w} ${L.h}">${L.links.map(l => `<path class="lk ${l.cls || ''}" d="${l.d}" stroke="${l.color}"/>`).join('')}</svg>`;
   html += L.nodes.map(it => nodeHTML(it, ctx)).join('');
+  stage.classList.toggle('free', ctx.free);
+  stage.classList.toggle('editable', ctx.edit);
   stage.style.width = L.w + 'px';
   stage.style.height = L.h + 'px';
   stage.innerHTML = html;
@@ -1521,10 +1710,11 @@ function frameHTML(fr) {
   if (!fr) return '';
   const pos = b => `left:${b.x}px;top:${b.y}px;width:${b.w}px;height:${b.h}px`;
   let h = '';
-  if (fr.title) h += `<div class="sh-title" style="${pos(fr.title)}"><div class="sh-face" style="color:${fr.title.color}">${fr.title.lines.map(l => `<div>${esc(l)}</div>`).join('')}</div></div>`;
-  if (fr.legend) h += `<div class="sh-legend" style="${pos(fr.legend)}">${fr.legend.lines.map(esc).join('\n')}</div>`;
-  if (fr.footer) h += `<div class="sh-foot" style="${pos(fr.footer)};grid-template-columns:repeat(${fr.footer.cells.length},minmax(0,1fr))">${fr.footer.cells.map(c =>
-    `<div class="sh-cell">${c.map((l, k) => isRule(l) ? '<span class="sh-rule"></span>' : `<span>${esc(l)}${k === 0 && c.length > 1 && !/:\s*$/.test(l) ? ' :' : ''}</span>`).join('')}</div>`).join('')}</div>`;
+  const cell = c => c.map((l, k) => isRule(l) ? '<span class="sh-rule"></span>' : `<span>${esc(l)}${k === 0 && c.length > 1 && !/:\s*$/.test(l) ? ' :' : ''}</span>`).join('');
+  if (fr.title) h += `<div class="sh-title" data-fr="title" style="${pos(fr.title)}"><div class="sh-face" style="color:${fr.title.color};font-size:${fr.title.fs}px">${fr.title.lines.map(l => `<div>${esc(l)}</div>`).join('')}</div></div>`;
+  if (fr.legend) h += `<div class="sh-legend" data-fr="legend" style="${pos(fr.legend)};font-size:${fr.legend.fs}px">${fr.legend.lines.map(esc).join('\n')}</div>`;
+  if (fr.footer && fr.footer.boxes) h += `<div class="sh-foot abs" data-fr="footer">${fr.footer.cells.map((c, i) => `<div class="sh-cell" data-fr="footer" style="${pos(fr.footer.boxes[i])};font-size:${fr.footer.fs}px">${cell(c)}</div>`).join('')}</div>`;
+  else if (fr.footer) h += `<div class="sh-foot" data-fr="footer" style="${pos(fr.footer)};font-size:${fr.footer.fs}px;grid-template-columns:repeat(${fr.footer.cells.length},minmax(0,1fr))">${fr.footer.cells.map(c => `<div class="sh-cell">${cell(c)}</div>`).join('')}</div>`;
   return h;
 }
 function nodeHTML(it, ctx) {
@@ -1535,13 +1725,15 @@ function nodeHTML(it, ctx) {
   const sub = n.head || n.title;
   const pill = EXTERNAL.has(n.type) ? '' : (total ? fmtNum(total) + ' คน' : '');
   const tip = [n.name, n.nameEn, TYPES[n.type].th + (n.staff ? ' · Staff' : '') + (n.code ? ' · ' + n.code : ''), n.title && n.head ? n.title + ': ' + n.head : '', n.note].filter(Boolean).join('\n');
-  const css = `left:${it.x}px;top:${it.y}px;background:${st.fill || 'transparent'};border:${st.line ? Math.max(1, +st.lw || 1) : 1}px ${DASH[st.dash] || 'solid'} ${st.line || 'transparent'};color:${st.text};font-weight:${st.bold ? 700 : 400};font-size:${fontPx(st, n)}px;text-align:${st.align === 'c' ? 'center' : st.align === 'r' ? 'right' : 'left'}`;
+  const fpx = ctx.free ? ptPx(st, ctx.v) : fontPx(st, n);
+  const css = `left:${it.x}px;top:${it.y}px;${ctx.free ? `width:${it.w}px;height:${it.h}px;` : ''}background:${st.fill || 'transparent'};border:${st.line ? Math.max(1, +st.lw || 1) : 1}px ${DASH[st.dash] || 'solid'} ${st.line || 'transparent'};color:${st.text};font-weight:${st.bold ? 700 : 400};font-size:${fpx.toFixed(2)}px;text-align:${st.align === 'c' ? 'center' : st.align === 'r' ? 'right' : 'left'}`;
   return `<div class="node${n.id === S.selected ? ' sel' : ''}${d ? ' d-' + d : ''}" data-id="${n.id}" style="${css}" title="${esc(tip)}">
     <div class="x-txt"><span class="x-name">${esc(n.name || 'ไม่มีชื่อ')}</span>${n.nameEn && n.type !== 'company' ? `<span class="x-en">${esc(n.nameEn)}</span>` : ''}${sub ? `<span class="x-sub">${esc(sub)}</span>` : ''}</div>
     ${pill ? `<span class="x-pill">${pill}</span>` : ''}
     ${d ? `<span class="n-badge b-${d}">${DIFF_LABEL[d]}</span>` : ''}
     ${n.children.length ? `<button class="n-tog" data-act="toggle" data-id="${n.id}" aria-label="${collapsed ? 'แสดง' : 'ซ่อน'}หน่วยย่อย" title="${collapsed ? 'แสดง' : 'ซ่อน'}หน่วยย่อย">${collapsed ? '+' + countDesc(n) : '−'}</button>` : ''}
     ${ctx.edit ? `<button class="n-add" data-act="add-child" data-id="${n.id}" title="เพิ่มหน่วยย่อย" aria-label="เพิ่มหน่วยย่อย">${I.plus}</button>` : ''}
+    ${ctx.free && ctx.edit ? ['nw', 'n', 'ne', 'e', 'se', 's', 'sw', 'w'].map(h => `<i class="rh rh-${h}" data-h="${h}"></i>`).join('') : ''}
   </div>`;
 }
 function view() { return S.views[S.versionId] || (S.views[S.versionId] = { x: 0, y: 0, z: 1 }); }
@@ -1550,6 +1742,7 @@ function applyView() {
   if (!st || !cv) return;
   const w = view();
   st.style.transform = `translate(${w.x}px, ${w.y}px) scale(${w.z})`;
+  st.style.setProperty('--hz', (1 / w.z).toFixed(3));
   const zv = $('#zv'); if (zv) zv.textContent = Math.round(w.z * 100) + '%';
 }
 function fitView() {
@@ -1570,7 +1763,7 @@ function initialView() {
   if (!r.width || fit >= min) { fitView(); return; }
   const root = L.nodes[0];
   // open on the sheet title (or the top unit when there is no frame), centred on the top unit
-  S.views[S.versionId] = { z: min, x: r.width / 2 - (root.x + NW / 2) * min, y: 12 - (L.frame ? 0 : (root.y - PAD) * min) };
+  S.views[S.versionId] = { z: min, x: r.width / 2 - (root.x + root.w / 2) * min, y: 12 - (L.frame && L.frame.title ? (L.frame.title.y - 8) * min : (root.y - PAD) * min) };
   applyView();
 }
 function zoomTo(z, cx, cy) {
@@ -1586,9 +1779,9 @@ function revealNode(id) {
   if (!cv || !it) return;
   const r = cv.getBoundingClientRect(), w = view();
   const sx = it.x * w.z + w.x, sy = it.y * w.z + w.y;
-  if (sx < 20 || sy < 20 || sx + NW * w.z > r.width - 20 || sy + NH * w.z > r.height - 20) {
-    w.x = r.width / 2 - (it.x + NW / 2) * w.z;
-    w.y = r.height / 2 - (it.y + NH / 2) * w.z;
+  if (sx < 20 || sy < 20 || sx + it.w * w.z > r.width - 20 || sy + it.h * w.z > r.height - 20) {
+    w.x = r.width / 2 - (it.x + it.w / 2) * w.z;
+    w.y = r.height / 2 - (it.y + it.h / 2) * w.z;
     applyView();
   }
 }
@@ -1628,6 +1821,8 @@ function startRename(id) {
   ta.setAttribute('aria-label', 'ชื่อหน่วยงาน');
   ta.style.left = it.x + 'px';
   ta.style.top = it.y + 'px';
+  ta.style.width = Math.max(it.w, 160) + 'px';
+  ta.style.height = Math.max(it.h, 60) + 'px';
   stage.appendChild(ta);
   ta.focus(); ta.select();
   let done = false;
@@ -1661,10 +1856,34 @@ function bindCanvas() {
     $$('.node.drop').forEach(el => el.classList.remove('drop'));
     drag = null;
   };
+  let live = null;   // free layout: a resize or a sheet-part move in progress
+  let relinkRaf = 0;
+  const redraw = () => { cancelAnimationFrame(relinkRaf); relinkRaf = requestAnimationFrame(renderStage); };
+  const snapTo = (x, e) => (e.altKey ? x : Math.round(x / SNAP) * SNAP);
   cv.addEventListener('pointerdown', e => {
     if (e.target.closest('.zoomctl, button, textarea, input, select')) return;
     if (e.pointerType === 'mouse' && e.button !== 0) return;
     pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    const v0 = curVersion(), freeEdit = isFree(v0) && canEdit(v0);
+    const rh = freeEdit && e.target.closest('.rh');
+    if (rh && pts.size === 1) {
+      const f = find(v0.root, rh.closest('.node').dataset.id);
+      live = { kind: 'resize', node: f.node, h: rh.dataset.h, sx: e.clientX, sy: e.clientY, o: Object.assign({}, f.node.box), snap: snapshot(v0), moved: false };
+      capture(e);
+      return;
+    }
+    const part = freeEdit && !e.target.closest('.node') && e.target.closest('[data-fr]');
+    if (part && pts.size === 1) {
+      const key = part.dataset.fr, fr = S.layout.frame || {};
+      if (!v0.doc.frameBoxes) v0.doc.frameBoxes = {};
+      const fb = v0.doc.frameBoxes;
+      const pick = b => ({ x: b.x, y: b.y, w: b.w, h: b.h });
+      if (key === 'footer') fb.footer = fr.footer.boxes ? fr.footer.boxes.map(pick) : fr.footer.cells.map((c, i) => ({ x: fr.footer.x + i * fr.footer.w / fr.footer.cells.length, y: fr.footer.y, w: fr.footer.w / fr.footer.cells.length, h: fr.footer.h }));
+      else fb[key] = pick(fr[key]);
+      live = { kind: 'frame', key, sx: e.clientX, sy: e.clientY, o: JSON.parse(JSON.stringify(fb[key])), snap: snapshot(v0), moved: false };
+      capture(e);
+      return;
+    }
     if (pts.size === 2) {
       const [a, b] = [...pts.values()], w = view(), r = cv.getBoundingClientRect();
       const mx = (a.x + b.x) / 2 - r.left, my = (a.y + b.y) / 2 - r.top;
@@ -1688,6 +1907,31 @@ function bindCanvas() {
       applyView();
       return;
     }
+    if (live) {
+      const z = view().z, dx = (e.clientX - live.sx) / z, dy = (e.clientY - live.sy) / z;
+      if (!live.moved && Math.abs(dx) + Math.abs(dy) < 2) return;
+      live.moved = true;
+      const v = curVersion();
+      if (live.kind === 'resize') {
+        const o = live.o, h = live.h, b = live.node.box;
+        let x = o.x, y = o.y, w = o.w, hh = o.h;
+        if (h.includes('e')) w = snapTo(o.x + o.w + dx, e) - o.x;
+        if (h.includes('s')) hh = snapTo(o.y + o.h + dy, e) - o.y;
+        if (h.includes('w')) { x = snapTo(o.x + dx, e); w = o.x + o.w - x; }
+        if (h.includes('n')) { y = snapTo(o.y + dy, e); hh = o.y + o.h - y; }
+        if (w < MIN_W) { if (h.includes('w')) x = o.x + o.w - MIN_W; w = MIN_W; }
+        if (hh < MIN_H) { if (h.includes('n')) y = o.y + o.h - MIN_H; hh = MIN_H; }
+        Object.assign(b, { x, y, w, h: hh });
+      } else {
+        const fb = v.doc.frameBoxes;
+        const ref = Array.isArray(live.o) ? live.o[0] : live.o;
+        const ddx = snapTo(ref.x + dx, e) - ref.x, ddy = snapTo(ref.y + dy, e) - ref.y;
+        const mv = b => Object.assign({}, b, { x: b.x + ddx, y: b.y + ddy });
+        fb[live.key] = Array.isArray(live.o) ? live.o.map(mv) : mv(live.o);
+      }
+      redraw();
+      return;
+    }
     if (pan) {
       const w = view();
       w.x = pan.ox + e.clientX - pan.sx; w.y = pan.oy + e.clientY - pan.sy;
@@ -1697,9 +1941,28 @@ function bindCanvas() {
     }
     if (!drag) return;
     const dist = Math.hypot(e.clientX - drag.sx, e.clientY - drag.sy);
+    if (drag.kind === 'move') {
+      const z = view().z, o = drag.orig.get(drag.id);
+      const ddx = snapTo(o.x + (e.clientX - drag.sx) / z, e) - o.x, ddy = snapTo(o.y + (e.clientY - drag.sy) / z, e) - o.y;
+      drag.nodes.forEach(n => { const p = drag.orig.get(n.id); n.box.x = p.x + ddx; n.box.y = p.y + ddy; });
+      redraw();
+      return;
+    }
     if (!drag.started) {
-      if (dist < 6) return;
+      if (dist < (isFree(curVersion()) ? 3 : 6)) return;
       const v = curVersion(), f = find(v.root, drag.id);
+      if (isFree(v) && canEdit(v) && f && !(e.ctrlKey || e.metaKey)) {
+        // free layout: drag moves the box (Shift: together with everything under it)
+        drag.kind = 'move';
+        drag.started = true;
+        drag.snap = snapshot(v);
+        drag.nodes = [];
+        if (e.shiftKey) walk(f.node, n => { if (okBox(n.box)) drag.nodes.push(n); }); else drag.nodes.push(f.node);
+        drag.orig = new Map(drag.nodes.map(n => [n.id, { x: n.box.x, y: n.box.y }]));
+        if (S.selected !== drag.id) selectNode(drag.id, { sheet: false });
+        capture(e);
+        return;
+      }
       if (!canEdit(v) || !f || !f.parent) {
         const w = view();
         pan = { sx: drag.sx, sy: drag.sy, ox: w.x, oy: w.y, moved: true };
@@ -1733,6 +1996,21 @@ function bindCanvas() {
   const end = e => {
     pts.delete(e.pointerId);
     if (pinch) { if (pts.size < 2) pinch = null; return; }
+    if (live) {
+      const l = live;
+      live = null;
+      cancelAnimationFrame(relinkRaf);
+      if (l.moved) commitLive(l.kind === 'resize' ? 'ปรับขนาดกล่อง' : 'ย้ายหัวกระดาษ / ท้ายกระดาษ', l.snap);
+      else if (l.kind === 'resize') renderStage();
+      return;
+    }
+    if (drag && drag.kind === 'move') {
+      const d = drag;
+      drag = null;
+      cancelAnimationFrame(relinkRaf);
+      commitLive(d.nodes.length > 1 ? 'ย้ายกล่องพร้อมหน่วยย่อย' : 'ย้ายตำแหน่งกล่อง', d.snap);
+      return;
+    }
     if (drag) {
       const d = drag;
       if (d.started) { const target = d.target; cleanupDrag(); if (target && e.type === 'pointerup') opReparent(d.id, target); }
@@ -1879,6 +2157,8 @@ function nodePanelHTML(v, f) {
       <label class="field"><span>อัตรากำลัง (คน)</span><input class="inp" id="nf-hc" data-f="hc" type="number" min="0" inputmode="numeric" value="${n.hc || ''}" placeholder="0" ${EXTERNAL.has(n.type) ? 'disabled' : ''}></label></div>
     ${f.parent ? `<label class="check"><input type="checkbox" id="nf-staff" data-f="staff" ${n.staff ? 'checked' : ''}><span>หน่วยงานขึ้นตรง (Staff)<small>วางไว้ด้านข้างสายบังคับบัญชา เช่น สำนักตรวจสอบภายใน เลขานุการ</small></span></label>` : ''}
     ${styleControls(n)}
+    ${isFree(v) && okBox(n.box) ? `<div class="field"><span>ตำแหน่งและขนาดกล่อง (px)</span><div class="row4">${['x', 'y', 'w', 'h'].map(k => `<label>${{ x: 'X', y: 'Y', w: 'กว้าง', h: 'สูง' }[k]}<input type="number" id="nf-b${k}" data-bx="${k}" value="${Math.round(n.box[k])}" ${k === 'w' ? `min="${MIN_W}"` : k === 'h' ? `min="${MIN_H}"` : ''}></label>`).join('')}</div>
+      <small class="muted">ลากกล่องเพื่อย้าย · ลากจุดที่ขอบ/มุมเพื่อปรับขนาด · Shift+ลาก = ย้ายพร้อมหน่วยย่อย · Ctrl+ลากไปวางบนกล่องอื่น = ย้ายสังกัด · ปุ่มลูกศร = ขยับทีละ 1 px</small></div>` : ''}
     ${subsidiaryLink(n)}
     <label class="field"><span>การจัดวางหน่วยย่อย</span><select class="inp" id="nf-layout" data-f="layout">
       <option value="auto" ${n.layout === 'auto' ? 'selected' : ''}>อัตโนมัติ</option><option value="h" ${n.layout === 'h' ? 'selected' : ''}>แนวนอน (เรียงข้างกัน)</option><option value="v" ${n.layout === 'v' ? 'selected' : ''}>แนวตั้ง (เป็นรายการ)</option></select></label>
@@ -2243,6 +2523,7 @@ function importModal() {
         c();
         mutate(`สร้างโครงสร้างจากข้อความ ${res.count} หน่วย`, v2 => {
           if (mode === 'replace') {
+            if (isFree(v2)) unfreezeLayout(v2);   // a fresh structure starts from the automatic layout
             if (res.tops.length === 1) v2.root = res.tops[0]; else v2.root.children = res.tops;
             S.collapsed[v2.id] = new Set();
             S.levelSel[v2.id] = '';
@@ -2392,7 +2673,8 @@ function helpModal() {
         <li>เลือก “เปรียบเทียบกับ” เพื่อดูหน่วยงานที่เพิ่ม ยุบ ย้ายสังกัด หรือเปลี่ยนชื่อ พร้อมผลต่างอัตรากำลัง</li></ul></div>
       <div><h3>การแก้ไขบนแผนผัง</h3>
         <ul><li>คลิกเพื่อเลือกหน่วยงาน ดับเบิลคลิกเพื่อเปลี่ยนชื่อ แก้รายละเอียดที่แผงด้านขวา</li>
-        <li>ลากหน่วยงานไปวางบนหน่วยงานอื่นเพื่อย้ายสังกัด</li>
+        <li>ลากหน่วยงานไปวางบนหน่วยงานอื่นเพื่อย้ายสังกัด (โหมดจัดอัตโนมัติ)</li>
+        <li>โหมด “จัดวางอิสระ”: ลากกล่องเพื่อย้าย ลากจุดที่ขอบ/มุมของกล่องที่เลือกเพื่อปรับขนาด Shift+ลาก = ย้ายพร้อมหน่วยย่อย Ctrl+ลากไปวางบนกล่องอื่น = ย้ายสังกัด ปุ่มลูกศร = ขยับทีละ 1 px (Shift = 10 px) หัวกระดาษ คำอธิบายตัวย่อ และตารางท้ายผังลากย้ายได้เช่นกัน</li>
         <li>แท็บ “รายการ” เหมาะกับการพิมพ์โครงสร้างจำนวนมากอย่างรวดเร็ว</li>
         <li>“สร้างจากข้อความ” ใช้วางรายชื่อหน่วยงานจากเอกสาร Word / PowerPoint / Excel</li></ul></div>
       <div><h3>คีย์ลัด</h3><dl class="shortcuts">
@@ -2670,28 +2952,30 @@ async function exportPNG() {
   const fr = L.frame;
   ctx.strokeStyle = '#000000'; ctx.lineWidth = 1;
   if (fr && fr.title) {
-    const t = fr.title;
+    const t = fr.title, tfs = t.fs || 30;
     ctx.fillStyle = '#BFBFBF'; ctx.fillRect(t.x + t.w - 11, t.y, 11, t.h); ctx.fillRect(t.x, t.y + t.h - 11, t.w, 11);
     ctx.strokeRect(t.x + .5, t.y + .5, t.w - 1, t.h - 1);
     ctx.fillStyle = '#FFFFFF'; ctx.fillRect(t.x + 10, t.y + 10, t.w - 21, t.h - 21);
     ctx.strokeRect(t.x + 10.5, t.y + 10.5, t.w - 22, t.h - 22);
-    center(t.lines, t.x + 10, t.y + 10, t.w - 21, t.h - 21, 40, `700 30px ${fdoc}`, t.color);
+    center(t.lines, t.x + 10, t.y + 10, t.w - 21, t.h - 21, tfs * 1.25, `700 ${tfs}px ${fdoc}`, t.color);
   }
   if (fr && fr.legend) {
     const g = fr.legend;
     ctx.strokeRect(g.x + .5, g.y + .5, g.w - 1, g.h - 1);
-    ctx.fillStyle = '#000000'; ctx.font = `400 16px ${fleg}`;
-    g.lines.forEach((t, k) => ctx.fillText(t, g.x + 12, g.y + 28 + k * 22.4));
+    const gfs = g.fs || 16;
+    ctx.fillStyle = '#000000'; ctx.font = `400 ${gfs}px ${fleg}`;
+    g.lines.forEach((t, k) => ctx.fillText(t, g.x + 12, g.y + 10 + gfs * 1.1 + k * gfs * 1.4));
   }
   if (fr && fr.footer) {
-    const f = fr.footer, cw = f.w / f.cells.length;
-    ctx.strokeRect(f.x + .5, f.y + .5, f.w - 1, f.h - 1);
+    const f = fr.footer, ffs = f.fs || 13;
+    const boxes = f.boxes || f.cells.map((c, i) => ({ x: f.x + i * f.w / f.cells.length, y: f.y, w: f.w / f.cells.length, h: f.h }));
     f.cells.forEach((c, k) => {
-      const x = f.x + k * cw;
-      if (k) { ctx.beginPath(); ctx.moveTo(x + .5, f.y); ctx.lineTo(x + .5, f.y + f.h); ctx.stroke(); }
+      const b = boxes[k], x = b.x, cw = b.w;
+      ctx.fillStyle = '#FFFFFF'; ctx.fillRect(b.x, b.y, b.w, b.h);
+      ctx.strokeStyle = '#000000'; ctx.strokeRect(b.x + .5, b.y + .5, b.w - 1, b.h - 1);
       const lines = c.map((l, i) => (isRule(l) ? '' : l + (i === 0 && c.length > 1 && !/:\s*$/.test(l) ? ' :' : '')));
-      const lh = 20, top = f.y + (f.h - lines.length * lh) / 2 + 15;
-      ctx.font = `400 13px ${fdoc}`; ctx.fillStyle = '#000000'; ctx.textAlign = 'center';
+      const lh = ffs * 1.5, top = b.y + (b.h - lines.length * lh) / 2 + ffs * 1.1;
+      ctx.font = `400 ${ffs}px ${fdoc}`; ctx.fillStyle = '#000000'; ctx.textAlign = 'center';
       lines.forEach((t, i) => {
         if (isRule(c[i])) { ctx.beginPath(); ctx.moveTo(x + cw * .12, top + i * lh - 2); ctx.lineTo(x + cw * .88, top + i * lh - 2); ctx.stroke(); }
         else ctx.fillText(wrapText(ctx, t, cw - 12, 1)[0], x + cw / 2, top + i * lh);
@@ -2708,7 +2992,7 @@ async function exportPNG() {
   ctx.setLineDash([]);
   const roll = rollup(v.root);
   L.nodes.forEach(it => {
-    const n = it.n, st = styleOf(n), fs = fontPx(st, n);
+    const n = it.n, st = styleOf(n), fs = L.free ? ptPx(st, v) : fontPx(st, n), NW = it.w, NH = it.h;
     if (st.fill) { ctx.fillStyle = st.fill; ctx.fillRect(it.x, it.y, NW, NH); }
     if (st.line) {
       ctx.strokeStyle = st.line; ctx.lineWidth = Math.max(1, +st.lw || 1);
@@ -2716,7 +3000,7 @@ async function exportPNG() {
       ctx.strokeRect(it.x + .5, it.y + .5, NW - 1, NH - 1);
       ctx.setLineDash([]);
     }
-    const w = NW - 16, lh = fs * 1.17, max = Math.max(1, Math.floor((NH - 10) / lh));
+    const w = NW - (L.free ? 10 : 16), lh = fs * (L.free ? 1.08 : 1.17), max = Math.max(1, Math.floor((NH - (L.free ? 4 : 10)) / lh));
     const main = `${st.bold ? 700 : 400} ${fs}px ${fdoc}`, small = `400 ${(fs * .86).toFixed(1)}px ${fdoc}`;
     ctx.font = main;
     let lines = wrapText(ctx, n.name || 'ไม่มีชื่อ', w, max).map(t => ({ t, f: main }));
@@ -2726,7 +3010,8 @@ async function exportPNG() {
     const top = it.y + (NH - lines.length * lh) / 2 + fs * .84;
     ctx.fillStyle = st.text;
     ctx.textAlign = st.align === 'c' ? 'center' : st.align === 'r' ? 'right' : 'left';
-    const tx = st.align === 'c' ? it.x + NW / 2 : st.align === 'r' ? it.x + NW - 8 : it.x + 8;
+    const pad = L.free ? 5 : 8;
+    const tx = st.align === 'c' ? it.x + NW / 2 : st.align === 'r' ? it.x + NW - pad : it.x + pad;
     lines.forEach((ln, k) => { ctx.font = ln.f; ctx.fillText(ln.t, tx, top + k * lh); });
     ctx.textAlign = 'left';
     const total = roll.get(n.id);
@@ -2832,6 +3117,21 @@ const A = {
     pushUndo(v); v.model = el.dataset.k; touch(v, 'เปลี่ยนรูปแบบองค์กร'); refresh();
   },
   'select-node': el => selectNode(el.dataset.id, { reveal: true, sheet: false }),
+  'layout-free': () => {
+    const v = curVersion();
+    if (!guard(v) || isFree(v)) return;
+    mutate('เปลี่ยนเป็นจัดวางอิสระ', v2 => { freezeLayout(v2); return undefined; });
+    toast('จัดวางอิสระ: ลากกล่องเพื่อย้าย · ลากจุดที่มุมเพื่อปรับขนาด · Shift+ลาก = ย้ายพร้อมหน่วยย่อย', 'ok', null, 6500);
+  },
+  'layout-auto': () => {
+    const v = curVersion();
+    if (!guard(v) || !isFree(v)) return;
+    openModal({
+      title: 'กลับไปจัดวางอัตโนมัติ',
+      body: '<p>ตำแหน่งและขนาดกล่องที่จัดเองจะถูกแทนที่ด้วยการจัดวางอัตโนมัติ (กด Ctrl+Z เพื่อย้อนกลับได้)</p>',
+      foot: [{ label: 'ยกเลิก', onClick: c => c() }, { label: 'จัดอัตโนมัติ', cls: 'primary', onClick: c => { c(); S.views[v.id] = null; mutate('เปลี่ยนเป็นจัดวางอัตโนมัติ', v2 => { unfreezeLayout(v2); return undefined; }); } }],
+    });
+  },
   'swatch': el => { const p = PALETTE[+el.dataset.k]; const patch = { fill: p.fill, text: p.text }; if (p.line) patch.line = p.line; setStyle(patch); },
   'select-row': el => selectNode(el.dataset.id),
   'ol-indent': el => outlineOp(el, 'indent'),
@@ -2884,6 +3184,17 @@ document.addEventListener('change', e => {
   const t = e.target;
   if (t.matches('[data-change]')) { CHANGES[t.dataset.change]?.(t); return; }
   if (t.matches('select[data-of]')) { onOutlineInput(t); return; }
+  if (t.matches('[data-bx]')) {
+    const k = t.dataset.bx, val = parseFloat(t.value);
+    if (!Number.isFinite(val)) return;
+    mutate('ปรับตำแหน่ง/ขนาดกล่อง', v => {
+      const f = find(v.root, S.selected);
+      if (!f || !okBox(f.node.box)) return undefined;
+      f.node.box[k] = k === 'w' ? Math.max(MIN_W, val) : k === 'h' ? Math.max(MIN_H, val) : val;
+      return f.node.id;
+    });
+    return;
+  }
   if (t.matches('[data-sf]')) {
     const k = t.dataset.sf;
     setStyle({ [k]: t.type === 'checkbox' ? t.checked : k === 'size' ? +t.value : t.value });
@@ -2951,6 +3262,17 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape' && S.selected) { selectNode(null); return; }
   const f = S.selected ? find(v.root, S.selected) : null;
   if (!f) return;
+  if (e.key.startsWith('Arrow') && !mod && !e.altKey && isFree(v) && canEdit(v) && okBox(f.node.box) && S.tab === 'chart') {
+    e.preventDefault();
+    const step = e.shiftKey ? 10 : 1;
+    beginEdit(v, v.id + 'nudge' + f.node.id);
+    f.node.box.x += e.key === 'ArrowLeft' ? -step : e.key === 'ArrowRight' ? step : 0;
+    f.node.box.y += e.key === 'ArrowUp' ? -step : e.key === 'ArrowDown' ? step : 0;
+    touch(v, 'ย้ายตำแหน่งกล่อง');
+    renderStage();
+    setHTML('#insp', inspHTML(v));
+    return;
+  }
   if (e.key.startsWith('Arrow') && !mod) {
     let next = null;
     if (e.key === 'ArrowUp' && f.parent) next = f.parent.id;
