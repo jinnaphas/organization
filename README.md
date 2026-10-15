@@ -3,7 +3,8 @@
 Web application (ไฟล์เดียว `index.html`) สำหรับออกแบบ จัดเก็บ และเปรียบเทียบโครงสร้างองค์กรของกลุ่มบริษัท
 PCC, PDE, PPP, SBP, PCE, PSL, PEM, PEMC, PSP
 
-> สถานะ: **Prototype** — ข้อมูลที่ติดมากับหน้าเว็บเป็น *ข้อมูลตัวอย่าง* ยังไม่ใช่โครงสร้างจริง
+> สถานะ: **Prototype** — โครงสร้างจริงของทั้ง 9 บริษัทนำเข้าจาก `Organization_Current_2026-2027.xlsx` (1 แท็บต่อ 1 บริษัท)
+> เก็บไว้ใน `data/org-structure.json` เป็นเวอร์ชัน Active ของแต่ละบริษัท ถ้าเปิดหน้าเว็บโดยไม่มีไฟล์นี้ จะแสดงข้อมูลตัวอย่างแทน
 
 ## ความสามารถหลัก
 
@@ -72,7 +73,28 @@ Token เก็บใน sessionStorage ของเบราว์เซอร�
 }
 ```
 
-`type` ของหน่วยงาน: `board` `committee` `executive` `line` `office` `platform` `division` `department` `section` `team` `position` `ai` `partner`
+`type` ของหน่วยงาน: `board` `committee` `executive` `line` (สายงาน / หน่วยธุรกิจ เช่น PEM101) `office` `platform` `division` `department` `section` `team` `position` `ai` `partner` `company` (บริษัทในเครือ เช่น `SBP (PPP 76%)`)
+
+`hl: true` = หน่วยงานที่ไฮไลต์ (ในไฟล์ Excel ต้นฉบับใช้ตัวอักษรสีแดง)
+
+### ข้อมูลที่นำเข้าจาก Excel
+
+| บริษัท | แท็บ | Revision / วันที่ | หน่วยงานในผัง |
+| --- | --- | --- | --- |
+| PCC | Org PCC Current | No.1 · Sep 1, 2026 | 38 |
+| PDE | Org PDE SEP R.0 | No.1 · Sep 1, 2026 | 28 |
+| PSL | Org PSL Current | No.4 · Oct 1, 2025 | 36 |
+| PPP | Org PPP Current | No.2 · July 1, 2025 | 34 |
+| SBP | Org SBP Current | No.2 · July 1, 2025 | 18 |
+| PCE | Org PCE Current | No.2 · July 1, 2025 | 8 |
+| PEM | Org PEM June 26 | No.3 · July 1, 2026 | 89 |
+| PEMC | Org PEMC Current | No.1 · Feb 1, 2026 | 20 |
+| PSP | Org PSP SEP | No.3 · Sep 1, 2026 | 108 |
+
+- ชื่อหน่วยงานคงตามไฟล์ต้นฉบับทุกตัวอักษร สายบังคับบัญชาอ่านจากเส้นเชื่อม (connector) ในผัง
+- เส้นประ (dotted line) บันทึกไว้ในหมายเหตุของหน่วยงาน
+- กล่องข้อความที่อยู่นอกพื้นที่พิมพ์ (PSL Job Role 2569, PEM Pre-Sale & Digital Engineering Team) และบันทึก Draft Org 1-5-69 ของ PEM เก็บไว้ในหมายเหตุเวอร์ชัน โดยไม่นำรายชื่อบุคคลเข้า
+- ไฟล์ไม่มีอัตรากำลัง จึงแสดงเป็น “—” จนกว่าจะกรอก
 
 หน่วยงานที่คัดลอกมาจากเวอร์ชันก่อนหน้าใช้ `id` เดิม ระบบจึงเปรียบเทียบได้ว่าหน่วยใดย้ายสังกัดหรือเปลี่ยนชื่อ
 

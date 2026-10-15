@@ -141,7 +141,7 @@ details.dd>summary::-webkit-details-marker{display:none}
 .thumb .th-board{fill:var(--ink);stroke:var(--ink)} .thumb .th-executive{fill:var(--accent);stroke:var(--accent)}
 .thumb .th-committee{fill:var(--surface-3)} .thumb .th-division{fill:var(--surface-3)}
 .thumb .th-line,.thumb .th-office{fill:var(--accent-weak);stroke:var(--accent)}
-.thumb .th-platform{fill:var(--plat-weak);stroke:var(--plat)} .thumb .th-ai{fill:var(--copper-weak);stroke:var(--copper)} .thumb .th-partner{fill:var(--partner-weak);stroke:var(--partner)}
+.thumb .th-platform{fill:var(--plat-weak);stroke:var(--plat)} .thumb .th-company{stroke:var(--ink-2)} .thumb .th-ai{fill:var(--copper-weak);stroke:var(--copper)} .thumb .th-partner{fill:var(--partner-weak);stroke:var(--partner)}
 .cc-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0}
 .cc-stats div{display:grid}
 .cc-stats dt{font-size:11.5px;color:var(--muted);order:2}
@@ -228,6 +228,8 @@ textarea.inp{min-height:84px;resize:vertical;line-height:1.5}
 .n-type{font-weight:600;display:flex;align-items:center;gap:5px;white-space:nowrap;overflow:hidden}
 .n-type::before{content:"";width:7px;height:7px;border-radius:2px;background:var(--tc);flex:none}
 .n-code{font-family:var(--f-mono);font-size:10.5px}
+.n-r{display:flex;align-items:center;gap:5px;min-width:0}
+.n-hl{width:8px;height:8px;border-radius:50%;background:var(--danger);box-shadow:0 0 0 1.5px var(--surface);flex:none;display:inline-block}
 .n-name{font-weight:600;font-size:13.5px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;flex:1;word-break:break-word}
 .n-foot{display:flex;justify-content:space-between;align-items:center;gap:6px;font-size:11.5px;color:var(--ink-2);line-height:1.4}
 .n-head{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
@@ -244,7 +246,7 @@ textarea.inp{min-height:84px;resize:vertical;line-height:1.5}
 /* node type tones (structure encoded by fill weight) */
 .tc-board{--tc:var(--ink)} .tc-committee{--tc:var(--ink-2)} .tc-executive{--tc:var(--accent)} .tc-line{--tc:var(--accent)} .tc-office{--tc:var(--accent-ink)}
 .tc-platform{--tc:var(--plat)} .tc-division{--tc:var(--ink-2)} .tc-department{--tc:var(--muted)} .tc-section{--tc:var(--line-strong)} .tc-team{--tc:var(--ok)}
-.tc-position{--tc:var(--muted)} .tc-ai{--tc:var(--copper)} .tc-partner{--tc:var(--partner)}
+.tc-position{--tc:var(--muted)} .tc-ai{--tc:var(--copper)} .tc-partner{--tc:var(--partner)} .tc-company{--tc:var(--ink)}
 .node.t-board{background:var(--ink);border-color:var(--ink);color:var(--bg)}
 .node.t-executive{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
 .node.t-board .n-top,.node.t-board .n-foot,.node.t-executive .n-top,.node.t-executive .n-foot{color:inherit;opacity:.82}
@@ -257,6 +259,7 @@ textarea.inp{min-height:84px;resize:vertical;line-height:1.5}
 .node.t-position{border-style:dashed}
 .node.t-ai{background:var(--copper-weak);border-color:var(--copper);border-style:dashed}
 .node.t-partner{background:var(--partner-weak);border-color:var(--partner);border-style:dashed}
+.node.t-company{border:1.5px solid var(--ink-2);box-shadow:3px 3px 0 var(--surface-3)}
 .dot{width:9px;height:9px;border-radius:3px;background:var(--tc);flex:none;display:inline-block}
 
 .rename{position:absolute;width:200px;height:88px;z-index:5;border:2px solid var(--accent);border-radius:9px;padding:24px 10px 8px;font:600 13.5px/1.3 var(--f-body);background:var(--surface);color:var(--ink);resize:none;outline:none;box-shadow:var(--shadow)}
@@ -466,7 +469,7 @@ const G = { v: 46, h: 22, sx: 30, sy: 24, srow: 16, ind: 28, vgap: 12, vtop: 18 
 const TYPES = {
   board:      { th: 'คณะกรรมการ',        en: 'Board',       child: 'executive',  up: 'board',      nn: 'คณะกรรมการใหม่' },
   committee:  { th: 'คณะกรรมการชุดย่อย',  en: 'Committee',   child: 'position',   up: 'board',      nn: 'คณะกรรมการชุดใหม่' },
-  executive:  { th: 'ผู้บริหารสูงสุด',      en: 'Executive',   child: 'division',   up: 'board',      nn: 'ตำแหน่งผู้บริหารใหม่' },
+  executive:  { th: 'ผู้บริหาร',            en: 'Executive',   child: 'division',   up: 'board',      nn: 'ตำแหน่งผู้บริหารใหม่' },
   line:       { th: 'สายงาน',             en: 'Line / BU',   child: 'division',   up: 'executive',  nn: 'สายงานใหม่' },
   office:     { th: 'สำนัก',               en: 'Office',      child: 'section',    up: 'executive',  nn: 'สำนักใหม่' },
   platform:   { th: 'แพลตฟอร์ม',           en: 'Platform',    child: 'team',       up: 'executive',  nn: 'แพลตฟอร์มใหม่' },
@@ -477,6 +480,7 @@ const TYPES = {
   position:   { th: 'ตำแหน่ง',             en: 'Position',    child: 'position',   up: 'team',       nn: 'ตำแหน่งใหม่' },
   ai:         { th: 'AI Agent',           en: 'AI Agent',    child: 'ai',         up: 'team',       nn: 'AI Agent ใหม่' },
   partner:    { th: 'พันธมิตร',             en: 'Partner',     child: 'partner',    up: 'executive',  nn: 'พันธมิตรใหม่' },
+  company:    { th: 'บริษัทในเครือ',         en: 'Subsidiary',  child: 'division',   up: 'executive',  nn: 'บริษัทในเครือใหม่' },
 };
 const ST = { active: 'Active', draft: 'Draft', inactive: 'Inactive' };
 const MODELS = [
@@ -484,6 +488,7 @@ const MODELS = [
   { k: 'platform',   en: 'Platform',   th: 'แพลตฟอร์มและทีมข้ามสายงาน' },
   { k: 'ecosystem',  en: 'Ecosystem',  th: 'เครือข่ายพันธมิตร คน และ AI' },
 ];
+const EXTERNAL = new Set(['ai', 'partner', 'company']);
 const DIFF_LABEL = { added: 'ใหม่', moved: 'ย้ายสังกัด', renamed: 'เปลี่ยนชื่อ', changed: 'แก้ไข' };
 
 /* ============================================================
@@ -652,7 +657,7 @@ function countDesc(n) { let c = 0; walk(n, () => c++); return c - 1; }
 function rollup(root) {
   const m = new Map();
   (function rec(n) {
-    let t = (n.type === 'ai' || n.type === 'partner') ? 0 : (+n.hc || 0);
+    let t = EXTERNAL.has(n.type) ? 0 : (+n.hc || 0);
     n.children.forEach(c => { t += rec(c); });
     m.set(n.id, t);
     return t;
@@ -660,18 +665,19 @@ function rollup(root) {
   return m;
 }
 function stats(root) {
-  let units = 0, hc = 0, ai = 0, partners = 0, layers = 0;
+  let units = 0, hc = 0, ai = 0, partners = 0, subs = 0, bu = 0, layers = 0;
   const spans = [], byType = {};
   (function rec(n, d) {
     byType[n.type] = (byType[n.type] || 0) + 1;
     if (n.type === 'ai') ai++;
     else if (n.type === 'partner') partners++;
-    else { units++; hc += +n.hc || 0; layers = Math.max(layers, d + 1); }
-    const line = n.children.filter(c => !c.staff && c.type !== 'ai' && c.type !== 'partner');
+    else if (n.type === 'company') subs++;
+    else { units++; hc += +n.hc || 0; layers = Math.max(layers, d + 1); if (n.type === 'line') bu++; }
+    const line = n.children.filter(c => !c.staff && !EXTERNAL.has(c.type));
     if (line.length) spans.push(line.length);
-    n.children.forEach(c => rec(c, d + ((c.type === 'ai' || c.type === 'partner') ? 0 : 1)));
+    n.children.forEach(c => rec(c, d + (EXTERNAL.has(c.type) ? 0 : 1)));
   })(root, 0);
-  return { units, hc, ai, partners, layers, span: spans.length ? spans.reduce((a, b) => a + b, 0) / spans.length : 0, byType };
+  return { units, hc, ai, partners, subs, bu, layers, span: spans.length ? spans.reduce((a, b) => a + b, 0) / spans.length : 0, byType };
 }
 function regenIds(n) { n.id = uid('n'); n.children.forEach(regenIds); return n; }
 function fixNode(n) {
@@ -682,6 +688,7 @@ function fixNode(n) {
   n.hc = Math.max(0, parseInt(n.hc, 10) || 0);
   n.staff = !!n.staff;
   if (!['auto', 'h', 'v'].includes(n.layout)) n.layout = 'auto';
+  if (n.hl) n.hl = true; else delete n.hl;
   n.children = Array.isArray(n.children) ? n.children : [];
   n.children.forEach(fixNode);
 }
@@ -802,6 +809,14 @@ function buildSample() {
   });
   return { schema: 1, app: 'org-structure-studio', sample: true, updatedAt: nowISO(), updatedBy: 'ข้อมูลตัวอย่าง', companies, versions };
 }
+// Starting data when neither GitHub nor this browser has a copy: the seed bundled with the page, else the sample
+function freshData() {
+  const seed = window.__ORG_SEED__;
+  if (seed && Array.isArray(seed.versions)) { S.source = 'seed'; return migrate(clone(seed)); }
+  S.source = 'sample';
+  return buildSample();
+}
+const isStarter = () => S.source === 'sample' || S.source === 'seed';
 function migrate(d) {
   if (!d || typeof d !== 'object' || !Array.isArray(d.versions)) throw new Error('ไฟล์นี้ไม่ใช่ข้อมูลโครงสร้างองค์กร (ไม่พบรายการ versions)');
   d.schema = d.schema || 1;
@@ -863,14 +878,32 @@ function measure(n, col) {
     y += Math.max(r.right ? M.get(r.right).h : 0, r.left ? M.get(r.left).h : 0) + G.srow;
   });
   const bandBottom = rows.length ? y - G.srow : NH;
-  const items = [];
+  const items = [], groups = [];
   let px = 0, childTop = 0;
   if (mode === 'h') {
     childTop = bandBottom + G.v;
+    // runs of two or more leaf units become one vertical list, like the support-unit columns on printed charts
+    const runs = [];
+    line.forEach(c => {
+      const leaf = visKids(c, col).length === 0, last = runs[runs.length - 1];
+      if (leaf && n.layout !== 'h' && last && last.leaf) last.items.push(c); else runs.push({ leaf, items: [c] });
+    });
     let x = 0;
-    const anchors = [];
-    line.forEach(c => { const m = M.get(c); items.push({ n: c, x, y: childTop, kind: 'line' }); anchors.push(x + m.ax); x += m.w + G.h; });
-    px = (anchors[0] + anchors[anchors.length - 1]) / 2 - NW / 2;
+    runs.forEach(r => {
+      if (r.leaf && r.items.length > 1) {
+        let yy = childTop;
+        const its = r.items.map(c => { const it = { n: c, x: x + G.ind, y: yy, kind: 'line' }; yy += NH + G.vgap; return it; });
+        items.push(...its);
+        groups.push({ stack: true, ax: x + 14, items: its });
+        x += G.ind + NW + G.h;
+      } else {
+        const c = r.items[0], m = M.get(c), it = { n: c, x, y: childTop, kind: 'line' };
+        items.push(it);
+        groups.push({ stack: false, ax: x + m.ax, items: [it] });
+        x += m.w + G.h;
+      }
+    });
+    px = (groups[0].ax + groups[groups.length - 1].ax) / 2 - NW / 2;
   } else if (mode === 'v') {
     childTop = bandBottom + G.vtop;
     let yy = childTop;
@@ -884,7 +917,8 @@ function measure(n, col) {
   let minX = px, maxX = px + NW, maxY = NH;
   items.forEach(it => { const m = M.get(it.n); minX = Math.min(minX, it.x); maxX = Math.max(maxX, it.x + m.w); maxY = Math.max(maxY, it.y + m.h); });
   items.forEach(it => { it.x -= minX; });
-  M.set(n, { w: maxX - minX, h: maxY, ax: px - minX + NW / 2, items, mode, childTop });
+  groups.forEach(g => { g.ax -= minX; });
+  M.set(n, { w: maxX - minX, h: maxY, ax: px - minX + NW / 2, items, groups, mode, childTop });
 }
 function linkCls(n) { return n.type === 'partner' ? 'dash' : n.type === 'ai' ? 'dot' : ''; }
 function place(n, ox, oy, out) {
@@ -902,10 +936,15 @@ function place(n, ox, oy, out) {
   });
   if (m.mode === 'h') {
     const busY = oy + m.childTop - G.v / 2;
-    const anchors = lineItems.map(it => ox + it.x + M.get(it.n).ax);
+    const anchors = m.groups.map(g => ox + g.ax);
     out.links.push({ d: `M${cx} ${bottom}V${busY}` });
     if (anchors.length > 1) out.links.push({ d: `M${Math.min(...anchors)} ${busY}H${Math.max(...anchors)}` });
-    lineItems.forEach((it, i) => out.links.push({ d: `M${anchors[i]} ${busY}V${oy + it.y}`, cls: linkCls(it.n) }));
+    m.groups.forEach((g, i) => {
+      if (!g.stack) { out.links.push({ d: `M${anchors[i]} ${busY}V${oy + g.items[0].y}`, cls: linkCls(g.items[0].n) }); return; }
+      let last = busY;
+      g.items.forEach(it => { const b = box(it), my = b.y + NH / 2; out.links.push({ d: `M${anchors[i]} ${my}H${b.x}`, cls: linkCls(it.n) }); last = my; });
+      out.links.push({ d: `M${anchors[i]} ${busY}V${last}` });
+    });
   } else if (staffItems.length) {
     out.links.push({ d: `M${cx} ${bottom}V${spineEnd}` });
   }
@@ -1229,6 +1268,7 @@ function topRightHTML() {
   else if (S.dirty) chip = `<span class="sync warn" title="${esc(S.changes.slice(-8).join('\n'))}"><i></i><span>ยังไม่บันทึก${n ? ' · ' + n + ' รายการ' : ''}</span></span>`;
   else if (S.source === 'remote') chip = `<span class="sync ok" title="ข้อมูลตรงกับไฟล์ใน GitHub"><i></i><span>ตรงกับ GitHub</span></span>`;
   else if (S.source === 'sample') chip = `<span class="sync"><i></i><span>ข้อมูลตัวอย่าง</span></span>`;
+  else if (S.source === 'seed') chip = `<span class="sync"><i></i><span>ข้อมูลตั้งต้นจาก Excel</span></span>`;
   else chip = `<span class="sync"><i></i><span>เก็บในเบราว์เซอร์</span></span>`;
   const save = `<button class="btn ${S.dirty ? 'primary' : ''}" data-act="save" ${S.dirty && !S.busy ? '' : 'disabled'} title="บันทึกขึ้น GitHub (Ctrl+S)">${I.save}<span class="hide-sm">บันทึก</span></button>`;
   const user = S.user
@@ -1244,7 +1284,7 @@ function topRightHTML() {
       <button data-act="import-json">${I.upload}Import จากไฟล์ JSON</button><hr>
       <button data-act="theme">${I.moon}สลับธีมสว่าง / มืด</button>
       <button data-act="help">${I.help}วิธีใช้งาน</button>
-      ${S.user ? '' : `<button data-act="reset-sample">${I.undo}รีเซ็ตเป็นข้อมูลตัวอย่าง</button>`}
+      ${S.user ? '' : `<button data-act="reset-sample">${I.undo}${window.__ORG_SEED__ ? 'รีเซ็ตเป็นข้อมูลตั้งต้น' : 'รีเซ็ตเป็นข้อมูลตัวอย่าง'}</button>`}
     </div></details>`;
   return chip + save + user + more;
 }
@@ -1252,6 +1292,7 @@ function bannerHTML() {
   if (S.user && !S.user.canPush) return `<div class="banner warn">${I.lock}<p>บัญชี @${esc(S.user.login)} ไม่มีสิทธิ์เขียน ${esc(S.cfg.owner + '/' + S.cfg.repo)} — ดูได้อย่างเดียว</p></div>`;
   if (S.user) return '';
   if (S.source === 'sample') return `<div class="banner">${I.info}<p><b>ข้อมูลตัวอย่าง</b> ยังไม่ใช่โครงสร้างจริงของบริษัท แก้ไขทดลองได้ในเบราว์เซอร์นี้ เมื่อพร้อมให้เข้าสู่ระบบด้วย GitHub Token เพื่อบันทึกเป็นไฟล์กลาง</p><button class="btn sm" data-act="login">${I.github}เข้าสู่ระบบ</button></div>`;
+  if (S.source === 'seed') return `<div class="banner">${I.info}<p><b>ข้อมูลตั้งต้นจาก ${esc(S.data.importedFrom || 'ไฟล์ Excel')}</b> ยังไม่ได้เชื่อมกับ GitHub แก้ไขทดลองได้ในเบราว์เซอร์นี้ เข้าสู่ระบบเพื่อบันทึกเป็นไฟล์กลาง</p><button class="btn sm" data-act="login">${I.github}เข้าสู่ระบบ</button></div>`;
   if (S.demo) return `<div class="banner warn">${I.info}<p><b>โหมดทดลอง</b> การแก้ไขเก็บไว้ในเบราว์เซอร์นี้เท่านั้น เข้าสู่ระบบเพื่อบันทึกขึ้น GitHub</p><button class="btn sm" data-act="login">${I.github}เข้าสู่ระบบ</button></div>`;
   return `<div class="banner">${I.lock}<p>โหมดอ่านอย่างเดียว · ผู้มีสิทธิ์แก้ไขให้เข้าสู่ระบบด้วย GitHub Token</p><button class="btn sm" data-act="demo">ทดลองแก้ไขในเครื่อง</button><button class="btn sm primary" data-act="login">${I.github}เข้าสู่ระบบ</button></div>`;
 }
@@ -1265,10 +1306,10 @@ function thumbSVG(root) {
 }
 function homeHTML() {
   const cos = S.data.companies;
-  let units = 0, hc = 0, drafts = 0, ai = 0;
+  let units = 0, hc = 0, drafts = 0, bu = 0;
   cos.forEach(c => {
     const a = activeOf(c.code);
-    if (a) { const s = stats(a.root); units += s.units; hc += s.hc; ai += s.ai; }
+    if (a) { const s = stats(a.root); units += s.units; hc += s.hc; bu += s.bu; }
     drafts += versionsOf(c.code).filter(v => v.status === 'draft').length;
   });
   const cards = cos.map(c => {
@@ -1280,8 +1321,8 @@ function homeHTML() {
       <span class="cc-top"><span class="cc-code">${esc(c.code)}</span>${a ? `<span class="pill active">Active v${a.versionNo}</span>` : '<span class="pill inactive">ยังไม่มี Active</span>'}</span>
       <span class="cc-name">${esc(c.nameTh || c.nameEn || 'ยังไม่ได้ระบุชื่อบริษัท')}</span>
       ${a ? thumbSVG(a.root) : '<span class="thumb" style="display:grid;place-items:center;color:var(--muted);font-size:12.5px">ยังไม่มีโครงสร้าง</span>'}
-      <dl class="cc-stats"><div><dt>หน่วยงาน</dt><dd>${s ? fmtNum(s.units) : '—'}</dd></div><div><dt>อัตรากำลัง</dt><dd>${s ? fmtNum(s.hc) : '—'}</dd></div><div><dt>ชั้นบังคับบัญชา</dt><dd>${s ? s.layers : '—'}</dd></div></dl>
-      <span class="cc-foot">${a ? `มีผล ${fmtDate(a.effectiveDate)}` : ''}${model ? `<span class="pill model">${model.en}</span>` : ''}${nd ? `<span class="pill draft">Draft ${nd}</span>` : ''}${ni ? `<span class="pill inactive">เก่า ${ni}</span>` : ''}</span>
+      <dl class="cc-stats"><div><dt>หน่วยงาน</dt><dd>${s ? fmtNum(s.units) : '—'}</dd></div><div><dt>หน่วยธุรกิจ</dt><dd>${s && s.bu ? s.bu : '—'}</dd></div><div><dt>ชั้นบังคับบัญชา</dt><dd>${s ? s.layers : '—'}</dd></div></dl>
+      <span class="cc-foot">${a ? `มีผล ${fmtDate(a.effectiveDate)}` : ''}${s && s.hc ? `<span>${fmtNum(s.hc)} คน</span>` : ''}${s && s.subs ? `<span>บริษัทในเครือ ${s.subs}</span>` : ''}${model ? `<span class="pill model">${model.en}</span>` : ''}${nd ? `<span class="pill draft">Draft ${nd}</span>` : ''}${ni ? `<span class="pill inactive">เก่า ${ni}</span>` : ''}</span>
     </button>`;
   }).join('');
   return `<main class="home" id="body"><div id="banner">${bannerHTML()}</div>
@@ -1289,7 +1330,7 @@ function homeHTML() {
       <header class="home-h">
         <div><p class="eyebrow">ภาพรวมกลุ่มบริษัท</p><h1>โครงสร้างองค์กร ${cos.length} บริษัท</h1>
         <p class="lede">เลือกบริษัทเพื่อดูโครงสร้างที่ใช้งานอยู่ (Active) ร่างโครงสร้างใหม่ (Draft) และย้อนดูเวอร์ชันเก่า (Inactive)</p></div>
-        <dl class="kpis"><div><dt>หน่วยงานที่ใช้งาน</dt><dd>${fmtNum(units)}</dd></div><div><dt>อัตรากำลังรวม (คน)</dt><dd>${fmtNum(hc)}</dd></div><div><dt>Draft รอ Publish</dt><dd>${drafts}</dd></div><div><dt>AI Agent ที่ใช้งาน</dt><dd>${ai}</dd></div></dl>
+        <dl class="kpis"><div><dt>หน่วยงานที่ใช้งาน</dt><dd>${fmtNum(units)}</dd></div><div><dt>หน่วยธุรกิจ (BU)</dt><dd>${bu}</dd></div><div><dt>อัตรากำลังรวม (คน)</dt><dd>${hc ? fmtNum(hc) : '—'}</dd></div><div><dt>Draft รอ Publish</dt><dd>${drafts}</dd></div></dl>
       </header>
       <div class="cards">${cards}</div>
     </div></main>`;
@@ -1322,7 +1363,10 @@ function emptyHTML() {
 }
 function legendHTML(v) {
   const s = stats(v.root);
-  return Object.keys(TYPES).filter(k => s.byType[k]).map(k => `<span><i class="dot tc-${k}"></i>${TYPES[k].th}</span>`).join('');
+  let hl = false;
+  walk(v.root, n => { if (n.hl) hl = true; });
+  return Object.keys(TYPES).filter(k => s.byType[k]).map(k => `<span><i class="dot tc-${k}"></i>${TYPES[k].th}</span>`).join('') +
+    (hl ? '<span><i class="n-hl"></i>ไฮไลต์ (ตัวอักษรสีแดงในเอกสาร)</span>' : '');
 }
 function railHTML(code) {
   const co = company(code);
@@ -1334,7 +1378,7 @@ function railHTML(code) {
       <span class="vc-top"><span class="pill ${v.status}">${ST[v.status]}</span><span class="mono vno">v${v.versionNo}</span></span>
       <span class="vname">${esc(v.name)}</span><span class="vmeta">${esc(versionDateText(v))}</span></button>`;
   return `<div class="rail-co"><div class="rc-code">${esc(code)}</div>
-      <div class="rc-name${co && co.nameTh ? '' : ' none'}">${esc(co && co.nameTh ? co.nameTh : 'ยังไม่ได้ระบุชื่อบริษัท')}</div>${co && co.nameEn ? `<div class="rc-en">${esc(co.nameEn)}</div>` : ''}</div>
+      <div class="rc-name${co && (co.nameTh || co.nameEn) ? '' : ' none'}">${esc(co && (co.nameTh || co.nameEn) || 'ยังไม่ได้ระบุชื่อบริษัท')}</div>${co && co.nameTh && co.nameEn ? `<div class="rc-en">${esc(co.nameEn)}</div>` : ''}</div>
     <section><h3>ใช้งานอยู่ · Active</h3>${act.map(card).join('') || '<p class="empty">ยังไม่มีโครงสร้างที่ใช้งาน</p>'}</section>
     <section><h3>ฉบับร่าง · Draft ${canEditApp() ? `<button class="btn sm ghost" data-act="new-draft">${I.plus}สร้าง</button>` : ''}</h3>${dr.map(card).join('') || '<p class="empty">ไม่มีฉบับร่าง</p>'}</section>
     <section><h3>เวอร์ชันเก่า · Inactive</h3>${ina.map(card).join('') || '<p class="empty">ยังไม่มีเวอร์ชันเก่า</p>'}</section>`;
@@ -1356,7 +1400,7 @@ function vheadHTML(v) {
   return `<div class="vh-l">
       <div class="vh-meta"><span class="pill ${v.status}">${ST[v.status]}</span><span class="mono">v${v.versionNo}</span><span>${esc(versionDateText(v))}</span></div>
       <h1 class="vtitle">${esc(v.companyCode)} · ${esc(v.name)}</h1>
-      <div class="vh-stats"><span><b>${fmtNum(s.units)}</b> หน่วยงาน</span><span><b>${fmtNum(s.hc)}</b> คน</span><span><b>${s.layers}</b> ชั้น</span>${s.ai ? `<span><b>${s.ai}</b> AI Agent</span>` : ''}${s.partners ? `<span><b>${s.partners}</b> พันธมิตร</span>` : ''}</div>
+      <div class="vh-stats"><span><b>${fmtNum(s.units)}</b> หน่วยงาน</span>${s.bu ? `<span><b>${s.bu}</b> หน่วยธุรกิจ</span>` : ''}<span><b>${s.layers}</b> ชั้น</span>${s.hc ? `<span><b>${fmtNum(s.hc)}</b> คน</span>` : ''}${s.subs ? `<span><b>${s.subs}</b> บริษัทในเครือ</span>` : ''}${s.ai ? `<span><b>${s.ai}</b> AI Agent</span>` : ''}${s.partners ? `<span><b>${s.partners}</b> พันธมิตร</span>` : ''}</div>
     </div>
     <div class="vh-r">${cmp}${actions}</div>`;
 }
@@ -1415,10 +1459,10 @@ function nodeHTML(it, ctx) {
   const total = ctx.roll.get(n.id);
   const d = ctx.diff ? ctx.diff.map[n.id] : null;
   const foot = n.head ? n.head : n.title;
-  const pill = n.type === 'ai' ? 'AI' : n.type === 'partner' ? 'ภายนอก' : (total ? fmtNum(total) + ' คน' : '');
+  const pill = n.type === 'ai' ? 'AI' : n.type === 'partner' ? 'ภายนอก' : n.type === 'company' ? '' : (total ? fmtNum(total) + ' คน' : '');
   const tip = [n.name, n.nameEn, n.title && n.head ? n.title + ': ' + n.head : '', n.note].filter(Boolean).join('\n');
   return `<div class="node t-${n.type} tc-${n.type}${n.id === S.selected ? ' sel' : ''}${d ? ' d-' + d : ''}" data-id="${n.id}" style="left:${it.x}px;top:${it.y}px" title="${esc(tip)}">
-    <div class="n-top"><span class="n-type">${esc(t.th)}${n.staff ? ' · Staff' : ''}</span>${n.code ? `<span class="n-code">${esc(n.code)}</span>` : ''}</div>
+    <div class="n-top"><span class="n-type">${esc(t.th)}${n.staff ? ' · Staff' : ''}</span><span class="n-r">${n.hl ? '<i class="n-hl" title="ไฮไลต์"></i>' : ''}${n.code ? `<span class="n-code">${esc(n.code)}</span>` : ''}</span></div>
     <div class="n-name">${esc(n.name || 'ไม่มีชื่อ')}</div>
     <div class="n-foot"><span class="n-head">${esc(foot)}</span>${pill ? `<span class="n-hc">${pill}</span>` : ''}</div>
     ${d ? `<span class="n-badge b-${d}">${DIFF_LABEL[d]}</span>` : ''}
@@ -1706,23 +1750,24 @@ function versionPanelHTML(v) {
       ${v.publishedAt ? `<dt>Publish</dt><dd>${fmtDateTime(v.publishedAt)} · ${esc(v.publishedBy || '')}</dd>` : ''}
       <dt>สร้าง</dt><dd>${fmtDateTime(v.createdAt)} · ${esc(v.createdBy || '')}</dd>
       <dt>แก้ไขล่าสุด</dt><dd>${fmtDateTime(v.updatedAt)} · ${esc(v.updatedBy || '')}</dd>
-      ${base ? `<dt>อ้างอิงจาก</dt><dd>v${base.versionNo} ${esc(base.name)}</dd>` : ''}</dl>`;
+      ${base ? `<dt>อ้างอิงจาก</dt><dd>v${base.versionNo} ${esc(base.name)}</dd>` : ''}
+      ${v.source && v.source.file ? `<dt>แหล่งข้อมูล</dt><dd>${esc(v.source.file)} · แท็บ “${esc(v.source.sheet || '')}”</dd>` : ''}</dl>`;
   return `<section class="panel">
     <div class="ip-head"><div><h3>ข้อมูลเวอร์ชัน</h3><h2>v${v.versionNo} · ${ST[v.status]}</h2></div><button class="ibtn ip-close" data-act="close-insp" aria-label="ปิด">${I.close}</button></div>
     ${edit ? `<label class="field"><span>ชื่อเวอร์ชัน</span><input class="inp" id="vf-name" data-vf="name" value="${esc(v.name)}"></label>
       <label class="field"><span>วันที่วางแผนให้มีผล</span><input class="inp" id="vf-planned" type="date" data-vf="plannedDate" value="${esc(v.plannedDate || '')}"></label>` : ''}
     <div class="field"><span>รูปแบบองค์กร</span><div class="steps">${steps}</div></div>
     ${edit ? `<label class="field"><span>เหตุผลการปรับโครงสร้าง / หมายเหตุ</span><textarea class="inp" id="vf-note" data-vf="note" rows="4" placeholder="เช่น รองรับกลยุทธ์ปี 2570 รวมงานสนับสนุนเป็นแพลตฟอร์มบริการร่วม">${esc(v.note || '')}</textarea></label>`
-      : (v.note ? `<div class="field"><span>เหตุผลการปรับโครงสร้าง</span><p class="note">${esc(v.note)}</p></div>` : '')}
+      : (v.note ? `<div class="field"><span>หมายเหตุเวอร์ชัน</span><p class="note">${esc(v.note)}</p></div>` : '')}
   </section>
   <section class="panel"><h3>ตัวชี้วัดโครงสร้าง</h3>
     <div class="statgrid">
       <div class="stat"><b>${fmtNum(s.units)}</b><span>หน่วยงาน</span></div>
-      <div class="stat"><b>${fmtNum(s.hc)}</b><span>อัตรากำลัง (คน)</span></div>
+      <div class="stat"><b>${s.bu}</b><span>หน่วยธุรกิจ (BU)</span></div>
       <div class="stat"><b>${s.layers}</b><span>ชั้นการบังคับบัญชา</span></div>
       <div class="stat"><b>${s.span.toFixed(1)}</b><span>Span of control เฉลี่ย</span></div>
+      <div class="stat"><b>${s.hc ? fmtNum(s.hc) : '—'}</b><span>อัตรากำลัง (คน)</span></div>
       <div class="stat"><b>${s.ai}</b><span>AI Agent</span></div>
-      <div class="stat"><b>${s.partners}</b><span>พันธมิตร</span></div>
     </div>
     <div class="typelist">${types}</div>
   </section>
@@ -1740,7 +1785,9 @@ function nodePanelHTML(v, f) {
     return `<section class="panel">${head}
       <dl class="kv">${n.nameEn ? `<dt>ชื่ออังกฤษ</dt><dd>${esc(n.nameEn)}</dd>` : ''}${n.code ? `<dt>รหัส</dt><dd class="mono">${esc(n.code)}</dd>` : ''}
       ${n.title ? `<dt>${isAI ? 'ผู้ดูแล' : 'ตำแหน่งหัวหน้า'}</dt><dd>${esc(n.title)}</dd>` : ''}${n.head ? `<dt>ผู้ดำรงตำแหน่ง</dt><dd>${esc(n.head)}</dd>` : ''}
-      ${!isAI ? `<dt>อัตรากำลัง</dt><dd>${fmtNum(n.hc)} คน</dd>` : ''}</dl>
+      ${!isAI && !EXTERNAL.has(n.type) ? `<dt>อัตรากำลัง</dt><dd>${n.hc ? fmtNum(n.hc) + ' คน' : '—'}</dd>` : ''}
+      ${n.hl ? '<dt>ไฮไลต์</dt><dd><i class="n-hl"></i> ทำเครื่องหมายสีแดงในเอกสาร</dd>' : ''}</dl>
+      ${subsidiaryLink(n)}
       ${n.note ? `<div class="field"><span>${isAI ? 'งานที่รับผิดชอบ' : 'หน้าที่ความรับผิดชอบ'}</span><p class="note">${esc(n.note)}</p></div>` : ''}
       ${metrics}</section>`;
   }
@@ -1753,8 +1800,10 @@ function nodePanelHTML(v, f) {
       <label class="field"><span>รหัสหน่วยงาน</span><input class="inp mono-in" id="nf-code" data-f="code" value="${esc(n.code)}"></label></div>
     <label class="field"><span>${isAI ? 'ผู้ดูแล (Human-in-the-loop)' : 'ตำแหน่งหัวหน้าหน่วยงาน'}</span><input class="inp" id="nf-title" data-f="title" value="${esc(n.title)}" placeholder="${isAI ? 'เช่น ผู้ดูแล: ผอ.ฝ่าย People & Culture' : 'เช่น ผู้อำนวยการฝ่าย'}"></label>
     <div class="row2"><label class="field"><span>ผู้ดำรงตำแหน่ง</span><input class="inp" id="nf-head" data-f="head" value="${esc(n.head)}" placeholder="ว่าง"></label>
-      <label class="field"><span>อัตรากำลัง (คน)</span><input class="inp" id="nf-hc" data-f="hc" type="number" min="0" inputmode="numeric" value="${n.hc || ''}" placeholder="0" ${isAI || n.type === 'partner' ? 'disabled' : ''}></label></div>
+      <label class="field"><span>อัตรากำลัง (คน)</span><input class="inp" id="nf-hc" data-f="hc" type="number" min="0" inputmode="numeric" value="${n.hc || ''}" placeholder="0" ${EXTERNAL.has(n.type) ? 'disabled' : ''}></label></div>
     ${f.parent ? `<label class="check"><input type="checkbox" id="nf-staff" data-f="staff" ${n.staff ? 'checked' : ''}><span>หน่วยงานขึ้นตรง (Staff)<small>วางไว้ด้านข้างสายบังคับบัญชา เช่น สำนักตรวจสอบภายใน เลขานุการ</small></span></label>` : ''}
+    <label class="check"><input type="checkbox" id="nf-hl" data-f="hl" ${n.hl ? 'checked' : ''}><span>ไฮไลต์หน่วยงานนี้<small>เช่น หน่วยงานใหม่หรือปรับปรุงในรอบนี้ (ในไฟล์ต้นฉบับใช้ตัวอักษรสีแดง)</small></span></label>
+    ${subsidiaryLink(n)}
     <label class="field"><span>การจัดวางหน่วยย่อย</span><select class="inp" id="nf-layout" data-f="layout">
       <option value="auto" ${n.layout === 'auto' ? 'selected' : ''}>อัตโนมัติ</option><option value="h" ${n.layout === 'h' ? 'selected' : ''}>แนวนอน (เรียงข้างกัน)</option><option value="v" ${n.layout === 'v' ? 'selected' : ''}>แนวตั้ง (เป็นรายการ)</option></select></label>
     ${reparent}
@@ -1766,6 +1815,10 @@ function nodePanelHTML(v, f) {
       <button class="btn sm" data-act="add-staff">${I.staff}Staff</button>
       ${f.parent ? `<button class="btn sm danger" data-act="delete-node">${I.trash}ลบ</button>` : ''}
     </div></section>`;
+}
+function subsidiaryLink(n) {
+  if (n.type !== 'company' || !n.code || !company(n.code) || n.code === S.route.code) return '';
+  return `<button class="btn sm" data-act="co" data-code="${esc(n.code)}">${I.building}เปิดโครงสร้างของ ${esc(n.code)}</button>`;
 }
 function diffHTML(v) {
   const base = byId(S.compareWith);
@@ -2337,7 +2390,7 @@ async function doLogin(token, remember, silent) {
 function logout() {
   S.user = null; S.token = null;
   sDel(LS_TOKEN, 's'); sDel(LS_TOKEN, 'l');
-  S.demo = S.source === 'sample' || S.dirty;
+  S.demo = isStarter() || S.dirty;
   render();
   toast('ออกจากระบบแล้ว');
 }
@@ -2444,8 +2497,8 @@ function exportCSV() {
   const v = curVersion();
   if (!v) return;
   const roll = rollup(v.root);
-  const rows = [['ระดับ', 'เส้นทาง', 'รหัส', 'ชื่อหน่วยงาน', 'ชื่อภาษาอังกฤษ', 'ประเภท', 'หน่วยงานขึ้นตรง', 'ตำแหน่งหัวหน้า', 'ผู้ดำรงตำแหน่ง', 'อัตรากำลัง', 'อัตรากำลังรวม', 'หมายเหตุ']];
-  flatten(v.root).forEach(({ n, depth, path }) => rows.push([depth + 1, path.join(' > '), n.code, n.name, n.nameEn, TYPES[n.type].th, n.staff ? 'ใช่' : '', n.title, n.head, n.hc || 0, roll.get(n.id), n.note]));
+  const rows = [['ระดับ', 'เส้นทาง', 'รหัส', 'ชื่อหน่วยงาน', 'ชื่อภาษาอังกฤษ', 'ประเภท', 'หน่วยงานขึ้นตรง', 'ตำแหน่งหัวหน้า', 'ผู้ดำรงตำแหน่ง', 'อัตรากำลัง', 'อัตรากำลังรวม', 'ไฮไลต์', 'หมายเหตุ']];
+  flatten(v.root).forEach(({ n, depth, path }) => rows.push([depth + 1, path.join(' > '), n.code, n.name, n.nameEn, TYPES[n.type].th, n.staff ? 'ใช่' : '', n.title, n.head, n.hc || 0, roll.get(n.id), n.hl ? 'ใช่' : '', n.note]));
   const csv = '﻿' + rows.map(r => r.map(c => { const s = String(c ?? ''); return /[",\n\r]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; }).join(',')).join('\r\n');
   download(slug(v) + '.csv', csv, 'text/csv;charset=utf-8');
 }
@@ -2514,11 +2567,13 @@ async function exportPNG() {
     const color = st.color;
     ctx.globalAlpha = 0.75; ctx.fillStyle = color; ctx.font = `600 10.5px ${body}`;
     ctx.fillText(TYPES[n.type].th + (n.staff ? ' · Staff' : ''), it.x + 10, it.y + 18);
-    if (n.code) { ctx.font = `400 10.5px ${mono}`; ctx.textAlign = 'right'; ctx.fillText(n.code, it.x + NW - 10, it.y + 18); ctx.textAlign = 'left'; }
+    let codeW = 0;
+    if (n.code) { ctx.font = `400 10.5px ${mono}`; codeW = ctx.measureText(n.code).width + 6; ctx.textAlign = 'right'; ctx.fillText(n.code, it.x + NW - 10, it.y + 18); ctx.textAlign = 'left'; }
+    if (n.hl) { ctx.globalAlpha = 1; ctx.fillStyle = tok('--danger'); ctx.beginPath(); ctx.arc(it.x + NW - 14 - codeW, it.y + 14.5, 4, 0, Math.PI * 2); ctx.fill(); ctx.fillStyle = color; ctx.globalAlpha = 0.75; }
     ctx.globalAlpha = 1; ctx.font = `600 13.5px ${body}`;
     wrapText(ctx, n.name || 'ไม่มีชื่อ', NW - 20, 2).forEach((ln, i) => ctx.fillText(ln, it.x + 10, it.y + 38 + i * 17));
     ctx.globalAlpha = 0.85; ctx.font = `400 11.5px ${body}`;
-    const pill = n.type === 'ai' ? 'AI' : n.type === 'partner' ? 'ภายนอก' : (roll.get(n.id) ? fmtNum(roll.get(n.id)) + ' คน' : '');
+    const pill = n.type === 'ai' ? 'AI' : n.type === 'partner' ? 'ภายนอก' : n.type === 'company' ? '' : (roll.get(n.id) ? fmtNum(roll.get(n.id)) + ' คน' : '');
     let pw = 0;
     if (pill) { ctx.font = `400 10.5px ${mono}`; pw = ctx.measureText(pill).width; ctx.textAlign = 'right'; ctx.fillText(pill, it.x + NW - 10, it.y + NH - 10); ctx.textAlign = 'left'; ctx.font = `400 11.5px ${body}`; }
     const foot = n.head || n.title;
@@ -2540,7 +2595,7 @@ function importJSONFile(file) {
         c();
         S.data = d; S.versionId = null; S.selected = null; S.compareWith = null; S.undo = []; S.redo = []; S.views = {}; S.collapsed = {};
         if (!S.user) S.demo = true;
-        if (S.source === 'sample') S.source = 'local';
+        if (isStarter()) S.source = 'local';
         setRoute(S.route.view === 'co' ? S.route.code : null);
         markDirty(`นำเข้าข้อมูลจากไฟล์ ${file.name}`);
         render();
@@ -2602,11 +2657,11 @@ const A = {
     sSet(LS_THEME, root.dataset.theme);
   },
   'reset-sample': () => openModal({
-    title: 'รีเซ็ตเป็นข้อมูลตัวอย่าง',
-    body: '<p>ข้อมูลและการแก้ไขทั้งหมดในเบราว์เซอร์นี้จะถูกแทนที่ด้วยข้อมูลตัวอย่าง (ไม่กระทบไฟล์ใน GitHub)</p>',
+    title: window.__ORG_SEED__ ? 'รีเซ็ตเป็นข้อมูลตั้งต้น' : 'รีเซ็ตเป็นข้อมูลตัวอย่าง',
+    body: `<p>ข้อมูลและการแก้ไขทั้งหมดในเบราว์เซอร์นี้จะถูกแทนที่ด้วย${window.__ORG_SEED__ ? 'ข้อมูลตั้งต้น' : 'ข้อมูลตัวอย่าง'} (ไม่กระทบไฟล์ใน GitHub)</p>`,
     foot: [{ label: 'ยกเลิก', onClick: c => c() }, { label: 'รีเซ็ต', cls: 'danger', onClick: c => {
       c();
-      Object.assign(S, { data: buildSample(), sha: null, dirty: false, changes: [], source: 'sample', demo: true, versionId: null, selected: null, compareWith: null, undo: [], redo: [], views: {}, collapsed: {} });
+      Object.assign(S, { data: freshData(), sha: null, dirty: false, changes: [], demo: true, versionId: null, selected: null, compareWith: null, undo: [], redo: [], views: {}, collapsed: {} });
       setRoute(S.route.view === 'co' ? S.route.code : null);
       persistLocal(); render(); toast('รีเซ็ตแล้ว');
     } }],
@@ -2774,8 +2829,8 @@ async function boot() {
       S.source = local.source || 'local';
     }
   } catch (e) { S.data = null; }
-  if (!S.data) { S.data = buildSample(); S.source = 'sample'; S.sha = null; S.dirty = false; S.changes = []; }
-  S.demo = S.source === 'sample' || S.dirty;
+  if (!S.data) { S.data = freshData(); S.sha = null; S.dirty = false; S.changes = []; }
+  S.demo = isStarter() || S.dirty;
   setRoute(decodeURIComponent(location.hash.slice(1)));
   render();
   const token = sGet(LS_TOKEN, 's') || sGet(LS_TOKEN, 'l');
