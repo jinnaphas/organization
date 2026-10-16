@@ -1,7 +1,7 @@
 # Org Structure Studio
 
 Web application (ไฟล์เดียว `index.html`) สำหรับออกแบบ จัดเก็บ และเปรียบเทียบโครงสร้างองค์กรของกลุ่มบริษัท
-PCC, PDE, PPP, SBP, PCE, PSL, PEM, PEMC, PSP
+PCC, PDE, PPP, SBP, PCE, PBI (เดิม PSL), PEM, PEMC, PSP
 
 > สถานะ: **Prototype** — โครงสร้างจริงของทั้ง 9 บริษัทนำเข้าจาก `Organization_Current_2026-2027.xlsx` (1 แท็บต่อ 1 บริษัท)
 > เก็บไว้ใน `data/org-structure.json` เป็นเวอร์ชัน Active ของแต่ละบริษัท ถ้าเปิดหน้าเว็บโดยไม่มีไฟล์นี้ จะแสดงข้อมูลตัวอย่างแทน
@@ -86,7 +86,7 @@ Token เก็บใน sessionStorage ของเบราว์เซอร�
 | --- | --- | --- | --- |
 | PCC | Org PCC Current | No.1 · Sep 1, 2026 | 38 |
 | PDE | Org PDE SEP R.0 | No.1 · Sep 1, 2026 | 28 |
-| PSL | Org PSL Current | No.4 · Oct 1, 2025 | 36 |
+| PBI | Org PSL Current | No.4 · Oct 1, 2025 | 36 |
 | PPP | Org PPP Current | No.2 · July 1, 2025 | 34 |
 | SBP | Org SBP Current | No.2 · July 1, 2025 | 18 |
 | PCE | Org PCE Current | No.2 · July 1, 2025 | 8 |
@@ -109,7 +109,7 @@ Token เก็บใน sessionStorage ของเบราว์เซอร�
 
 สลับโหมดได้ที่แถบเครื่องมือของ Draft เมื่อเปลี่ยนจากจัดอัตโนมัติเป็นจัดวางอิสระ กล่องจะอยู่ตำแหน่งเดิมแล้วเลื่อนต่อได้ เส้นสายบังคับบัญชาวาดใหม่ตามตำแหน่งกล่องเสมอ
 - เส้นประ (dotted line) บันทึกไว้ในหมายเหตุของหน่วยงาน
-- กล่องข้อความที่อยู่นอกพื้นที่พิมพ์ (PSL Job Role 2569, PEM Pre-Sale & Digital Engineering Team) และบันทึก Draft Org 1-5-69 ของ PEM เก็บไว้ในหมายเหตุเวอร์ชัน โดยไม่นำรายชื่อบุคคลเข้า
+- กล่องข้อความที่อยู่นอกพื้นที่พิมพ์ (PBI Job Role 2569, PEM Pre-Sale & Digital Engineering Team) และบันทึก Draft Org 1-5-69 ของ PEM เก็บไว้ในหมายเหตุเวอร์ชัน โดยไม่นำรายชื่อบุคคลเข้า
 - ไฟล์ไม่มีอัตรากำลัง จึงแสดงเป็น “—” จนกว่าจะกรอก
 
 หน่วยงานที่คัดลอกมาจากเวอร์ชันก่อนหน้าใช้ `id` เดิม ระบบจึงเปรียบเทียบได้ว่าหน่วยใดย้ายสังกัดหรือเปลี่ยนชื่อ

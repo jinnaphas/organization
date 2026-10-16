@@ -16,7 +16,7 @@
       "nameEn": "Precise Digital Economy Co., Ltd."
     },
     {
-      "code": "PSL",
+      "code": "PBI",
       "nameTh": "บริษัท พรีไซซ แบมบู ไบโออินดัสทรีส์ จำกัด (สำนักงานใหญ่)",
       "nameEn": "Precise Bamboo Bioindustries Co., Ltd."
     },
@@ -2263,7 +2263,7 @@
     },
     {
       "id": "v_psl_2025r4",
-      "companyCode": "PSL",
+      "companyCode": "PBI",
       "versionNo": 1,
       "name": "โครงสร้างองค์กร พ.ศ. 2568 (Revision 4)",
       "status": "active",
@@ -2271,7 +2271,7 @@
       "effectiveDate": "2025-10-01",
       "endDate": null,
       "plannedDate": "",
-      "note": "นำเข้าจากไฟล์ Organization_Current_2026-2027.xlsx แท็บ “Org PSL Current”\nRevenue stream: Bamboo-Based Innovative Products\nผู้ลงนาม: เสนอ MD · ตรวจสอบ CEO-RS · อนุมัติ CEO\nหมายเหตุในแท็บ (นอกพื้นที่พิมพ์): Job Role 2569 1. Sale: รับซื้อ และขาย รับซื้อ: Special Raw material - 2569 ต้นกล้า 300,000 กล้า (OKRs 2569) - ย่อย Target รายเดือน - 2570 ต้นกล้า 500,000 กล้า - 2571 ต้นกล้า 500,000 จาก External, 300,000 จาก Internal (ขึ้นอยู่กับแผน PSL103 20 ล้านไร่ใน 10 ปี) ขาย: Sale เจรจาผ่าน ส่งเสิรมการเกษตรเพื่อขายกล้าไผ่ให้เกษตรกร - 2570 - Product: ต้นกล้า (Timeline ของ Products) Customer: Channel ส่งเสริม (เกษตรกร), External Demand",
+      "note": "นำเข้าจากไฟล์ Organization_Current_2026-2027.xlsx แท็บ “Org PSL Current”\nRevenue stream: Bamboo-Based Innovative Products\nผู้ลงนาม: เสนอ MD · ตรวจสอบ CEO-RS · อนุมัติ CEO\nหมายเหตุในแท็บ (นอกพื้นที่พิมพ์): Job Role 2569 1. Sale: รับซื้อ และขาย รับซื้อ: Special Raw material - 2569 ต้นกล้า 300,000 กล้า (OKRs 2569) - ย่อย Target รายเดือน - 2570 ต้นกล้า 500,000 กล้า - 2571 ต้นกล้า 500,000 จาก External, 300,000 จาก Internal (ขึ้นอยู่กับแผน PBI103 20 ล้านไร่ใน 10 ปี) ขาย: Sale เจรจาผ่าน ส่งเสิรมการเกษตรเพื่อขายกล้าไผ่ให้เกษตรกร - 2570 - Product: ต้นกล้า (Timeline ของ Products) Customer: Channel ส่งเสริม (เกษตรกร), External Demand",
       "approvalRef": "เอกสารโครงสร้างองค์กร No.4 ลงวันที่ Oct 1, 2025",
       "basedOn": null,
       "createdAt": "2026-10-15T00:00:00.000Z",
@@ -2282,7 +2282,7 @@
       "publishedBy": "",
       "layout": "free",
       "doc": {
-        "title": "PRECISE BAMBOO BIOINDUSTRIES CO., LTD. (PSL) 2025",
+        "title": "PRECISE BAMBOO BIOINDUSTRIES CO., LTD. (PBI) 2025",
         "titleColor": "#FF0000",
         "titleSize": 44,
         "legendSize": 18,
@@ -2366,7 +2366,7 @@
             "( CEO)"
           ]
         ],
-        "legend": "PSL = Precise Bamboo Bioindustries Co., Ltd."
+        "legend": "PBI = Precise Bamboo Bioindustries Co., Ltd."
       },
       "source": {
         "file": "Organization_Current_2026-2027.xlsx",
@@ -2917,9 +2917,9 @@
               {
                 "id": "n_psl_50",
                 "type": "line",
-                "name": "Pulp & Packaging Business (PSL 101)",
+                "name": "Pulp & Packaging Business (PBI 101)",
                 "nameEn": "",
-                "code": "PSL101",
+                "code": "PBI101",
                 "title": "",
                 "head": "",
                 "hc": 0,
@@ -3038,9 +3038,9 @@
               {
                 "id": "n_psl_54",
                 "type": "line",
-                "name": "Micropropagation Plantlet (PSL 102)",
+                "name": "Micropropagation Plantlet (PBI 102)",
                 "nameEn": "",
-                "code": "PSL102",
+                "code": "PBI102",
                 "title": "",
                 "head": "",
                 "hc": 0,
@@ -3159,9 +3159,9 @@
               {
                 "id": "n_psl_55",
                 "type": "line",
-                "name": "Bamboo Production Farm Business (PSL 103)",
+                "name": "Bamboo Production Farm Business (PBI 103)",
                 "nameEn": "",
-                "code": "PSL103",
+                "code": "PBI103",
                 "title": "",
                 "head": "",
                 "hc": 0,
@@ -3280,9 +3280,9 @@
               {
                 "id": "n_psl_53",
                 "type": "line",
-                "name": "Biochar Business (PSL 104)",
+                "name": "Biochar Business (PBI 104)",
                 "nameEn": "",
-                "code": "PSL104",
+                "code": "PBI104",
                 "title": "",
                 "head": "",
                 "hc": 0,

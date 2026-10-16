@@ -479,7 +479,8 @@ const LS_CFG = 'orgstudio.repo.v1';
 const LS_TOKEN = 'orgstudio.token';
 const LS_THEME = 'orgstudio.theme';
 const LS_PANELS = 'orgstudio.panels';
-const COMPANY_CODES = ['PCC', 'PDE', 'PPP', 'SBP', 'PCE', 'PSL', 'PEM', 'PEMC', 'PSP'];
+const COMPANY_CODES = ['PCC', 'PDE', 'PPP', 'SBP', 'PCE', 'PBI', 'PEM', 'PEMC', 'PSP'];
+const RENAMED_CODES = { PSL: 'PBI' };   // old company code -> current code (old links and browser copies)
 
 // Chart geometry (must match .node width/height in CSS)
 const NW = 200, NH = 88, PAD = 56;
@@ -923,6 +924,12 @@ function migrate(d) {
   if (!d || typeof d !== 'object' || !Array.isArray(d.versions)) throw new Error('ไฟล์นี้ไม่ใช่ข้อมูลโครงสร้างองค์กร (ไม่พบรายการ versions)');
   d.schema = d.schema || 1;
   if (!Array.isArray(d.companies) || !d.companies.length) d.companies = COMPANY_CODES.map(code => ({ code, nameTh: '', nameEn: '' }));
+  Object.entries(RENAMED_CODES).forEach(([from, to]) => {
+    const c = d.companies.find(x => x.code === from);
+    if (!c || d.companies.some(x => x.code === to)) return;
+    c.code = to;
+    d.versions.forEach(v => { if (v.companyCode === from) v.companyCode = to; });
+  });
   d.versions.forEach(v => {
     if (!v.id) v.id = uid('v');
     if (!['active', 'draft', 'inactive'].includes(v.status)) v.status = 'draft';
@@ -1468,6 +1475,10 @@ function openVersion(vid) {
   render();
 }
 function setRoute(code) {
+  if (code && !company(code) && company(RENAMED_CODES[code])) {
+    code = RENAMED_CODES[code];
+    try { history.replaceState(null, '', '#' + code); } catch (e) { /* sandboxed */ }
+  }
   if (code && company(code)) {
     S.route = { view: 'co', code };
     const v = curVersion();
