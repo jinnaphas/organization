@@ -1725,6 +1725,7 @@ function topRightHTML() {
   return chip + save + user + more;
 }
 function bannerHTML() {
+  if (S.appStale) return `<div class="banner warn">${I.info}<p><b>มีแอปเวอร์ชันใหม่</b> กดรีเฟรชก่อนแก้ไขหรือบันทึกต่อ การแก้ไขที่ยังไม่บันทึกจะยังอยู่</p><button class="btn sm primary" data-act="reload">รีเฟรชตอนนี้</button></div>`;
   if (S.user && !S.user.canPush) return `<div class="banner warn">${I.lock}<p>บัญชี @${esc(S.user.login)} ไม่มีสิทธิ์เขียน ${esc(S.cfg.owner + '/' + S.cfg.repo)} — ดูได้อย่างเดียว</p></div>`;
   if (S.user) return '';
   if (S.source === 'sample') return `<div class="banner">${I.info}<p><b>ข้อมูลตัวอย่าง</b> ยังไม่ใช่โครงสร้างจริงของบริษัท แก้ไขทดลองได้ในเบราว์เซอร์นี้ เมื่อพร้อมให้เข้าสู่ระบบด้วย GitHub Token เพื่อบันทึกเป็นไฟล์กลาง</p><button class="btn sm" data-act="login">${I.github}เข้าสู่ระบบ</button></div>`;
@@ -4319,6 +4320,7 @@ const A = {
       persistLocal(); render(); toast('รีเซ็ตแล้ว');
     } }],
   }),
+  'reload': () => { persistLocal(); location.reload(); },
   'demo': () => { S.demo = true; render(); toast('เปิดโหมดทดลอง — สร้าง Draft แล้วแก้ไขได้ทันที'); },
   'toggle-panel': el => togglePanel(el.dataset.side),
   'open-rail': () => { S.ui.rail = true; $('#ws')?.classList.add('rail-open'); },
@@ -4554,6 +4556,22 @@ async function boot() {
   else { await loadPublic(); wfSync(); }
 }
 boot();
+
+// a tab left open keeps running the code it loaded; tell it when a newer app is published so nobody saves with old code
+let appTag = null;
+async function checkAppUpdate() {
+  if (!/^https?:$/.test(location.protocol) || document.hidden || S.appStale) return;
+  try {
+    const r = await fetch(location.pathname, { method: 'HEAD', cache: 'no-store' });
+    const tag = r.ok && (r.headers.get('etag') || r.headers.get('last-modified'));
+    if (!tag) return;
+    if (appTag === null) { appTag = tag; return; }
+    if (tag !== appTag) { S.appStale = true; setHTML('#banner', bannerHTML()); toast('มีแอปเวอร์ชันใหม่ — กดรีเฟรชก่อนบันทึก', 'info', { label: 'รีเฟรช', fn: A.reload }, 10000); }
+  } catch (e) { /* offline */ }
+}
+checkAppUpdate();
+setInterval(checkAppUpdate, 5 * 60 * 1000);
+window.addEventListener('focus', checkAppUpdate);
 })();
 </script>
 </body>
