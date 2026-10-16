@@ -580,6 +580,38 @@ details.help ol,details.help ul{margin:8px 0 2px;padding-left:20px;display:grid;
 .pt-hd::before{content:"· "}
 .ws-hd{grid-column:1;font-size:12px;color:var(--ink-2)}
 
+.pp[draggable="true"]{cursor:grab}
+.pp.picked{outline:2px solid var(--accent);outline-offset:-2px;border-radius:6px}
+.pp.moved{box-shadow:inset 3px 0 0 var(--plat)}
+.pp-n{display:flex;flex-wrap:wrap;align-items:center;gap:4px}
+.pp-ck{margin:0 4px 0 0;accent-color:var(--accent)}
+.pp-mv{margin-left:auto;display:inline-flex;align-items:center;gap:4px;border:1px solid var(--line-strong);background:var(--surface);border-radius:6px;padding:1px 7px;font-size:11.5px;cursor:pointer;color:var(--ink-2)}
+.pp-mv:hover{border-color:var(--accent);color:var(--accent-ink)}
+.pp-mv svg{width:12px;height:12px}
+.tag.mv{border-color:var(--plat);color:var(--plat);background:var(--plat-weak)}
+.pp-u.mvl{color:var(--plat)}
+.mv-hint{display:flex;gap:6px;align-items:flex-start;margin:0;font-size:12px;color:var(--ink-2);background:var(--plat-weak);border-radius:8px;padding:6px 9px}
+.mv-hint svg{width:14px;height:14px;flex:none;margin-top:2px;color:var(--plat)}
+.sel-bar{display:flex;align-items:center;gap:6px;flex-wrap:wrap;background:var(--accent-weak);border-radius:8px;padding:6px 8px;font-size:12.5px;font-weight:600}
+.sel-bar span{margin-right:auto}
+.wf-badge.mv::after{content:"";width:7px;height:7px;border-radius:50%;background:#3a59a8;box-shadow:0 0 0 2px #fff;margin-left:5px;align-self:center}
+body.dragging-people .node{outline:1px dashed rgba(58,89,168,.45);outline-offset:2px}
+.mvo-list{display:grid;gap:2px;max-height:min(52vh,520px);overflow:auto;margin-top:8px;border:1px solid var(--line);border-radius:9px;padding:6px}
+.mvo{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:8px;align-items:center;padding:5px 8px 5px calc(8px + var(--d,0) * 16px);border-radius:6px;cursor:pointer;font-size:13px}
+.mvo:hover{background:var(--surface-2)}
+.mvo:has(input:checked){background:var(--accent-weak)}
+.mvo input{accent-color:var(--accent);margin:0}
+.mvo-n{display:flex;gap:6px;align-items:center;min-width:0}
+.mvo-m{font-size:12px;color:var(--muted);white-space:nowrap}
+.mvo.special{border-top:1px solid var(--line);margin-top:4px;padding-left:8px}
+.mvo[hidden]{display:none}
+.pt-moves h3{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.mv-acts{margin-left:auto;display:flex;gap:6px}
+.mv-table{display:grid;font-size:13px;overflow-x:auto}
+.mv-row{display:grid;grid-template-columns:minmax(180px,1.3fr) minmax(150px,1fr) minmax(150px,1fr) 110px;gap:10px;padding:6px 4px;border-bottom:1px solid var(--line);min-width:640px;align-items:center}
+.mv-row small{display:block;color:var(--muted);font-size:11.5px}
+.mv-row.mv-head{font-size:11.5px;font-weight:600;color:var(--muted)}
+
 /* ---------- responsive ---------- */
 @media (max-width:1600px){
   .tools .tbtn:not(.keep) .tl{display:none}
@@ -789,6 +821,7 @@ const I = {
   download: ic('<path d="M12 4v11M7 10l5 5 5-5M5 20h14"/>'),
   upload: ic('<path d="M12 20V9M7 14l5-5 5 5M5 4h14"/>'),
   info: ic('<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/>'),
+  move: ic('<path d="M5 9l-3 3 3 3M9 5l3-3 3 3M15 19l-3 3-3-3M19 9l3 3-3 3M2 12h20M12 2v20"/>'),
   edu: ic('<path d="M2 9l10-5 10 5-10 5-10-5z"/><path d="M6 11v5c3 2.5 9 2.5 12 0v-5"/>'),
   people: ic('<circle cx="9" cy="8" r="3.2"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14.2A4.5 4.5 0 0 1 21 18.5"/>'),
   plan: ic('<path d="M3 20h18"/><path d="M6 20v-6M11 20V8M16 20v-9M21 4l-5 5-4-3-6 6"/>'),
@@ -907,6 +940,7 @@ const S = {
   wfUnit: {},          // versionId -> node id shown on the Workforce page
   wfScope: 'direct', wfQuery: '', planFilter: 'all',
   wfView: 'chart',     // Workforce page: chart (org chart + drill down) | table
+  wfSel: new Set(),    // people ticked for a move (employee codes)
   ui: { rail: false, insp: false, hideRail: false, hideInsp: false },   // rail/insp: mobile drawers; hide*: desktop panels
   layout: null,
 };
@@ -1653,6 +1687,7 @@ function publish(v, date, ref) {
   toast(S.user ? `v${v.versionNo} เป็น Active แล้ว — กด “บันทึก” เพื่อขึ้น GitHub` : `v${v.versionNo} เป็น Active แล้ว`, 'ok');
 }
 function openVersion(vid) {
+  S.wfSel.clear();
   S.versionId = vid; S.selected = null; S.compareWith = null; S.undo = []; S.redo = []; S.esKey = null;
   S.ui.rail = false; S.ui.insp = false;
   render();
@@ -1677,6 +1712,7 @@ function setRoute(raw) {
   S.ui.rail = false; S.ui.insp = false;
 }
 function go(code, page = S.page) {
+  if (code !== S.route.code) S.wfSel.clear();
   setRoute(code ? code + '/' + page : '');
   render();
   try { history.pushState(null, '', routeHash(code)); } catch (e) { /* sandboxed */ }
@@ -1984,8 +2020,9 @@ function nodeHTML(it, ctx) {
   if (wf && !EXTERNAL.has(n.type)) {
     // the box's own people (not the boxes under it) and the person who heads it
     const own = (wf.P.byNode.get(n.id) || []).length, all = wf.P.roll.get(n.id) || 0, p = +n.hc || 0, g = gapInfo(p, own), hd = wf.P.heads.get(n.id);
-    const tipW = [hd ? `หัวหน้าหน่วย: ${wfName(hd)} · ${hd.pos} · ระดับ ${hd.lvl}` : 'ยังไม่มีคนในกล่องนี้', `ในกล่องนี้ ${fmtNum(own)} คน${all !== own ? ` · รวมทั้งสายงาน ${fmtNum(all)} คน` : ''}`, p ? `แผน ${fmtNum(p)} คน · ${g.txt}` : ''].filter(Boolean).join('\n');
-    badge = `<span class="wf-badge${own ? '' : ' zero'} ${g.cls}" title="${esc(tipW)}">${hd ? `<span class="wb-head">${esc(shortName(hd))}</span>` : ''}<span class="wb-n">${fmtNum(own)}${p ? `<small>/${fmtNum(p)}</small>` : ''}<small> คน</small></span></span>`;
+    const mi = wf.P.movIn.get(n.id) || 0, mo = wf.P.movOut.get(n.id) || 0;
+    const tipW = [hd ? `หัวหน้าหน่วย: ${wfName(hd)} · ${hd.pos} · ระดับ ${hd.lvl}` : 'ยังไม่มีคนในกล่องนี้', `ในกล่องนี้ ${fmtNum(own)} คน${all !== own ? ` · รวมทั้งสายงาน ${fmtNum(all)} คน` : ''}`, p ? `แผน ${fmtNum(p)} คน · ${g.txt}` : '', mi || mo ? `ย้ายตามแผน: เข้า ${mi} · ออก ${mo}` : ''].filter(Boolean).join('\n');
+    badge = `<span class="wf-badge${own ? '' : ' zero'} ${g.cls}${mi || mo ? ' mv' : ''}" title="${esc(tipW)}">${hd ? `<span class="wb-head">${esc(shortName(hd))}</span>` : ''}<span class="wb-n">${fmtNum(own)}${p ? `<small>/${fmtNum(p)}</small>` : ''}<small> คน</small></span></span>`;
   }
   const tip = [n.name, n.nameEn, TYPES[n.type].th + (n.staff ? ' · Staff' : '') + (n.code ? ' · ' + n.code : ''), n.title && n.head ? n.title + ': ' + n.head : '', n.note].filter(Boolean).join('\n');
   const fpx = ctx.free ? ptPx(st, ctx.v) : fontPx(st, n);
@@ -2960,7 +2997,8 @@ function helpModal() {
       <div><h3>กำลังคนและวางแผนกำลังคน</h3>
         <ul><li>แต่ละบริษัทมีหน้า “กำลังคน” และ “วางแผนกำลังคน” แยกจากหน้าโครงสร้างองค์กร</li>
         <li>หน้ากำลังคนเป็นผังองค์กรเดียวกัน ป้ายบนกล่อง = หัวหน้าหน่วย · จำนวนคนในกล่องนั้น คลิกกล่องเพื่อเจาะลึก: ผังซูมไปที่สายงานนั้นและแผงขวาแสดงหัวหน้า หน่วยย่อย และรายชื่อ</li>
-        <li>รายชื่อพนักงานเก็บแบบเข้ารหัส เปิดดูด้วยรหัสผ่านข้อมูลกำลังคน · อัตรากำลังตามแผนแก้ได้ใน Draft</li></ul></div>
+        <li>รายชื่อพนักงานเก็บแบบเข้ารหัส เปิดดูด้วยรหัสผ่านข้อมูลกำลังคน · อัตรากำลังตามแผนแก้ได้ใน Draft</li>
+        <li>ย้ายคนใน Draft: ลากชื่อไปวางบนกล่อง หรือกด “ย้าย” · ดูแผนการย้ายทั้งหมดที่หน้าวางแผนกำลังคน</li></ul></div>
       <div><h3>การบันทึกและสิทธิ์</h3>
         <ul><li>ทุกคนเปิดดูได้ ผู้มีสิทธิ์แก้ไขเข้าสู่ระบบด้วย GitHub Token ที่มีสิทธิ์ Contents: Read and write</li>
         <li>ระหว่างแก้ไข ข้อมูลเก็บในเบราว์เซอร์อัตโนมัติ กด “บันทึก” เพื่อ commit ขึ้น GitHub</li>
@@ -3449,7 +3487,8 @@ function wfPlace(v) {
   const co = v.companyCode, act = activeOf(co);
   const map = (S.wf.map && S.wf.map[co]) || {};
   const hmap = (S.wf.heads && S.wf.heads[co]) || {};
-  const ck = [v.id, v.updatedAt, act && act.id, act && act.updatedAt, S.wf.importedAt, S.wf.people.length, JSON.stringify(map), JSON.stringify(hmap)].join('|');
+  const moves = (S.wf.moves && S.wf.moves[v.id]) || {};
+  const ck = [v.id, v.updatedAt, act && act.id, act && act.updatedAt, S.wf.importedAt, S.wf.people.length, JSON.stringify(map), JSON.stringify(hmap), JSON.stringify(moves)].join('|');
   if (wfCache.has(ck)) return wfCache.get(ck);
   const ids = new Set();
   walk(v.root, n => { if (!EXTERNAL.has(n.type)) ids.add(n.id); });
@@ -3468,11 +3507,21 @@ function wfPlace(v) {
     } else r = wfAuto(u, ixV) || { id: null, how: 'none' };
     unitTo.set(k, r);
   });
-  const byNode = new Map(), nodeOf = new Map(), unplaced = [], gone = [];
+  const byNode = new Map(), nodeOf = new Map(), unplaced = [], gone = [], moved = new Map(), left = [], movIn = new Map(), movOut = new Map();
+  const put = (p, id) => { if (!byNode.has(id)) byNode.set(id, []); byNode.get(id).push(p); nodeOf.set(p, id); };
+  const bump = (m, id) => { if (id) m.set(id, (m.get(id) || 0) + 1); };
   S.wf.people.forEach(p => {
     if (p.co !== co) return;
     const r = unitTo.get(p.unit) || { id: null, how: 'none' };
-    if (r.id) { if (!byNode.has(r.id)) byNode.set(r.id, []); byNode.get(r.id).push(p); nodeOf.set(p, r.id); }
+    const to = moves[p.id];
+    // planned move in this version: to a box, or '' = out of the chart (leaving, retiring, another company)
+    if (to !== undefined && (to === '' || ids.has(to))) {
+      moved.set(p, { from: r.id || null, was: r.was || null, to: to || null });
+      bump(movOut, r.id); bump(movIn, to);
+      if (to) put(p, to); else left.push(p);
+      return;
+    }
+    if (r.id) put(p, r.id);
     else (r.how === 'gone' ? gone : unplaced).push(p);
   });
   const roll = new Map();
@@ -3480,7 +3529,7 @@ function wfPlace(v) {
   // head of a box: chosen by hand, otherwise the highest level among the people in that box (not in the boxes under it)
   const heads = new Map();
   byNode.forEach((ps, id) => heads.set(id, (hmap[id] && ps.find(p => p.id === hmap[id])) || ps.slice().sort(byRank)[0]));
-  const res = { byNode, nodeOf, roll, unplaced, gone, unitTo, heads, headSet: new Set(heads.values()), act: ixA ? act : null, total: S.wf.people.filter(p => p.co === co).length };
+  const res = { byNode, nodeOf, roll, unplaced, gone, moved, left, movIn, movOut, unitTo, heads, headSet: new Set(heads.values()), act: ixA ? act : null, total: S.wf.people.filter(p => p.co === co).length };
   if (wfCache.size > 40) wfCache.clear();
   wfCache.set(ck, res);
   return res;
@@ -3693,7 +3742,7 @@ function wfInspHTML(v) {
   const cur = wfCurId(v), node = cur === '__out' ? null : find(v.root, cur).node;
   const list = S.page === 'planning' ? wfUnder(P, v.root) : node ? (S.wfScope === 'all' ? wfUnder(P, node) : (P.byNode.get(node.id) || [])) : P.unplaced.concat(P.gone);
   const sm = wfSummary(list);
-  const placed = P.total - P.unplaced.length - P.gone.length;
+  const placed = P.total - P.unplaced.length - P.gone.length - P.left.length;
   const others = Object.values(S.wf.units).filter(u => !company(u.co)).map(u => u.co);
   const extra = [...new Set(others)].map(co => `${co} ${fmtNum(S.wf.people.filter(p => p.co === co).length)} คน`).join(', ');
   return `<section class="panel">${head}
@@ -3710,13 +3759,24 @@ function wfInspHTML(v) {
 // right panel of the Workforce chart: the clicked unit, its numbers and its people
 function wfListOf(v, P) {
   const cur = wfCurId(v), out = cur === '__out', node = out ? null : find(v.root, cur).node;
-  return { cur, out, node, list: out ? P.unplaced.concat(P.gone) : S.wfScope === 'all' ? wfUnder(P, node) : (P.byNode.get(node.id) || []) };
+  return { cur, out, node, list: out ? P.unplaced.concat(P.gone, P.left) : S.wfScope === 'all' ? wfUnder(P, node) : (P.byNode.get(node.id) || []) };
 }
-function personHTML(p, P, unit) {
-  const head = P.headSet.has(p), edu = eduText(p);
-  return `<div class="pp${head ? ' head' : ''}"><div class="pp-n"><b>${esc(wfName(p))}</b>${head ? ' <span class="tag head">หัวหน้าหน่วย</span>' : ''}${p.emp !== 'ประจำ' ? ` <span class="tag">${esc(p.emp)}</span>` : ''}</div>
+const canMove = v => !!(v && S.wf && v.status === 'draft' && canEditApp());
+// where a moved person sits today (the box the HR data puts them in)
+function movedFrom(v, P, p) {
+  const m = P.moved.get(p);
+  if (!m) return '';
+  const f = m.from && find(v.root, m.from), w = !f && m.was && P.act && find(P.act.root, m.was);
+  return f ? f.node.name : w ? w.node.name : (S.wf.units[p.unit] || {}).name || 'ไม่ได้อยู่ในผัง';
+}
+function personHTML(p, P, unit, v) {
+  const head = P.headSet.has(p), edu = eduText(p), mv = v && P.moved.get(p), move = canMove(v);
+  return `<div class="pp${head ? ' head' : ''}${mv ? ' moved' : ''}${S.wfSel.has(p.id) ? ' picked' : ''}" ${move ? `draggable="true" data-emp="${esc(p.id)}"` : ''}>
+    <div class="pp-n">${move ? `<input type="checkbox" class="pp-ck" data-sel="${esc(p.id)}" ${S.wfSel.has(p.id) ? 'checked' : ''} aria-label="เลือก ${esc(wfName(p))}">` : ''}<b>${esc(wfName(p))}</b>${head ? ' <span class="tag head">หัวหน้าหน่วย</span>' : ''}${mv ? ' <span class="tag mv">ย้ายตามแผน</span>' : ''}${p.emp !== 'ประจำ' ? ` <span class="tag">${esc(p.emp)}</span>` : ''}
+      ${move ? `<button class="pp-mv" data-act="wf-move" data-emp="${esc(p.id)}" title="ย้ายไปกล่องอื่นใน Draft นี้">${I.move}ย้าย</button>` : ''}</div>
     <div class="pp-m">${esc(p.pos)} · ระดับ ${esc(p.lvl)} · อายุงาน ${fmtYears(wfYears(p.start))}${retireSoon(p) ? ` · <span class="soon">เกษียณ ${p.retire + 543}</span>` : ''}</div>
-    ${edu ? `<div class="pp-e">${I.edu}${esc(edu)}</div>` : ''}${unit ? `<div class="pp-u">${esc(unit)}</div>` : ''}</div>`;
+    ${edu ? `<div class="pp-e">${I.edu}${esc(edu)}</div>` : ''}${unit ? `<div class="pp-u">${esc(unit)}</div>` : ''}
+    ${mv ? `<div class="pp-u mvl">ย้ายจาก: ${esc(movedFrom(v, P, p))}${move ? ` · <a href="#" data-act="wf-unmove" data-emp="${esc(p.id)}">ยกเลิกการย้าย</a>` : ''}</div>` : ''}</div>`;
 }
 function wfCardsHTML(v, P, list, out, node) {
   const rows = wfFilter(list);
@@ -3724,17 +3784,17 @@ function wfCardsHTML(v, P, list, out, node) {
   if (out) {
     return sortPeople(rows, P).map(p => {
       const r = P.unitTo.get(p.unit), was = r && r.was && P.act ? find(P.act.root, r.was) : null;
-      return personHTML(p, P, 'ในระบบ HR: ' + (S.wf.units[p.unit] || {}).name + (was ? ` (เดิม: ${was.node.name})` : ''));
+      return personHTML(p, P, (P.moved.has(p) ? 'นำออกจากผังตามแผน · ' : 'ในระบบ HR: ') + (S.wf.units[p.unit] || {}).name + (was ? ` (เดิม: ${was.node.name})` : ''), v);
     }).join('');
   }
-  if (S.wfScope !== 'all' || !node) return sortPeople(rows, P).map(p => personHTML(p, P)).join('');
+  if (S.wfScope !== 'all' || !node) return sortPeople(rows, P).map(p => personHTML(p, P, '', v)).join('');
   // the whole branch, box by box in the order of the chart, each box led by its head
   const keep = new Set(rows);
   let html = '';
   walk(node, n => {
     const ps = (P.byNode.get(n.id) || []).filter(p => keep.has(p));
     if (!ps.length) return;
-    html += `<div class="pp-g"><button class="pp-gh" data-act="wf-unit" data-id="${n.id}">${esc(n.name || 'ไม่มีชื่อ')}</button><span class="muted">${ps.length} คน</span></div>` + sortPeople(ps, P).map(p => personHTML(p, P)).join('');
+    html += `<div class="pp-g"><button class="pp-gh" data-act="wf-unit" data-id="${n.id}">${esc(n.name || 'ไม่มีชื่อ')}</button><span class="muted">${ps.length} คน</span></div>` + sortPeople(ps, P).map(p => personHTML(p, P, '', v)).join('');
   });
   return html;
 }
@@ -3768,15 +3828,77 @@ function wfUnitPanelHTML(v) {
     }).join('')}</div></section>`;
   }
   const alert = miss && !out ? `<div class="wf-alert sm">${I.info}<p>${fmtNum(miss)} คนยังไม่ได้อยู่ในกล่องของผังนี้</p><button class="btn sm" data-act="wf-unit" data-id="__out">ดูรายชื่อ</button></div>` : '';
+  const mi = node ? P.movIn.get(node.id) || 0 : 0, mo = node ? P.movOut.get(node.id) || 0 : 0;
+  const moveNote = canMove(v) ? `<p class="mv-hint">${I.move}<span>ย้ายคนใน Draft นี้: <b>ลากชื่อไปวางบนกล่องในผัง</b> หรือกด “ย้าย” · ติ๊กหลายคนเพื่อย้ายพร้อมกัน${mi || mo ? ` · กล่องนี้ย้ายเข้า ${mi} ย้ายออก ${mo}` : ''}</span></p>`
+    : P.moved.size ? `<p class="mv-hint">${I.move}<span>มีแผนการย้ายคน ${fmtNum(P.moved.size)} คนในเวอร์ชันนี้${mi || mo ? ` · กล่องนี้ย้ายเข้า ${mi} ย้ายออก ${mo}` : ''}</span></p>` : '';
   const scope = out ? '' : `<div class="tabs" role="group" aria-label="ขอบเขตรายชื่อ"><button class="tab" data-act="wf-scope" data-scope="direct" aria-pressed="${S.wfScope !== 'all'}" aria-selected="${S.wfScope !== 'all'}">เฉพาะกล่องนี้</button><button class="tab" data-act="wf-scope" data-scope="all" aria-pressed="${S.wfScope === 'all'}" aria-selected="${S.wfScope === 'all'}">ทั้งสายงาน</button></div>`;
   return `<section class="panel">${head}${lead}${kpis}${alert}</section>${subs}
-    <section class="panel wf-pp"><h3 class="pp-h">รายชื่อ <span class="muted" id="wf-count">${peopleCount(list)}</span></h3>${scope}
+    <section class="panel wf-pp"><h3 class="pp-h">รายชื่อ <span class="muted" id="wf-count">${peopleCount(list)}</span></h3>${moveNote}${scope}<div id="wf-selbar">${selBarHTML()}</div>
       <input class="inp sm" type="search" data-wf="q" value="${esc(S.wfQuery)}" placeholder="ค้นหาชื่อ รหัส ตำแหน่ง หรือการศึกษา" aria-label="ค้นหาพนักงาน">
       <div class="pp-list" id="wfp-list">${wfCardsHTML(v, P, list, out, node)}</div></section>
     ${list.length ? `<details class="panel wf-mix"><summary><h3>องค์ประกอบ · ${fmtNum(list.length)} คน</h3></summary>
       ${barsHTML('วุฒิการศึกษา', sm.edu, list.length)}${barsHTML('กลุ่มพนักงาน', sm.grp, list.length)}${barsHTML('ระดับ', sm.lvl, list.length, LVL_ORDER)}${barsHTML('ประเภทการจ้าง', sm.emp, list.length)}${barsHTML('อายุงาน', sm.svcB, list.length, SVC_ORDER)}</details>` : ''}
-    <section class="panel wf-src"><dl class="kv"><dt>ข้อมูล ณ</dt><dd>${fmtDate(S.wf.asOf)} · ${esc(S.wf.source || '')}</dd><dt>พนักงาน ${esc(v.companyCode)}</dt><dd>${fmtNum(P.total)} คน · อยู่ในผังนี้ ${fmtNum(P.total - miss)} คน${miss ? ` · <a href="#" data-act="wf-unit" data-id="__out">ยังไม่ลงกล่อง ${fmtNum(miss)}</a>` : ''}</dd></dl>
+    <section class="panel wf-src"><dl class="kv"><dt>ข้อมูล ณ</dt><dd>${fmtDate(S.wf.asOf)} · ${esc(S.wf.source || '')}</dd><dt>พนักงาน ${esc(v.companyCode)}</dt><dd>${fmtNum(P.total)} คน · อยู่ในผังนี้ ${fmtNum(P.total - miss - P.left.length)} คน${miss ? ` · <a href="#" data-act="wf-unit" data-id="__out">ยังไม่ลงกล่อง ${fmtNum(miss)}</a>` : ''}${P.left.length ? ` · นำออกตามแผน ${fmtNum(P.left.length)}` : ''}</dd></dl>
       <div class="btnrow">${canEditApp() ? `<button class="btn sm" data-act="wf-import">${I.upload}นำเข้าไฟล์ใหม่</button><button class="btn sm" data-act="wf-pass">${I.lock}เปลี่ยนรหัสผ่าน</button>` : ''}<button class="btn sm ghost" data-act="wf-lock">${I.lock}ล็อก</button></div></section>`;
+}
+function selBarHTML() {
+  if (!S.wfSel.size) return '';
+  return `<div class="sel-bar"><span>เลือก ${S.wfSel.size} คน</span><button class="btn sm primary" data-act="wf-move-sel">${I.move}ย้ายที่เลือก</button><button class="btn sm ghost" data-act="wf-sel-clear">ล้าง</button></div>`;
+}
+// move dialog: pick a box of this Draft (or take people out of the chart)
+function wfMoveModal(empIds) {
+  const v = curVersion();
+  if (!canMove(v)) return;
+  const P = wfPlace(v), people = S.wf.people.filter(p => p.co === v.companyCode && empIds.includes(p.id));
+  if (!people.length) return;
+  const anyMoved = people.some(p => P.moved.has(p));
+  const nodes = flatten(v.root).filter(x => !EXTERNAL.has(x.n.type));
+  const names = people.slice(0, 6).map(p => esc(wfName(p))).join(', ') + (people.length > 6 ? ` และอีก ${people.length - 6} คน` : '');
+  const rows = nodes.map(x => {
+    const h = P.heads.get(x.n.id), n = (P.byNode.get(x.n.id) || []).length;
+    return `<label class="mvo" style="--d:${x.depth}" data-q="${esc((x.n.name + ' ' + (x.n.nameEn || '') + ' ' + (h ? wfName(h) : '')).toLowerCase())}"><input type="radio" name="mv-to" value="${x.n.id}"><span class="mvo-n"><i class="dot tc-${x.n.type}"></i>${esc(x.n.name || 'ไม่มีชื่อ')}</span><span class="mvo-m">${h ? esc(shortName(h)) + ' · ' : ''}${n} คน</span></label>`;
+  }).join('');
+  openModal({
+    title: `ย้าย ${people.length} คน ใน ${v.companyCode} v${v.versionNo} (Draft)`,
+    wide: true,
+    body: `<p class="muted">${names}</p>
+      <input class="inp" type="search" id="mv-q" placeholder="ค้นหากล่อง หรือชื่อหัวหน้าหน่วย" aria-label="ค้นหากล่อง">
+      <div class="mvo-list" id="mv-list">${rows}
+        <label class="mvo special"><input type="radio" name="mv-to" value="-"><span class="mvo-n">นำออกจากผัง</span><span class="mvo-m">ลาออก เกษียณ หรือย้ายไปบริษัทอื่น</span></label>
+        ${anyMoved ? '<label class="mvo special"><input type="radio" name="mv-to" value="="><span class="mvo-n">ยกเลิกการย้าย</span><span class="mvo-m">กลับไปตามข้อมูล HR</span></label>' : ''}</div>
+      <small class="muted">แผนการย้ายเก็บกับ Draft นี้ในไฟล์ข้อมูลพนักงาน (เข้ารหัส) ไม่เปลี่ยนข้อมูลในระบบ HR</small>`,
+    foot: [{ label: 'ยกเลิก', onClick: c => c() }, { label: 'ย้าย', cls: 'primary', onClick: (c, el) => {
+      const pick = el.querySelector('input[name="mv-to"]:checked');
+      if (!pick) { toast('เลือกกล่องปลายทางก่อน'); return; }
+      c();
+      wfApplyMove(people.map(p => p.id), pick.value === '=' ? null : pick.value === '-' ? '' : pick.value);
+    } }],
+    onMount: el => {
+      const q = el.querySelector('#mv-q');
+      q.addEventListener('input', () => { const t = q.value.trim().toLowerCase(); el.querySelectorAll('.mvo[data-q]').forEach(r => { r.hidden = !!t && !r.dataset.q.includes(t); }); });
+      setTimeout(() => q.focus(), 0);
+    },
+  });
+}
+// to: box id, '' = out of the chart, null = cancel the planned move
+function wfApplyMove(empIds, to) {
+  const v = curVersion();
+  if (!canMove(v)) return;
+  const P = wfPlace(v), mine = Object.assign({}, S.wf.moves && S.wf.moves[v.id]);
+  let n = 0;
+  empIds.forEach(id => {
+    const p = S.wf.people.find(x => x.id === id && x.co === v.companyCode);
+    if (!p) return;
+    const home = (P.unitTo.get(p.unit) || {}).id || null;
+    if (to === null || (to && to === home)) delete mine[id]; else mine[id] = to;
+    n++;
+  });
+  if (!n) return;
+  S.wf.moves = Object.assign({}, S.wf.moves, { [v.id]: mine });
+  S.wfSel.clear();
+  const where = to === null ? 'ยกเลิกการย้าย' : to === '' ? 'นำออกจากผัง' : `ย้ายไป “${find(v.root, to).node.name}”`;
+  wfChanged(`${v.companyCode} v${v.versionNo}: ${where} ${n} คน`);
+  toast(`${where} ${n} คน — กด “บันทึก” เพื่อเก็บขึ้น GitHub`, 'ok');
 }
 function wfSelect(id, o = {}) {
   const v = curVersion();
@@ -3841,6 +3963,7 @@ function planPageHTML(v) {
     P ? ['หน่วยที่ยังไม่กำหนดแผน', fmtNum(nop), nop ? 'nop' : '', 'มีคนอยู่แต่ยังไม่ได้กำหนดอัตรากำลังตามแผน'] : null,
     base ? ['หน่วยใหม่ใน Draft', fmtNum(fresh.length), '', `หน่วยที่ไม่มีใน Active v${base.versionNo}`] : null,
     P && base ? ['ต้องจัดสรรใหม่', fmtNum(P.gone.length) + ' คน', P.gone.length ? 'warn' : '', 'คนจากหน่วยที่ไม่มีในเวอร์ชันนี้'] : null,
+    P && P.moved.size ? ['ย้ายตามแผน', fmtNum(P.moved.size) + ' คน', '', P.left.length ? `นำออกจากผัง ${P.left.length} คน` : ''] : null,
   ]);
   const f = S.planFilter;
   const shown = rows.filter(r => f === 'all' || (f === 'new' ? r.isNew : r.g.cls === f));
@@ -3859,12 +3982,22 @@ function planPageHTML(v) {
     const groups = new Map();
     P.gone.forEach(p => { const r = P.unitTo.get(p.unit), was = r && r.was && base ? find(base.root, r.was) : null; const k = was ? was.node.name : (S.wf.units[p.unit] || {}).name; if (!groups.has(k)) groups.set(k, []); groups.get(k).push(p); });
     goneHTML = `<section class="pt-gone"><h3>คนที่ต้องจัดสรรใหม่ <span class="muted">${fmtNum(P.gone.length)} คน · หน่วยเดิมไม่มีในเวอร์ชันนี้</span></h3>
-      ${[...groups].map(([k, ps]) => `<div class="gone-g"><b>${esc(k)}</b> <span class="muted">${ps.length} คน</span><ul>${sortPeople(ps, P).map(p => `<li>${esc(wfName(p))} <span class="muted">· ${esc(p.pos)} · ระดับ ${esc(p.lvl)}</span></li>`).join('')}</ul></div>`).join('')}
-      <p class="muted">จัดคนลงหน่วยใหม่ได้ที่ “จับคู่หน่วยงาน” โดยเลือกกล่องในเวอร์ชันนี้</p></section>`;
+      ${[...groups].map(([k, ps]) => `<div class="gone-g"><b>${esc(k)}</b> <span class="muted">${ps.length} คน</span>${canMove(v) ? ` <button class="btn sm" data-act="wf-move-ids" data-emps="${esc(ps.map(p => p.id).join(','))}">${I.move}ย้ายทั้งกลุ่ม</button>` : ''}
+        <ul>${sortPeople(ps, P).map(p => `<li>${esc(wfName(p))} <span class="muted">· ${esc(p.pos)} · ระดับ ${esc(p.lvl)}</span>${canMove(v) ? ` <a href="#" data-act="wf-move" data-emp="${esc(p.id)}">ย้าย</a>` : ''}</li>`).join('')}</ul></div>`).join('')}
+      <p class="muted">${canMove(v) ? 'กด “ย้าย” เพื่อเลือกกล่องใหม่ในเวอร์ชันนี้ หรือไปที่หน้ากำลังคนแล้วลากชื่อไปวางบนกล่อง' : 'ย้ายคนได้ใน Draft หลังเข้าสู่ระบบ'}</p></section>`;
+  }
+  let movesHTML = '';
+  if (P && P.moved.size) {
+    const list = sortPeople([...P.moved.keys()], P);
+    movesHTML = `<section class="pt-gone pt-moves"><h3>แผนการย้ายคน <span class="muted">${fmtNum(list.length)} คน</span>
+        <span class="mv-acts"><button class="btn sm" data-act="moves-export">${I.download}Export แผนการย้าย</button>${canEditApp() ? `<button class="btn sm ghost danger" data-act="moves-clear">ล้างแผนการย้าย</button>` : ''}</span></h3>
+      ${v.status !== 'draft' ? '<p class="muted">แผนการย้ายนี้ทำไว้ตอนเป็น Draft — หลังย้ายจริงและนำเข้าไฟล์ HR ใหม่แล้ว กด “ล้างแผนการย้าย”</p>' : ''}
+      <div class="mv-table"><div class="mv-row mv-head"><div>ชื่อ-สกุล</div><div>จาก</div><div>ไป</div><div></div></div>
+      ${list.map(p => { const m = P.moved.get(p), to = m.to && find(v.root, m.to); return `<div class="mv-row"><div><b>${esc(wfName(p))}</b><small>${esc(p.pos)} · ระดับ ${esc(p.lvl)}</small></div><div>${esc(movedFrom(v, P, p))}</div><div>${to ? esc(to.node.name) : '<span class="soon">นำออกจากผัง</span>'}</div><div>${canMove(v) ? `<a href="#" data-act="wf-move" data-emp="${esc(p.id)}">แก้</a> · <a href="#" data-act="wf-unmove" data-emp="${esc(p.id)}">ยกเลิก</a>` : ''}</div></div>`; }).join('')}</div></section>`;
   }
   const lockNote = !S.wf ? `<div class="wf-alert">${I.lock}<div>${S.wfEnv ? wfGateHTML(true) : '<p>ยังไม่มีข้อมูลพนักงาน จึงแสดงเฉพาะอัตรากำลังตามแผน</p>'}</div></div>` : '';
   const editNote = !edit && v.status !== 'draft' ? `<p class="pt-note">${I.lock} เวอร์ชัน ${ST[v.status]} อ่านอย่างเดียว — ${canEditApp() ? 'กด “สร้าง Draft เพื่อแก้ไข” ด้านบนเพื่อวางแผนอัตรากำลังในโครงสร้างใหม่' : 'เข้าสู่ระบบเพื่อวางแผน'}</p>` : '';
-  return `<div class="wf-page pt-page" id="pt-page">${lockNote}${kp}${editNote}<div class="pt" role="table">${head}${body}</div>${goneHTML}</div>`;
+  return `<div class="wf-page pt-page" id="pt-page">${lockNote}${kp}${editNote}<div class="pt" role="table">${head}${body}</div>${goneHTML}${movesHTML}</div>`;
 }
 function onPlanInput(t) {
   const v = curVersion();
@@ -3964,6 +4097,7 @@ function wfImportModal() {
       parsed.asOf = el.querySelector('#wi-date').value || todayISO();
       if (S.wf && S.wf.map) parsed.map = S.wf.map;
       if (S.wf && S.wf.heads) parsed.heads = S.wf.heads;
+      if (S.wf && S.wf.moves) parsed.moves = S.wf.moves;
       S.wfKey = k; S.wf = parsed;
       c();
       const n = parsed.people.length;
@@ -4120,7 +4254,9 @@ async function wfMergeRemote(attempt) {
   new Set([...Object.keys(theirs.map || {}), ...Object.keys(mine.map || {})]).forEach(co => { map[co] = Object.assign({}, (theirs.map || {})[co], (mine.map || {})[co]); });
   const heads = {};
   new Set([...Object.keys(theirs.heads || {}), ...Object.keys(mine.heads || {})]).forEach(co => { heads[co] = Object.assign({}, (theirs.heads || {})[co], (mine.heads || {})[co]); });
-  S.wf = Object.assign({}, base, { map, heads });
+  const moves = {};
+  new Set([...Object.keys(theirs.moves || {}), ...Object.keys(mine.moves || {})]).forEach(vid => { moves[vid] = Object.assign({}, (theirs.moves || {})[vid], (mine.moves || {})[vid]); });
+  S.wf = Object.assign({}, base, { map, heads, moves });
   S.wfEnv = await wfSeal(S.wf, S.wfKey);
   S.wfSha = r.sha;
   persistWf();
@@ -4130,6 +4266,15 @@ function wfExport(kind) {
   const v = curVersion();
   if (!v) return;
   const csv = rows => '﻿' + rows.map(r => r.map(c => { const s = String(c ?? ''); return /[",\n\r]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; }).join(',')).join('\r\n');
+  if (kind === 'moves') {
+    if (!S.wf) return;
+    const P = wfPlace(v);
+    const out = [['รหัสพนักงาน', 'ชื่อ-สกุล', 'ตำแหน่ง', 'ระดับ', 'หน่วยงานเดิม', 'หน่วยงานใหม่', 'หัวหน้าหน่วยใหม่']];
+    sortPeople([...P.moved.keys()], P).forEach(p => { const m = P.moved.get(p), to = m.to && find(v.root, m.to), h = m.to && P.heads.get(m.to); out.push([p.id, wfName(p), p.pos, p.lvl, movedFrom(v, P, p), to ? to.node.name : 'นำออกจากผัง', h && h !== p ? wfName(h) : '']); });
+    download(`${slug(v)}-moves.csv`, csv(out), 'text/csv;charset=utf-8');
+    toast('ไฟล์นี้มีข้อมูลส่วนบุคคล โปรดเก็บรักษาตามนโยบาย PDPA ขององค์กร', 'info', null, 6000);
+    return;
+  }
   if (kind === 'plan') {
     const { P, base, rows } = planRows(v);
     const out = [['ระดับ', 'หน่วยงาน', 'ประเภท', 'หัวหน้าหน่วย', 'อัตรากำลังตามแผน', 'คนจริง', 'ส่วนต่าง', 'แผนรวมทั้งสาย', 'คนรวมทั้งสาย', 'เกษียณภายใน 3 ปี'].concat(base ? ['แผนใน Active', 'หน่วยใหม่'] : [])];
@@ -4329,6 +4474,24 @@ const A = {
   'wf-view': el => { S.wfView = el.dataset.view; refresh(); if (S.wfView === 'chart') wfZoomTo(wfCurId(curVersion())); },
   'wf-scope': el => { S.wfScope = el.dataset.scope; refresh(); },
   'wf-import': () => wfImportModal(),
+  'wf-move': el => wfMoveModal([el.dataset.emp]),
+  'wf-move-ids': el => wfMoveModal(el.dataset.emps.split(',')),
+  'wf-move-sel': () => wfMoveModal([...S.wfSel]),
+  'wf-sel-clear': () => { S.wfSel.clear(); refresh(); },
+  'wf-unmove': el => wfApplyMove([el.dataset.emp], null),
+  'moves-export': () => wfExport('moves'),
+  'moves-clear': () => {
+    const v = curVersion();
+    if (!v || !S.wf || !canEditApp()) return;
+    openModal({ title: `ล้างแผนการย้ายคนของ ${v.companyCode} v${v.versionNo}`, body: '<p>คนทุกคนในเวอร์ชันนี้จะกลับไปอยู่ตามข้อมูลในระบบ HR</p>',
+      foot: [{ label: 'ยกเลิก', onClick: c => c() }, { label: 'ล้างแผนการย้าย', cls: 'danger', onClick: c => {
+        c();
+        const moves = Object.assign({}, S.wf.moves);
+        delete moves[v.id];
+        S.wf.moves = moves;
+        wfChanged(`${v.companyCode} v${v.versionNo}: ล้างแผนการย้ายคน`);
+      } }] });
+  },
   'wf-map': () => wfMapModal(),
   'wf-pass': () => wfPassModal(),
   'wf-lock': () => wfLock(),
@@ -4486,6 +4649,12 @@ document.addEventListener('input', e => {
 });
 document.addEventListener('change', e => {
   const t = e.target;
+  if (t.matches('.pp-ck')) {
+    if (t.checked) S.wfSel.add(t.dataset.sel); else S.wfSel.delete(t.dataset.sel);
+    t.closest('.pp')?.classList.toggle('picked', t.checked);
+    setHTML('#wf-selbar', selBarHTML());
+    return;
+  }
   if (t.matches('[data-change]')) { CHANGES[t.dataset.change]?.(t); return; }
   if (t.matches('select[data-of]')) { onOutlineInput(t); return; }
   if (t.matches('[data-bx]')) {
@@ -4514,6 +4683,34 @@ document.addEventListener('focusin', e => {
   if (row && row.dataset.id !== S.selected && e.target.matches('input, select')) selectNode(row.dataset.id, { sheet: false });
 });
 document.addEventListener('focusout', e => { if (!S.redrawing && e.target.matches?.('[data-f], [data-of], [data-vf], [data-vd], [data-plan]')) S.esKey = null; });
+document.addEventListener('dragstart', e => {
+  const card = e.target.closest?.('.pp[data-emp]');
+  if (!card) return;
+  const id = card.dataset.emp;
+  S.dragEmp = S.wfSel.has(id) ? [...S.wfSel] : [id];
+  e.dataTransfer.effectAllowed = 'move';
+  e.dataTransfer.setData('text/plain', S.dragEmp.length + ' คน');
+  document.body.classList.add('dragging-people');
+});
+document.addEventListener('dragend', () => { S.dragEmp = null; document.body.classList.remove('dragging-people'); $$('.node.drop').forEach(n => n.classList.remove('drop')); });
+document.addEventListener('dragover', e => {
+  if (!S.dragEmp) return;
+  const n = e.target.closest?.('#canvas .node');
+  $$('.node.drop').forEach(x => { if (x !== n) x.classList.remove('drop'); });
+  if (!n) return;
+  e.preventDefault();
+  e.dataTransfer.dropEffect = 'move';
+  n.classList.add('drop');
+});
+document.addEventListener('drop', e => {
+  const n = S.dragEmp && e.target.closest?.('#canvas .node');
+  if (!n) return;
+  e.preventDefault();
+  const ids = S.dragEmp;
+  S.dragEmp = null;
+  n.classList.remove('drop');
+  wfApplyMove(ids, n.dataset.id);
+});
 document.addEventListener('submit', e => {
   const f = e.target.closest('[data-form="wf-unlock"]');
   if (!f) return;
