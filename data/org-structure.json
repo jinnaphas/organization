@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-10-16T09:19:03.426Z",
+  "updatedAt": "2026-10-16T09:19:25.763Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -16553,7 +16553,7 @@
       "basedOn": "v_psp_2026r3",
       "createdAt": "2026-10-16T02:18:37.847Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-10-16T09:03:24.082Z",
+      "updatedAt": "2026-10-16T09:19:22.414Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE SYSTEM & PROJECT CO., LTD. (PSP) 2027",
@@ -16618,10 +16618,10 @@
             "REVENUE STREAM : INTELLIGENCE GRID"
           ],
           [
-            "REVISIONS of Year : No.3"
+            "REVISIONS of Year : No.0"
           ],
           [
-            "DATE: Sep 1, 2026"
+            "DATE: Jan 1, 2027"
           ],
           [
             "OFFER",
