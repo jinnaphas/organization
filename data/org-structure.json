@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-10-16T08:22:58.911Z",
+  "updatedAt": "2026-10-16T08:28:01.797Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -20284,6 +20284,3010 @@
           "x": 1666.8,
           "y": 194.6,
           "w": 429.3,
+          "h": 82
+        }
+      },
+      "layout": "free"
+    },
+    {
+      "id": "v_qvykh6k9jr",
+      "companyCode": "PPP",
+      "versionNo": 2,
+      "name": "ร่างโครงสร้างองค์กร พ.ศ. 2570",
+      "status": "draft",
+      "model": "industrial",
+      "effectiveDate": null,
+      "endDate": null,
+      "plannedDate": "",
+      "note": "",
+      "approvalRef": "",
+      "basedOn": "v_ppp_2025r2",
+      "createdAt": "2026-10-16T03:23:04.407Z",
+      "createdBy": "@jinnaphas",
+      "updatedAt": "2026-10-16T03:48:38.118Z",
+      "updatedBy": "@jinnaphas",
+      "doc": {
+        "title": "PRECISE POWER PRODUCER CO., LTD (PPP) 2025",
+        "titleColor": "#FF0000",
+        "titleSize": 44,
+        "legendSize": 16,
+        "footerSize": 14,
+        "frameBoxes": {
+          "title": {
+            "x": 24,
+            "y": 24,
+            "w": 2512,
+            "h": 138.8
+          },
+          "legend": {
+            "x": 463.4,
+            "y": 1289.5,
+            "w": 546.7,
+            "h": 294.4
+          },
+          "footer": [
+            {
+              "x": 77.4,
+              "y": 1809.5,
+              "w": 375.7,
+              "h": 95.4
+            },
+            {
+              "x": 453.5,
+              "y": 1809,
+              "w": 375.7,
+              "h": 95.4
+            },
+            {
+              "x": 829.6,
+              "y": 1809,
+              "w": 375.7,
+              "h": 95.4
+            },
+            {
+              "x": 1205.8,
+              "y": 1809,
+              "w": 412.7,
+              "h": 95.4
+            },
+            {
+              "x": 1619.7,
+              "y": 1809.4,
+              "w": 412.7,
+              "h": 95.4
+            },
+            {
+              "x": 2034.2,
+              "y": 1809.4,
+              "w": 412.7,
+              "h": 95.4
+            }
+          ]
+        },
+        "footer": [
+          [
+            "REVENUE STREAM",
+            "RENEWABLE ENERGY"
+          ],
+          [
+            "REVISIONS of Year : No.2"
+          ],
+          [
+            "DATE: July 1, 2025"
+          ],
+          [
+            "OFFER",
+            "_____________/_______________/_____________",
+            "( COO/CTO/CFO)"
+          ],
+          [
+            "VERIFIED",
+            "__________________________________",
+            "( CEO-RS)"
+          ],
+          [
+            "APPROVED",
+            "__________________________________",
+            "( CEO)"
+          ]
+        ],
+        "legend": "PPP = Precise Power Producer Co., Ltd.\nPCE = Precise Clean Energy Co., Ltd.\nPEP = Precise Energy Crop Plantation Co., Ltd\nTSP1 = Takbai Solar Power 1 Co., Ltd.\nTSP2 =Takbai Solar Power 2 Co., Ltd.\nSBP = Songkhla Biopower Co., Ltd.\nSKB = Songkhla Biomass Co., Ltd\nSBF = Songkhla Biofuel Co., Ltd.\nNSPC = Namsor Hydropower Co., Ltd."
+      },
+      "root": {
+        "id": "n_ppp_2",
+        "type": "board",
+        "name": "Board of Director (BOD)",
+        "nameEn": "",
+        "code": "BOD",
+        "title": "",
+        "head": "",
+        "hc": 0,
+        "staff": false,
+        "layout": "auto",
+        "note": "",
+        "children": [
+          {
+            "id": "n_ppp_3",
+            "type": "executive",
+            "name": "Chief Executive Officer (CEO)",
+            "nameEn": "",
+            "code": "CEO",
+            "title": "",
+            "head": "",
+            "hc": 0,
+            "staff": false,
+            "layout": "auto",
+            "note": "",
+            "children": [
+              {
+                "id": "n_ppp_9",
+                "type": "executive",
+                "name": "Chief Financial Officer (CFO)",
+                "nameEn": "",
+                "code": "CFO",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [
+                  {
+                    "id": "n_ppp_13",
+                    "type": "department",
+                    "name": "Accounting Management",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "hl": true,
+                    "style": {
+                      "fill": "#FBE5D6",
+                      "line": "#4472C4",
+                      "lw": 1.33,
+                      "text": "#FF0000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#4472C4",
+                    "box": {
+                      "x": 195.6,
+                      "y": 596.3,
+                      "w": 359.9,
+                      "h": 56
+                    }
+                  },
+                  {
+                    "id": "n_ppp_40",
+                    "type": "department",
+                    "name": "Financial Management",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "hl": true,
+                    "style": {
+                      "fill": "#FBE5D6",
+                      "line": "#4472C4",
+                      "lw": 1.33,
+                      "text": "#FF0000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#4472C4",
+                    "box": {
+                      "x": 195.6,
+                      "y": 666,
+                      "w": 359.9,
+                      "h": 56.2
+                    }
+                  }
+                ],
+                "style": {
+                  "fill": "#FFFFFF",
+                  "line": "#4472C4",
+                  "lw": 1.33,
+                  "text": "#000000",
+                  "bold": true,
+                  "size": 18,
+                  "align": "c"
+                },
+                "link": "#4472C4",
+                "box": {
+                  "x": 122.5,
+                  "y": 474.9,
+                  "w": 429.3,
+                  "h": 81.9
+                }
+              },
+              {
+                "id": "n_ppp_15",
+                "type": "office",
+                "name": "Project Management Office (PMO)",
+                "nameEn": "",
+                "code": "PMO",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [],
+                "style": {
+                  "fill": "#FFFFFF",
+                  "line": "#4472C4",
+                  "lw": 1.33,
+                  "text": "#000000",
+                  "bold": false,
+                  "size": 12,
+                  "align": "l"
+                },
+                "link": "#4472C4",
+                "box": {
+                  "x": 627,
+                  "y": 629.6,
+                  "w": 316.3,
+                  "h": 42.1
+                }
+              },
+              {
+                "id": "n_ppp_55",
+                "type": "department",
+                "name": "Business Development and Project Development Agile Innovation Capital",
+                "nameEn": "",
+                "code": "",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [],
+                "hl": true,
+                "style": {
+                  "fill": "#FBE5D6",
+                  "line": "#4472C4",
+                  "lw": 1.33,
+                  "text": "#FF0000",
+                  "bold": false,
+                  "size": 12,
+                  "align": "l"
+                },
+                "link": "#4472C4",
+                "box": {
+                  "x": 626.1,
+                  "y": 680.5,
+                  "w": 317.8,
+                  "h": 54.4
+                }
+              },
+              {
+                "id": "n_ppp_76",
+                "type": "department",
+                "name": "Ecosystem Capital Management",
+                "nameEn": "",
+                "code": "",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [],
+                "hl": true,
+                "style": {
+                  "fill": "#FBE5D6",
+                  "line": "#4472C4",
+                  "lw": 1.33,
+                  "text": "#FF0000",
+                  "bold": false,
+                  "size": 12,
+                  "align": "l"
+                },
+                "link": "#4472C4",
+                "box": {
+                  "x": 625.4,
+                  "y": 744.6,
+                  "w": 317.9,
+                  "h": 45
+                }
+              },
+              {
+                "id": "n_ppp_16",
+                "type": "department",
+                "name": "Augmented Human Capital Management",
+                "nameEn": "",
+                "code": "",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [],
+                "hl": true,
+                "style": {
+                  "fill": "#FBE5D6",
+                  "line": "#4472C4",
+                  "lw": 1.33,
+                  "text": "#FF0000",
+                  "bold": false,
+                  "size": 12,
+                  "align": "l"
+                },
+                "link": "#4472C4",
+                "box": {
+                  "x": 626.8,
+                  "y": 803,
+                  "w": 316.8,
+                  "h": 42.1
+                }
+              },
+              {
+                "id": "n_ppp_56",
+                "type": "department",
+                "name": "Customer Experience & Platform Capital Management",
+                "nameEn": "",
+                "code": "",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [],
+                "hl": true,
+                "style": {
+                  "fill": "#FBE5D6",
+                  "line": "#4472C4",
+                  "lw": 1.33,
+                  "text": "#FF0000",
+                  "bold": false,
+                  "size": 12,
+                  "align": "l"
+                },
+                "link": "#4472C4",
+                "box": {
+                  "x": 627,
+                  "y": 853.4,
+                  "w": 317.9,
+                  "h": 45
+                }
+              },
+              {
+                "id": "n_ppp_17",
+                "type": "department",
+                "name": "Risk and Compliance Management",
+                "nameEn": "",
+                "code": "",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [],
+                "style": {
+                  "fill": "#FFFFFF",
+                  "line": "#4472C4",
+                  "lw": 1.33,
+                  "text": "#000000",
+                  "bold": false,
+                  "size": 12,
+                  "align": "l"
+                },
+                "link": "#4472C4",
+                "box": {
+                  "x": 623.3,
+                  "y": 913.9,
+                  "w": 321.3,
+                  "h": 42.7
+                }
+              },
+              {
+                "id": "n_ppp_71",
+                "type": "department",
+                "name": "ESG & Sustainable Development",
+                "nameEn": "",
+                "code": "",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [],
+                "hl": true,
+                "style": {
+                  "fill": "#FBE5D6",
+                  "line": "#4472C4",
+                  "lw": 1.33,
+                  "text": "#FF0000",
+                  "bold": false,
+                  "size": 12,
+                  "align": "l"
+                },
+                "link": "#4472C4",
+                "box": {
+                  "x": 623.6,
+                  "y": 971.2,
+                  "w": 319.7,
+                  "h": 45.9
+                }
+              },
+              {
+                "id": "n_ppp_5",
+                "type": "executive",
+                "name": "Chief Technology Officer (CTO)",
+                "nameEn": "",
+                "code": "CTO",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [
+                  {
+                    "id": "n_ppp_23",
+                    "type": "division",
+                    "name": "Technology & Business Development Divsion",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#ED7D31",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#ED7D31",
+                    "box": {
+                      "x": 1025.7,
+                      "y": 596.5,
+                      "w": 361.6,
+                      "h": 53.4
+                    }
+                  },
+                  {
+                    "id": "n_ppp_54",
+                    "type": "department",
+                    "name": "Digital Business Architecture (DBA) Management",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [
+                      {
+                        "id": "n_ppp_68",
+                        "type": "team",
+                        "name": "Digital Process Capital (ISO / Digital Manual) and Business Analyst Team",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "hl": true,
+                        "style": {
+                          "fill": "#FBE5D6",
+                          "line": "#ED7D31",
+                          "lw": 1.33,
+                          "text": "#FF0000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#ED7D31",
+                        "box": {
+                          "x": 1054.3,
+                          "y": 755.4,
+                          "w": 332.9,
+                          "h": 53.8
+                        }
+                      },
+                      {
+                        "id": "n_ppp_69",
+                        "type": "team",
+                        "name": "Data & Intelligence Capital Team",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "hl": true,
+                        "style": {
+                          "fill": "#FBE5D6",
+                          "line": "#ED7D31",
+                          "lw": 1.33,
+                          "text": "#FF0000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#ED7D31",
+                        "box": {
+                          "x": 1054.3,
+                          "y": 824.3,
+                          "w": 331.4,
+                          "h": 50.5
+                        }
+                      },
+                      {
+                        "id": "n_ppp_70",
+                        "type": "team",
+                        "name": "Digital & Cyber Capital Team",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "hl": true,
+                        "style": {
+                          "fill": "#FBE5D6",
+                          "line": "#ED7D31",
+                          "lw": 1.33,
+                          "text": "#FF0000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#ED7D31",
+                        "box": {
+                          "x": 1053.7,
+                          "y": 889.8,
+                          "w": 333.6,
+                          "h": 44.5
+                        }
+                      }
+                    ],
+                    "hl": true,
+                    "style": {
+                      "fill": "#FBE5D6",
+                      "line": "#ED7D31",
+                      "lw": 1.33,
+                      "text": "#FF0000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#ED7D31",
+                    "box": {
+                      "x": 1015.3,
+                      "y": 672.3,
+                      "w": 371.8,
+                      "h": 64.9
+                    }
+                  },
+                  {
+                    "id": "n_ppp_73",
+                    "type": "department",
+                    "name": "Artificial Intelligence (AI) Capital Management",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "hl": true,
+                    "style": {
+                      "fill": "#FBE5D6",
+                      "line": "#ED7D31",
+                      "lw": 1.33,
+                      "text": "#FF0000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#ED7D31",
+                    "box": {
+                      "x": 1033.6,
+                      "y": 952.1,
+                      "w": 352.9,
+                      "h": 54.6
+                    }
+                  }
+                ],
+                "style": {
+                  "fill": "#FFFFFF",
+                  "line": "#ED7D31",
+                  "lw": 1.33,
+                  "text": "#000000",
+                  "bold": true,
+                  "size": 18,
+                  "align": "c"
+                },
+                "link": "#ED7D31",
+                "box": {
+                  "x": 953.1,
+                  "y": 477.2,
+                  "w": 435,
+                  "h": 82.3
+                }
+              },
+              {
+                "id": "n_ppp_8",
+                "type": "executive",
+                "name": "Chief Operating Officer (COO)",
+                "nameEn": "",
+                "code": "COO",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [
+                  {
+                    "id": "n_ppp_18",
+                    "type": "team",
+                    "name": "Business Development Team",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [
+                      {
+                        "id": "n_ppp_57",
+                        "type": "section",
+                        "name": "Business Development Section",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "box": {
+                          "x": 1524,
+                          "y": 684,
+                          "w": 334.1,
+                          "h": 42.3
+                        }
+                      },
+                      {
+                        "id": "n_ppp_58",
+                        "type": "section",
+                        "name": "Technology Development Section",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "box": {
+                          "x": 1524,
+                          "y": 740,
+                          "w": 334.1,
+                          "h": 42.3
+                        }
+                      }
+                    ],
+                    "hl": true,
+                    "style": {
+                      "fill": "#FBE5D6",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#FF0000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 1484,
+                      "y": 608,
+                      "w": 371.4,
+                      "h": 56
+                    }
+                  },
+                  {
+                    "id": "n_ppp_19",
+                    "type": "section",
+                    "name": "Business Logistic & Vendor Management Section",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": false,
+                      "size": 12,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 1472,
+                      "y": 836,
+                      "w": 334.1,
+                      "h": 41.6
+                    }
+                  },
+                  {
+                    "id": "n_ppp_42",
+                    "type": "section",
+                    "name": "Customer Capital and Channel Member & Key Account Customer Management Section",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": false,
+                      "size": 12,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 1472,
+                      "y": 884,
+                      "w": 334.1,
+                      "h": 55.8
+                    }
+                  },
+                  {
+                    "id": "n_ppp_26",
+                    "type": "company",
+                    "name": "PCE (PPP 100%)",
+                    "nameEn": "Precise Clean Energy Co., Ltd.",
+                    "code": "PCE",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "บริษัทในเครือ ถือหุ้นโดย PPP 100%",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 1940,
+                      "y": 608,
+                      "w": 371.9,
+                      "h": 42.4
+                    }
+                  },
+                  {
+                    "id": "n_ppp_27",
+                    "type": "company",
+                    "name": "PEP (PPP 100%)",
+                    "nameEn": "Precise Energy Crop Plantation Co., Ltd",
+                    "code": "PEP",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "บริษัทในเครือ ถือหุ้นโดย PPP 100%",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 1940,
+                      "y": 656,
+                      "w": 371.9,
+                      "h": 42.7
+                    }
+                  },
+                  {
+                    "id": "n_ppp_28",
+                    "type": "company",
+                    "name": "TSP1 (PPP 100%)",
+                    "nameEn": "Takbai Solar Power 1 Co., Ltd.",
+                    "code": "TSP1",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "บริษัทในเครือ ถือหุ้นโดย PPP 100%",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 1944,
+                      "y": 708,
+                      "w": 371.9,
+                      "h": 42.7
+                    }
+                  },
+                  {
+                    "id": "n_ppp_43",
+                    "type": "company",
+                    "name": "TSP2 (PPP 100%)",
+                    "nameEn": "Takbai Solar Power 2 Co., Ltd.",
+                    "code": "TSP2",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "บริษัทในเครือ ถือหุ้นโดย PPP 100%",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 1940,
+                      "y": 760,
+                      "w": 371.9,
+                      "h": 42.7
+                    }
+                  },
+                  {
+                    "id": "n_ppp_44",
+                    "type": "company",
+                    "name": "SBP (PPP 76%)",
+                    "nameEn": "Songkhla Biopower Co., Ltd.",
+                    "code": "SBP",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "บริษัทในเครือ ถือหุ้นโดย PPP 76%",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 1940,
+                      "y": 808,
+                      "w": 371.9,
+                      "h": 42.4
+                    }
+                  },
+                  {
+                    "id": "n_ppp_45",
+                    "type": "company",
+                    "name": "SKB (PPP 40%)",
+                    "nameEn": "Songkhla Biomass Co., Ltd",
+                    "code": "SKB",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "บริษัทในเครือ ถือหุ้นโดย PPP 40%",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 1944,
+                      "y": 860,
+                      "w": 371.9,
+                      "h": 42.7
+                    }
+                  },
+                  {
+                    "id": "n_ppp_52",
+                    "type": "company",
+                    "name": "SBF (PPP 40%)",
+                    "nameEn": "Songkhla Biofuel Co., Ltd.",
+                    "code": "SBF",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "บริษัทในเครือ ถือหุ้นโดย PPP 40%",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 1940,
+                      "y": 912,
+                      "w": 371.9,
+                      "h": 42.7
+                    }
+                  },
+                  {
+                    "id": "n_ppp_46",
+                    "type": "company",
+                    "name": "NSPC (PPP 39.43%)",
+                    "nameEn": "Namsor Hydropower Co., Ltd.",
+                    "code": "NSPC",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "บริษัทในเครือ ถือหุ้นโดย PPP 39.43%",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 1940,
+                      "y": 964,
+                      "w": 371.9,
+                      "h": 40
+                    }
+                  }
+                ],
+                "style": {
+                  "fill": "#FFFFFF",
+                  "line": "#70AD47",
+                  "lw": 1.33,
+                  "text": "#000000",
+                  "bold": true,
+                  "size": 18,
+                  "align": "c"
+                },
+                "link": "#70AD47",
+                "box": {
+                  "x": 1698.2,
+                  "y": 478.2,
+                  "w": 407.3,
+                  "h": 82.4
+                }
+              }
+            ],
+            "style": {
+              "fill": "#FFFFFF",
+              "line": "#000000",
+              "lw": 3,
+              "text": "#000000",
+              "bold": true,
+              "size": 18,
+              "align": "c",
+              "dash": "solid"
+            },
+            "link": "#000000",
+            "box": {
+              "x": 932.7,
+              "y": 303.6,
+              "w": 454.9,
+              "h": 82.3
+            }
+          },
+          {
+            "id": "n_ppp_7",
+            "type": "office",
+            "name": "Company Secretary",
+            "nameEn": "",
+            "code": "",
+            "title": "",
+            "head": "",
+            "hc": 0,
+            "staff": true,
+            "layout": "auto",
+            "note": "",
+            "children": [],
+            "style": {
+              "fill": "#FFFFFF",
+              "line": "#000000",
+              "lw": 2,
+              "text": "#000000",
+              "bold": true,
+              "size": 14,
+              "align": "l",
+              "dash": "solid"
+            },
+            "link": "#000000",
+            "box": {
+              "x": 1521.5,
+              "y": 205.2,
+              "w": 278.9,
+              "h": 59.9
+            }
+          }
+        ],
+        "style": {
+          "fill": "#FFFFFF",
+          "line": "#000000",
+          "lw": 3,
+          "text": "#000000",
+          "bold": true,
+          "size": 18,
+          "align": "c",
+          "dash": "solid"
+        },
+        "box": {
+          "x": 932.7,
+          "y": 194.4,
+          "w": 454.9,
+          "h": 82
+        }
+      },
+      "layout": "free"
+    },
+    {
+      "id": "v_2othcmhr2s",
+      "companyCode": "SBP",
+      "versionNo": 2,
+      "name": "ร่างโครงสร้างองค์กร พ.ศ. 2570",
+      "status": "draft",
+      "model": "industrial",
+      "effectiveDate": null,
+      "endDate": null,
+      "plannedDate": "",
+      "note": "",
+      "approvalRef": "",
+      "basedOn": "v_sbp_2025r2",
+      "createdAt": "2026-10-16T03:49:06.772Z",
+      "createdBy": "@jinnaphas",
+      "updatedAt": "2026-10-16T03:51:06.981Z",
+      "updatedBy": "@jinnaphas",
+      "doc": {
+        "title": "SONGKHLA BIOPOWER CO., LTD. (SBP) 2025",
+        "titleColor": "#FF0000",
+        "titleSize": 44,
+        "legendSize": 20,
+        "footerSize": 14,
+        "frameBoxes": {
+          "title": {
+            "x": 24,
+            "y": 24,
+            "w": 2320.9,
+            "h": 138.8
+          },
+          "legend": {
+            "x": 277.1,
+            "y": 1272,
+            "w": 545.3,
+            "h": 84.4
+          },
+          "footer": [
+            {
+              "x": 77.4,
+              "y": 1438.9,
+              "w": 360.8,
+              "h": 92.4
+            },
+            {
+              "x": 438.6,
+              "y": 1438.5,
+              "w": 360.8,
+              "h": 92.4
+            },
+            {
+              "x": 799.8,
+              "y": 1438.5,
+              "w": 360.8,
+              "h": 92.4
+            },
+            {
+              "x": 1161,
+              "y": 1438.5,
+              "w": 396.3,
+              "h": 92.4
+            },
+            {
+              "x": 1558.5,
+              "y": 1438.9,
+              "w": 396.3,
+              "h": 92.4
+            },
+            {
+              "x": 1956.6,
+              "y": 1438.9,
+              "w": 396.3,
+              "h": 92.4
+            }
+          ]
+        },
+        "footer": [
+          [
+            "REVENUE STREAM",
+            "RENEWABLE ENERGY"
+          ],
+          [
+            "REVISIONS of Year : No.2"
+          ],
+          [
+            "DATE: July 1, 2025"
+          ],
+          [
+            "OFFER",
+            "________________/__________________",
+            "( MD / Co-MD)"
+          ],
+          [
+            "VERIFIED",
+            "__________________________________",
+            "( CEO-RS)"
+          ],
+          [
+            "APPROVED",
+            "__________________________________",
+            "( CEO)"
+          ]
+        ],
+        "legend": "SBP = Songkhla Biopower Co., Ltd."
+      },
+      "root": {
+        "id": "n_sbp_2",
+        "type": "board",
+        "name": "Board of Director (BOD)",
+        "nameEn": "",
+        "code": "BOD",
+        "title": "",
+        "head": "",
+        "hc": 0,
+        "staff": false,
+        "layout": "auto",
+        "note": "",
+        "children": [
+          {
+            "id": "n_sbp_3",
+            "type": "executive",
+            "name": "Co-Managing Director (MD3)/ Managing Director (MD1)",
+            "nameEn": "",
+            "code": "MD3/MD1",
+            "title": "",
+            "head": "",
+            "hc": 0,
+            "staff": false,
+            "layout": "auto",
+            "note": "",
+            "children": [
+              {
+                "id": "n_sbp_18",
+                "type": "department",
+                "name": "Human Capital Management",
+                "nameEn": "",
+                "code": "",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [],
+                "style": {
+                  "fill": "#FFFFFF",
+                  "line": "#70AD47",
+                  "lw": 1.33,
+                  "text": "#000000",
+                  "bold": false,
+                  "size": 12,
+                  "align": "l"
+                },
+                "link": "#70AD47",
+                "box": {
+                  "x": 268.9,
+                  "y": 501.1,
+                  "w": 334.1,
+                  "h": 42.2
+                }
+              },
+              {
+                "id": "n_sbp_19",
+                "type": "department",
+                "name": "Digital Process Capital (ISO / Digital Manual) and Business Analyst",
+                "nameEn": "",
+                "code": "",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [],
+                "hl": true,
+                "style": {
+                  "fill": "#FBE5D6",
+                  "line": "#70AD47",
+                  "lw": 1.33,
+                  "text": "#FF0000",
+                  "bold": false,
+                  "size": 12,
+                  "align": "l"
+                },
+                "link": "#70AD47",
+                "box": {
+                  "x": 268.1,
+                  "y": 553,
+                  "w": 334.1,
+                  "h": 55.8
+                }
+              },
+              {
+                "id": "n_sbp_20",
+                "type": "office",
+                "name": "Account & Finance Management Office",
+                "nameEn": "",
+                "code": "",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [
+                  {
+                    "id": "n_sbp_23",
+                    "type": "section",
+                    "name": "Financial Section",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": false,
+                      "size": 12,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 300,
+                      "y": 700,
+                      "w": 334.1,
+                      "h": 42.2
+                    }
+                  },
+                  {
+                    "id": "n_sbp_24",
+                    "type": "section",
+                    "name": "Accounting Section",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": false,
+                      "size": 12,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 301,
+                      "y": 756,
+                      "w": 334.1,
+                      "h": 42.2
+                    }
+                  }
+                ],
+                "style": {
+                  "fill": "#FFFFFF",
+                  "line": "#70AD47",
+                  "lw": 1.33,
+                  "text": "#000000",
+                  "bold": true,
+                  "size": 14,
+                  "align": "l"
+                },
+                "link": "#70AD47",
+                "box": {
+                  "x": 270.7,
+                  "y": 627,
+                  "w": 371.4,
+                  "h": 56
+                }
+              },
+              {
+                "id": "n_sbp_25",
+                "type": "section",
+                "name": "Procurement and Warehouse Section",
+                "nameEn": "",
+                "code": "",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [],
+                "style": {
+                  "fill": "#FFFFFF",
+                  "line": "#70AD47",
+                  "lw": 1.33,
+                  "text": "#000000",
+                  "bold": false,
+                  "size": 12,
+                  "align": "l"
+                },
+                "link": "#70AD47",
+                "box": {
+                  "x": 269.4,
+                  "y": 814.9,
+                  "w": 334.1,
+                  "h": 42.2
+                }
+              },
+              {
+                "id": "n_sbp_26",
+                "type": "department",
+                "name": "ESG & Sustainable Development and Safety Management",
+                "nameEn": "",
+                "code": "",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [],
+                "hl": true,
+                "style": {
+                  "fill": "#FBE5D6",
+                  "line": "#70AD47",
+                  "lw": 1.33,
+                  "text": "#FF0000",
+                  "bold": false,
+                  "size": 12,
+                  "align": "l"
+                },
+                "link": "#70AD47",
+                "box": {
+                  "x": 269.4,
+                  "y": 874.4,
+                  "w": 334.1,
+                  "h": 44.8
+                }
+              },
+              {
+                "id": "n_sbp_31",
+                "type": "office",
+                "name": "Power Plant Operation Office",
+                "nameEn": "",
+                "code": "",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [
+                  {
+                    "id": "n_sbp_33",
+                    "type": "division",
+                    "name": "Operation Management and Maintenance Division",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [
+                      {
+                        "id": "n_sbp_35",
+                        "type": "section",
+                        "name": "Efficiency Development & Maintenance, Service Section",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "hl": true,
+                        "style": {
+                          "fill": "#FBE5D6",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#FF0000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "box": {
+                          "x": 1046.4,
+                          "y": 621,
+                          "w": 334.1,
+                          "h": 55.8
+                        }
+                      },
+                      {
+                        "id": "n_sbp_36",
+                        "type": "section",
+                        "name": "Woodchip Section",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "box": {
+                          "x": 1046.4,
+                          "y": 693.1,
+                          "w": 334.1,
+                          "h": 55.4
+                        }
+                      }
+                    ],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 1008.8,
+                      "y": 548.9,
+                      "w": 371.4,
+                      "h": 56
+                    }
+                  },
+                  {
+                    "id": "n_sbp_7",
+                    "type": "team",
+                    "name": "Operation Team A",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": false,
+                      "size": 12,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 1596,
+                      "y": 548,
+                      "w": 248.6,
+                      "h": 42
+                    }
+                  },
+                  {
+                    "id": "n_sbp_39",
+                    "type": "team",
+                    "name": "Operation Team B",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": false,
+                      "size": 12,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 1596,
+                      "y": 608,
+                      "w": 248.6,
+                      "h": 42
+                    }
+                  },
+                  {
+                    "id": "n_sbp_40",
+                    "type": "team",
+                    "name": "Operation Team C",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": false,
+                      "size": 12,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 1596,
+                      "y": 660,
+                      "w": 248.6,
+                      "h": 42
+                    }
+                  },
+                  {
+                    "id": "n_sbp_41",
+                    "type": "team",
+                    "name": "Operation Team D",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": false,
+                      "size": 12,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 1596,
+                      "y": 716,
+                      "w": 248.6,
+                      "h": 42
+                    }
+                  }
+                ],
+                "hl": true,
+                "style": {
+                  "fill": "#FBE5D6",
+                  "line": "#70AD47",
+                  "lw": 1.33,
+                  "text": "#FF0000",
+                  "bold": true,
+                  "size": 16,
+                  "align": "l"
+                },
+                "link": "#70AD47",
+                "box": {
+                  "x": 939.1,
+                  "y": 456.7,
+                  "w": 442.6,
+                  "h": 71.2
+                }
+              }
+            ],
+            "style": {
+              "fill": "#FFFFFF",
+              "line": "#000000",
+              "lw": 3,
+              "text": "#000000",
+              "bold": true,
+              "size": 18,
+              "align": "c",
+              "dash": "solid"
+            },
+            "link": "#000000",
+            "box": {
+              "x": 932.7,
+              "y": 303.6,
+              "w": 454.9,
+              "h": 82.3
+            }
+          },
+          {
+            "id": "n_sbp_6",
+            "type": "office",
+            "name": "Company Secretary",
+            "nameEn": "",
+            "code": "",
+            "title": "",
+            "head": "",
+            "hc": 0,
+            "staff": true,
+            "layout": "auto",
+            "note": "",
+            "children": [],
+            "style": {
+              "fill": "#FFFFFF",
+              "line": "#000000",
+              "lw": 2,
+              "text": "#000000",
+              "bold": true,
+              "size": 14,
+              "align": "l",
+              "dash": "solid"
+            },
+            "link": "#000000",
+            "box": {
+              "x": 1521.5,
+              "y": 205.2,
+              "w": 278.9,
+              "h": 59.9
+            }
+          }
+        ],
+        "style": {
+          "fill": "#FFFFFF",
+          "line": "#000000",
+          "lw": 3,
+          "text": "#000000",
+          "bold": true,
+          "size": 18,
+          "align": "c",
+          "dash": "solid"
+        },
+        "box": {
+          "x": 932.7,
+          "y": 194.4,
+          "w": 454.9,
+          "h": 82
+        }
+      },
+      "layout": "free"
+    },
+    {
+      "id": "v_uh0tj3fgzx",
+      "companyCode": "PBI",
+      "versionNo": 2,
+      "name": "ร่างโครงสร้างองค์กร พ.ศ. 2570",
+      "status": "draft",
+      "model": "industrial",
+      "effectiveDate": null,
+      "endDate": null,
+      "plannedDate": "",
+      "note": "",
+      "approvalRef": "",
+      "basedOn": "v_psl_2025r4",
+      "createdAt": "2026-10-16T08:27:16.558Z",
+      "createdBy": "@jinnaphas",
+      "updatedAt": "2026-10-16T08:27:16.558Z",
+      "updatedBy": "@jinnaphas",
+      "doc": {
+        "title": "PRECISE BAMBOO BIOINDUSTRIES CO., LTD. (PBI) 2025",
+        "titleColor": "#FF0000",
+        "titleSize": 44,
+        "legendSize": 18,
+        "footerSize": 14,
+        "frameBoxes": {
+          "title": {
+            "x": 47.3,
+            "y": 24,
+            "w": 2227.3,
+            "h": 138.8
+          },
+          "legend": {
+            "x": 273.4,
+            "y": 1299,
+            "w": 518.3,
+            "h": 68.8
+          },
+          "footer": [
+            {
+              "x": 24,
+              "y": 1525.2,
+              "w": 358.5,
+              "h": 96.2
+            },
+            {
+              "x": 382.9,
+              "y": 1524.7,
+              "w": 358.5,
+              "h": 96.2
+            },
+            {
+              "x": 741.8,
+              "y": 1524.7,
+              "w": 358.5,
+              "h": 96.2
+            },
+            {
+              "x": 1100.7,
+              "y": 1524.7,
+              "w": 393.8,
+              "h": 96.2
+            },
+            {
+              "x": 1495.6,
+              "y": 1525.1,
+              "w": 393.8,
+              "h": 96.2
+            },
+            {
+              "x": 1891.1,
+              "y": 1525.1,
+              "w": 393.8,
+              "h": 96.2
+            }
+          ]
+        },
+        "footer": [
+          [
+            "REVENUE STREAM",
+            "Bamboo-Based Innovative Products"
+          ],
+          [
+            "REVISIONS of Year : No.4"
+          ],
+          [
+            "DATE: Oct 1, 2025"
+          ],
+          [
+            "OFFER",
+            "__________________________________",
+            "(MD)"
+          ],
+          [
+            "VERIFIED",
+            "__________________________________",
+            "( CEO-RS)"
+          ],
+          [
+            "APPROVED",
+            "__________________________________",
+            "( CEO)"
+          ]
+        ],
+        "legend": "PBI = Precise Bamboo Bioindustries Co., Ltd."
+      },
+      "root": {
+        "id": "n_psl_2",
+        "type": "board",
+        "name": "Board of Director (BOD)",
+        "nameEn": "",
+        "code": "BOD",
+        "title": "",
+        "head": "",
+        "hc": 0,
+        "staff": false,
+        "layout": "auto",
+        "note": "",
+        "children": [
+          {
+            "id": "n_psl_3",
+            "type": "executive",
+            "name": "Managing Director (MD)",
+            "nameEn": "",
+            "code": "MD",
+            "title": "",
+            "head": "",
+            "hc": 0,
+            "staff": false,
+            "layout": "auto",
+            "note": "",
+            "children": [
+              {
+                "id": "n_psl_8",
+                "type": "office",
+                "name": "Account & Finance Management Office",
+                "nameEn": "",
+                "code": "",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [
+                  {
+                    "id": "n_psl_12",
+                    "type": "section",
+                    "name": "Financial Section",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#4472C4",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": false,
+                      "size": 12,
+                      "align": "l"
+                    },
+                    "link": "#4472C4",
+                    "box": {
+                      "x": 258.4,
+                      "y": 624.5,
+                      "w": 315.6,
+                      "h": 42.1
+                    }
+                  },
+                  {
+                    "id": "n_psl_14",
+                    "type": "section",
+                    "name": "Accounting Section",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#4472C4",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": false,
+                      "size": 12,
+                      "align": "l"
+                    },
+                    "link": "#4472C4",
+                    "box": {
+                      "x": 257.9,
+                      "y": 682.3,
+                      "w": 315.6,
+                      "h": 42.1
+                    }
+                  },
+                  {
+                    "id": "n_psl_31",
+                    "type": "section",
+                    "name": "Acquire, Construct and Manage Asset and Facility Management Section",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "hl": true,
+                    "style": {
+                      "fill": "#FBE5D6",
+                      "line": "#4472C4",
+                      "lw": 1.33,
+                      "text": "#FF0000",
+                      "bold": false,
+                      "size": 12,
+                      "align": "l"
+                    },
+                    "link": "#4472C4",
+                    "box": {
+                      "x": 257,
+                      "y": 740.3,
+                      "w": 315.6,
+                      "h": 55.4
+                    }
+                  }
+                ],
+                "style": {
+                  "fill": "#FFFFFF",
+                  "line": "#4472C4",
+                  "lw": 1.33,
+                  "text": "#000000",
+                  "bold": true,
+                  "size": 18,
+                  "align": "l"
+                },
+                "link": "#4472C4",
+                "box": {
+                  "x": 145.9,
+                  "y": 518.9,
+                  "w": 429.3,
+                  "h": 90.7
+                }
+              },
+              {
+                "id": "n_psl_15",
+                "type": "office",
+                "name": "Project Management Office (PMO)",
+                "nameEn": "",
+                "code": "PMO",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [],
+                "style": {
+                  "fill": "#FFFFFF",
+                  "line": "#4472C4",
+                  "lw": 1.33,
+                  "text": "#000000",
+                  "bold": false,
+                  "size": 12,
+                  "align": "l"
+                },
+                "link": "#4472C4",
+                "box": {
+                  "x": 650.4,
+                  "y": 658.4,
+                  "w": 317.5,
+                  "h": 42.1
+                }
+              },
+              {
+                "id": "n_psl_37",
+                "type": "department",
+                "name": "Strategy, Business Development and Business Model and Agile Innovation Capital",
+                "nameEn": "",
+                "code": "",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [],
+                "style": {
+                  "fill": "#FFFFFF",
+                  "line": "#4472C4",
+                  "lw": 1.33,
+                  "text": "#000000",
+                  "bold": false,
+                  "size": 12,
+                  "align": "l"
+                },
+                "link": "#4472C4",
+                "box": {
+                  "x": 650.6,
+                  "y": 713.1,
+                  "w": 317.8,
+                  "h": 43.8
+                }
+              },
+              {
+                "id": "n_psl_47",
+                "type": "department",
+                "name": "Ecosystem Capital Management",
+                "nameEn": "",
+                "code": "",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [],
+                "style": {
+                  "fill": "#FFFFFF",
+                  "line": "#4472C4",
+                  "lw": 1.33,
+                  "text": "#000000",
+                  "bold": false,
+                  "size": 12,
+                  "align": "l"
+                },
+                "link": "#4472C4",
+                "box": {
+                  "x": 650.5,
+                  "y": 767.6,
+                  "w": 316.8,
+                  "h": 47
+                }
+              },
+              {
+                "id": "n_psl_16",
+                "type": "department",
+                "name": "Augmented Human Capital Management",
+                "nameEn": "",
+                "code": "",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [],
+                "style": {
+                  "fill": "#FFFFFF",
+                  "line": "#4472C4",
+                  "lw": 1.33,
+                  "text": "#000000",
+                  "bold": false,
+                  "size": 12,
+                  "align": "l"
+                },
+                "link": "#4472C4",
+                "box": {
+                  "x": 651.6,
+                  "y": 826.9,
+                  "w": 316.8,
+                  "h": 41.8
+                }
+              },
+              {
+                "id": "n_psl_17",
+                "type": "department",
+                "name": "Customer Experience & Platform Capital Management",
+                "nameEn": "",
+                "code": "",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [],
+                "style": {
+                  "fill": "#FFFFFF",
+                  "line": "#4472C4",
+                  "lw": 1.33,
+                  "text": "#000000",
+                  "bold": false,
+                  "size": 12,
+                  "align": "l"
+                },
+                "link": "#4472C4",
+                "box": {
+                  "x": 648.9,
+                  "y": 883.6,
+                  "w": 316.8,
+                  "h": 47
+                }
+              },
+              {
+                "id": "n_psl_19",
+                "type": "department",
+                "name": "Risk and Compliance Management",
+                "nameEn": "",
+                "code": "",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [],
+                "style": {
+                  "fill": "#FFFFFF",
+                  "line": "#4472C4",
+                  "lw": 1.33,
+                  "text": "#000000",
+                  "bold": false,
+                  "size": 12,
+                  "align": "l"
+                },
+                "link": "#4472C4",
+                "box": {
+                  "x": 650.8,
+                  "y": 945.4,
+                  "w": 316.8,
+                  "h": 42.1
+                }
+              },
+              {
+                "id": "n_psl_18",
+                "type": "department",
+                "name": "ESG & Sustainable Development and Safety Management",
+                "nameEn": "",
+                "code": "",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [],
+                "style": {
+                  "fill": "#FFFFFF",
+                  "line": "#4472C4",
+                  "lw": 1.33,
+                  "text": "#000000",
+                  "bold": false,
+                  "size": 12,
+                  "align": "l"
+                },
+                "link": "#4472C4",
+                "box": {
+                  "x": 650.6,
+                  "y": 999.8,
+                  "w": 316.8,
+                  "h": 50
+                }
+              },
+              {
+                "id": "n_psl_5",
+                "type": "office",
+                "name": "Technology & Business Development Office",
+                "nameEn": "",
+                "code": "",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [
+                  {
+                    "id": "n_psl_34",
+                    "type": "department",
+                    "name": "Digital Business Architecture (DBA) Management",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [
+                      {
+                        "id": "n_psl_42",
+                        "type": "team",
+                        "name": "Digital Process Capital (ISO / Digital Manual) and Business Analyst Team",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#ED7D31",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#ED7D31",
+                        "box": {
+                          "x": 1088.1,
+                          "y": 716.2,
+                          "w": 327.2,
+                          "h": 54.9
+                        }
+                      },
+                      {
+                        "id": "n_psl_43",
+                        "type": "team",
+                        "name": "Data & Intelligence Capital Team",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#ED7D31",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#ED7D31",
+                        "box": {
+                          "x": 1088.2,
+                          "y": 786.7,
+                          "w": 325.8,
+                          "h": 51.9
+                        }
+                      },
+                      {
+                        "id": "n_psl_44",
+                        "type": "team",
+                        "name": "Digital & Cyber Capital Team",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#ED7D31",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#ED7D31",
+                        "box": {
+                          "x": 1087.6,
+                          "y": 853.9,
+                          "w": 327.9,
+                          "h": 45.3
+                        }
+                      }
+                    ],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#ED7D31",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#ED7D31",
+                    "box": {
+                      "x": 1069.3,
+                      "y": 653.6,
+                      "w": 340.7,
+                      "h": 47.7
+                    }
+                  },
+                  {
+                    "id": "n_psl_45",
+                    "type": "department",
+                    "name": "Artificial Intelligence (AI) Capital Management",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#ED7D31",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#ED7D31",
+                    "box": {
+                      "x": 1061.8,
+                      "y": 917.3,
+                      "w": 352.9,
+                      "h": 52
+                    }
+                  }
+                ],
+                "style": {
+                  "fill": "#FFFFFF",
+                  "line": "#ED7D31",
+                  "lw": 1.33,
+                  "text": "#000000",
+                  "bold": true,
+                  "size": 18,
+                  "align": "l"
+                },
+                "link": "#ED7D31",
+                "box": {
+                  "x": 1000.5,
+                  "y": 521.2,
+                  "w": 411,
+                  "h": 91.1
+                }
+              },
+              {
+                "id": "n_psl_50",
+                "type": "line",
+                "name": "Pulp & Packaging Business (PBI 101)",
+                "nameEn": "",
+                "code": "PBI101",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [
+                  {
+                    "id": "n_psl_51",
+                    "type": "section",
+                    "name": "Sale & Operation Plan Section (RM and FG)",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": false,
+                      "size": 12,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 1680.9,
+                      "y": 589.8,
+                      "w": 350.1,
+                      "h": 41.8
+                    }
+                  },
+                  {
+                    "id": "n_psl_52",
+                    "type": "section",
+                    "name": "Research, Technology Development and QC Section",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": false,
+                      "size": 12,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 1679.5,
+                      "y": 643.7,
+                      "w": 350.1,
+                      "h": 42.8
+                    }
+                  },
+                  {
+                    "id": "n_psl_49",
+                    "type": "section",
+                    "name": "Engineering & Production Management Section",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": false,
+                      "size": 12,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 1679.5,
+                      "y": 697.6,
+                      "w": 350.1,
+                      "h": 36.9
+                    }
+                  }
+                ],
+                "style": {
+                  "fill": "#FFE699",
+                  "line": "#70AD47",
+                  "lw": 1.33,
+                  "text": "#0000FF",
+                  "bold": true,
+                  "size": 14,
+                  "align": "l"
+                },
+                "link": "#70AD47",
+                "box": {
+                  "x": 1641.8,
+                  "y": 524.8,
+                  "w": 388.7,
+                  "h": 52.2
+                }
+              },
+              {
+                "id": "n_psl_54",
+                "type": "line",
+                "name": "Micropropagation Plantlet (PBI 102)",
+                "nameEn": "",
+                "code": "PBI102",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [
+                  {
+                    "id": "n_psl_57",
+                    "type": "section",
+                    "name": "Sale & Operation Plan Section (RM and FG)",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": false,
+                      "size": 12,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 1675.8,
+                      "y": 837,
+                      "w": 350.1,
+                      "h": 35.8
+                    }
+                  },
+                  {
+                    "id": "n_psl_58",
+                    "type": "section",
+                    "name": "Research, Technology Development and QC Section",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": false,
+                      "size": 12,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 1675.4,
+                      "y": 881.2,
+                      "w": 350.1,
+                      "h": 39.6
+                    }
+                  },
+                  {
+                    "id": "n_psl_56",
+                    "type": "section",
+                    "name": "Engineering & Production Management Section",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": false,
+                      "size": 12,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 1672,
+                      "y": 932.7,
+                      "w": 350.1,
+                      "h": 38.5
+                    }
+                  }
+                ],
+                "style": {
+                  "fill": "#FFE699",
+                  "line": "#70AD47",
+                  "lw": 1.33,
+                  "text": "#0000FF",
+                  "bold": true,
+                  "size": 14,
+                  "align": "l"
+                },
+                "link": "#70AD47",
+                "box": {
+                  "x": 1643.2,
+                  "y": 770,
+                  "w": 385,
+                  "h": 51.7
+                }
+              },
+              {
+                "id": "n_psl_55",
+                "type": "line",
+                "name": "Bamboo Production Farm Business (PBI 103)",
+                "nameEn": "",
+                "code": "PBI103",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [
+                  {
+                    "id": "n_psl_59",
+                    "type": "section",
+                    "name": "Bamboo Plantlet R&D Section",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": false,
+                      "size": 12,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 1675.8,
+                      "y": 1051.4,
+                      "w": 350.1,
+                      "h": 35.7
+                    }
+                  },
+                  {
+                    "id": "n_psl_60",
+                    "type": "section",
+                    "name": "Production Development Section",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": false,
+                      "size": 12,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 1675.8,
+                      "y": 1099.9,
+                      "w": 350.1,
+                      "h": 35.7
+                    }
+                  },
+                  {
+                    "id": "n_psl_61",
+                    "type": "section",
+                    "name": "Business Logistic and Material Section",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": false,
+                      "size": 12,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 1676.9,
+                      "y": 1148,
+                      "w": 350.1,
+                      "h": 35.3
+                    }
+                  }
+                ],
+                "style": {
+                  "fill": "#FFE699",
+                  "line": "#70AD47",
+                  "lw": 1.33,
+                  "text": "#0000FF",
+                  "bold": true,
+                  "size": 14,
+                  "align": "l"
+                },
+                "link": "#70AD47",
+                "box": {
+                  "x": 1648.2,
+                  "y": 986.9,
+                  "w": 376.5,
+                  "h": 52.1
+                }
+              },
+              {
+                "id": "n_psl_53",
+                "type": "line",
+                "name": "Biochar Business (PBI 104)",
+                "nameEn": "",
+                "code": "PBI104",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [],
+                "style": {
+                  "fill": "#FFE699",
+                  "line": "#70AD47",
+                  "lw": 1.33,
+                  "text": "#0000FF",
+                  "bold": true,
+                  "size": 14,
+                  "align": "l"
+                },
+                "link": "#70AD47",
+                "box": {
+                  "x": 1652.5,
+                  "y": 1203.9,
+                  "w": 373.4,
+                  "h": 52.6
+                }
+              },
+              {
+                "id": "n_psl_35",
+                "type": "department",
+                "name": "Business Logistic Procurement & Vender Management",
+                "nameEn": "",
+                "code": "",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [],
+                "hl": true,
+                "style": {
+                  "fill": "#FBE5D6",
+                  "line": "#70AD47",
+                  "lw": 1.33,
+                  "text": "#FF0000",
+                  "bold": true,
+                  "size": 14,
+                  "align": "l"
+                },
+                "link": "#70AD47",
+                "box": {
+                  "x": 1652.4,
+                  "y": 1270.2,
+                  "w": 373.1,
+                  "h": 50.7
+                }
+              },
+              {
+                "id": "n_psl_82",
+                "type": "section",
+                "name": "Quality Assurance Section",
+                "nameEn": "",
+                "code": "",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [],
+                "hl": true,
+                "style": {
+                  "fill": "#FBE5D6",
+                  "line": "#70AD47",
+                  "lw": 1.33,
+                  "text": "#FF0000",
+                  "bold": false,
+                  "size": 14,
+                  "align": "l"
+                },
+                "link": "#70AD47",
+                "box": {
+                  "x": 1657.4,
+                  "y": 1334.1,
+                  "w": 372.1,
+                  "h": 51.7
+                }
+              },
+              {
+                "id": "n_psl_36",
+                "type": "department",
+                "name": "Customer Value Management Capital and Channel Member & Key Account Customer Management",
+                "nameEn": "",
+                "code": "",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [],
+                "style": {
+                  "fill": "#FFFFFF",
+                  "line": "#70AD47",
+                  "lw": 1.33,
+                  "text": "#000000",
+                  "bold": true,
+                  "size": 14,
+                  "align": "l"
+                },
+                "link": "#70AD47",
+                "box": {
+                  "x": 1654.2,
+                  "y": 1413.4,
+                  "w": 373.4,
+                  "h": 73.4
+                }
+              }
+            ],
+            "style": {
+              "fill": "#FFFFFF",
+              "line": "#000000",
+              "lw": 3,
+              "text": "#000000",
+              "bold": true,
+              "size": 18,
+              "align": "c",
+              "dash": "solid"
+            },
+            "link": "#000000",
+            "box": {
+              "x": 956,
+              "y": 303.6,
+              "w": 454.9,
+              "h": 91.1
+            }
+          },
+          {
+            "id": "n_psl_7",
+            "type": "office",
+            "name": "Company Secretary",
+            "nameEn": "",
+            "code": "",
+            "title": "",
+            "head": "",
+            "hc": 0,
+            "staff": true,
+            "layout": "auto",
+            "note": "",
+            "children": [],
+            "style": {
+              "fill": "#FFFFFF",
+              "line": "#000000",
+              "lw": 2,
+              "text": "#000000",
+              "bold": true,
+              "size": 14,
+              "align": "l",
+              "dash": "solid"
+            },
+            "link": "#000000",
+            "box": {
+              "x": 1544.8,
+              "y": 205.2,
+              "w": 279.7,
+              "h": 59.9
+            }
+          }
+        ],
+        "style": {
+          "fill": "#FFFFFF",
+          "line": "#000000",
+          "lw": 3,
+          "text": "#000000",
+          "bold": true,
+          "size": 18,
+          "align": "c",
+          "dash": "solid"
+        },
+        "box": {
+          "x": 956,
+          "y": 194.4,
+          "w": 454.9,
           "h": 82
         }
       },
