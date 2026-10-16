@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-10-16T02:02:58.925Z",
+  "updatedAt": "2026-10-16T02:19:14.676Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -13827,6 +13827,3376 @@
           "y": 224.5,
           "w": 454.9,
           "h": 91.4
+        }
+      },
+      "layout": "free"
+    },
+    {
+      "id": "v_dy5dd59e3b",
+      "companyCode": "PSP",
+      "versionNo": 2,
+      "name": "ร่างโครงสร้างองค์กร พ.ศ. 2570",
+      "status": "draft",
+      "model": "industrial",
+      "effectiveDate": null,
+      "endDate": null,
+      "plannedDate": "",
+      "note": "",
+      "approvalRef": "",
+      "basedOn": "v_psp_2026r3",
+      "createdAt": "2026-10-16T02:18:37.847Z",
+      "createdBy": "@jinnaphas",
+      "updatedAt": "2026-10-16T02:19:09.449Z",
+      "updatedBy": "@jinnaphas",
+      "doc": {
+        "title": "PRECISE SYSTEM & PROJECT CO., LTD. (PSP) 2026",
+        "titleColor": "#FF0000",
+        "titleSize": 44,
+        "legendSize": 28,
+        "footerSize": 16,
+        "frameBoxes": {
+          "title": {
+            "x": 24,
+            "y": 24,
+            "w": 3410.2,
+            "h": 141.7
+          },
+          "legend": {
+            "x": 213,
+            "y": 1966.7,
+            "w": 724.7,
+            "h": 105.8
+          },
+          "footer": [
+            {
+              "x": 34.7,
+              "y": 2167.2,
+              "w": 534.6,
+              "h": 153.5
+            },
+            {
+              "x": 569.9,
+              "y": 2166.5,
+              "w": 534.6,
+              "h": 153.5
+            },
+            {
+              "x": 1105.1,
+              "y": 2166.5,
+              "w": 534.6,
+              "h": 153.5
+            },
+            {
+              "x": 1640.3,
+              "y": 2166.5,
+              "w": 587.2,
+              "h": 153.5
+            },
+            {
+              "x": 2229.3,
+              "y": 2167.1,
+              "w": 587.2,
+              "h": 153.5
+            },
+            {
+              "x": 2819.1,
+              "y": 2167.1,
+              "w": 587.2,
+              "h": 153.5
+            }
+          ]
+        },
+        "footer": [
+          [
+            "REVENUE STREAM : INTELLIGENCE GRID"
+          ],
+          [
+            "REVISIONS of Year : No.3"
+          ],
+          [
+            "DATE: Sep 1, 2026"
+          ],
+          [
+            "OFFER",
+            "_____________/__________________/_____________",
+            "( COO/CTO/CFO)"
+          ],
+          [
+            "VERIFIED",
+            "__________________________________",
+            "( CEO-RS)"
+          ],
+          [
+            "APPROVED",
+            "__________________________________",
+            "( CEO)"
+          ]
+        ],
+        "legend": "PSP = Precise System & Project Co., Ltd."
+      },
+      "root": {
+        "id": "n_psp_2",
+        "type": "board",
+        "name": "Board of Director (BOD)",
+        "nameEn": "",
+        "code": "BOD",
+        "title": "",
+        "head": "",
+        "hc": 0,
+        "staff": false,
+        "layout": "auto",
+        "note": "",
+        "children": [
+          {
+            "id": "n_psp_3",
+            "type": "executive",
+            "name": "Chief Executive Officer (CEO)",
+            "nameEn": "",
+            "code": "CEO",
+            "title": "",
+            "head": "",
+            "hc": 0,
+            "staff": false,
+            "layout": "auto",
+            "note": "",
+            "children": [
+              {
+                "id": "n_psp_9",
+                "type": "executive",
+                "name": "Chief Financial Officer (CFO)",
+                "nameEn": "",
+                "code": "CFO",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [
+                  {
+                    "id": "n_psp_51",
+                    "type": "department",
+                    "name": "Accounting Management",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [
+                      {
+                        "id": "n_psp_52",
+                        "type": "department",
+                        "name": "Financial Analysis , Budgeting & Reporting Management",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#4472C4",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#4472C4",
+                        "box": {
+                          "x": 293.8,
+                          "y": 647.9,
+                          "w": 311,
+                          "h": 38.3
+                        }
+                      },
+                      {
+                        "id": "n_psp_53",
+                        "type": "department",
+                        "name": "Financial Statement Preparation Management",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#4472C4",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#4472C4",
+                        "box": {
+                          "x": 291.7,
+                          "y": 695.1,
+                          "w": 313.2,
+                          "h": 40.1
+                        }
+                      },
+                      {
+                        "id": "n_psp_57",
+                        "type": "department",
+                        "name": "Managerial & Cost Accounting Management",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#4472C4",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#4472C4",
+                        "box": {
+                          "x": 291.8,
+                          "y": 745.6,
+                          "w": 313.1,
+                          "h": 45.2
+                        }
+                      },
+                      {
+                        "id": "n_psp_58",
+                        "type": "department",
+                        "name": "Tax Accounting Management",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#4472C4",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#4472C4",
+                        "box": {
+                          "x": 291.8,
+                          "y": 809,
+                          "w": 314.8,
+                          "h": 41.3
+                        }
+                      }
+                    ],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#4472C4",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": false,
+                      "size": 16,
+                      "align": "l"
+                    },
+                    "link": "#4472C4",
+                    "box": {
+                      "x": 253.3,
+                      "y": 574.9,
+                      "w": 351.1,
+                      "h": 55.5
+                    }
+                  },
+                  {
+                    "id": "n_psp_54",
+                    "type": "department",
+                    "name": "Financial Management",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [
+                      {
+                        "id": "n_psp_56",
+                        "type": "department",
+                        "name": "Finance Operation Management",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#4472C4",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#4472C4",
+                        "box": {
+                          "x": 288.9,
+                          "y": 935.6,
+                          "w": 315.2,
+                          "h": 41.9
+                        }
+                      },
+                      {
+                        "id": "n_psp_55",
+                        "type": "department",
+                        "name": "Finance Management",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#4472C4",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#4472C4",
+                        "box": {
+                          "x": 293.5,
+                          "y": 990.2,
+                          "w": 314.4,
+                          "h": 46.9
+                        }
+                      },
+                      {
+                        "id": "n_psp_36",
+                        "type": "department",
+                        "name": "Acquire, Construct & Manage Assets",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#4472C4",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#4472C4",
+                        "box": {
+                          "x": 293.5,
+                          "y": 1060,
+                          "w": 314,
+                          "h": 48.2
+                        }
+                      }
+                    ],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#4472C4",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#4472C4",
+                    "box": {
+                      "x": 252.3,
+                      "y": 864.7,
+                      "w": 352.5,
+                      "h": 55.9
+                    }
+                  }
+                ],
+                "style": {
+                  "fill": "#FFFFFF",
+                  "line": "#4472C4",
+                  "lw": 1.33,
+                  "text": "#000000",
+                  "bold": true,
+                  "size": 18,
+                  "align": "c"
+                },
+                "link": "#4472C4",
+                "box": {
+                  "x": 183.7,
+                  "y": 475.1,
+                  "w": 420.5,
+                  "h": 81.9
+                }
+              },
+              {
+                "id": "n_psp_14",
+                "type": "office",
+                "name": "Project Management Office (PMO)",
+                "nameEn": "",
+                "code": "PMO",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [],
+                "style": {
+                  "fill": "#FFFFFF",
+                  "line": "#4472C4",
+                  "lw": 1.33,
+                  "text": "#000000",
+                  "bold": false,
+                  "size": 12,
+                  "align": "l"
+                },
+                "link": "#4472C4",
+                "box": {
+                  "x": 678.1,
+                  "y": 572.6,
+                  "w": 313.6,
+                  "h": 49.5
+                }
+              },
+              {
+                "id": "n_psp_61",
+                "type": "department",
+                "name": "Strategy, Business Development and Business Model and Agile Innovation Capital",
+                "nameEn": "",
+                "code": "",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [],
+                "style": {
+                  "fill": "#FFFFFF",
+                  "line": "#4472C4",
+                  "lw": 1.33,
+                  "text": "#000000",
+                  "bold": false,
+                  "size": 12,
+                  "align": "l"
+                },
+                "link": "#4472C4",
+                "box": {
+                  "x": 681,
+                  "y": 630.2,
+                  "w": 310.4,
+                  "h": 52.7
+                }
+              },
+              {
+                "id": "n_psp_208",
+                "type": "department",
+                "name": "Ecosystem Capital Management",
+                "nameEn": "",
+                "code": "",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [],
+                "style": {
+                  "fill": "#FFFFFF",
+                  "line": "#4472C4",
+                  "lw": 1.33,
+                  "text": "#000000",
+                  "bold": false,
+                  "size": 12,
+                  "align": "l"
+                },
+                "link": "#4472C4",
+                "box": {
+                  "x": 681,
+                  "y": 693.3,
+                  "w": 310.4,
+                  "h": 46.4
+                }
+              },
+              {
+                "id": "n_psp_15",
+                "type": "department",
+                "name": "Augmented Human Capital Management",
+                "nameEn": "",
+                "code": "",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [],
+                "style": {
+                  "fill": "#FFFFFF",
+                  "line": "#4472C4",
+                  "lw": 1.33,
+                  "text": "#000000",
+                  "bold": false,
+                  "size": 12,
+                  "align": "l"
+                },
+                "link": "#4472C4",
+                "box": {
+                  "x": 680.7,
+                  "y": 748.6,
+                  "w": 310.4,
+                  "h": 42.1
+                }
+              },
+              {
+                "id": "n_psp_16",
+                "type": "department",
+                "name": "Customer Experience & Platform Capital Management",
+                "nameEn": "",
+                "code": "",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [],
+                "style": {
+                  "fill": "#FFFFFF",
+                  "line": "#4472C4",
+                  "lw": 1.33,
+                  "text": "#000000",
+                  "bold": false,
+                  "size": 12,
+                  "align": "l"
+                },
+                "link": "#4472C4",
+                "box": {
+                  "x": 681,
+                  "y": 800.4,
+                  "w": 310.4,
+                  "h": 55.3
+                }
+              },
+              {
+                "id": "n_psp_17",
+                "type": "department",
+                "name": "Risk and Compliance Management",
+                "nameEn": "",
+                "code": "",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [],
+                "style": {
+                  "fill": "#FFFFFF",
+                  "line": "#4472C4",
+                  "lw": 1.33,
+                  "text": "#000000",
+                  "bold": false,
+                  "size": 12,
+                  "align": "l"
+                },
+                "link": "#4472C4",
+                "box": {
+                  "x": 680,
+                  "y": 866.2,
+                  "w": 310.4,
+                  "h": 42.4
+                }
+              },
+              {
+                "id": "n_psp_18",
+                "type": "department",
+                "name": "ESG & Sustainable Development and Safety Management",
+                "nameEn": "",
+                "code": "",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [],
+                "style": {
+                  "fill": "#FFFFFF",
+                  "line": "#4472C4",
+                  "lw": 1.33,
+                  "text": "#000000",
+                  "bold": false,
+                  "size": 12,
+                  "align": "l"
+                },
+                "link": "#4472C4",
+                "box": {
+                  "x": 679.8,
+                  "y": 924,
+                  "w": 310.4,
+                  "h": 52.6
+                }
+              },
+              {
+                "id": "n_psp_5",
+                "type": "executive",
+                "name": "Chief Technology Officer (CTO)",
+                "nameEn": "",
+                "code": "CTO",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [
+                  {
+                    "id": "n_psp_19",
+                    "type": "office",
+                    "name": "Smart Grids Digital & Regional Development Solution Office",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#ED7D31",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#ED7D31",
+                    "box": {
+                      "x": 1094.8,
+                      "y": 590.6,
+                      "w": 363.6,
+                      "h": 58
+                    }
+                  },
+                  {
+                    "id": "n_psp_79",
+                    "type": "department",
+                    "name": "Digital Engineering and Development Management",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [
+                      {
+                        "id": "n_psp_120",
+                        "type": "team",
+                        "name": "Model Base System Engineering and Software & Tools Support Team",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#ED7D31",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#ED7D31",
+                        "box": {
+                          "x": 1135.8,
+                          "y": 729.7,
+                          "w": 319.3,
+                          "h": 47.6
+                        }
+                      },
+                      {
+                        "id": "n_psp_211",
+                        "type": "team",
+                        "name": "Organization Project Enabling Processes Team",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#ED7D31",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#ED7D31",
+                        "box": {
+                          "x": 1135.9,
+                          "y": 789.4,
+                          "w": 320.7,
+                          "h": 37.7
+                        }
+                      },
+                      {
+                        "id": "n_psp_212",
+                        "type": "section",
+                        "name": "Standard & Compliance Section",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#ED7D31",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#ED7D31",
+                        "box": {
+                          "x": 1135.7,
+                          "y": 836.5,
+                          "w": 322.5,
+                          "h": 40.6
+                        }
+                      }
+                    ],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#ED7D31",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#ED7D31",
+                    "box": {
+                      "x": 1116.5,
+                      "y": 665.9,
+                      "w": 341.7,
+                      "h": 55
+                    }
+                  },
+                  {
+                    "id": "n_psp_78",
+                    "type": "department",
+                    "name": "Digital Business Architecture (DBA) Management",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [
+                      {
+                        "id": "n_psp_127",
+                        "type": "team",
+                        "name": "Digital Process Capital (ISO / Digital Manual) and Business Analyst Team",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#ED7D31",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#ED7D31",
+                        "box": {
+                          "x": 1141.3,
+                          "y": 962.9,
+                          "w": 314.1,
+                          "h": 52.7
+                        }
+                      },
+                      {
+                        "id": "n_psp_128",
+                        "type": "team",
+                        "name": "Data & Intelligence Capital Team",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#ED7D31",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#ED7D31",
+                        "box": {
+                          "x": 1140.4,
+                          "y": 1033.1,
+                          "w": 312.7,
+                          "h": 49.4
+                        }
+                      },
+                      {
+                        "id": "n_psp_129",
+                        "type": "team",
+                        "name": "Digital & Cyber Capital Team",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#ED7D31",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#ED7D31",
+                        "box": {
+                          "x": 1140,
+                          "y": 1097.1,
+                          "w": 316.7,
+                          "h": 43.8
+                        }
+                      }
+                    ],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#ED7D31",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#ED7D31",
+                    "box": {
+                      "x": 1116.1,
+                      "y": 888.9,
+                      "w": 340.3,
+                      "h": 58.6
+                    }
+                  },
+                  {
+                    "id": "n_psp_22",
+                    "type": "department",
+                    "name": "Testing and Laboratory and Calibration",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#ED7D31",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": false,
+                      "size": 12,
+                      "align": "l"
+                    },
+                    "link": "#ED7D31",
+                    "box": {
+                      "x": 1114.7,
+                      "y": 1156.2,
+                      "w": 341.4,
+                      "h": 48.6
+                    }
+                  },
+                  {
+                    "id": "n_psp_220",
+                    "type": "line",
+                    "name": "Agentic SGAM Lab Business",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": null,
+                      "line": "#ED7D31",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#ED7D31",
+                    "box": {
+                      "x": 1115.9,
+                      "y": 1229.8,
+                      "w": 340.3,
+                      "h": 58.9
+                    }
+                  }
+                ],
+                "style": {
+                  "fill": "#FFFFFF",
+                  "line": "#ED7D31",
+                  "lw": 1.33,
+                  "text": "#000000",
+                  "bold": true,
+                  "size": 18,
+                  "align": "c"
+                },
+                "link": "#ED7D31",
+                "box": {
+                  "x": 1045.4,
+                  "y": 477.4,
+                  "w": 413.4,
+                  "h": 82.3
+                }
+              },
+              {
+                "id": "n_psp_8",
+                "type": "executive",
+                "name": "Chief Operating Officer (COO)",
+                "nameEn": "",
+                "code": "COO",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [
+                  {
+                    "id": "n_psp_20",
+                    "type": "line",
+                    "name": "SCADA Digital Engineering Business (PSP101)",
+                    "nameEn": "",
+                    "code": "PSP101",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [
+                      {
+                        "id": "n_psp_109",
+                        "type": "division",
+                        "name": "SCADA Business Division",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [
+                          {
+                            "id": "n_psp_108",
+                            "type": "section",
+                            "name": "Sale and Operation Management Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 1549.2,
+                              "y": 733.9,
+                              "w": 343.8,
+                              "h": 41.8
+                            }
+                          },
+                          {
+                            "id": "n_psp_107",
+                            "type": "section",
+                            "name": "Proposal & Engineering Section (SCADA Digital Engineering)",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 1549.2,
+                              "y": 784.1,
+                              "w": 350.6,
+                              "h": 49.2
+                            }
+                          }
+                        ],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": true,
+                          "size": 15,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "box": {
+                          "x": 1525.4,
+                          "y": 665.2,
+                          "w": 371.1,
+                          "h": 60.2
+                        }
+                      },
+                      {
+                        "id": "n_psp_105",
+                        "type": "division",
+                        "name": "SCADA Engineering and Solution Delivery Division",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [
+                          {
+                            "id": "n_psp_112",
+                            "type": "department",
+                            "name": "Functional Engineering Management",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 1546.7,
+                              "y": 922.6,
+                              "w": 353,
+                              "h": 44.7
+                            }
+                          },
+                          {
+                            "id": "n_psp_111",
+                            "type": "section",
+                            "name": "Software Engineering Section(Application, Software Engineering)",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 1545.6,
+                              "y": 976.6,
+                              "w": 347.5,
+                              "h": 46.1
+                            }
+                          },
+                          {
+                            "id": "n_psp_113",
+                            "type": "section",
+                            "name": "Communication System & Integration Engineering Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 1546.7,
+                              "y": 1031.5,
+                              "w": 354.8,
+                              "h": 53
+                            }
+                          }
+                        ],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": true,
+                          "size": 15,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "box": {
+                          "x": 1525.2,
+                          "y": 849.8,
+                          "w": 373.3,
+                          "h": 58.6
+                        }
+                      },
+                      {
+                        "id": "n_psp_116",
+                        "type": "division",
+                        "name": "Product Management (R&D and Digital Innovation) Division",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [
+                          {
+                            "id": "n_psp_117",
+                            "type": "section",
+                            "name": "Product Management Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 1549.6,
+                              "y": 1198.1,
+                              "w": 351.9,
+                              "h": 40.8
+                            }
+                          },
+                          {
+                            "id": "n_psp_118",
+                            "type": "section",
+                            "name": "R&D and Digital Innovation Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 1550.7,
+                              "y": 1248.3,
+                              "w": 352.2,
+                              "h": 39.3
+                            }
+                          },
+                          {
+                            "id": "n_psp_119",
+                            "type": "section",
+                            "name": "Standard & Compliance Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 1551.1,
+                              "y": 1299.7,
+                              "w": 351.8,
+                              "h": 43.3
+                            }
+                          }
+                        ],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": true,
+                          "size": 15,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "box": {
+                          "x": 1524.5,
+                          "y": 1129.2,
+                          "w": 378.7,
+                          "h": 57.6
+                        }
+                      },
+                      {
+                        "id": "n_psp_110",
+                        "type": "division",
+                        "name": "Project Management Division",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [
+                          {
+                            "id": "n_psp_114",
+                            "type": "section",
+                            "name": "Project Management Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 1548.2,
+                              "y": 1430.9,
+                              "w": 354.1,
+                              "h": 41.2
+                            }
+                          },
+                          {
+                            "id": "n_psp_115",
+                            "type": "section",
+                            "name": "Testing & Commissioning Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 1548.2,
+                              "y": 1482.1,
+                              "w": 352.7,
+                              "h": 44.4
+                            }
+                          },
+                          {
+                            "id": "n_psp_106",
+                            "type": "section",
+                            "name": "Service, Maintanance and Customer Relationship Management Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 1547.4,
+                              "y": 1537.3,
+                              "w": 354.1,
+                              "h": 52.5
+                            }
+                          }
+                        ],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": true,
+                          "size": 15,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "box": {
+                          "x": 1525.6,
+                          "y": 1363.8,
+                          "w": 377.3,
+                          "h": 55.2
+                        }
+                      },
+                      {
+                        "id": "n_psp_69",
+                        "type": "division",
+                        "name": "Production Division",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [
+                          {
+                            "id": "n_psp_70",
+                            "type": "section",
+                            "name": "Production Management Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 1545.3,
+                              "y": 1675.7,
+                              "w": 356.2,
+                              "h": 47.9
+                            }
+                          }
+                        ],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": true,
+                          "size": 14,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "box": {
+                          "x": 1515.1,
+                          "y": 1612,
+                          "w": 388,
+                          "h": 55.6
+                        }
+                      },
+                      {
+                        "id": "n_psp_71",
+                        "type": "division",
+                        "name": "Quality Assurance Division",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [
+                          {
+                            "id": "n_psp_72",
+                            "type": "section",
+                            "name": "Vendor Assurance Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 1541,
+                              "y": 1799.7,
+                              "w": 361.5,
+                              "h": 38.5
+                            }
+                          },
+                          {
+                            "id": "n_psp_73",
+                            "type": "section",
+                            "name": "In-Process Quality Control Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 1542.5,
+                              "y": 1847.8,
+                              "w": 360.5,
+                              "h": 38.9
+                            }
+                          },
+                          {
+                            "id": "n_psp_74",
+                            "type": "section",
+                            "name": "Repair Service Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 1542.5,
+                              "y": 1894.8,
+                              "w": 360.7,
+                              "h": 38.9
+                            }
+                          }
+                        ],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": true,
+                          "size": 14,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "box": {
+                          "x": 1512.5,
+                          "y": 1740.3,
+                          "w": 390.7,
+                          "h": 51.6
+                        }
+                      }
+                    ],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": true,
+                      "size": 16,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 1491.7,
+                      "y": 589.3,
+                      "w": 408.2,
+                      "h": 65.6
+                    }
+                  },
+                  {
+                    "id": "n_psp_38",
+                    "type": "line",
+                    "name": "Power System & Regional Development Business (PSP102)",
+                    "nameEn": "",
+                    "code": "PSP102",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [
+                      {
+                        "id": "n_psp_104",
+                        "type": "section",
+                        "name": "HR & Workforce Development Section",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "box": {
+                          "x": 2023,
+                          "y": 667.1,
+                          "w": 325.7,
+                          "h": 48.3
+                        }
+                      },
+                      {
+                        "id": "n_psp_63",
+                        "type": "division",
+                        "name": "Overhead and Underground Power Transmission & Distribution Division",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [
+                          {
+                            "id": "n_psp_82",
+                            "type": "section",
+                            "name": "Sale and Operation Management Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 2029.1,
+                              "y": 791.6,
+                              "w": 321,
+                              "h": 41.6
+                            }
+                          },
+                          {
+                            "id": "n_psp_77",
+                            "type": "section",
+                            "name": "Proposal & Engineering Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 2028.9,
+                              "y": 841.9,
+                              "w": 321.9,
+                              "h": 42.7
+                            }
+                          }
+                        ],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": true,
+                          "size": 15,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "box": {
+                          "x": 1976.6,
+                          "y": 726.2,
+                          "w": 372.7,
+                          "h": 56.1
+                        }
+                      },
+                      {
+                        "id": "n_psp_39",
+                        "type": "division",
+                        "name": "Substation Division",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [
+                          {
+                            "id": "n_psp_40",
+                            "type": "section",
+                            "name": "Sale and Operation Management Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 2026.8,
+                              "y": 961.1,
+                              "w": 323.3,
+                              "h": 40.8
+                            }
+                          },
+                          {
+                            "id": "n_psp_91",
+                            "type": "section",
+                            "name": "Proposal & Engineering Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 2026.8,
+                              "y": 1014.8,
+                              "w": 323.5,
+                              "h": 42.4
+                            }
+                          }
+                        ],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": true,
+                          "size": 15,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "box": {
+                          "x": 1976.6,
+                          "y": 895.1,
+                          "w": 372.3,
+                          "h": 57.8
+                        }
+                      },
+                      {
+                        "id": "n_psp_41",
+                        "type": "division",
+                        "name": "Renewable Power Generation Division",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [
+                          {
+                            "id": "n_psp_92",
+                            "type": "section",
+                            "name": "Sale and Operation Management Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 2026.1,
+                              "y": 1133.3,
+                              "w": 324,
+                              "h": 44.1
+                            }
+                          },
+                          {
+                            "id": "n_psp_93",
+                            "type": "section",
+                            "name": "Proposal & Engineering Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 2025.9,
+                              "y": 1187.6,
+                              "w": 322.9,
+                              "h": 41.5
+                            }
+                          }
+                        ],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": true,
+                          "size": 15,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "box": {
+                          "x": 1974.2,
+                          "y": 1068,
+                          "w": 376.4,
+                          "h": 53.3
+                        }
+                      },
+                      {
+                        "id": "n_psp_94",
+                        "type": "division",
+                        "name": "Smart District Division",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [
+                          {
+                            "id": "n_psp_95",
+                            "type": "section",
+                            "name": "Sale and Operation Management Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 2023.1,
+                              "y": 1306.1,
+                              "w": 327,
+                              "h": 42.4
+                            }
+                          },
+                          {
+                            "id": "n_psp_216",
+                            "type": "section",
+                            "name": "Spatial Engineering & Land Development Engineering Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 2024.2,
+                              "y": 1360.1,
+                              "w": 325.2,
+                              "h": 39
+                            }
+                          },
+                          {
+                            "id": "n_psp_214",
+                            "type": "section",
+                            "name": "Intergrated Water Management Digital Engineering Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 2024.9,
+                              "y": 1408.8,
+                              "w": 325.2,
+                              "h": 45.7
+                            }
+                          }
+                        ],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": true,
+                          "size": 15,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "box": {
+                          "x": 1972.8,
+                          "y": 1241.7,
+                          "w": 377.8,
+                          "h": 50.9
+                        }
+                      },
+                      {
+                        "id": "n_psp_96",
+                        "type": "division",
+                        "name": "Engineering Division",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [
+                          {
+                            "id": "n_psp_97",
+                            "type": "section",
+                            "name": "Digital Engineering & System Integration Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 2025.5,
+                              "y": 1542.4,
+                              "w": 325.2,
+                              "h": 38.7
+                            }
+                          },
+                          {
+                            "id": "n_psp_98",
+                            "type": "section",
+                            "name": "Civil Engineering Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 2023.7,
+                              "y": 1591.2,
+                              "w": 324.8,
+                              "h": 40
+                            }
+                          },
+                          {
+                            "id": "n_psp_99",
+                            "type": "section",
+                            "name": "M&E Engineering Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 2023.1,
+                              "y": 1643.6,
+                              "w": 325.6,
+                              "h": 37.8
+                            }
+                          },
+                          {
+                            "id": "n_psp_130",
+                            "type": "section",
+                            "name": "P&ID and Control Engineering Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 2023.7,
+                              "y": 1695.7,
+                              "w": 324.3,
+                              "h": 37.4
+                            }
+                          }
+                        ],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": true,
+                          "size": 15,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "box": {
+                          "x": 1971.1,
+                          "y": 1472.7,
+                          "w": 377.8,
+                          "h": 48
+                        }
+                      },
+                      {
+                        "id": "n_psp_100",
+                        "type": "division",
+                        "name": "Project Management Division",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [
+                          {
+                            "id": "n_psp_102",
+                            "type": "section",
+                            "name": "Project Management Section (Power System)",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 2021.3,
+                              "y": 1808,
+                              "w": 326.5,
+                              "h": 45.7
+                            }
+                          },
+                          {
+                            "id": "n_psp_101",
+                            "type": "section",
+                            "name": "Service&Maintanace Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 2021.3,
+                              "y": 1864.8,
+                              "w": 326.5,
+                              "h": 42.3
+                            }
+                          },
+                          {
+                            "id": "n_psp_103",
+                            "type": "section",
+                            "name": "Construction Equipment & Fleet Management Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 2021.3,
+                              "y": 1923.9,
+                              "w": 326.3,
+                              "h": 48
+                            }
+                          }
+                        ],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": true,
+                          "size": 15,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "box": {
+                          "x": 1972.5,
+                          "y": 1747.8,
+                          "w": 375.1,
+                          "h": 49.4
+                        }
+                      }
+                    ],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": true,
+                      "size": 16,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 1960.5,
+                      "y": 587.5,
+                      "w": 389.2,
+                      "h": 67.5
+                    }
+                  },
+                  {
+                    "id": "n_psp_42",
+                    "type": "line",
+                    "name": "AMI Business (PSP103)",
+                    "nameEn": "",
+                    "code": "PSP103",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [
+                      {
+                        "id": "n_psp_45",
+                        "type": "section",
+                        "name": "Sale and Operation Management Section",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "box": {
+                          "x": 2462.3,
+                          "y": 662.6,
+                          "w": 326.4,
+                          "h": 43.9
+                        }
+                      },
+                      {
+                        "id": "n_psp_43",
+                        "type": "section",
+                        "name": "Product and Engineering Development Management Section",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "box": {
+                          "x": 2463.2,
+                          "y": 721.6,
+                          "w": 327,
+                          "h": 45.5
+                        }
+                      },
+                      {
+                        "id": "n_psp_50",
+                        "type": "section",
+                        "name": "Project Management Section",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "box": {
+                          "x": 2464.4,
+                          "y": 776,
+                          "w": 324.4,
+                          "h": 45.4
+                        }
+                      },
+                      {
+                        "id": "n_psp_46",
+                        "type": "section",
+                        "name": "Customer Value Management Section",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "box": {
+                          "x": 2464.4,
+                          "y": 830.4,
+                          "w": 324.4,
+                          "h": 45.1
+                        }
+                      }
+                    ],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": true,
+                      "size": 16,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 2414.6,
+                      "y": 591.8,
+                      "w": 374.6,
+                      "h": 60.2
+                    }
+                  },
+                  {
+                    "id": "n_psp_83",
+                    "type": "line",
+                    "name": "High Quality Power System & EMS Business (PSP104)",
+                    "nameEn": "",
+                    "code": "PSP104",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [
+                      {
+                        "id": "n_psp_85",
+                        "type": "division",
+                        "name": "Total Customer Solution and Value Develiver Division",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [
+                          {
+                            "id": "n_psp_84",
+                            "type": "section",
+                            "name": "Customer Insights & Business Development Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 2460.9,
+                              "y": 1059.3,
+                              "w": 326.2,
+                              "h": 44.8
+                            }
+                          },
+                          {
+                            "id": "n_psp_86",
+                            "type": "section",
+                            "name": "Energy Economics & Carbon Market Strategy Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 2459.5,
+                              "y": 1117.9,
+                              "w": 327,
+                              "h": 44
+                            }
+                          },
+                          {
+                            "id": "n_psp_87",
+                            "type": "section",
+                            "name": "Digital Engineering & System Analysis Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 2461.4,
+                              "y": 1177.7,
+                              "w": 324.6,
+                              "h": 45.2
+                            }
+                          }
+                        ],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": false,
+                          "size": 14,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "box": {
+                          "x": 2442.1,
+                          "y": 987,
+                          "w": 345,
+                          "h": 56
+                        }
+                      },
+                      {
+                        "id": "n_psp_89",
+                        "type": "division",
+                        "name": "Digital Engineering & EPC Delivery Division",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [
+                          {
+                            "id": "n_psp_88",
+                            "type": "section",
+                            "name": "System Architecture & Control Integration Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 2459.7,
+                              "y": 1296.9,
+                              "w": 326.5,
+                              "h": 37.8
+                            }
+                          },
+                          {
+                            "id": "n_psp_90",
+                            "type": "section",
+                            "name": "EPC Project Execution Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 2461,
+                              "y": 1347,
+                              "w": 325.2,
+                              "h": 36.2
+                            }
+                          },
+                          {
+                            "id": "n_psp_218",
+                            "type": "section",
+                            "name": "Sensor and IoT Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 2460.4,
+                              "y": 1393.2,
+                              "w": 325.2,
+                              "h": 36.3
+                            }
+                          }
+                        ],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": false,
+                          "size": 14,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "box": {
+                          "x": 2438.6,
+                          "y": 1234.6,
+                          "w": 347.9,
+                          "h": 55.4
+                        }
+                      },
+                      {
+                        "id": "n_psp_81",
+                        "type": "department",
+                        "name": "Total Customer Solution Revenue Stream Type Management (Acquisition, Agreement Process for DE)",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [
+                          {
+                            "id": "n_psp_121",
+                            "type": "department",
+                            "name": "Channel Member and key Account Management",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 2455.4,
+                              "y": 1525.5,
+                              "w": 328.1,
+                              "h": 49.2
+                            }
+                          },
+                          {
+                            "id": "n_psp_122",
+                            "type": "department",
+                            "name": "Customer Value Management",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 2457.5,
+                              "y": 1589.1,
+                              "w": 324.9,
+                              "h": 43.8
+                            }
+                          }
+                        ],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": true,
+                          "size": 14,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "box": {
+                          "x": 2418.6,
+                          "y": 1440.6,
+                          "w": 365.8,
+                          "h": 72
+                        }
+                      },
+                      {
+                        "id": "n_psp_123",
+                        "type": "department",
+                        "name": "Supply Chain Management (Supply, Agreement Process for DE)",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [
+                          {
+                            "id": "n_psp_131",
+                            "type": "department",
+                            "name": "Equipment and Component for DE",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 2458.1,
+                              "y": 1715,
+                              "w": 323.8,
+                              "h": 42
+                            }
+                          },
+                          {
+                            "id": "n_psp_132",
+                            "type": "department",
+                            "name": "Global Sourcing for DE",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 2456.9,
+                              "y": 1768.5,
+                              "w": 324.3,
+                              "h": 43.2
+                            }
+                          }
+                        ],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": true,
+                          "size": 14,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "box": {
+                          "x": 2415.1,
+                          "y": 1651.1,
+                          "w": 366.8,
+                          "h": 54.6
+                        }
+                      }
+                    ],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 2414.9,
+                      "y": 909.5,
+                      "w": 373.1,
+                      "h": 63.8
+                    }
+                  },
+                  {
+                    "id": "n_psp_47",
+                    "type": "line",
+                    "name": "Enterprise Customer & Partner Solutions Division (PSP105)",
+                    "nameEn": "",
+                    "code": "PSP105",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [
+                      {
+                        "id": "n_psp_48",
+                        "type": "department",
+                        "name": "Global Sourcing and Products Trade Management",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#000000",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "box": {
+                          "x": 2886,
+                          "y": 664.9,
+                          "w": 345.7,
+                          "h": 45
+                        }
+                      },
+                      {
+                        "id": "n_psp_49",
+                        "type": "section",
+                        "name": "Global Sourcing and Project Sales Section & Project Management",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#000000",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "box": {
+                          "x": 2886,
+                          "y": 722.8,
+                          "w": 344.2,
+                          "h": 51.5
+                        }
+                      },
+                      {
+                        "id": "n_psp_80",
+                        "type": "department",
+                        "name": "Contract Execution & Customer Service Management",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#000000",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "box": {
+                          "x": 2887.6,
+                          "y": 789.7,
+                          "w": 342.7,
+                          "h": 51.8
+                        }
+                      },
+                      {
+                        "id": "n_psp_64",
+                        "type": "division",
+                        "name": "Commercial Advisory & Review Division",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [
+                          {
+                            "id": "n_psp_65",
+                            "type": "section",
+                            "name": "Tender & Contract Commercial Review Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#000000",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "box": {
+                              "x": 2887.2,
+                              "y": 953.4,
+                              "w": 340.9,
+                              "h": 49.1
+                            }
+                          }
+                        ],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#000000",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": true,
+                          "size": 16,
+                          "align": "l"
+                        },
+                        "box": {
+                          "x": 2854.7,
+                          "y": 876.3,
+                          "w": 373.4,
+                          "h": 59.3
+                        }
+                      },
+                      {
+                        "id": "n_psp_66",
+                        "type": "division",
+                        "name": "Business Logistic & Vendor Management Division",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [
+                          {
+                            "id": "n_psp_67",
+                            "type": "section",
+                            "name": "Business Logistic & Vendor Management Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#000000",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "box": {
+                              "x": 2908.1,
+                              "y": 1113.3,
+                              "w": 330.6,
+                              "h": 52.5
+                            }
+                          },
+                          {
+                            "id": "n_psp_68",
+                            "type": "section",
+                            "name": "Warehouse & Packing Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 0,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#000000",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "box": {
+                              "x": 2910.1,
+                              "y": 1181.7,
+                              "w": 328.6,
+                              "h": 55.1
+                            }
+                          }
+                        ],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#000000",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": true,
+                          "size": 14,
+                          "align": "l"
+                        },
+                        "box": {
+                          "x": 2860.5,
+                          "y": 1032.7,
+                          "w": 376.5,
+                          "h": 62.2
+                        }
+                      }
+                    ],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#000000",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": true,
+                      "size": 16,
+                      "align": "l"
+                    },
+                    "box": {
+                      "x": 2851.1,
+                      "y": 592,
+                      "w": 381.3,
+                      "h": 60.4
+                    }
+                  }
+                ],
+                "style": {
+                  "fill": "#FFFFFF",
+                  "line": "#70AD47",
+                  "lw": 1.33,
+                  "text": "#000000",
+                  "bold": true,
+                  "size": 18,
+                  "align": "c"
+                },
+                "link": "#70AD47",
+                "box": {
+                  "x": 1947.5,
+                  "y": 478.4,
+                  "w": 434.9,
+                  "h": 82.4
+                }
+              }
+            ],
+            "style": {
+              "fill": "#FFFFFF",
+              "line": "#000000",
+              "lw": 3,
+              "text": "#000000",
+              "bold": true,
+              "size": 18,
+              "align": "c",
+              "dash": "solid"
+            },
+            "link": "#000000",
+            "box": {
+              "x": 1666.8,
+              "y": 303.8,
+              "w": 430.3,
+              "h": 82.3
+            }
+          },
+          {
+            "id": "n_psp_7",
+            "type": "office",
+            "name": "Company Secretary",
+            "nameEn": "",
+            "code": "",
+            "title": "",
+            "head": "",
+            "hc": 0,
+            "staff": true,
+            "layout": "auto",
+            "note": "",
+            "children": [],
+            "style": {
+              "fill": "#FFFFFF",
+              "line": "#000000",
+              "lw": 2,
+              "text": "#000000",
+              "bold": true,
+              "size": 14,
+              "align": "l",
+              "dash": "solid"
+            },
+            "link": "#000000",
+            "box": {
+              "x": 2216.4,
+              "y": 205.4,
+              "w": 273.3,
+              "h": 59.9
+            }
+          }
+        ],
+        "style": {
+          "fill": "#FFFFFF",
+          "line": "#000000",
+          "lw": 3,
+          "text": "#000000",
+          "bold": true,
+          "size": 18,
+          "align": "c",
+          "dash": "solid"
+        },
+        "box": {
+          "x": 1666.8,
+          "y": 194.6,
+          "w": 429.3,
+          "h": 82
         }
       },
       "layout": "free"
