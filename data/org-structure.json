@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-10-16T09:17:03.942Z",
+  "updatedAt": "2026-10-16T09:17:29.062Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -21303,10 +21303,10 @@
       "basedOn": "v_sbp_2025r2",
       "createdAt": "2026-10-16T03:49:06.772Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-10-16T03:51:06.981Z",
+      "updatedAt": "2026-10-16T09:17:24.022Z",
       "updatedBy": "@jinnaphas",
       "doc": {
-        "title": "SONGKHLA BIOPOWER CO., LTD. (SBP) 2025",
+        "title": "SONGKHLA BIOPOWER CO., LTD. (SBP) 2027",
         "titleColor": "#FF0000",
         "titleSize": 44,
         "legendSize": 20,
@@ -21369,10 +21369,10 @@
             "RENEWABLE ENERGY"
           ],
           [
-            "REVISIONS of Year : No.2"
+            "REVISIONS of Year : No.0"
           ],
           [
-            "DATE: July 1, 2025"
+            "DATE: Jan 1, 2027"
           ],
           [
             "OFFER",
