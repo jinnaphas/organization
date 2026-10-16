@@ -514,6 +514,42 @@ details.help ol,details.help ul{margin:8px 0 2px;padding-left:20px;display:grid;
 .warnp{margin:0;color:var(--warn);font-size:13px}
 .co-chips{display:flex;flex-wrap:wrap;gap:4px}
 
+.wf-badge{position:absolute;top:-11px;right:-9px;z-index:3;display:inline-flex;align-items:baseline;gap:1px;padding:1px 7px;border-radius:999px;font:600 12px/1.45 var(--f-body);background:#0d6672;color:#fff;white-space:nowrap;box-shadow:0 1px 3px rgba(0,0,0,.28);pointer-events:none;transform-origin:100% 0;transform:scale(max(1,calc(var(--hz,1) * .7)))}
+.wf-badge small{font-size:10px;font-weight:500;opacity:.9}
+.wf-badge.short{background:#b03636} .wf-badge.over{background:#94600f} .wf-badge.ok{background:#1c7a47} .wf-badge.nop{background:#3a59a8}
+.wf-badge.zero{background:#eef1f3;color:#66747e;box-shadow:0 0 0 1px #cfd7dc}
+.node.wf-dim{opacity:.2}
+.node.wf-dim .wf-badge{opacity:.6}
+.stage.glide{transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.cv-over{position:absolute;left:12px;top:12px;right:12px;z-index:5;pointer-events:none;display:flex}
+.cv-over:empty{display:none}
+.wf-crumbs{pointer-events:auto;max-width:100%;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;background:var(--surface);border:1px solid var(--line);border-radius:9px;box-shadow:var(--shadow);padding:4px 6px}
+.wf-crumbs::-webkit-scrollbar{display:none}
+.wf-crumbs .crumb{display:inline-flex;align-items:center;gap:5px;flex:none;max-width:280px}
+.wf-crumbs .crumb-sep{flex:none}
+.wf-crumbs .crumb svg{width:14px;height:14px}
+.wf-hint{font-size:12.5px;color:var(--muted);margin-left:8px;white-space:nowrap}
+.ip-path{margin:4px 0 0;font-size:12px;line-height:1.4}
+.ip-note{margin:0;font-size:12.5px}
+.stat small{font:500 12px var(--f-body);color:var(--muted)}
+.stat.gap.short b{color:var(--danger)} .stat.gap.over b,.stat.warn b{color:var(--warn)} .stat.gap.ok b{color:var(--ok)} .stat.gap.nop b{color:var(--plat)}
+.stat.gap b{font-size:15px}
+.wf-alert.sm{padding:6px 10px;font-size:12.5px}
+.pp-h{display:flex;gap:8px;align-items:baseline}
+.pp-h .muted{font:400 12.5px var(--f-body);text-transform:none;letter-spacing:0}
+.pp-list{display:grid;gap:0;border-top:1px solid var(--line)}
+.pp{padding:7px 2px;border-bottom:1px solid var(--line);display:grid;gap:1px;font-size:13px}
+.pp-n b{font-weight:600}
+.pp-m{font-size:12px;color:var(--ink-2)}
+.pp-u{font-size:11.5px;color:var(--muted)}
+.pp-more{font-size:12px;margin:6px 0 0}
+.wf-mix summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:6px}
+.wf-mix summary::-webkit-details-marker{display:none}
+.wf-mix summary::before{content:"▸";color:var(--muted);font-size:11px}
+.wf-mix[open] summary::before{content:"▾"}
+.wf-mix summary h3{margin:0}
+.wf-src{font-size:12.5px}
+
 /* ---------- responsive ---------- */
 @media (max-width:1600px){
   .tools .tbtn:not(.keep) .tl{display:none}
@@ -539,6 +575,7 @@ details.help ol,details.help ul{margin:8px 0 2px;padding-left:20px;display:grid;
   .wf-page{padding:12px}
   .wf-q{width:150px}
   .pn-meta{display:none}
+  .wf-hint{display:none}
   .mp-row{grid-template-columns:minmax(0,1fr)}
   .ip-close{display:inline-grid}
   .tools{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
@@ -838,6 +875,7 @@ const S = {
   wfEnv: null, wfSha: null, wfKey: null, wfDirty: false, wfChanges: [],
   wfUnit: {},          // versionId -> node id shown on the Workforce page
   wfScope: 'all', wfQuery: '', planFilter: 'all',
+  wfView: 'chart',     // Workforce page: chart (org chart + drill down) | table
   ui: { rail: false, insp: false, hideRail: false, hideInsp: false },   // rail/insp: mobile drawers; hide*: desktop panels
   layout: null,
 };
@@ -1626,14 +1664,14 @@ function render() {
     (S.route.view === 'home' ? homeHTML() : workspaceHTML());
   if (S.route.view === 'co') {
     const r = $('#rail'); if (r) r.scrollTop = railScroll;
-    if (S.page === 'structure' && S.tab === 'chart' && $('#canvas')) { bindCanvas(); renderStage(); }
+    if ($('#canvas')) { bindCanvas(); renderStage(); if (S.page === 'workforce' && S.wfZoomPending) { S.wfZoomPending = false; wfZoomTo(wfCurId(curVersion())); } }
   }
 }
 function refresh() {
   if (S.route.view !== 'co') { render(); return; }
   const v = curVersion();
   const structure = S.page === 'structure';
-  if ((structure && S.tab === 'chart' && v && !$('#canvas')) || (!structure && $('#canvas'))) { render(); return; }
+  if (wantCanvas(v) !== !!$('#canvas')) { render(); return; }
   setHTML('#rail', railHTML(S.route.code));
   setHTML('#banner', bannerHTML());
   setHTML('#pnav', pnavHTML());
@@ -1642,8 +1680,9 @@ function refresh() {
   setHTML('#insp', inspHTML(v));
   const ws = $('#ws');
   if (ws) { ws.classList.toggle('rail-open', S.ui.rail); ws.classList.toggle('insp-open', S.ui.insp); ws.classList.toggle('no-rail', S.ui.hideRail); ws.classList.toggle('no-insp', S.ui.hideInsp); }
-  if (!structure) setHTML('#body', wfBodyHTML(v));
-  else if (S.tab === 'chart') renderStage(); else setHTML('#outline', outlineHTML(v));
+  if ($('#canvas')) renderStage();
+  else if (!structure) setHTML('#body', wfBodyHTML(v));
+  else setHTML('#outline', outlineHTML(v));
   refreshTop();
 }
 function refreshTop() { setHTML('#topbar', topHTML()); }
@@ -1686,6 +1725,7 @@ function topRightHTML() {
   return chip + save + user + more;
 }
 function bannerHTML() {
+  if (S.appStale) return `<div class="banner warn">${I.info}<p><b>มีแอปเวอร์ชันใหม่</b> กดรีเฟรชก่อนแก้ไขหรือบันทึกต่อ การแก้ไขที่ยังไม่บันทึกจะยังอยู่</p><button class="btn sm primary" data-act="reload">รีเฟรชตอนนี้</button></div>`;
   if (S.user && !S.user.canPush) return `<div class="banner warn">${I.lock}<p>บัญชี @${esc(S.user.login)} ไม่มีสิทธิ์เขียน ${esc(S.cfg.owner + '/' + S.cfg.repo)} — ดูได้อย่างเดียว</p></div>`;
   if (S.user) return '';
   if (S.source === 'sample') return `<div class="banner">${I.info}<p><b>ข้อมูลตัวอย่าง</b> ยังไม่ใช่โครงสร้างจริงของบริษัท แก้ไขทดลองได้ในเบราว์เซอร์นี้ เมื่อพร้อมให้เข้าสู่ระบบด้วย GitHub Token เพื่อบันทึกเป็นไฟล์กลาง</p><button class="btn sm" data-act="login">${I.github}เข้าสู่ระบบ</button></div>`;
@@ -1736,13 +1776,18 @@ function homeHTML() {
 }
 
 /* ---------- workspace ---------- */
+function canvasHTML() {
+  return `<div class="canvas" id="canvas" tabindex="0" aria-label="แผนผังโครงสร้างองค์กร"><div class="stage" id="stage"></div><div class="cv-over" id="cv-over"></div>
+      <div class="zoomctl"><button class="ibtn" data-act="zoom-out" title="ย่อ" aria-label="ย่อ">${I.minus}</button><button class="zv" data-act="zoom-reset" id="zv" title="ขนาดจริง 100%">100%</button><button class="ibtn" data-act="zoom-in" title="ขยาย" aria-label="ขยาย">${I.plus}</button><button class="ibtn" data-act="zoom-fit" title="พอดีหน้าจอ" aria-label="พอดีหน้าจอ">${I.fit}</button></div></div>`;
+}
+// the structure chart, or the same chart with headcounts on the Workforce page
+const wantCanvas = v => !!v && (S.page === 'structure' ? S.tab === 'chart' : S.page === 'workforce' && !!S.wf && S.wfView === 'chart');
 function workspaceHTML() {
   const v = curVersion();
   let body;
-  if (S.page !== 'structure') body = wfBodyHTML(v);
+  if (S.page !== 'structure') body = wantCanvas(v) ? canvasHTML() : wfBodyHTML(v);
   else if (!v) body = emptyHTML();
-  else if (S.tab === 'chart') body = `<div class="canvas" id="canvas" tabindex="0" aria-label="แผนผังโครงสร้างองค์กร"><div class="stage" id="stage"></div>
-      <div class="zoomctl"><button class="ibtn" data-act="zoom-out" title="ย่อ" aria-label="ย่อ">${I.minus}</button><button class="zv" data-act="zoom-reset" id="zv" title="ขนาดจริง 100%">100%</button><button class="ibtn" data-act="zoom-in" title="ขยาย" aria-label="ขยาย">${I.plus}</button><button class="ibtn" data-act="zoom-fit" title="พอดีหน้าจอ" aria-label="พอดีหน้าจอ">${I.fit}</button></div></div>`;
+  else if (S.tab === 'chart') body = canvasHTML();
   else body = `<div class="outline" id="outline">${outlineHTML(v)}</div>`;
   return `<div class="ws${S.ui.rail ? ' rail-open' : ''}${S.ui.insp ? ' insp-open' : ''}${S.ui.hideRail ? ' no-rail' : ''}${S.ui.hideInsp ? ' no-insp' : ''}" id="ws">
     <aside class="rail" id="rail" aria-label="เวอร์ชันโครงสร้าง">${railHTML(S.route.code)}</aside>
@@ -1849,7 +1894,7 @@ function togglePanel(side) {
   if (ws) { ws.classList.toggle('no-rail', S.ui.hideRail); ws.classList.toggle('no-insp', S.ui.hideInsp); }
   setHTML('#tools', toolsHTML(curVersion()));
   // keep the part of the chart that was in the middle of the canvas in the middle
-  if (cv && w0 && S.views[S.versionId]) { view().x += (cv.getBoundingClientRect().width - w0) / 2; applyView(); }
+  if (cv && w0 && S.views[viewKey()]) { view().x += (cv.getBoundingClientRect().width - w0) / 2; applyView(); }
 }
 
 /* ---------- chart stage ---------- */
@@ -1859,7 +1904,13 @@ function renderStage() {
   const col = colSet(v.id);
   const L = computeLayout(v, col);
   S.layout = L;
-  const ctx = { col, roll: rollup(v.root), edit: canEdit(v), free: !!L.free, v, diff: S.compareWith && byId(S.compareWith) ? diffVersions(byId(S.compareWith), v) : null };
+  const structure = S.page === 'structure';
+  const ctx = { col, roll: rollup(v.root), edit: chartEdit(v), free: !!L.free, v, diff: structure && S.compareWith && byId(S.compareWith) ? diffVersions(byId(S.compareWith), v) : null };
+  if (!structure && S.wf) {
+    const sel = wfCurId(v), focus = sel !== '__out' && sel !== v.root.id ? new Set() : null;
+    if (focus) walk(find(v.root, sel).node, n => focus.add(n.id));
+    ctx.wf = { P: wfPlace(v), plan: ctx.roll, sel, focus };
+  }
   let html = frameHTML(L.frame);
   html += `<svg class="links" width="${L.w}" height="${L.h}" viewBox="0 0 ${L.w} ${L.h}">${L.links.map(l => `<path class="lk ${l.cls || ''}" d="${l.d}" stroke="${l.color}"/>`).join('')}</svg>`;
   html += L.nodes.map(it => nodeHTML(it, ctx)).join('');
@@ -1868,8 +1919,17 @@ function renderStage() {
   stage.style.width = L.w + 'px';
   stage.style.height = L.h + 'px';
   stage.innerHTML = html;
-  if (!S.views[v.id]) initialView(); else applyView();
+  setHTML('#cv-over', ctx.wf ? wfCrumbsHTML(v, ctx.wf.sel) : '');
+  const cr = $('#cv-over .wf-crumbs');
+  if (cr) cr.scrollLeft = cr.scrollWidth;
+  if (!S.views[viewKey()]) initialView(); else applyView();
 }
+// drill path over the Workforce chart
+function wfCrumbsHTML(v, cur) {
+  const trail = cur === '__out' ? [v.root] : nodeTrail(v.root, cur);
+  return `<nav class="crumbs wf-crumbs" aria-label="ลำดับหน่วยงาน"><button class="crumb" data-act="wf-unit" data-id="${v.root.id}" ${trail.length <= 1 && cur !== '__out' ? 'aria-current="true"' : ''}>${I.people}ทั้งบริษัท</button>${trail.slice(1).map((n, i) => `<span class="crumb-sep">›</span><button class="crumb" data-act="wf-unit" data-id="${n.id}" ${i === trail.length - 2 ? 'aria-current="true"' : ''}>${esc(n.name || 'ไม่มีชื่อ')}</button>`).join('')}${cur === '__out' ? '<span class="crumb-sep">›</span><span class="crumb" aria-current="true">ยังไม่ได้อยู่ในผัง</span>' : ''}</nav>`;
+}
+const chartEdit = v => S.page === 'structure' && canEdit(v);
 function frameHTML(fr) {
   if (!fr) return '';
   const pos = b => `left:${b.x}px;top:${b.y}px;width:${b.w}px;height:${b.h}px`;
@@ -1887,20 +1947,29 @@ function nodeHTML(it, ctx) {
   const total = ctx.roll.get(n.id);
   const d = ctx.diff ? ctx.diff.map[n.id] : null;
   const sub = n.head || n.title;
-  const pill = EXTERNAL.has(n.type) ? '' : (total ? fmtNum(total) + ' คน' : '');
+  const wf = ctx.wf;
+  const pill = EXTERNAL.has(n.type) || wf ? '' : (total ? fmtNum(total) + ' คน' : '');
+  let badge = '';
+  if (wf && !EXTERNAL.has(n.type)) {
+    const a = wf.P.roll.get(n.id) || 0, p = wf.plan.get(n.id) || 0, g = gapInfo(p, a), own = (wf.P.byNode.get(n.id) || []).length;
+    const tipW = `คนจริง ${fmtNum(a)} คน${own !== a ? ` (อยู่ที่หน่วยนี้โดยตรง ${fmtNum(own)})` : ''}${p ? ` · แผน ${fmtNum(p)} คน · ${g.txt}` : ''}`;
+    badge = `<span class="wf-badge${a ? '' : ' zero'} ${g.cls}" title="${esc(tipW)}">${fmtNum(a)}${p ? `<small>/${fmtNum(p)}</small>` : ''}<small> คน</small></span>`;
+  }
   const tip = [n.name, n.nameEn, TYPES[n.type].th + (n.staff ? ' · Staff' : '') + (n.code ? ' · ' + n.code : ''), n.title && n.head ? n.title + ': ' + n.head : '', n.note].filter(Boolean).join('\n');
   const fpx = ctx.free ? ptPx(st, ctx.v) : fontPx(st, n);
   const css = `left:${it.x}px;top:${it.y}px;${ctx.free ? `width:${it.w}px;height:${it.h}px;` : ''}background:${st.fill || 'transparent'};border:${st.line ? Math.max(1, +st.lw || 1) : 1}px ${DASH[st.dash] || 'solid'} ${st.line || 'transparent'};color:${st.text};font-weight:${st.bold ? 700 : 400};font-size:${fpx.toFixed(2)}px;text-align:${st.align === 'c' ? 'center' : st.align === 'r' ? 'right' : 'left'}`;
-  return `<div class="node${n.id === S.selected ? ' sel' : ''}${d ? ' d-' + d : ''}" data-id="${n.id}" style="${css}" title="${esc(tip)}">
+  const isSel = wf ? n.id === wf.sel && n.id !== ctx.v.root.id : n.id === S.selected;
+  return `<div class="node${isSel ? ' sel' : ''}${d ? ' d-' + d : ''}${wf && wf.focus && !wf.focus.has(n.id) ? ' wf-dim' : ''}" data-id="${n.id}" style="${css}" title="${esc(tip)}">
     <div class="x-txt"><span class="x-name">${esc(n.name || 'ไม่มีชื่อ')}</span>${n.nameEn && n.type !== 'company' ? `<span class="x-en">${esc(n.nameEn)}</span>` : ''}${sub ? `<span class="x-sub">${esc(sub)}</span>` : ''}</div>
-    ${pill ? `<span class="x-pill">${pill}</span>` : ''}
+    ${pill ? `<span class="x-pill">${pill}</span>` : ''}${badge}
     ${d ? `<span class="n-badge b-${d}">${DIFF_LABEL[d]}</span>` : ''}
     ${n.children.length ? `<button class="n-tog" data-act="toggle" data-id="${n.id}" aria-label="${collapsed ? 'แสดง' : 'ซ่อน'}หน่วยย่อย" title="${collapsed ? 'แสดง' : 'ซ่อน'}หน่วยย่อย">${collapsed ? '+' + countDesc(n) : '−'}</button>` : ''}
     ${ctx.edit ? `<button class="n-add" data-act="add-child" data-id="${n.id}" title="เพิ่มหน่วยย่อย" aria-label="เพิ่มหน่วยย่อย">${I.plus}</button>` : ''}
     ${ctx.free && ctx.edit ? ['nw', 'n', 'ne', 'e', 'se', 's', 'sw', 'w'].map(h => `<i class="rh rh-${h}" data-h="${h}"></i>`).join('') : ''}
   </div>`;
 }
-function view() { return S.views[S.versionId] || (S.views[S.versionId] = { x: 0, y: 0, z: 1 }); }
+const viewKey = () => S.versionId + (S.page === 'workforce' ? '#wf' : '');
+function view() { const k = viewKey(); return S.views[k] || (S.views[k] = { x: 0, y: 0, z: 1 }); }
 function applyView() {
   const st = $('#stage'), cv = $('#canvas');
   if (!st || !cv) return;
@@ -1913,9 +1982,9 @@ function fitView() {
   const cv = $('#canvas'), L = S.layout;
   if (!cv || !L) return;
   const r = cv.getBoundingClientRect();
-  if (!r.width || !r.height) { S.views[S.versionId] = { x: 0, y: 0, z: 1 }; applyView(); return; }
+  if (!r.width || !r.height) { S.views[viewKey()] = { x: 0, y: 0, z: 1 }; applyView(); return; }
   const z = clamp(Math.min((r.width - 24) / L.w, (r.height - 24) / L.h), 0.15, 1);
-  S.views[S.versionId] = { z, x: (r.width - L.w * z) / 2, y: Math.max(8, (r.height - L.h * z) / 2) };
+  S.views[viewKey()] = { z, x: (r.width - L.w * z) / 2, y: Math.max(8, (r.height - L.h * z) / 2) };
   applyView();
 }
 function initialView() {
@@ -1927,7 +1996,7 @@ function initialView() {
   if (!r.width || fit >= min) { fitView(); return; }
   const root = L.nodes[0];
   // open on the sheet title (or the top unit when there is no frame), centred on the top unit
-  S.views[S.versionId] = { z: min, x: r.width / 2 - (root.x + root.w / 2) * min, y: 12 - (L.frame && L.frame.title ? (L.frame.title.y - 8) * min : (root.y - PAD) * min) };
+  S.views[viewKey()] = { z: min, x: r.width / 2 - (root.x + root.w / 2) * min, y: 12 - (L.frame && L.frame.title ? (L.frame.title.y - 8) * min : (root.y - PAD) * min) };
   applyView();
 }
 function zoomTo(z, cx, cy) {
@@ -1971,7 +2040,7 @@ function setLevel(lv) {
   const set = colSet(v.id);
   set.clear();
   if (lv) walk(v.root, (n, p, d) => { if (d === +lv - 1 && n.children.length) set.add(n.id); });
-  S.views[v.id] = null;
+  S.views[v.id] = null; S.views[v.id + '#wf'] = null;
   renderStage();
 }
 function startRename(id) {
@@ -2028,7 +2097,7 @@ function bindCanvas() {
     if (e.target.closest('.zoomctl, button, textarea, input, select')) return;
     if (e.pointerType === 'mouse' && e.button !== 0) return;
     pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
-    const v0 = curVersion(), freeEdit = isFree(v0) && canEdit(v0);
+    const v0 = curVersion(), freeEdit = isFree(v0) && chartEdit(v0);
     const rh = freeEdit && e.target.closest('.rh');
     if (rh && pts.size === 1) {
       const f = find(v0.root, rh.closest('.node').dataset.id);
@@ -2115,7 +2184,7 @@ function bindCanvas() {
     if (!drag.started) {
       if (dist < (isFree(curVersion()) ? 3 : 6)) return;
       const v = curVersion(), f = find(v.root, drag.id);
-      if (isFree(v) && canEdit(v) && f && !(e.ctrlKey || e.metaKey)) {
+      if (isFree(v) && chartEdit(v) && f && !(e.ctrlKey || e.metaKey)) {
         // free layout: drag moves the box (Shift: together with everything under it)
         drag.kind = 'move';
         drag.started = true;
@@ -2127,7 +2196,7 @@ function bindCanvas() {
         capture(e);
         return;
       }
-      if (!canEdit(v) || !f || !f.parent) {
+      if (!chartEdit(v) || !f || !f.parent) {
         const w = view();
         pan = { sx: drag.sx, sy: drag.sy, ox: w.x, oy: w.y, moved: true };
         cv.classList.add('panning');
@@ -2178,10 +2247,11 @@ function bindCanvas() {
     if (drag) {
       const d = drag;
       if (d.started) { const target = d.target; cleanupDrag(); if (target && e.type === 'pointerup') opReparent(d.id, target); }
-      else { drag = null; if (e.type === 'pointerup') selectNode(d.id); }
+      else { drag = null; if (e.type === 'pointerup') { if (S.page === 'workforce') wfSelect(d.id); else selectNode(d.id); } }
     }
     if (pan) {
-      if (!pan.moved && e.type === 'pointerup' && S.selected) { S.ui.insp = false; selectNode(null); }
+      if (!pan.moved && e.type === 'pointerup' && S.page === 'workforce') wfSelect(null, { zoom: false });
+      else if (!pan.moved && e.type === 'pointerup' && S.selected) { S.ui.insp = false; selectNode(null); }
       pan = null;
       cv.classList.remove('panning');
     }
@@ -2189,7 +2259,7 @@ function bindCanvas() {
   cv.addEventListener('pointerup', end);
   cv.addEventListener('pointercancel', end);
   cv.addEventListener('dblclick', e => {
-    if (e.target.closest('button')) return;
+    if (e.target.closest('button') || S.page !== 'structure') return;
     const n = e.target.closest('.node') || document.elementFromPoint(e.clientX, e.clientY)?.closest('.node');
     if (n) startRename(n.dataset.id);
   });
@@ -2855,7 +2925,8 @@ function helpModal() {
         <dt><kbd>Ctrl</kbd>+ล้อเมาส์</dt><dd>ซูมแผนผัง (ล้อเมาส์อย่างเดียว = เลื่อนแผนผัง)</dd>
         <dt><kbd>[</kbd> <kbd>]</kbd></dt><dd>ซ่อน / แสดงแผงซ้าย (เวอร์ชัน) และแผงขวา (รายละเอียด) ให้แผนผังกว้างเต็มจอ</dd></dl></div>
       <div><h3>กำลังคนและวางแผนกำลังคน</h3>
-        <ul><li>แต่ละบริษัทมีหน้า “กำลังคน” (Drill Down + รายชื่อ) และ “วางแผนกำลังคน” (แผนเทียบคนจริง) แยกจากหน้าโครงสร้างองค์กร</li>
+        <ul><li>แต่ละบริษัทมีหน้า “กำลังคน” และ “วางแผนกำลังคน” แยกจากหน้าโครงสร้างองค์กร</li>
+        <li>หน้ากำลังคนเป็นผังองค์กรเดียวกัน คลิกกล่องเพื่อเจาะลึก: ผังซูมไปที่สายงานนั้นและแผงขวาแสดงตัวเลขและรายชื่อ</li>
         <li>รายชื่อพนักงานเก็บแบบเข้ารหัส เปิดดูด้วยรหัสผ่านข้อมูลกำลังคน · อัตรากำลังตามแผนแก้ได้ใน Draft</li></ul></div>
       <div><h3>การบันทึกและสิทธิ์</h3>
         <ul><li>ทุกคนเปิดดูได้ ผู้มีสิทธิ์แก้ไขเข้าสู่ระบบด้วย GitHub Token ที่มีสิทธิ์ Contents: Read and write</li>
@@ -3420,7 +3491,13 @@ function wfToolsHTML(v) {
   if (!v) return lead + `<div class="tools-r">${tail}</div>`;
   if (S.page === 'workforce') {
     if (!S.wf) return lead + `<div class="tools-r">${canEditApp() ? `<button class="tbtn keep" data-act="wf-import">${I.upload}<span class="tl">นำเข้าไฟล์พนักงาน</span></button>` : ''}${tail}</div>`;
-    return `${lead}<input class="inp sm wf-q" type="search" data-wf="q" value="${esc(S.wfQuery)}" placeholder="ค้นหาชื่อ รหัส หรือตำแหน่ง" aria-label="ค้นหาพนักงาน">
+    const views = `<div class="tabs" role="tablist"><button class="tab" role="tab" data-act="wf-view" data-view="chart" aria-selected="${S.wfView === 'chart'}">ผังองค์กร</button><button class="tab" role="tab" data-act="wf-view" data-view="table" aria-selected="${S.wfView === 'table'}">ตาราง</button></div>`;
+    if (S.wfView === 'chart') {
+      const lv = S.levelSel[v.id] || '';
+      return `${lead}${views}<span class="wf-hint">คลิกกล่องเพื่อเจาะลึกหน่วยงาน</span><div class="tools-r"><select class="inp sm" data-change="level" aria-label="ระดับที่แสดง"><option value="" ${lv === '' ? 'selected' : ''}>แสดงทุกระดับ</option>${['2', '3', '4'].map(k => `<option value="${k}" ${lv === k ? 'selected' : ''}>แสดง ${k} ระดับ</option>`).join('')}</select>
+        <button class="tbtn keep" data-act="wf-map">${I.link}<span class="tl">จับคู่หน่วยงาน</span></button><button class="tbtn keep" data-act="wf-export">${I.download}<span class="tl">Export รายชื่อ</span></button>${tail}</div>`;
+    }
+    return `${lead}${views}<input class="inp sm wf-q" type="search" data-wf="q" value="${esc(S.wfQuery)}" placeholder="ค้นหาชื่อ รหัส หรือตำแหน่ง" aria-label="ค้นหาพนักงาน">
       <div class="tabs" role="group" aria-label="ขอบเขตรายชื่อ"><button class="tab" data-act="wf-scope" data-scope="all" aria-pressed="${S.wfScope === 'all'}" aria-selected="${S.wfScope === 'all'}">รวมหน่วยย่อย</button><button class="tab" data-act="wf-scope" data-scope="direct" aria-pressed="${S.wfScope === 'direct'}" aria-selected="${S.wfScope === 'direct'}">เฉพาะหน่วยนี้</button></div>
       <div class="tools-r"><button class="tbtn keep" data-act="wf-map">${I.link}<span class="tl">จับคู่หน่วยงาน</span></button><button class="tbtn keep" data-act="wf-export">${I.download}<span class="tl">Export รายชื่อ</span></button>${tail}</div>`;
   }
@@ -3522,8 +3599,18 @@ function wfPeopleHTML(v, P, list, out) {
     </tbody></table></div>${rows.some(p => p.retire && p.retire <= year + 3) ? '<p class="pl-note">ปีที่เกษียณเป็น พ.ศ. · ตัวเลขสีส้ม = เกษียณภายใน 3 ปี</p>' : ''}`;
 }
 function wfRefreshPeople() {
-  const v = curVersion(), box = $('#wf-people');
-  if (!v || !box || !S.wf) return;
+  const v = curVersion();
+  if (!v || !S.wf) return;
+  const cards = $('#wfp-list');
+  if (cards) {
+    const P = wfPlace(v), { out, list } = wfListOf(v, P);
+    cards.innerHTML = wfCardsHTML(v, P, list, out);
+    const c = $('#wf-count');
+    if (c) c.textContent = peopleCount(list);
+    return;
+  }
+  const box = $('#wf-people');
+  if (!box) return;
   const P = wfPlace(v), cur = wfCurId(v), out = cur === '__out';
   const node = out ? null : find(v.root, cur).node;
   const list = out ? P.unplaced.concat(P.gone) : S.wfScope === 'all' ? wfUnder(P, node) : (P.byNode.get(node.id) || []);
@@ -3542,6 +3629,7 @@ function barsHTML(title, obj, total, order) {
 }
 function wfInspHTML(v) {
   if (!v) return '';
+  if (S.page === 'workforce' && S.wf && S.wfView === 'chart') return wfUnitPanelHTML(v);
   const head = `<div class="ip-head"><div><h3>${S.page === 'planning' ? 'Workforce Planning' : 'Workforce'}</h3><h2>${S.page === 'planning' ? 'วางแผนกำลังคน' : 'ข้อมูลกำลังคน'}</h2></div><button class="ibtn ip-close" data-act="close-insp" aria-label="ปิด">${I.close}</button></div>`;
   const tip = S.page === 'planning'
     ? `<div class="tip"><b>วางแผนอย่างไร</b><span>อัตรากำลังตามแผนเป็นส่วนหนึ่งของเวอร์ชันโครงสร้าง แก้ได้ใน Draft แล้ว Publish พร้อมโครงสร้าง</span><span>Draft ที่สร้างจาก Active ใช้กล่องเดิม คนจึงตามหน่วยเดิมไปอัตโนมัติ หน่วยที่ถูกยุบจะแสดงรายชื่อคนที่ต้องจัดสรรใหม่</span></div>`
@@ -3567,6 +3655,92 @@ function wfInspHTML(v) {
     ${barsHTML('กลุ่มพนักงาน', sm.grp, list.length)}${barsHTML('ระดับ', sm.lvl, list.length, LVL_ORDER)}${barsHTML('ประเภทการจ้าง', sm.emp, list.length)}${barsHTML('อายุงาน', sm.svcB, list.length, SVC_ORDER)}</section>` : ''}
   ${tip}`;
 }
+
+// right panel of the Workforce chart: the clicked unit, its numbers and its people
+function wfListOf(v, P) {
+  const cur = wfCurId(v), out = cur === '__out', node = out ? null : find(v.root, cur).node;
+  return { cur, out, node, list: out ? P.unplaced.concat(P.gone) : S.wfScope === 'all' ? wfUnder(P, node) : (P.byNode.get(node.id) || []) };
+}
+function wfCardsHTML(v, P, list, out) {
+  const rows = sortPeople(wfFilter(list));
+  if (!rows.length) return `<p class="empty">${list.length ? 'ไม่พบรายชื่อที่ตรงกับคำค้น' : 'ยังไม่มีพนักงานในหน่วยนี้'}</p>`;
+  const showUnit = out || S.wfScope === 'all';
+  const unitOf = p => {
+    if (out) { const r = P.unitTo.get(p.unit), was = r && r.was && P.act ? find(P.act.root, r.was) : null; return (S.wf.units[p.unit] || {}).name + (was ? ` (เดิม: ${was.node.name})` : ''); }
+    const id = P.nodeOf.get(p), n = id && find(v.root, id);
+    return n && id !== wfCurId(v) ? n.node.name : '';
+  };
+  const shown = rows.slice(0, 300);
+  return shown.map(p => {
+    const u = showUnit ? unitOf(p) : '';
+    return `<div class="pp"><div class="pp-n"><b>${esc(wfName(p))}</b>${p.owner === 'Top' ? ' <span class="tag head">หัวหน้าหน่วย</span>' : p.owner ? ` <span class="tag">${esc(p.owner)}</span>` : ''}${p.emp !== 'ประจำ' ? ` <span class="tag">${esc(p.emp)}</span>` : ''}</div>
+      <div class="pp-m">${esc(p.pos)} · ระดับ ${esc(p.lvl)} · อายุงาน ${fmtYears(wfYears(p.start))}${retireSoon(p) ? ` · <span class="soon">เกษียณ ${p.retire + 543}</span>` : ''}</div>${u ? `<div class="pp-u">${esc(u)}</div>` : ''}</div>`;
+  }).join('') + (rows.length > shown.length ? `<p class="muted pp-more">แสดง ${shown.length} จาก ${fmtNum(rows.length)} คน · ค้นหาหรือเลือกหน่วยย่อยเพื่อดูเพิ่ม หรือ Export รายชื่อ</p>` : '');
+}
+function wfUnitPanelHTML(v) {
+  const P = wfPlace(v), plan = rollup(v.root), { out, node, list } = wfListOf(v, P);
+  const sm = wfSummary(list), miss = P.unplaced.length + P.gone.length;
+  const close = `<button class="ibtn ip-close" data-act="close-insp" aria-label="ปิด">${I.close}</button>`;
+  let head, kpis = '';
+  if (out) head = `<div class="ip-head"><div><h3>กำลังคน</h3><h2>ยังไม่ได้อยู่ในกล่องของผังนี้</h2></div>${close}</div><p class="muted">จัดลงกล่องได้ที่ “จับคู่หน่วยงาน”</p>`;
+  else {
+    const trail = nodeTrail(v.root, node.id).slice(0, -1).map(n => n.name).join(' › ');
+    const pl = S.wfScope === 'all' ? plan.get(node.id) : (+node.hc || 0), a = list.length, g = gapInfo(pl, a);
+    const own = (P.byNode.get(node.id) || []).length, kids = node.children.filter(c => !EXTERNAL.has(c.type)).length;
+    head = `<div class="ip-head"><div><h3><i class="dot tc-${node.type}"></i> ${esc(TYPES[node.type].th)}${node.staff ? ' · Staff' : ''}</h3><h2>${esc(node.name || 'ไม่มีชื่อ')}</h2>${trail ? `<p class="muted ip-path">${esc(trail)}</p>` : ''}</div>${close}</div>`;
+    kpis = `<div class="statgrid">
+      <div class="stat"><b>${fmtNum(a)}</b><span>คนจริง${S.wfScope === 'all' && kids ? ' (รวมหน่วยย่อย)' : ''}</span></div>
+      <div class="stat"><b>${pl ? fmtNum(pl) : '—'}</b><span>อัตรากำลังตามแผน</span></div>
+      <div class="stat gap ${g.cls}"><b>${g.txt ? g.txt.replace('ยังไม่กำหนดแผน', 'ไม่มีแผน').replace('ครบตามแผน', 'ครบ') : '—'}</b><span>ส่วนต่าง</span></div>
+      <div class="stat"><b>${fmtNum(sm.perm)}<small> / ${fmtNum(a - sm.perm)}</small></b><span>ประจำ / สัญญาจ้าง</span></div>
+      <div class="stat${sm.retire ? ' warn' : ''}"><b>${fmtNum(sm.retire)}</b><span>เกษียณภายใน 3 ปี</span></div>
+      <div class="stat"><b>${sm.svcN ? fmtYears(sm.svc / sm.svcN) : '—'}</b><span>อายุงานเฉลี่ย</span></div></div>
+      ${kids ? `<p class="muted ip-note">อยู่ที่หน่วยนี้โดยตรง ${fmtNum(own)} คน · มีหน่วยย่อย ${kids} หน่วย — คลิกกล่องในผังเพื่อเจาะลึก</p>` : ''}`;
+  }
+  const alert = miss && !out ? `<div class="wf-alert sm">${I.info}<p>${fmtNum(miss)} คนยังไม่ได้อยู่ในกล่องของผังนี้</p><button class="btn sm" data-act="wf-unit" data-id="__out">ดูรายชื่อ</button></div>` : '';
+  const scope = out ? '' : `<div class="tabs" role="group" aria-label="ขอบเขตรายชื่อ"><button class="tab" data-act="wf-scope" data-scope="all" aria-pressed="${S.wfScope === 'all'}" aria-selected="${S.wfScope === 'all'}">รวมหน่วยย่อย</button><button class="tab" data-act="wf-scope" data-scope="direct" aria-pressed="${S.wfScope === 'direct'}" aria-selected="${S.wfScope === 'direct'}">เฉพาะหน่วยนี้</button></div>`;
+  return `<section class="panel">${head}${kpis}${alert}</section>
+    <section class="panel wf-pp"><h3 class="pp-h">รายชื่อ <span class="muted" id="wf-count">${peopleCount(list)}</span></h3>${scope}
+      <input class="inp sm" type="search" data-wf="q" value="${esc(S.wfQuery)}" placeholder="ค้นหาชื่อ รหัส หรือตำแหน่ง" aria-label="ค้นหาพนักงาน">
+      <div class="pp-list" id="wfp-list">${wfCardsHTML(v, P, list, out)}</div></section>
+    ${list.length ? `<details class="panel wf-mix"><summary><h3>องค์ประกอบ · ${fmtNum(list.length)} คน</h3></summary>
+      ${barsHTML('กลุ่มพนักงาน', sm.grp, list.length)}${barsHTML('ระดับ', sm.lvl, list.length, LVL_ORDER)}${barsHTML('ประเภทการจ้าง', sm.emp, list.length)}${barsHTML('อายุงาน', sm.svcB, list.length, SVC_ORDER)}</details>` : ''}
+    <section class="panel wf-src"><dl class="kv"><dt>ข้อมูล ณ</dt><dd>${fmtDate(S.wf.asOf)} · ${esc(S.wf.source || '')}</dd><dt>พนักงาน ${esc(v.companyCode)}</dt><dd>${fmtNum(P.total)} คน · อยู่ในผังนี้ ${fmtNum(P.total - miss)} คน${miss ? ` · <a href="#" data-act="wf-unit" data-id="__out">ยังไม่ลงกล่อง ${fmtNum(miss)}</a>` : ''}</dd></dl>
+      <div class="btnrow">${canEditApp() ? `<button class="btn sm" data-act="wf-import">${I.upload}นำเข้าไฟล์ใหม่</button><button class="btn sm" data-act="wf-pass">${I.lock}เปลี่ยนรหัสผ่าน</button>` : ''}<button class="btn sm ghost" data-act="wf-lock">${I.lock}ล็อก</button></div></section>`;
+}
+function wfSelect(id, o = {}) {
+  const v = curVersion();
+  if (!v) return;
+  S.wfUnit[v.id] = id || v.root.id;
+  if (!$('#canvas')) { refresh(); return; }
+  if (o.zoom !== false) {
+    if (isNarrow()) { S.ui.insp = true; S.sheetAt = performance.now(); }
+    else if (S.ui.hideInsp) togglePanel('insp');
+  }
+  renderStage();
+  setHTML('#insp', inspHTML(v));
+  setHTML('#tools', toolsHTML(v));
+  $('#ws')?.classList.toggle('insp-open', S.ui.insp);
+  if (o.zoom !== false) wfZoomTo(S.wfUnit[v.id]);
+}
+// drill down: frame the clicked unit and everything under it
+function wfZoomTo(id) {
+  const cv = $('#canvas'), st = $('#stage'), L = S.layout, v = curVersion();
+  if (!cv || !L || !v) return;
+  const f = id && id !== '__out' && find(v.root, id);
+  if (!f || f.node === v.root) { glide(st); fitView(); return; }
+  const ids = new Set();
+  walk(f.node, n => ids.add(n.id));
+  let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+  L.nodes.forEach(it => { if (ids.has(it.n.id)) { x0 = Math.min(x0, it.x); y0 = Math.min(y0, it.y); x1 = Math.max(x1, it.x + it.w); y1 = Math.max(y1, it.y + it.h); } });
+  if (!isFinite(x0)) return;
+  const r = cv.getBoundingClientRect(), pad = 48;
+  const z = clamp(Math.min((r.width - pad * 2) / (x1 - x0), (r.height - pad * 2) / (y1 - y0)), 0.15, 1);
+  S.views[viewKey()] = { z, x: (r.width - (x1 - x0) * z) / 2 - x0 * z, y: Math.max(pad, (r.height - (y1 - y0) * z) / 2) - y0 * z };
+  glide(st);
+  applyView();
+}
+function glide(st) { if (!st) return; st.classList.add('glide'); clearTimeout(glide.t); glide.t = setTimeout(() => st.classList.remove('glide'), 420); }
 
 /* ---------- Workforce Planning page: plan vs actual per unit ---------- */
 function planRows(v) {
@@ -4071,8 +4245,15 @@ const A = {
   'version': el => openVersion(el.dataset.vid),
   'tab': el => { S.tab = el.dataset.tab; render(); },
   'page': el => { if (S.page !== el.dataset.page) go(S.route.code, el.dataset.page); },
-  'wf-unit': el => { const v = curVersion(); if (!v) return; S.wfUnit[v.id] = el.dataset.id; if (S.page !== 'workforce') { go(S.route.code, 'workforce'); return; } refresh(); $('#body .wf-page')?.scrollTo({ top: 0 }); },
-  'wf-open-unit': el => { const v = curVersion(); if (!v) return; S.wfUnit[v.id] = el.dataset.id; S.wfScope = el.dataset.scope || 'direct'; S.wfQuery = ''; go(S.route.code, 'workforce'); },
+  'wf-unit': el => {
+    const v = curVersion();
+    if (!v) return;
+    if (S.page !== 'workforce') { S.wfUnit[v.id] = el.dataset.id; S.wfZoomPending = true; go(S.route.code, 'workforce'); return; }
+    wfSelect(el.dataset.id);
+    $('#body .wf-page')?.scrollTo({ top: 0 });
+  },
+  'wf-open-unit': el => { const v = curVersion(); if (!v) return; S.wfUnit[v.id] = el.dataset.id; S.wfScope = el.dataset.scope || 'direct'; S.wfQuery = ''; S.wfZoomPending = true; go(S.route.code, 'workforce'); },
+  'wf-view': el => { S.wfView = el.dataset.view; refresh(); if (S.wfView === 'chart') wfZoomTo(wfCurId(curVersion())); },
   'wf-scope': el => { S.wfScope = el.dataset.scope; refresh(); },
   'wf-import': () => wfImportModal(),
   'wf-map': () => wfMapModal(),
@@ -4139,6 +4320,7 @@ const A = {
       persistLocal(); render(); toast('รีเซ็ตแล้ว');
     } }],
   }),
+  'reload': () => { persistLocal(); location.reload(); },
   'demo': () => { S.demo = true; render(); toast('เปิดโหมดทดลอง — สร้าง Draft แล้วแก้ไขได้ทันที'); },
   'toggle-panel': el => togglePanel(el.dataset.side),
   'open-rail': () => { S.ui.rail = true; $('#ws')?.classList.add('rail-open'); },
@@ -4374,6 +4556,22 @@ async function boot() {
   else { await loadPublic(); wfSync(); }
 }
 boot();
+
+// a tab left open keeps running the code it loaded; tell it when a newer app is published so nobody saves with old code
+let appTag = null;
+async function checkAppUpdate() {
+  if (!/^https?:$/.test(location.protocol) || document.hidden || S.appStale) return;
+  try {
+    const r = await fetch(location.pathname, { method: 'HEAD', cache: 'no-store' });
+    const tag = r.ok && (r.headers.get('etag') || r.headers.get('last-modified'));
+    if (!tag) return;
+    if (appTag === null) { appTag = tag; return; }
+    if (tag !== appTag) { S.appStale = true; setHTML('#banner', bannerHTML()); toast('มีแอปเวอร์ชันใหม่ — กดรีเฟรชก่อนบันทึก', 'info', { label: 'รีเฟรช', fn: A.reload }, 10000); }
+  } catch (e) { /* offline */ }
+}
+checkAppUpdate();
+setInterval(checkAppUpdate, 5 * 60 * 1000);
+window.addEventListener('focus', checkAppUpdate);
 })();
 </script>
 </body>
