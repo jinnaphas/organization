@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-10-16T04:33:52.526Z",
+  "updatedAt": "2026-10-16T08:22:58.911Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -16643,7 +16643,7 @@
       "basedOn": "v_psp_2026r3",
       "createdAt": "2026-10-16T02:18:37.847Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-10-16T04:33:42.185Z",
+      "updatedAt": "2026-10-16T08:22:50.030Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE SYSTEM & PROJECT CO., LTD. (PSP) 2027",
@@ -19776,7 +19776,7 @@
                   {
                     "id": "n_3d1l0v67er",
                     "type": "office",
-                    "name": "Data Center Business & Design Division (PSP108)",
+                    "name": "Data Center Division (PSP108)",
                     "nameEn": "",
                     "code": "",
                     "title": "",
