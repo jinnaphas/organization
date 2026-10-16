@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-10-16T09:06:07.376Z",
+  "updatedAt": "2026-10-16T09:16:05.443Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -23159,7 +23159,7 @@
       "basedOn": "v_pde_2026r1",
       "createdAt": "2026-10-16T08:41:36.013Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-10-16T08:47:46.803Z",
+      "updatedAt": "2026-10-16T09:15:56.751Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE DIGITAL ECONOMY CO., LTD. (PDE) 2027",
@@ -23225,10 +23225,10 @@
             "DIGITAL, AUTOMATION AND ESG SOLUTION"
           ],
           [
-            "REVISIONS of Year : No.1"
+            "REVISIONS of Year : No.0"
           ],
           [
-            "DATE: Sep 1, 2026"
+            "DATE: Jan 1, 2027"
           ],
           [
             "OFFER",
