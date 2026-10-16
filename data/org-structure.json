@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-10-16T03:47:21.387Z",
+  "updatedAt": "2026-10-16T04:11:55.817Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -13846,7 +13846,7 @@
       "basedOn": "v_psp_2026r3",
       "createdAt": "2026-10-16T02:18:37.847Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-10-16T03:47:04.795Z",
+      "updatedAt": "2026-10-16T04:11:36.366Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE SYSTEM & PROJECT CO., LTD. (PSP) 2026",
@@ -16397,7 +16397,7 @@
                   {
                     "id": "n_psp_47",
                     "type": "line",
-                    "name": "Enterprise Customer & Partner Solutions Division (PSP105)",
+                    "name": "Recurring Services & Digital Solutions Division (PSP107)",
                     "nameEn": "",
                     "code": "PSP105",
                     "title": "",
@@ -16408,255 +16408,85 @@
                     "note": "",
                     "children": [
                       {
-                        "id": "n_psp_48",
-                        "type": "department",
-                        "name": "Global Sourcing and Products Trade Management",
+                        "id": "n_hq43noz8ix",
+                        "type": "office",
+                        "name": "Recurring Services Section",
                         "nameEn": "",
                         "code": "",
                         "title": "",
                         "head": "",
                         "hc": 0,
-                        "staff": false,
+                        "staff": true,
                         "layout": "auto",
                         "note": "",
                         "children": [],
                         "style": {
-                          "fill": "#FFFFFF",
-                          "line": "#000000",
+                          "fill": "#FBE5D6",
+                          "line": "#70AD47",
                           "lw": 1.33,
-                          "text": "#000000",
+                          "text": "#FF0000",
                           "bold": false,
                           "size": 12,
                           "align": "l"
                         },
                         "box": {
-                          "x": 2886,
-                          "y": 664.9,
-                          "w": 345.7,
-                          "h": 45
-                        }
+                          "x": 2913,
+                          "y": 670,
+                          "w": 343,
+                          "h": 60.4
+                        },
+                        "link": "#70AD47",
+                        "hl": true
                       },
                       {
-                        "id": "n_psp_49",
-                        "type": "section",
-                        "name": "Global Sourcing and Project Sales Section & Project Management",
+                        "id": "n_6ikcvvzx44",
+                        "type": "office",
+                        "name": "Digital Solutions Section",
                         "nameEn": "",
                         "code": "",
                         "title": "",
                         "head": "",
                         "hc": 0,
-                        "staff": false,
+                        "staff": true,
                         "layout": "auto",
                         "note": "",
                         "children": [],
                         "style": {
-                          "fill": "#FFFFFF",
-                          "line": "#000000",
+                          "fill": "#FBE5D6",
+                          "line": "#70AD47",
                           "lw": 1.33,
-                          "text": "#000000",
+                          "text": "#FF0000",
                           "bold": false,
                           "size": 12,
                           "align": "l"
                         },
+                        "link": "#70AD47",
                         "box": {
-                          "x": 2886,
-                          "y": 722.8,
-                          "w": 344.2,
-                          "h": 51.5
-                        }
-                      },
-                      {
-                        "id": "n_psp_80",
-                        "type": "department",
-                        "name": "Contract Execution & Customer Service Management",
-                        "nameEn": "",
-                        "code": "",
-                        "title": "",
-                        "head": "",
-                        "hc": 0,
-                        "staff": false,
-                        "layout": "auto",
-                        "note": "",
-                        "children": [],
-                        "style": {
-                          "fill": "#FFFFFF",
-                          "line": "#000000",
-                          "lw": 1.33,
-                          "text": "#000000",
-                          "bold": false,
-                          "size": 12,
-                          "align": "l"
+                          "x": 2912,
+                          "y": 744,
+                          "w": 344,
+                          "h": 60.4
                         },
-                        "box": {
-                          "x": 2887.6,
-                          "y": 789.7,
-                          "w": 342.7,
-                          "h": 51.8
-                        }
-                      },
-                      {
-                        "id": "n_psp_64",
-                        "type": "division",
-                        "name": "Commercial Advisory & Review Division",
-                        "nameEn": "",
-                        "code": "",
-                        "title": "",
-                        "head": "",
-                        "hc": 0,
-                        "staff": false,
-                        "layout": "auto",
-                        "note": "",
-                        "children": [
-                          {
-                            "id": "n_psp_65",
-                            "type": "section",
-                            "name": "Tender & Contract Commercial Review Section",
-                            "nameEn": "",
-                            "code": "",
-                            "title": "",
-                            "head": "",
-                            "hc": 0,
-                            "staff": false,
-                            "layout": "auto",
-                            "note": "",
-                            "children": [],
-                            "style": {
-                              "fill": "#FFFFFF",
-                              "line": "#000000",
-                              "lw": 1.33,
-                              "text": "#000000",
-                              "bold": false,
-                              "size": 12,
-                              "align": "l"
-                            },
-                            "box": {
-                              "x": 2908,
-                              "y": 940,
-                              "w": 340.9,
-                              "h": 49.1
-                            }
-                          }
-                        ],
-                        "style": {
-                          "fill": "#FFFFFF",
-                          "line": "#000000",
-                          "lw": 1.33,
-                          "text": "#000000",
-                          "bold": true,
-                          "size": 16,
-                          "align": "l"
-                        },
-                        "box": {
-                          "x": 2860,
-                          "y": 860,
-                          "w": 373.4,
-                          "h": 59.3
-                        }
-                      },
-                      {
-                        "id": "n_psp_66",
-                        "type": "division",
-                        "name": "Business Logistic & Vendor Management Division",
-                        "nameEn": "",
-                        "code": "",
-                        "title": "",
-                        "head": "",
-                        "hc": 0,
-                        "staff": false,
-                        "layout": "auto",
-                        "note": "",
-                        "children": [
-                          {
-                            "id": "n_psp_67",
-                            "type": "section",
-                            "name": "Business Logistic & Vendor Management Section",
-                            "nameEn": "",
-                            "code": "",
-                            "title": "",
-                            "head": "",
-                            "hc": 0,
-                            "staff": false,
-                            "layout": "auto",
-                            "note": "",
-                            "children": [],
-                            "style": {
-                              "fill": "#FFFFFF",
-                              "line": "#000000",
-                              "lw": 1.33,
-                              "text": "#000000",
-                              "bold": false,
-                              "size": 12,
-                              "align": "l"
-                            },
-                            "box": {
-                              "x": 3524,
-                              "y": 1008,
-                              "w": 330.6,
-                              "h": 52.5
-                            }
-                          },
-                          {
-                            "id": "n_psp_68",
-                            "type": "section",
-                            "name": "Warehouse & Packing Section",
-                            "nameEn": "",
-                            "code": "",
-                            "title": "",
-                            "head": "",
-                            "hc": 0,
-                            "staff": false,
-                            "layout": "auto",
-                            "note": "",
-                            "children": [],
-                            "style": {
-                              "fill": "#FFFFFF",
-                              "line": "#000000",
-                              "lw": 1.33,
-                              "text": "#000000",
-                              "bold": false,
-                              "size": 12,
-                              "align": "l"
-                            },
-                            "box": {
-                              "x": 3524,
-                              "y": 1080,
-                              "w": 328.6,
-                              "h": 55.1
-                            }
-                          }
-                        ],
-                        "style": {
-                          "fill": "#FFFFFF",
-                          "line": "#000000",
-                          "lw": 1.33,
-                          "text": "#000000",
-                          "bold": true,
-                          "size": 14,
-                          "align": "l"
-                        },
-                        "box": {
-                          "x": 3488,
-                          "y": 912,
-                          "w": 376.5,
-                          "h": 62.2
-                        }
+                        "hl": true
                       }
                     ],
                     "style": {
-                      "fill": "#FFFFFF",
-                      "line": "#000000",
+                      "fill": "#FBE5D6",
+                      "line": "#70AD47",
                       "lw": 1.33,
-                      "text": "#000000",
+                      "text": "#FF0000",
                       "bold": true,
                       "size": 16,
                       "align": "l"
                     },
                     "box": {
-                      "x": 2851.1,
-                      "y": 592,
-                      "w": 381.3,
-                      "h": 60.4
-                    }
+                      "x": 2882,
+                      "y": 591,
+                      "w": 390,
+                      "h": 68.39999999999998
+                    },
+                    "link": "#70AD47",
+                    "hl": true
                   },
                   {
                     "id": "n_s3n296xe1n",
@@ -16709,7 +16539,7 @@
                             "link": "#70AD47",
                             "box": {
                               "x": 2484,
-                              "y": 1044,
+                              "y": 1037,
                               "w": 312,
                               "h": 56.5
                             }
@@ -16739,7 +16569,7 @@
                             "link": "#70AD47",
                             "box": {
                               "x": 2484,
-                              "y": 1114.5,
+                              "y": 1104.5,
                               "w": 312,
                               "h": 56.5
                             }
@@ -16769,7 +16599,7 @@
                             "link": "#70AD47",
                             "box": {
                               "x": 2484,
-                              "y": 1182,
+                              "y": 1172,
                               "w": 312,
                               "h": 56.5
                             }
@@ -16787,7 +16617,7 @@
                         "link": "#70AD47",
                         "box": {
                           "x": 2460,
-                          "y": 974,
+                          "y": 968,
                           "w": 336,
                           "h": 56.5
                         }
@@ -16830,7 +16660,7 @@
                             "link": "#70AD47",
                             "box": {
                               "x": 2496,
-                              "y": 1322,
+                              "y": 1306,
                               "w": 312,
                               "h": 56.5
                             }
@@ -16860,7 +16690,7 @@
                             "link": "#70AD47",
                             "box": {
                               "x": 2496,
-                              "y": 1389.5,
+                              "y": 1371.5,
                               "w": 312,
                               "h": 56.5
                             }
@@ -16890,7 +16720,7 @@
                             "link": "#70AD47",
                             "box": {
                               "x": 2496,
-                              "y": 1458,
+                              "y": 1437,
                               "w": 312,
                               "h": 56.5
                             }
@@ -16908,7 +16738,7 @@
                         "link": "#70AD47",
                         "box": {
                           "x": 2472,
-                          "y": 1250,
+                          "y": 1241,
                           "w": 336,
                           "h": 56.5
                         }
@@ -16925,7 +16755,7 @@
                     },
                     "box": {
                       "x": 2432,
-                      "y": 892,
+                      "y": 886,
                       "w": 372,
                       "h": 67.5
                     },
@@ -16969,7 +16799,7 @@
                         "link": "#70AD47",
                         "box": {
                           "x": 2452,
-                          "y": 1616,
+                          "y": 1584,
                           "w": 360,
                           "h": 67.5
                         }
@@ -16999,7 +16829,7 @@
                         "link": "#70AD47",
                         "box": {
                           "x": 2452,
-                          "y": 1695.5,
+                          "y": 1661.5,
                           "w": 360,
                           "h": 67.5
                         }
@@ -17029,7 +16859,7 @@
                         "link": "#70AD47",
                         "box": {
                           "x": 2452,
-                          "y": 1775,
+                          "y": 1739,
                           "w": 360,
                           "h": 67.5
                         }
@@ -17047,10 +16877,198 @@
                     "link": "#70AD47",
                     "box": {
                       "x": 2432,
-                      "y": 1532,
+                      "y": 1504,
                       "w": 384,
                       "h": 67.5
                     }
+                  },
+                  {
+                    "id": "n_884j8thh1y",
+                    "type": "office",
+                    "name": "SCIAM Business Division (PSP106)",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": true,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [
+                      {
+                        "id": "n_bjt7e0oxk5",
+                        "type": "office",
+                        "name": "Sale and Operation Management Section",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": true,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FBE5D6",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#FF0000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "box": {
+                          "x": 2448,
+                          "y": 1893.5,
+                          "w": 372,
+                          "h": 67.5
+                        },
+                        "hl": true
+                      },
+                      {
+                        "id": "n_s885g4p36e",
+                        "type": "office",
+                        "name": "Solution Architecture & Proposal Section",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": true,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FBE5D6",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#FF0000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "box": {
+                          "x": 2448,
+                          "y": 1975,
+                          "w": 372,
+                          "h": 67.5
+                        },
+                        "hl": true
+                      }
+                    ],
+                    "style": {
+                      "fill": "#FBE5D6",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#FF0000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 2424,
+                      "y": 1817,
+                      "w": 396,
+                      "h": 67.5
+                    },
+                    "hl": true
+                  },
+                  {
+                    "id": "n_3d1l0v67er",
+                    "type": "office",
+                    "name": "Data Center Business & Design Division (PSP108)",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": true,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [
+                      {
+                        "id": "n_rwn8088jgj",
+                        "type": "office",
+                        "name": "Sale and Operation Management Section",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": true,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FBE5D6",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#FF0000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "box": {
+                          "x": 2912,
+                          "y": 895,
+                          "w": 352,
+                          "h": 60
+                        },
+                        "hl": true
+                      },
+                      {
+                        "id": "n_p6t70u9hjz",
+                        "type": "office",
+                        "name": "Data Center Solution Architecture & Proposal Section",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": true,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FBE5D6",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#FF0000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "hl": true,
+                        "box": {
+                          "x": 2912,
+                          "y": 968.5,
+                          "w": 352,
+                          "h": 67.5
+                        }
+                      }
+                    ],
+                    "style": {
+                      "fill": "#FBE5D6",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#FF0000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 2892,
+                      "y": 816,
+                      "w": 384,
+                      "h": 67.5
+                    },
+                    "hl": true
                   }
                 ],
                 "style": {
