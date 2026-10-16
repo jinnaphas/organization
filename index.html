@@ -413,6 +413,107 @@ details.help ol,details.help ul{margin:8px 0 2px;padding-left:20px;display:grid;
   .co-card,.vcard,.btn,.tbtn{transition:background-color .12s,border-color .12s,box-shadow .12s}
 }
 
+/* ---------- company pages: Workforce / Planning ---------- */
+.pnav{display:flex;align-items:center;gap:2px;padding:0 12px;border-bottom:1px solid var(--line);background:var(--surface);overflow-x:auto;scrollbar-width:none}
+.pnav::-webkit-scrollbar{display:none}
+.pn{display:inline-flex;align-items:center;gap:7px;border:0;background:none;padding:10px 12px 9px;font-size:13.5px;font-weight:500;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}
+.pn svg{width:16px;height:16px}
+.pn:hover{color:var(--ink)}
+.pn[aria-current="page"]{color:var(--ink);border-bottom-color:var(--accent)}
+.pn-meta{margin-left:auto;font-size:12px;color:var(--muted);white-space:nowrap;padding-left:12px}
+.wf-page{flex:1;min-height:0;overflow:auto;padding:16px;display:flex;flex-direction:column;gap:14px;background:var(--bg)}
+.wf-q{width:min(260px,40vw);margin-right:6px}
+.tools .tab{white-space:nowrap}
+.wf-alert{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--warn-weak);border:1px solid color-mix(in srgb,var(--warn) 30%,transparent);border-radius:9px;padding:8px 12px;font-size:13px}
+.wf-alert>svg{width:17px;height:17px;color:var(--warn);flex:none}
+.wf-alert p{margin:0;flex:1;min-width:200px}
+.crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:2px;font-size:12.5px}
+.crumb{border:0;background:none;padding:2px 6px;border-radius:5px;color:var(--accent-ink);cursor:pointer;max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.crumb:hover{background:var(--surface-2)}
+.crumb[aria-current="true"]{color:var(--ink);font-weight:600;cursor:default;background:none}
+.crumb-sep{color:var(--muted)}
+.wf-head{display:flex;flex-wrap:wrap;gap:14px 28px;align-items:flex-end;justify-content:space-between;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.wf-head h2{font:600 21px/1.25 var(--f-display);margin:0}
+.wf-head .eyebrow{display:flex;align-items:center;gap:6px}
+.wf-head p.muted{margin:2px 0 0;font-size:13px}
+.wf-kpis{display:flex;flex-wrap:wrap;gap:8px;margin:0}
+.wf-kpis>div{display:grid;gap:2px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:7px 11px;min-width:96px}
+.wf-head .wf-kpis>div{background:var(--bg)}
+.wf-kpis dt{font-size:11.5px;color:var(--muted);order:2;line-height:1.3}
+.wf-kpis dd{margin:0;font:600 19px/1.15 var(--f-display);font-variant-numeric:tabular-nums;order:1;white-space:nowrap}
+.wf-kpis dd small{font:500 12px var(--f-body);color:var(--muted)}
+.wf-kpis .short dd,.gap.short{color:var(--danger)}
+.wf-kpis .over dd,.wf-kpis .warn dd,.gap.over{color:var(--warn)}
+.wf-kpis .ok dd,.gap.ok{color:var(--ok)}
+.wf-kpis .nop dd,.gap.nop{color:var(--plat)}
+.wf-kpis .gap dd{font-size:16px}
+.ws-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:6px}
+.wf-subs,.wf-people,.pt-gone{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;display:grid;gap:6px;min-width:0}
+.wf-subs h3,.wf-people h3,.pt-gone h3{font:600 14px/1.3 var(--f-display);margin:0 0 4px;display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+.wf-subs h3 .muted,.wf-people h3 .muted,.pt-gone h3 .muted{font:400 12.5px var(--f-body)}
+.wf-own{margin:0 0 4px;font-size:12.5px;color:var(--muted)}
+.wf-sub{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:3px 10px;text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:8px 10px;cursor:pointer;color:var(--ink);font-size:13px}
+.wf-sub:hover{border-color:var(--accent);background:var(--accent-weak)}
+.ws-name{display:flex;align-items:center;gap:7px;min-width:0;font-weight:500}
+.ws-name>span:first-of-type{overflow:hidden;text-overflow:ellipsis}
+.ws-num{white-space:nowrap;font-variant-numeric:tabular-nums}
+.ws-bar{position:relative;height:6px;border-radius:3px;background:var(--surface-2);grid-column:1}
+.ws-bar .a{position:absolute;left:0;top:0;bottom:0;border-radius:3px;background:var(--accent)}
+.ws-bar .p{position:absolute;top:-3px;bottom:-3px;width:2px;margin-left:-1px;background:var(--ink-2)}
+.ws-gap{font-size:12px;white-space:nowrap;justify-self:end}
+.ws-gap.short{color:var(--danger)} .ws-gap.over{color:var(--warn)} .ws-gap.ok{color:var(--ok)} .ws-gap.nop{color:var(--plat)}
+.pl-wrap{overflow-x:auto;margin:0 -12px;padding:0 12px}
+.pl{width:100%;border-collapse:collapse;font-size:13px;min-width:760px}
+.pl th{position:sticky;top:0;text-align:left;font-size:11.5px;font-weight:600;color:var(--muted);letter-spacing:.03em;padding:6px 8px;border-bottom:1px solid var(--line-strong);background:var(--surface);white-space:nowrap}
+.pl td{padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+.pl td small{display:block;color:var(--muted);font-size:11.5px}
+.pl tr:hover td{background:var(--bg)}
+.pl .num,.pt .num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.pl td.unit{color:var(--ink-2);font-size:12.5px;min-width:160px}
+.soon{color:var(--warn);font-weight:600}
+.tag.head{border-color:var(--accent);color:var(--accent-ink);background:var(--accent-weak)}
+.tag.new{border-color:var(--warn);color:var(--warn);background:var(--warn-weak)}
+.pl-note{margin:4px 0 0;font-size:12px;color:var(--muted)}
+.wf-gate{max-width:480px}
+.gate-ic svg{width:34px;height:34px;color:var(--accent)}
+.wf-unlock{display:grid;gap:8px;width:100%}
+.wf-unlock-row{display:flex;gap:8px}
+.wf-unlock-row .inp{flex:1}
+.wf-gate-sm{display:grid;gap:6px}
+.wf-gate-sm p{margin:0}
+.bars{display:grid;gap:5px}
+.bar{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) 34px;gap:8px;align-items:center;font-size:12.5px}
+.bl{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink-2)}
+.bt{height:7px;border-radius:4px;background:var(--surface-2);overflow:hidden}
+.bt i{display:block;height:100%;background:var(--accent);border-radius:4px}
+.bn{text-align:right;font-variant-numeric:tabular-nums}
+.pt{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:auto;max-width:100%}
+.pt-row{display:grid;grid-template-columns:minmax(240px,2.4fr) 86px 70px 130px 120px 82px;gap:8px;align-items:center;padding:4px 14px;border-bottom:1px solid var(--line);min-width:820px;font-size:13px}
+.pt-row:has(> :nth-child(7)){grid-template-columns:minmax(240px,2.4fr) 86px 70px 130px 120px 82px 100px;min-width:930px}
+.pt-row.pt-head{position:sticky;top:0;z-index:2;background:var(--surface);font-size:11.5px;font-weight:600;letter-spacing:.03em;color:var(--muted);padding-block:8px}
+.pt-row.new{background:color-mix(in srgb,var(--warn-weak) 55%,transparent)}
+.pt-name{display:flex;align-items:center;gap:7px;padding-left:calc(var(--d) * 20px);min-width:0}
+.pt-name>span:first-of-type{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pt-in{width:72px;text-align:right;border:1px solid var(--line-strong);background:var(--surface);border-radius:6px;padding:3px 7px;font-variant-numeric:tabular-nums}
+.pt-in:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-weak)}
+.gap{font-size:12.5px;font-weight:500;white-space:nowrap}
+.delta{display:block;font-size:11px;color:var(--plat)}
+.pt-note{margin:0;display:flex;gap:6px;align-items:center;font-size:12.5px;color:var(--muted)}
+.pt-note svg{width:15px;height:15px}
+.gone-g{font-size:13px}
+.gone-g ul{margin:4px 0 8px;padding-left:20px;columns:2 280px;column-gap:24px}
+.mp-list{display:grid;gap:6px;max-height:min(56vh,560px);overflow:auto;margin-top:8px;padding-right:4px}
+.mp-list.todo .mp-row.done{display:none}
+.mp-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;align-items:center;border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+.mp-u{display:grid;gap:1px;min-width:0}
+.mp-u small{color:var(--muted);font-size:11.5px;overflow-wrap:anywhere}
+.mp-to{display:grid;gap:4px;min-width:0}
+.mp-to .inp{width:100%}
+.mp-how{font-size:12px;color:var(--muted)}
+.mp-how.exact,.mp-how.manual{color:var(--ok)} .mp-how.parent{color:var(--warn)} .mp-how.none,.mp-how.gone{color:var(--danger)}
+.warnp{margin:0;color:var(--warn);font-size:13px}
+.co-chips{display:flex;flex-wrap:wrap;gap:4px}
+
 /* ---------- responsive ---------- */
 @media (max-width:1600px){
   .tools .tbtn:not(.keep) .tl{display:none}
@@ -435,6 +536,10 @@ details.help ol,details.help ul{margin:8px 0 2px;padding-left:20px;display:grid;
   .ws.insp-open .insp{transform:none}
   .ws.rail-open .ws-scrim,.ws.insp-open .ws-scrim{display:block;position:fixed;inset:0;background:var(--scrim);z-index:50}
   .m-only{display:inline-flex}
+  .wf-page{padding:12px}
+  .wf-q{width:150px}
+  .pn-meta{display:none}
+  .mp-row{grid-template-columns:minmax(0,1fr)}
   .ip-close{display:inline-grid}
   .tools{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
   .tools::-webkit-scrollbar{display:none}
@@ -617,6 +722,9 @@ const I = {
   download: ic('<path d="M12 4v11M7 10l5 5 5-5M5 20h14"/>'),
   upload: ic('<path d="M12 20V9M7 14l5-5 5 5M5 4h14"/>'),
   info: ic('<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/>'),
+  people: ic('<circle cx="9" cy="8" r="3.2"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14.2A4.5 4.5 0 0 1 21 18.5"/>'),
+  plan: ic('<path d="M3 20h18"/><path d="M6 20v-6M11 20V8M16 20v-9M21 4l-5 5-4-3-6 6"/>'),
+  link: ic('<path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1"/><path d="M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"/>'),
   panelL: ic('<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/>'),
   panelR: ic('<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M15 4v16"/>'),
   layers: ic('<path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/>'),
@@ -724,6 +832,12 @@ const S = {
   levelSel: {},        // versionId -> '' | '2' | '3' | '4'
   undo: [], redo: [],
   esKey: null,         // current field-edit session (one undo step per field focus)
+  base: null,          // GitHub data as of the last load/save (for merging a conflicting save)
+  page: 'structure',   // company page: structure | workforce | planning
+  wf: null,            // decrypted workforce data (memory only)
+  wfEnv: null, wfSha: null, wfKey: null, wfDirty: false, wfChanges: [],
+  wfUnit: {},          // versionId -> node id shown on the Workforce page
+  wfScope: 'all', wfQuery: '', planFilter: 'all',
   ui: { rail: false, insp: false, hideRail: false, hideInsp: false },   // rail/insp: mobile drawers; hide*: desktop panels
   layout: null,
 };
@@ -1234,7 +1348,7 @@ function pushUndo(v) { S.undo.push(snapshot(v)); if (S.undo.length > 100) S.undo
 let persistTimer = null;
 function persistLocal() {
   clearTimeout(persistTimer);
-  sSet(LS_DATA, JSON.stringify({ data: S.data, sha: S.sha, dirty: S.dirty, changes: S.changes, source: S.source, savedAt: nowISO() }));
+  sSet(LS_DATA, JSON.stringify({ data: S.data, base: S.dirty ? S.base : null, sha: S.sha, dirty: S.dirty, changes: S.changes, source: S.source, savedAt: nowISO() }));
 }
 function schedulePersist() { clearTimeout(persistTimer); persistTimer = setTimeout(persistLocal, 300); }
 function markDirty(desc) {
@@ -1474,10 +1588,14 @@ function openVersion(vid) {
   S.ui.rail = false; S.ui.insp = false;
   render();
 }
-function setRoute(code) {
+const routeHash = code => (code ? '#' + code + (S.page !== 'structure' ? '/' + S.page : '') : location.pathname + location.search);
+// route = "CODE" or "CODE/workforce" / "CODE/planning"
+function setRoute(raw) {
+  let [code, page] = String(raw || '').split('/');
+  S.page = PAGES.some(p => p[0] === page) ? page : 'structure';
   if (code && !company(code) && company(RENAMED_CODES[code])) {
     code = RENAMED_CODES[code];
-    try { history.replaceState(null, '', '#' + code); } catch (e) { /* sandboxed */ }
+    try { history.replaceState(null, '', routeHash(code)); } catch (e) { /* sandboxed */ }
   }
   if (code && company(code)) {
     S.route = { view: 'co', code };
@@ -1489,10 +1607,10 @@ function setRoute(code) {
   } else S.route = { view: 'home', code: null };
   S.ui.rail = false; S.ui.insp = false;
 }
-function go(code) {
-  setRoute(code);
+function go(code, page = S.page) {
+  setRoute(code ? code + '/' + page : '');
   render();
-  try { history.pushState(null, '', code ? '#' + code : location.pathname + location.search); } catch (e) { /* sandboxed */ }
+  try { history.pushState(null, '', routeHash(code)); } catch (e) { /* sandboxed */ }
 }
 window.addEventListener('popstate', () => { setRoute(decodeURIComponent(location.hash.slice(1))); render(); });
 
@@ -1508,21 +1626,24 @@ function render() {
     (S.route.view === 'home' ? homeHTML() : workspaceHTML());
   if (S.route.view === 'co') {
     const r = $('#rail'); if (r) r.scrollTop = railScroll;
-    if (S.tab === 'chart' && $('#canvas')) { bindCanvas(); renderStage(); }
+    if (S.page === 'structure' && S.tab === 'chart' && $('#canvas')) { bindCanvas(); renderStage(); }
   }
 }
 function refresh() {
   if (S.route.view !== 'co') { render(); return; }
   const v = curVersion();
-  if (S.tab === 'chart' && v && !$('#canvas')) { render(); return; }
+  const structure = S.page === 'structure';
+  if ((structure && S.tab === 'chart' && v && !$('#canvas')) || (!structure && $('#canvas'))) { render(); return; }
   setHTML('#rail', railHTML(S.route.code));
   setHTML('#banner', bannerHTML());
+  setHTML('#pnav', pnavHTML());
   setHTML('#vhead', vheadHTML(v));
   setHTML('#tools', toolsHTML(v));
   setHTML('#insp', inspHTML(v));
   const ws = $('#ws');
   if (ws) { ws.classList.toggle('rail-open', S.ui.rail); ws.classList.toggle('insp-open', S.ui.insp); ws.classList.toggle('no-rail', S.ui.hideRail); ws.classList.toggle('no-insp', S.ui.hideInsp); }
-  if (S.tab === 'chart') renderStage(); else setHTML('#outline', outlineHTML(v));
+  if (!structure) setHTML('#body', wfBodyHTML(v));
+  else if (S.tab === 'chart') renderStage(); else setHTML('#outline', outlineHTML(v));
   refreshTop();
 }
 function refreshTop() { setHTML('#topbar', topHTML()); }
@@ -1538,15 +1659,15 @@ function topHTML() {
     <div class="top-r">${topRightHTML()}</div>`;
 }
 function topRightHTML() {
-  const n = S.changes.length;
+  const n = S.changes.length + S.wfChanges.length, dirty = S.dirty || S.wfDirty;
   let chip;
   if (S.busy) chip = `<span class="sync"><i></i><span>กำลังซิงก์…</span></span>`;
-  else if (S.dirty) chip = `<span class="sync warn" title="${esc(S.changes.slice(-8).join('\n'))}"><i></i><span>ยังไม่บันทึก${n ? ' · ' + n + ' รายการ' : ''}</span></span>`;
+  else if (dirty) chip = `<span class="sync warn" title="${esc(S.changes.concat(S.wfChanges.map(c => 'Workforce: ' + c)).slice(-8).join('\n'))}"><i></i><span>ยังไม่บันทึก${n ? ' · ' + n + ' รายการ' : ''}</span></span>`;
   else if (S.source === 'remote') chip = `<span class="sync ok" title="ข้อมูลตรงกับไฟล์ใน GitHub"><i></i><span>ตรงกับ GitHub</span></span>`;
   else if (S.source === 'sample') chip = `<span class="sync"><i></i><span>ข้อมูลตัวอย่าง</span></span>`;
   else if (S.source === 'seed') chip = `<span class="sync"><i></i><span>ข้อมูลตั้งต้นจาก Excel</span></span>`;
   else chip = `<span class="sync"><i></i><span>เก็บในเบราว์เซอร์</span></span>`;
-  const save = `<button class="btn ${S.dirty ? 'primary' : ''}" data-act="save" ${S.dirty && !S.busy ? '' : 'disabled'} title="บันทึกขึ้น GitHub (Ctrl+S)">${I.save}<span class="hide-sm">บันทึก</span></button>`;
+  const save = `<button class="btn ${dirty ? 'primary' : ''}" data-act="save" ${dirty && !S.busy ? '' : 'disabled'} title="บันทึกขึ้น GitHub (Ctrl+S)">${I.save}<span class="hide-sm">บันทึก</span></button>`;
   const user = S.user
     ? `<details class="dd"><summary class="userchip" aria-label="บัญชีผู้ใช้"><span class="av">${esc(S.user.login.slice(0, 1).toUpperCase())}</span><span class="hide-sm">@${esc(S.user.login)}</span></summary>
         <div class="dd-menu right"><div class="dd-info">เข้าสู่ระบบเป็น <b>@${esc(S.user.login)}</b><br>${esc(S.cfg.owner + '/' + S.cfg.repo)} · ${S.user.canPush ? 'แก้ไขได้' : 'อ่านอย่างเดียว'}</div><hr>
@@ -1600,7 +1721,7 @@ function homeHTML() {
       <span class="cc-name">${esc(c.nameTh || c.nameEn || 'ยังไม่ได้ระบุชื่อบริษัท')}</span>
       ${a ? thumbSVG(a) : '<span class="thumb" style="display:grid;place-items:center;color:var(--muted);font-size:12.5px">ยังไม่มีโครงสร้าง</span>'}
       <dl class="cc-stats"><div><dt>หน่วยงาน</dt><dd>${s ? fmtNum(s.units) : '—'}</dd></div><div><dt>หน่วยธุรกิจ</dt><dd>${s && s.bu ? s.bu : '—'}</dd></div><div><dt>ชั้นบังคับบัญชา</dt><dd>${s ? s.layers : '—'}</dd></div></dl>
-      <span class="cc-foot">${a ? `มีผล ${fmtDate(a.effectiveDate)}` : ''}${s && s.hc ? `<span>${fmtNum(s.hc)} คน</span>` : ''}${s && s.subs ? `<span>บริษัทในเครือ ${s.subs}</span>` : ''}${model ? `<span class="pill model">${model.en}</span>` : ''}${nd ? `<span class="pill draft">Draft ${nd}</span>` : ''}${ni ? `<span class="pill inactive">เก่า ${ni}</span>` : ''}</span>
+      <span class="cc-foot">${a ? `มีผล ${fmtDate(a.effectiveDate)}` : ''}${s && s.hc ? `<span>แผน ${fmtNum(s.hc)} คน</span>` : ''}${S.wf ? `<span>พนักงาน ${fmtNum(S.wf.people.filter(p => p.co === c.code).length)} คน</span>` : ''}${s && s.subs ? `<span>บริษัทในเครือ ${s.subs}</span>` : ''}${model ? `<span class="pill model">${model.en}</span>` : ''}${nd ? `<span class="pill draft">Draft ${nd}</span>` : ''}${ni ? `<span class="pill inactive">เก่า ${ni}</span>` : ''}</span>
     </button>`;
   }).join('');
   return `<main class="home" id="body"><div id="banner">${bannerHTML()}</div>
@@ -1608,7 +1729,7 @@ function homeHTML() {
       <header class="home-h">
         <div><p class="eyebrow">ภาพรวมกลุ่มบริษัท</p><h1>โครงสร้างองค์กร ${cos.length} บริษัท</h1>
         <p class="lede">เลือกบริษัทเพื่อดูโครงสร้างที่ใช้งานอยู่ (Active) ร่างโครงสร้างใหม่ (Draft) และย้อนดูเวอร์ชันเก่า (Inactive)</p></div>
-        <dl class="kpis"><div><dt>หน่วยงานที่ใช้งาน</dt><dd>${fmtNum(units)}</dd></div><div><dt>หน่วยธุรกิจ (BU)</dt><dd>${bu}</dd></div><div><dt>อัตรากำลังรวม (คน)</dt><dd>${hc ? fmtNum(hc) : '—'}</dd></div><div><dt>Draft รอ Publish</dt><dd>${drafts}</dd></div></dl>
+        <dl class="kpis"><div><dt>หน่วยงานที่ใช้งาน</dt><dd>${fmtNum(units)}</dd></div><div><dt>หน่วยธุรกิจ (BU)</dt><dd>${bu}</dd></div><div><dt>อัตรากำลังตามแผน (คน)</dt><dd>${hc ? fmtNum(hc) : '—'}</dd></div>${S.wf ? `<div><dt>พนักงาน (ข้อมูล HR ${fmtDate(S.wf.asOf)})</dt><dd>${fmtNum(S.wf.people.filter(p => company(p.co)).length)}</dd></div>` : ''}<div><dt>Draft รอ Publish</dt><dd>${drafts}</dd></div></dl>
       </header>
       <div class="cards">${cards}</div>
     </div></main>`;
@@ -1618,7 +1739,8 @@ function homeHTML() {
 function workspaceHTML() {
   const v = curVersion();
   let body;
-  if (!v) body = emptyHTML();
+  if (S.page !== 'structure') body = wfBodyHTML(v);
+  else if (!v) body = emptyHTML();
   else if (S.tab === 'chart') body = `<div class="canvas" id="canvas" tabindex="0" aria-label="แผนผังโครงสร้างองค์กร"><div class="stage" id="stage"></div>
       <div class="zoomctl"><button class="ibtn" data-act="zoom-out" title="ย่อ" aria-label="ย่อ">${I.minus}</button><button class="zv" data-act="zoom-reset" id="zv" title="ขนาดจริง 100%">100%</button><button class="ibtn" data-act="zoom-in" title="ขยาย" aria-label="ขยาย">${I.plus}</button><button class="ibtn" data-act="zoom-fit" title="พอดีหน้าจอ" aria-label="พอดีหน้าจอ">${I.fit}</button></div></div>`;
   else body = `<div class="outline" id="outline">${outlineHTML(v)}</div>`;
@@ -1627,6 +1749,7 @@ function workspaceHTML() {
     <div class="ws-scrim" data-act="close-panels"></div>
     <section class="main">
       <div id="banner">${bannerHTML()}</div>
+      <div id="pnav">${pnavHTML()}</div>
       <div class="vhead" id="vhead">${vheadHTML(v)}</div>
       <div class="tools" id="tools">${toolsHTML(v)}</div>
       <div class="body" id="body">${body}</div>
@@ -1657,7 +1780,7 @@ function vheadHTML(v) {
   if (!v) return `<div class="vh-l"><h1 class="vtitle">${esc(S.route.code)}</h1></div>`;
   const s = stats(v.root);
   const others = versionsOf(v.companyCode).filter(x => x.id !== v.id).sort((a, b) => b.versionNo - a.versionNo);
-  const cmp = others.length ? `<label class="cmp"><span class="hide-sm">เปรียบเทียบกับ</span><select class="inp sm" data-change="compare" aria-label="เปรียบเทียบกับเวอร์ชัน">
+  const cmp = others.length && S.page === 'structure' ? `<label class="cmp"><span class="hide-sm">เปรียบเทียบกับ</span><select class="inp sm" data-change="compare" aria-label="เปรียบเทียบกับเวอร์ชัน">
       <option value="">— ไม่เปรียบเทียบ —</option>${others.map(x => `<option value="${x.id}" ${x.id === S.compareWith ? 'selected' : ''}>v${x.versionNo} · ${ST[x.status]} · ${esc(x.name)}</option>`).join('')}</select></label>` : '';
   let actions = '';
   if (v.status === 'draft') {
@@ -1675,6 +1798,7 @@ function vheadHTML(v) {
     <div class="vh-r">${cmp}${actions}</div>`;
 }
 function toolsHTML(v) {
+  if (S.page !== 'structure') return wfToolsHTML(v);
   if (!v) return `<button class="tbtn m-only" data-act="open-rail" aria-label="เวอร์ชัน">${I.layers}</button>${panelBtn('rail')}<div class="tools-r">${panelBtn('insp')}</div>`;
   const edit = canEdit(v);
   const f = S.selected ? find(v.root, S.selected) : null;
@@ -2122,6 +2246,7 @@ function focusRow(id, sel = '.ol-in') {
 
 /* ---------- inspector ---------- */
 function inspHTML(v) {
+  if (S.page !== 'structure') return wfInspHTML(v);
   if (!v) return '';
   const parts = [];
   if (S.compareWith && byId(S.compareWith)) parts.push(diffHTML(v));
@@ -2174,7 +2299,12 @@ function nodePanelHTML(v, f) {
   const isAI = n.type === 'ai';
   const head = `<div class="ip-head"><div><h3><i class="dot tc-${n.type}"></i> ${esc(t.th)}${n.staff ? ' · Staff' : ''}</h3><h2>${esc(n.name || 'ไม่มีชื่อ')}</h2></div><button class="ibtn ip-close" data-act="close-insp" aria-label="ปิด">${I.close}</button></div>`;
   const path = flatten(v.root).find(x => x.n.id === n.id).path.slice(0, -1).join(' › ');
-  const metrics = `<dl class="kv"><dt>สังกัด</dt><dd>${esc(path || '— (หน่วยบนสุด)')}</dd><dt>หน่วยย่อย</dt><dd>${sub} หน่วย</dd><dt>อัตรากำลังรวม</dt><dd>${fmtNum(roll.get(n.id))} คน</dd></dl>`;
+  let people = '';
+  if (S.wf && !EXTERNAL.has(n.type)) {
+    const P = wfPlace(v), own = (P.byNode.get(n.id) || []).length, all = P.roll.get(n.id) || 0;
+    people = `<dt>พนักงาน (HR)</dt><dd>${fmtNum(own)} คนในหน่วยนี้${all !== own ? ` · รวมหน่วยย่อย ${fmtNum(all)} คน` : ''} · <a href="#" data-act="wf-open-unit" data-id="${n.id}" data-scope="all">ดูรายชื่อ</a></dd>`;
+  }
+  const metrics = `<dl class="kv"><dt>สังกัด</dt><dd>${esc(path || '— (หน่วยบนสุด)')}</dd><dt>หน่วยย่อย</dt><dd>${sub} หน่วย</dd><dt>อัตรากำลังรวม</dt><dd>${fmtNum(roll.get(n.id))} คน</dd>${people}</dl>`;
   if (!edit) {
     return `<section class="panel">${head}
       <dl class="kv">${n.nameEn ? `<dt>ชื่ออังกฤษ</dt><dd>${esc(n.nameEn)}</dd>` : ''}${n.code ? `<dt>รหัส</dt><dd class="mono">${esc(n.code)}</dd>` : ''}
@@ -2724,6 +2854,9 @@ function helpModal() {
         <dt><kbd>Ctrl</kbd>+<kbd>Z</kbd></dt><dd>ย้อนกลับ (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Z</kbd> ทำซ้ำ)</dd><dt><kbd>Ctrl</kbd>+<kbd>S</kbd></dt><dd>บันทึกขึ้น GitHub</dd>
         <dt><kbd>Ctrl</kbd>+ล้อเมาส์</dt><dd>ซูมแผนผัง (ล้อเมาส์อย่างเดียว = เลื่อนแผนผัง)</dd>
         <dt><kbd>[</kbd> <kbd>]</kbd></dt><dd>ซ่อน / แสดงแผงซ้าย (เวอร์ชัน) และแผงขวา (รายละเอียด) ให้แผนผังกว้างเต็มจอ</dd></dl></div>
+      <div><h3>กำลังคนและวางแผนกำลังคน</h3>
+        <ul><li>แต่ละบริษัทมีหน้า “กำลังคน” (Drill Down + รายชื่อ) และ “วางแผนกำลังคน” (แผนเทียบคนจริง) แยกจากหน้าโครงสร้างองค์กร</li>
+        <li>รายชื่อพนักงานเก็บแบบเข้ารหัส เปิดดูด้วยรหัสผ่านข้อมูลกำลังคน · อัตรากำลังตามแผนแก้ได้ใน Draft</li></ul></div>
       <div><h3>การบันทึกและสิทธิ์</h3>
         <ul><li>ทุกคนเปิดดูได้ ผู้มีสิทธิ์แก้ไขเข้าสู่ระบบด้วย GitHub Token ที่มีสิทธิ์ Contents: Read and write</li>
         <li>ระหว่างแก้ไข ข้อมูลเก็บในเบราว์เซอร์อัตโนมัติ กด “บันทึก” เพื่อ commit ขึ้น GitHub</li>
@@ -2811,6 +2944,7 @@ async function doLogin(token, remember, silent) {
     sSet(LS_TOKEN, token, remember ? 'l' : 's');
     toast(`เข้าสู่ระบบเป็น @${u.login}${u.canPush ? '' : ' (อ่านอย่างเดียว)'}`, 'ok');
     await syncRemote();
+    wfSync();
   } catch (e) {
     if (!silent) throw e;
     if (e.status === 401 || /Token/.test(e.message)) { sDel(LS_TOKEN, 's'); sDel(LS_TOKEN, 'l'); }
@@ -2829,6 +2963,7 @@ function logout() {
 }
 function adoptRemote(r) {
   S.data = migrate(r.data);
+  S.base = clone(S.data);
   S.sha = r.sha;
   S.dirty = false; S.changes = []; S.source = 'remote';
   S.undo = []; S.redo = [];
@@ -2854,52 +2989,122 @@ async function syncRemote() {
   }
   if (!S.dirty) { adoptRemote(r); return; }
   if (S.sha && S.sha === r.sha) return;
-  conflictModal(r, 'login');
+  conflictModal(r, 'login', mergeRemote(r));
 }
-function conflictModal(r, when) {
+// Three-way merge at version level. Versions (and company records) changed in this browser since the
+// last load or save win; everything else follows GitHub, so a stale browser never wipes other people's work.
+function mergeData(base, local, remote) {
+  const key = x => (x ? JSON.stringify(x) : '');
+  const out = clone(remote), clashes = [];
+  const list = (field, id, label) => {
+    const B = new Map(((base && base[field]) || []).map(x => [id(x), x]));
+    const L = new Map(local[field].map(x => [id(x), x]));
+    const R = new Map(remote[field].map(x => [id(x), x]));
+    const res = [];
+    for (const k of [...R.keys(), ...[...L.keys()].filter(k => !R.has(k))]) {
+      const b = B.get(k), l = L.get(k), r = R.get(k);
+      let take;
+      if (base) {
+        const lChanged = key(l) !== key(b), rChanged = key(r) !== key(b);
+        if (lChanged && rChanged && key(l) !== key(r)) clashes.push(label(l || r));
+        take = lChanged ? (l || (rChanged ? r : null)) : r;   // deleted here but edited there: keep theirs
+      } else {
+        // no record of the last load (older browser data): keep both sides, the newer edit wins
+        take = !r ? l : !l ? r : (String(l.updatedAt || '') > String(r.updatedAt || '') ? l : r);
+      }
+      if (take) res.push(clone(take));
+    }
+    out[field] = res;
+  };
+  list('companies', c => c.code, c => c.code);
+  list('versions', v => v.id, v => `${v.companyCode} v${v.versionNo} “${v.name}”`);
+  // both sides may have published: one Active per company, the latest publish wins
+  const byCo = {};
+  out.versions.filter(v => v.status === 'active').forEach(v => (byCo[v.companyCode] = byCo[v.companyCode] || []).push(v));
+  Object.values(byCo).filter(a => a.length > 1).forEach(a => {
+    a.sort((x, y) => String(y.publishedAt || y.effectiveDate || '').localeCompare(String(x.publishedAt || x.effectiveDate || '')));
+    a.slice(1).forEach(v => { v.status = 'inactive'; if (!v.endDate && a[0].effectiveDate) v.endDate = dayBefore(a[0].effectiveDate); });
+  });
+  return { data: out, clashes };
+}
+function mergeRemote(r) {
+  const remote = migrate(clone(r.data));
+  return Object.assign(mergeData(S.base, S.data, remote), { remote });
+}
+function applyMerge(r, m) {
+  S.data = migrate(m.data);
+  S.base = m.remote;
+  S.sha = r.sha;
+  if (S.versionId && !byId(S.versionId)) S.versionId = S.route.view === 'co' ? defaultVersionFor(S.route.code)?.id || null : null;
+  if (S.selected && (!curVersion() || !find(curVersion().root, S.selected))) S.selected = null;
+  S.undo = []; S.redo = [];
+  persistLocal();
+}
+function conflictModal(r, when, m = mergeRemote(r), message = '') {
+  const clash = m.clashes.length ? `<div class="field"><span>แก้ไขเวอร์ชันเดียวกันทั้งสองฝั่ง (${m.clashes.length})</span><ul style="margin:0;padding-left:20px;font-size:13px">${m.clashes.slice(0, 8).map(c => `<li>${esc(c)}</li>`).join('')}</ul>
+      <small class="muted">ถ้าเลือก “รวมการแก้ไข” เวอร์ชันเหล่านี้จะใช้ฉบับในเครื่องนี้</small></div>` : '';
   openModal({
     title: when === 'save' ? 'มีผู้อื่นบันทึกก่อนหน้าคุณ' : 'มีการแก้ไขในเครื่องที่ยังไม่บันทึก',
-    body: `<p>${when === 'save' ? 'ไฟล์ใน GitHub ถูกแก้ไขหลังจากที่คุณโหลดข้อมูลมา' : 'เบราว์เซอร์นี้มีการแก้ไขที่ยังไม่ได้บันทึก ขณะที่ไฟล์ใน GitHub มีเวอร์ชันที่ใหม่กว่า'} เลือกว่าจะใช้ข้อมูลชุดใด</p>
-      <div class="field"><span>การแก้ไขในเครื่อง (${S.changes.length} รายการ)</span><ul style="margin:0;padding-left:20px;font-size:13px">${S.changes.slice(-6).map(c => `<li>${esc(c)}</li>`).join('')}</ul></div>`,
+    body: `<p>${when === 'save' ? 'ไฟล์ใน GitHub ถูกแก้ไขหลังจากที่คุณโหลดข้อมูลมา' : 'เบราว์เซอร์นี้มีการแก้ไขที่ยังไม่ได้บันทึก ขณะที่ไฟล์ใน GitHub มีเวอร์ชันที่ใหม่กว่า'}
+      แนะนำให้ <b>รวมการแก้ไข</b>: เก็บเวอร์ชันที่คุณแก้ในเครื่องนี้ และรับเวอร์ชันอื่นๆ ตามที่อยู่ใน GitHub</p>
+      <div class="field"><span>การแก้ไขในเครื่อง (${S.changes.length} รายการ)</span><ul style="margin:0;padding-left:20px;font-size:13px">${S.changes.slice(-6).map(c => `<li>${esc(c)}</li>`).join('')}</ul></div>${clash}`,
     foot: [
       { label: 'ใช้ข้อมูลจาก GitHub (ทิ้งการแก้ไขในเครื่อง)', onClick: c => { c(); adoptRemote(r); render(); toast('โหลดข้อมูลล่าสุดจาก GitHub แล้ว', 'ok'); } },
-      { label: 'ใช้ข้อมูลในเครื่อง (บันทึกทับ)', cls: 'primary', onClick: c => {
+      { label: 'บันทึกทับทั้งหมด', cls: 'danger', onClick: c => {
         c();
-        S.sha = r.sha;
+        S.sha = r.sha; S.base = m.remote;
         persistLocal();
         if (when === 'save') commitSave(`อัปเดตโครงสร้างองค์กร (บันทึกทับ) โดย @${S.user.login}`);
         else toast('เก็บการแก้ไขในเครื่องไว้ กด “บันทึก” เพื่อบันทึกทับใน GitHub');
+      } },
+      { label: 'รวมการแก้ไข', cls: 'primary', onClick: c => {
+        c();
+        applyMerge(r, m);
+        if (when === 'save') commitSave(message || `อัปเดตโครงสร้างองค์กร (รวมการแก้ไข) โดย @${S.user.login}`);
+        else { render(); toast('รวมการแก้ไขแล้ว กด “บันทึก” เพื่อขึ้น GitHub', 'ok'); }
       } },
     ],
   });
 }
 function save() {
   if (S.busy) return;
-  if (!S.dirty) { toast('ไม่มีการเปลี่ยนแปลงที่ต้องบันทึก'); return; }
-  if (!S.user) { loginModal(() => { if (S.dirty && S.user && S.user.canPush) saveModal(); }); return; }
+  if (!S.dirty && !S.wfDirty) { toast('ไม่มีการเปลี่ยนแปลงที่ต้องบันทึก'); return; }
+  if (!S.user) { loginModal(() => { if ((S.dirty || S.wfDirty) && S.user && S.user.canPush) save(); }); return; }
   if (!S.user.canPush) { toast('บัญชีนี้ไม่มีสิทธิ์เขียน repository', 'err'); return; }
-  saveModal();
+  if (S.dirty) saveModal(); else commitWorkforce();
 }
-async function commitSave(message) {
+async function commitSave(message, attempt = 0) {
   S.busy = true; refreshTop();
   const snapshotChanges = S.changes.length;
+  let saved = false;
   try {
     S.data.sample = false;
     S.data.updatedAt = nowISO();
     S.data.updatedBy = '@' + S.user.login;
-    const body = { message, content: b64encode(JSON.stringify(S.data, null, 2) + '\n'), branch: S.cfg.branch };
+    const json = JSON.stringify(S.data, null, 2);
+    const body = { message, content: b64encode(json + '\n'), branch: S.cfg.branch };
     if (S.sha) body.sha = S.sha;
     const r = await gh(contentPath(), { method: 'PUT', body });
     S.sha = r.content.sha;
+    S.base = migrate(JSON.parse(json));
     S.changes.splice(0, snapshotChanges);
     S.dirty = S.changes.length > 0;
     S.source = 'remote';
     persistLocal();
     toast(`บันทึกขึ้น GitHub แล้ว · ${r.commit.sha.slice(0, 7)}`, 'ok');
+    saved = true;
   } catch (e) {
     if (e.status === 409 || (e.status === 422 && /sha/i.test(e.message))) {
-      try { const remote = await ghLoad(); if (remote) conflictModal(remote, 'save'); else { S.sha = null; toast('ไฟล์ใน GitHub ถูกลบไป กด “บันทึก” อีกครั้งเพื่อสร้างใหม่', 'err'); } }
-      catch (e2) { toast('บันทึกไม่สำเร็จ: ' + e2.message, 'err'); }
+      try {
+        const remote = await ghLoad();
+        if (!remote) { S.sha = null; toast('ไฟล์ใน GitHub ถูกลบไป กด “บันทึก” อีกครั้งเพื่อสร้างใหม่', 'err'); }
+        else {
+          // someone saved first: merge version by version, and save straight away when nobody edited the same version
+          const m = mergeRemote(remote);
+          if (!m.clashes.length && attempt < 2) { S.busy = false; applyMerge(remote, m); commitSave(message, attempt + 1); return; }
+          conflictModal(remote, 'save', m, message);
+        }
+      } catch (e2) { toast('บันทึกไม่สำเร็จ: ' + e2.message, 'err'); }
     } else if (e.status === 403 || e.status === 404) {
       toast('Token นี้ไม่มีสิทธิ์เขียนไฟล์ หรือไม่พบ branch — ต้องการสิทธิ์ Contents: Read and write', 'err', null, 8000);
     } else toast('บันทึกไม่สำเร็จ: ' + e.message, 'err', null, 8000);
@@ -2907,6 +3112,7 @@ async function commitSave(message) {
     S.busy = false;
     if (S.route.view === 'co') refresh(); else render();
   }
+  if (saved && S.wfDirty) commitWorkforce();
 }
 async function loadPublic() {
   let remote = null;
@@ -2920,6 +3126,778 @@ async function loadPublic() {
   if (!remote) return;
   if (!S.dirty) { adoptRemote(remote); S.demo = false; }
   render();
+}
+
+/* ============================================================
+   Workforce (people in each unit) and Workforce Planning
+   Employee lists are personal data. The repository only ever holds them encrypted
+   (data/workforce.enc.json: gzip + AES-256-GCM, key from a passphrase via PBKDF2);
+   the browser decrypts them after the passphrase is entered.
+   ============================================================ */
+const WF_FILE = 'workforce.enc.json';
+const WF_ITER = 600000;
+const LS_WF = 'orgstudio.workforce.v1';
+const SS_WFPASS = 'orgstudio.wfpass';
+const wfPath = () => S.cfg.path.replace(/[^/]*$/, WF_FILE);
+const wfContentPath = () => `${repoPath()}/contents/${wfPath().split('/').map(encodeURIComponent).join('/')}`;
+const EMP_LABEL = { PM: 'ประจำ', CT2: 'สัญญาจ้าง', CT1: 'สัญญาจ้างหลังเกษียณ' };
+const PAGES = [['structure', 'โครงสร้างองค์กร', 'layers'], ['workforce', 'กำลังคน', 'people'], ['planning', 'วางแผนกำลังคน', 'plan']];
+const WF_KEEP = 'รหัสพนักงาน ชื่อ-สกุล (ไทย/อังกฤษ) ตำแหน่ง ระดับ กลุ่มพนักงาน ประเภทการจ้าง วันเริ่มงาน ปีที่เกษียณ สถานที่ทำงาน หน่วยงาน และหัวหน้าหน่วย (Structure Owner)';
+const WF_DROP = 'วันเกิด อายุ เพศ ประวัติการศึกษา และคอลัมน์อื่นๆ';
+
+/* ---------- bytes, compression, encryption ---------- */
+function bytesToB64(u8) { let s = ''; for (let i = 0; i < u8.length; i += 0x8000) s += String.fromCharCode.apply(null, u8.subarray(i, i + 0x8000)); return btoa(s); }
+function b64ToBytes(b64) { const s = atob(String(b64)); const u8 = new Uint8Array(s.length); for (let i = 0; i < s.length; i++) u8[i] = s.charCodeAt(i); return u8; }
+async function pipeBytes(u8, ts) { return new Uint8Array(await new Response(new Blob([u8]).stream().pipeThrough(ts)).arrayBuffer()); }
+async function wfDeriveKey(pass, salt = bytesToB64(crypto.getRandomValues(new Uint8Array(16))), iterations = WF_ITER) {
+  const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(pass), 'PBKDF2', false, ['deriveKey']);
+  const key = await crypto.subtle.deriveKey({ name: 'PBKDF2', hash: 'SHA-256', salt: b64ToBytes(salt), iterations }, base, { name: 'AES-GCM', length: 256 }, false, ['encrypt', 'decrypt']);
+  return { key, salt, iterations };
+}
+async function wfSeal(data, k) {
+  const iv = crypto.getRandomValues(new Uint8Array(12));
+  const packed = await pipeBytes(new TextEncoder().encode(JSON.stringify(data)), new CompressionStream('gzip'));
+  const ct = new Uint8Array(await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, k.key, packed));
+  return {
+    app: 'org-structure-studio', kind: 'workforce', v: 1,
+    note: 'ข้อมูลพนักงาน (ข้อมูลส่วนบุคคล) เข้ารหัส AES-256-GCM · เปิดดูได้ในแอปด้วยรหัสผ่านข้อมูลกำลังคนเท่านั้น',
+    asOf: data.asOf, updatedAt: nowISO(), updatedBy: who(),
+    kdf: { name: 'PBKDF2', hash: 'SHA-256', iterations: k.iterations, salt: k.salt },
+    cipher: { name: 'AES-GCM', iv: bytesToB64(iv) }, zip: 'gzip', data: bytesToB64(ct),
+  };
+}
+async function wfOpen(env, k) {
+  const pt = new Uint8Array(await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64ToBytes(env.cipher.iv) }, k.key, b64ToBytes(env.data)));
+  const raw = env.zip === 'gzip' ? await pipeBytes(pt, new DecompressionStream('gzip')) : pt;
+  return JSON.parse(new TextDecoder().decode(raw));
+}
+const sameKey = (env, k) => !!(env && k && env.kdf && env.kdf.salt === k.salt && +env.kdf.iterations === k.iterations);
+
+/* ---------- reading .xlsx in the browser (zip + XML, no library) ---------- */
+async function unzip(buf) {
+  const u8 = new Uint8Array(buf), dv = new DataView(buf), dec = new TextDecoder();
+  let eocd = -1;
+  for (let i = u8.length - 22; i >= Math.max(0, u8.length - 65557); i--) if (dv.getUint32(i, true) === 0x06054b50) { eocd = i; break; }
+  if (eocd < 0) throw new Error('ไฟล์นี้ไม่ใช่ไฟล์ Excel (.xlsx)');
+  const files = {};
+  let p = dv.getUint32(eocd + 16, true);
+  for (let i = 0, n = dv.getUint16(eocd + 10, true); i < n && dv.getUint32(p, true) === 0x02014b50; i++) {
+    const nl = dv.getUint16(p + 28, true);
+    files[dec.decode(u8.subarray(p + 46, p + 46 + nl))] = { method: dv.getUint16(p + 10, true), size: dv.getUint32(p + 20, true), off: dv.getUint32(p + 42, true) };
+    p += 46 + nl + dv.getUint16(p + 30, true) + dv.getUint16(p + 32, true);
+  }
+  return async name => {
+    const f = files[name];
+    if (!f) return null;
+    const start = f.off + 30 + dv.getUint16(f.off + 26, true) + dv.getUint16(f.off + 28, true);
+    const raw = u8.subarray(start, start + f.size);
+    return dec.decode(f.method === 8 ? await pipeBytes(raw, new DecompressionStream('deflate-raw')) : raw);
+  };
+}
+async function readXlsx(buf) {
+  const get = await unzip(buf);
+  const xml = s => new DOMParser().parseFromString(s || '<x/>', 'application/xml');
+  const texts = el => [...el.getElementsByTagName('t')].filter(t => t.parentNode.nodeName !== 'rPh').map(t => t.textContent).join('');
+  const sheet = xml(await get('xl/workbook.xml')).getElementsByTagName('sheet')[0];
+  if (!sheet) throw new Error('ไม่พบชีตในไฟล์');
+  let target = 'worksheets/sheet1.xml';
+  for (const r of xml(await get('xl/_rels/workbook.xml.rels')).getElementsByTagName('Relationship')) if (r.getAttribute('Id') === sheet.getAttribute('r:id')) target = r.getAttribute('Target');
+  const shared = [...xml(await get('xl/sharedStrings.xml')).getElementsByTagName('si')].map(texts);
+  const sx = await get('xl/' + target.replace(/^\/?(xl\/)?/, ''));
+  if (!sx) throw new Error('อ่านชีตแรกของไฟล์ไม่ได้');
+  const rows = [];
+  for (const row of xml(sx).getElementsByTagName('row')) {
+    const out = [];
+    for (const c of row.getElementsByTagName('c')) {
+      let col = 0;
+      for (const ch of (c.getAttribute('r') || '').replace(/\d+$/, '')) col = col * 26 + ch.charCodeAt(0) - 64;
+      const t = c.getAttribute('t'), vEl = c.getElementsByTagName('v')[0];
+      let val = vEl ? vEl.textContent : null;
+      if (t === 's') val = shared[+val] ?? '';
+      else if (t === 'inlineStr') val = texts(c);
+      else if (t !== 'str' && t !== 'e' && t !== 'b' && val !== null && val !== '' && !isNaN(+val)) val = +val;
+      out[(col || out.length + 1) - 1] = val;
+    }
+    rows.push(out);
+  }
+  return rows;
+}
+function xlDate(v) {
+  if (v == null || v === '') return '';
+  if (typeof v === 'number') return new Date(Date.UTC(1899, 11, 30) + Math.round(v * 86400000)).toISOString().slice(0, 10);
+  const s = String(v).trim();
+  let m = s.match(/^(\d{4})-(\d\d)-(\d\d)/);
+  if (m) return m[0];
+  m = s.match(/^(\d{1,2})[/.-](\d{1,2})[/.-](\d{4})/);
+  if (m) { const y = +m[3] > 2400 ? +m[3] - 543 : +m[3]; return `${y}-${m[2].padStart(2, '0')}-${m[1].padStart(2, '0')}`; }
+  return '';
+}
+
+/* ---------- employee file -> workforce data (only the columns needed) ---------- */
+const WF_COLS = {
+  id: ['employee code', 'รหัสพนักงาน'], title: ['คำนำหน้า'], fn: ['ชื่อ'], ln: ['สกุล', 'นามสกุล'],
+  fnEn: ['ชือ (alt)', 'ชื่อ (alt)', 'first name'], lnEn: ['นามสกุล (alt)', 'last name'],
+  co: ['company code'], loc: ['location name'], pos: ['position'], lvl: ['employee level'],
+  empCode: ['employment type code'], emp: ['employment type'], grp: ['employee group'],
+  unit: ['structure unit code'], unitName: ['structure unit namealt', 'structure unit name'],
+  start: ['start job date', 'service date'], retire: ['retireddate', 'retired date'], owner: ['structure owner'],
+};
+const wfClean = s => String(s ?? '').replace(/_x000D_/gi, ' ').replace(/\s+/g, ' ').trim();
+function wfFromRows(rows, meta) {
+  const H = (rows[0] || []).map(h => wfClean(h).toLowerCase());
+  const col = names => { for (const n of names) { const i = H.indexOf(n); if (i >= 0) return i; } return -1; };
+  const C = {};
+  Object.entries(WF_COLS).forEach(([k, names]) => { C[k] = col(names); });
+  const miss = ['id', 'co', 'unit'].filter(k => C[k] < 0);
+  if (miss.length) throw new Error('ไม่พบคอลัมน์ ' + miss.map(k => `“${WF_COLS[k][0]}”`).join(', ') + ' ในแถวแรกของชีต');
+  const lv = [1, 2, 3, 4, 5, 6].map(i => col([`structure${i} (alt)`, `structure${i} name`]));
+  const units = {}, people = [];
+  rows.slice(1).forEach(r => {
+    const g = k => (C[k] >= 0 ? r[C[k]] : null);
+    const id = wfClean(g('id'));
+    if (!id) return;
+    const co = wfClean(g('co')).toUpperCase(), code = wfClean(g('unit')) || '—', key = co + '|' + code;
+    if (!units[key]) {
+      const chain = [];
+      lv.forEach(i => { const nm = i >= 0 ? wfClean(r[i]) : ''; if (nm && chain[chain.length - 1] !== nm) chain.push(nm); });
+      const name = wfClean(g('unitName')) || chain[chain.length - 1] || code;
+      if (chain[chain.length - 1] !== name) chain.push(name);
+      units[key] = { co, code, name, chain };
+    }
+    const empCode = wfClean(g('empCode')).toUpperCase(), owner = wfClean(g('owner')).toLowerCase();
+    const retire = xlDate(g('retire'));
+    people.push({
+      id, co, unit: key, title: wfClean(g('title')), fn: wfClean(g('fn')), ln: wfClean(g('ln')), fnEn: wfClean(g('fnEn')), lnEn: wfClean(g('lnEn')),
+      pos: wfClean(g('pos')), lvl: wfClean(g('lvl')), grp: wfClean(g('grp')), emp: EMP_LABEL[empCode] || wfClean(g('emp')) || empCode,
+      start: xlDate(g('start')), retire: retire ? +retire.slice(0, 4) : null, loc: wfClean(g('loc')),
+      owner: ['top', 'middle', 'lower'].includes(owner) ? owner[0].toUpperCase() + owner.slice(1) : '',
+    });
+  });
+  if (!people.length) throw new Error('ไม่พบรายชื่อพนักงานในไฟล์');
+  return { schema: 1, source: meta.file, asOf: meta.asOf, importedAt: nowISO(), importedBy: who(), units, people, map: {} };
+}
+
+/* ---------- placing people in the boxes of a structure version ---------- */
+function wfNorm(s) {
+  return String(s || '').toLowerCase().replace(/_x000d_/g, ' ').replace(/\(.*?\)/g, ' ').replace(/[^a-z0-9฀-๿]+/g, ' ')
+    .replace(/\b(division|department|section|team|office|unit|business|the|and|of|co|ltd)\b/g, ' ').replace(/\s+/g, ' ').trim();
+}
+const wfAcr = s => ((String(s || '').match(/\((CEO|COO|CTO|CFO|CHRO|CMO|CIO|MD)(?![A-Z])/i) || [])[1] || '').toUpperCase();
+function dice(a, b) {
+  const grams = s => { const m = new Map(); for (let i = 0; i < s.length - 1; i++) { const g = s.slice(i, i + 2); m.set(g, (m.get(g) || 0) + 1); } return m; };
+  const A = grams(a), B = grams(b);
+  let inter = 0, n = 0;
+  A.forEach((c, g) => { inter += Math.min(c, B.get(g) || 0); n += c; });
+  B.forEach(c => { n += c; });
+  return n ? (2 * inter) / n : 0;
+}
+function wfIndex(v) {
+  const keys = new Map(), list = [];
+  (function rec(n, anc) {
+    const ext = EXTERNAL.has(n.type);
+    if (!ext) {
+      const it = { n, depth: anc.length, ks: [...new Set([wfNorm(n.name), wfNorm(n.nameEn), wfNorm(n.code)].filter(Boolean))],
+        ancKs: anc.flatMap(a => [wfNorm(a.name), wfNorm(a.nameEn)]).filter(Boolean),
+        acr: n.type === 'executive' ? wfAcr(n.name) || wfAcr(n.nameEn) || wfAcr(n.title) : '' };
+      list.push(it);
+      it.ks.forEach(k => { if (!keys.has(k)) keys.set(k, []); keys.get(k).push(it); });
+    }
+    n.children.forEach(c => rec(c, ext ? anc : anc.concat(n)));
+  })(v.root, []);
+  return { keys, list };
+}
+// match an HR unit to a box: its own name first, then up its HR chain; same-name boxes are told apart by their parents
+function wfAuto(u, ix) {
+  const chain = u.chain.map(wfNorm);
+  for (let i = chain.length - 1; i >= 0; i--) {
+    const k = chain[i];
+    let cands = k ? ix.keys.get(k) : null;
+    if (!cands && i === chain.length - 1 && k.length > 6) {   // spelling slips in the HR system (Vender / Vendor)
+      let best = 0, hit = null;
+      ix.list.forEach(it => it.ks.forEach(kk => { const d = dice(k, kk); if (d > best) { best = d; hit = it; } }));
+      if (best >= 0.86) cands = [hit];
+    }
+    if (!cands) {
+      const a = wfAcr(u.chain[i]);
+      const ex = a ? ix.list.filter(it => it.acr === a).sort((x, y) => x.depth - y.depth) : [];
+      if (ex.length) cands = [ex[0]];
+    }
+    if (cands && cands.length) {
+      const anc = new Set(chain.slice(0, i));
+      let pick = cands[0], score = -1;
+      cands.forEach(c => { const s = c.ancKs.filter(x => anc.has(x)).length; if (s > score) { score = s; pick = c; } });
+      return { id: pick.n.id, how: i === chain.length - 1 ? 'exact' : 'parent' };
+    }
+  }
+  return null;
+}
+const wfCache = new Map();
+function wfPlace(v) {
+  const co = v.companyCode, act = activeOf(co);
+  const map = (S.wf.map && S.wf.map[co]) || {};
+  const ck = [v.id, v.updatedAt, act && act.id, act && act.updatedAt, S.wf.importedAt, S.wf.people.length, JSON.stringify(map)].join('|');
+  if (wfCache.has(ck)) return wfCache.get(ck);
+  const ids = new Set();
+  walk(v.root, n => { if (!EXTERNAL.has(n.type)) ids.add(n.id); });
+  const ixV = wfIndex(v), ixA = act && act.id !== v.id ? wfIndex(act) : null;
+  const unitTo = new Map();
+  Object.entries(S.wf.units).forEach(([k, u]) => {
+    if (u.co !== co) return;
+    let r;
+    if (k in map && map[k] === '') r = { id: null, how: 'none' };
+    else if (map[k] && ids.has(map[k])) r = { id: map[k], how: 'manual' };
+    else if (ixA) {
+      // people follow their unit from the Active structure into this version (same box id)
+      const a = wfAuto(u, ixA);
+      const b = a && ids.has(a.id) ? a : wfAuto(u, ixV);
+      r = b && (b === a || b.how === 'exact') ? b : a ? { id: null, how: 'gone', was: a.id } : { id: null, how: 'none' };
+    } else r = wfAuto(u, ixV) || { id: null, how: 'none' };
+    unitTo.set(k, r);
+  });
+  const byNode = new Map(), nodeOf = new Map(), unplaced = [], gone = [];
+  S.wf.people.forEach(p => {
+    if (p.co !== co) return;
+    const r = unitTo.get(p.unit) || { id: null, how: 'none' };
+    if (r.id) { if (!byNode.has(r.id)) byNode.set(r.id, []); byNode.get(r.id).push(p); nodeOf.set(p, r.id); }
+    else (r.how === 'gone' ? gone : unplaced).push(p);
+  });
+  const roll = new Map();
+  (function rec(n) { let t = (byNode.get(n.id) || []).length; n.children.forEach(c => { t += rec(c); }); roll.set(n.id, t); return t; })(v.root);
+  const res = { byNode, nodeOf, roll, unplaced, gone, unitTo, act: ixA ? act : null, total: S.wf.people.filter(p => p.co === co).length };
+  if (wfCache.size > 40) wfCache.clear();
+  wfCache.set(ck, res);
+  return res;
+}
+function wfUnder(P, n) { const out = []; walk(n, x => { (P.byNode.get(x.id) || []).forEach(p => out.push(p)); }); return out; }
+function nodeTrail(root, id) {
+  const out = [];
+  (function rec(n) { out.push(n); if (n.id === id) return true; for (const c of n.children) if (rec(c)) return true; out.pop(); return false; })(root);
+  return out;
+}
+
+/* ---------- small helpers ---------- */
+const wfName = p => `${p.title}${p.fn} ${p.ln}`.trim();
+const wfNameEn = p => `${p.fnEn} ${p.lnEn}`.trim();
+const wfYears = iso => (iso ? (Date.now() - new Date(iso + 'T00:00:00').getTime()) / 31557600000 : null);
+const lvlNum = l => { const m = String(l || '').match(/^(\d+)([A-Z]?)/i); return m ? +m[1] * 10 + (m[2] ? m[2].toUpperCase().charCodeAt(0) - 64 : 0) : 0; };
+const lvlBand = l => { const n = Math.floor(lvlNum(l) / 10); return !n ? 'ไม่ระบุ' : n <= 2 ? 'ระดับ 1–2' : n <= 4 ? 'ระดับ 3–4' : n <= 6 ? 'ระดับ 5–6' : n <= 8 ? 'ระดับ 7–8' : 'ระดับ 9 ขึ้นไป'; };
+const svcBand = y => (y == null ? 'ไม่ระบุ' : y < 1 ? 'ไม่ถึง 1 ปี' : y < 3 ? '1–3 ปี' : y < 5 ? '3–5 ปี' : y < 10 ? '5–10 ปี' : '10 ปีขึ้นไป');
+const retireSoon = p => p.retire && p.retire <= new Date().getFullYear() + 3;
+const fmtYears = y => (y == null ? '—' : y < 1 ? Math.max(0, Math.round(y * 12)) + ' ด.' : y.toFixed(1) + ' ปี');
+function wfSummary(list) {
+  const s = { n: list.length, perm: 0, retire: 0, svc: 0, svcN: 0, heads: 0, grp: {}, emp: {}, lvl: {}, svcB: {} };
+  const add = (o, k) => { o[k] = (o[k] || 0) + 1; };
+  list.forEach(p => {
+    if (p.emp === 'ประจำ') s.perm++;
+    if (retireSoon(p)) s.retire++;
+    if (p.owner === 'Top') s.heads++;
+    const y = wfYears(p.start);
+    if (y != null) { s.svc += y; s.svcN++; }
+    add(s.grp, p.grp || 'ไม่ระบุ'); add(s.emp, p.emp || 'ไม่ระบุ'); add(s.lvl, lvlBand(p.lvl)); add(s.svcB, svcBand(y));
+  });
+  return s;
+}
+const sortPeople = list => list.slice().sort((a, b) => (b.owner === 'Top') - (a.owner === 'Top') || lvlNum(b.lvl) - lvlNum(a.lvl) || wfName(a).localeCompare(wfName(b), 'th'));
+function gapInfo(plan, actual) {
+  if (!plan) return actual ? { cls: 'nop', txt: 'ยังไม่กำหนดแผน' } : { cls: '', txt: '' };
+  if (actual < plan) return { cls: 'short', txt: `ขาด ${fmtNum(plan - actual)}` };
+  if (actual > plan) return { cls: 'over', txt: `เกิน ${fmtNum(actual - plan)}` };
+  return { cls: 'ok', txt: 'ครบตามแผน' };
+}
+
+/* ---------- page shell ---------- */
+function pnavHTML() {
+  return `<nav class="pnav" aria-label="หน้าของบริษัท">${PAGES.map(([k, l, ic]) => `<button class="pn" data-act="page" data-page="${k}" aria-current="${S.page === k ? 'page' : 'false'}">${I[ic]}<span>${l}</span></button>`).join('')}
+    ${S.page !== 'structure' && S.wf ? `<span class="pn-meta">ข้อมูลพนักงาน ณ ${fmtDate(S.wf.asOf)}</span>` : ''}</nav>`;
+}
+function wfCurId(v) {
+  const id = S.wfUnit[v.id];
+  return id === '__out' || (id && find(v.root, id)) ? id : v.root.id;
+}
+function wfToolsHTML(v) {
+  const lead = `<button class="tbtn m-only" data-act="open-rail" aria-label="เวอร์ชัน">${I.layers}</button>${panelBtn('rail')}`;
+  const tail = `${panelBtn('insp')}<button class="tbtn m-only" data-act="open-insp" aria-label="รายละเอียด">${I.info}</button>`;
+  if (!v) return lead + `<div class="tools-r">${tail}</div>`;
+  if (S.page === 'workforce') {
+    if (!S.wf) return lead + `<div class="tools-r">${canEditApp() ? `<button class="tbtn keep" data-act="wf-import">${I.upload}<span class="tl">นำเข้าไฟล์พนักงาน</span></button>` : ''}${tail}</div>`;
+    return `${lead}<input class="inp sm wf-q" type="search" data-wf="q" value="${esc(S.wfQuery)}" placeholder="ค้นหาชื่อ รหัส หรือตำแหน่ง" aria-label="ค้นหาพนักงาน">
+      <div class="tabs" role="group" aria-label="ขอบเขตรายชื่อ"><button class="tab" data-act="wf-scope" data-scope="all" aria-pressed="${S.wfScope === 'all'}" aria-selected="${S.wfScope === 'all'}">รวมหน่วยย่อย</button><button class="tab" data-act="wf-scope" data-scope="direct" aria-pressed="${S.wfScope === 'direct'}" aria-selected="${S.wfScope === 'direct'}">เฉพาะหน่วยนี้</button></div>
+      <div class="tools-r"><button class="tbtn keep" data-act="wf-map">${I.link}<span class="tl">จับคู่หน่วยงาน</span></button><button class="tbtn keep" data-act="wf-export">${I.download}<span class="tl">Export รายชื่อ</span></button>${tail}</div>`;
+  }
+  const f = S.planFilter;
+  const seg = [['all', 'ทุกหน่วย'], ['short', 'ขาดคน'], ['over', 'เกินแผน'], ['nop', 'ยังไม่กำหนดแผน']].concat(activeOf(v.companyCode) && activeOf(v.companyCode).id !== v.id ? [['new', 'หน่วยใหม่']] : [])
+    .map(([k, l]) => `<button class="tab" data-act="plan-filter" data-f="${k}" aria-pressed="${f === k}" aria-selected="${f === k}">${l}</button>`).join('');
+  return `${lead}<div class="tabs" role="group" aria-label="กรองหน่วยงาน">${seg}</div>
+    <div class="tools-r">${canEdit(v) && S.wf ? `<button class="tbtn keep" data-act="plan-fill" title="กำหนดอัตรากำลังตามแผนให้เท่ากับจำนวนคนจริง สำหรับหน่วยที่ยังไม่มีแผน">${I.plan}<span class="tl">ตั้งแผนเท่าคนจริง</span></button>` : ''}
+      <button class="tbtn keep" data-act="plan-export">${I.download}<span class="tl">Export แผน</span></button>${tail}</div>`;
+}
+function wfBodyHTML(v) {
+  if (!v) return emptyHTML();
+  if (S.page === 'workforce') return S.wf ? wfPageHTML(v) : wfGateHTML();
+  return planPageHTML(v);
+}
+function wfGateHTML(compact) {
+  if (S.wfEnv) {
+    return `<div class="${compact ? 'wf-gate-sm' : 'empty-state wf-gate'}">${compact ? '' : `<span class="gate-ic">${I.lock}</span><h2>ข้อมูลพนักงานถูกเข้ารหัสไว้</h2>`}
+      <p>${compact ? 'ใส่รหัสผ่านข้อมูลกำลังคนเพื่อเทียบแผนกับจำนวนคนจริง' : 'ใส่รหัสผ่านข้อมูลกำลังคนเพื่อเปิดดูรายชื่อ ข้อมูลถอดรหัสในเบราว์เซอร์นี้เท่านั้น ไม่ถูกส่งไปที่อื่น'}</p>
+      <form class="wf-unlock" data-form="wf-unlock"><div class="wf-unlock-row"><input class="inp" type="password" name="pass" autocomplete="current-password" placeholder="รหัสผ่านข้อมูลกำลังคน" aria-label="รหัสผ่านข้อมูลกำลังคน" required>
+        <button class="btn primary" type="submit">${I.lock}ปลดล็อก</button></div>
+        <label class="check"><input type="checkbox" name="remember"><span>จำไว้จนกว่าจะปิดแท็บนี้</span></label></form>
+      ${S.wfEnv.asOf ? `<p class="muted">ข้อมูล ณ ${fmtDate(S.wfEnv.asOf)} · บันทึกล่าสุด ${fmtDateTime(S.wfEnv.updatedAt)} ${esc(S.wfEnv.updatedBy || '')}</p>` : ''}</div>`;
+  }
+  if (compact) return '';
+  return `<div class="empty-state wf-gate"><span class="gate-ic">${I.people}</span><h2>ยังไม่มีข้อมูลพนักงาน</h2>
+    <p>นำเข้าไฟล์ Excel รายชื่อพนักงานจากระบบ HR ระบบจะจัดคนลงกล่องหน่วยงานในผังให้อัตโนมัติ และเก็บไฟล์แบบเข้ารหัส</p>
+    ${canEditApp() ? `<button class="btn primary" data-act="wf-import">${I.upload}นำเข้าไฟล์พนักงาน (.xlsx)</button>` : '<p class="muted">ผู้มีสิทธิ์แก้ไขเข้าสู่ระบบเพื่อนำเข้าไฟล์</p>'}</div>`;
+}
+function kpiHTML(items) {
+  return `<dl class="wf-kpis">${items.filter(Boolean).map(([l, val, cls, tip]) => `<div class="${cls || ''}" ${tip ? `title="${esc(tip)}"` : ''}><dt>${l}</dt><dd>${val}</dd></div>`).join('')}</dl>`;
+}
+
+/* ---------- Workforce page: drill down + people ---------- */
+function wfPageHTML(v) {
+  const P = wfPlace(v), plan = rollup(v.root);
+  const cur = wfCurId(v), out = cur === '__out';
+  const node = out ? null : find(v.root, cur).node;
+  const trail = out ? [v.root] : nodeTrail(v.root, cur);
+  const crumbs = trail.map((n, i) => `<button class="crumb" data-act="wf-unit" data-id="${n.id}" ${i === trail.length - 1 && !out ? 'aria-current="true"' : ''}>${esc(n.name || 'ไม่มีชื่อ')}</button>`).join('<span class="crumb-sep">›</span>')
+    + (out ? '<span class="crumb-sep">›</span><span class="crumb" aria-current="true">ยังไม่ได้อยู่ในผังนี้</span>' : '');
+  const miss = P.unplaced.length + P.gone.length;
+  const alert = miss ? `<div class="wf-alert">${I.info}<p><b>${fmtNum(miss)} คน</b> ยังไม่ได้อยู่ในกล่องใดของผังนี้${P.gone.length ? ` (${fmtNum(P.gone.length)} คนมาจากหน่วยที่ไม่มีในเวอร์ชันนี้)` : ''}</p>
+      <button class="btn sm" data-act="wf-unit" data-id="__out">ดูรายชื่อ</button>${canEditApp() ? `<button class="btn sm" data-act="wf-map">${I.link}จับคู่หน่วยงาน</button>` : ''}</div>` : '';
+  let head, subs = '';
+  const list = out ? P.unplaced.concat(P.gone) : S.wfScope === 'all' ? wfUnder(P, node) : (P.byNode.get(node.id) || []);
+  const sm = wfSummary(list);
+  if (out) {
+    head = `<div class="wf-head"><div><p class="eyebrow">ยังไม่ได้จัดลงกล่อง</p><h2>${fmtNum(list.length)} คน</h2></div></div>`;
+  } else {
+    const pl = S.wfScope === 'all' ? plan.get(node.id) : (+node.hc || 0), act = list.length, g = gapInfo(pl, act);
+    head = `<div class="wf-head"><div><p class="eyebrow"><i class="dot tc-${node.type}"></i>${esc(TYPES[node.type].th)}${node.staff ? ' · Staff' : ''}</p><h2>${esc(node.name || 'ไม่มีชื่อ')}</h2>${node.nameEn ? `<p class="muted">${esc(node.nameEn)}</p>` : ''}</div>
+      ${kpiHTML([
+        ['คนจริง' + (S.wfScope === 'all' ? ' (รวมหน่วยย่อย)' : ''), fmtNum(act)],
+        ['อัตรากำลังตามแผน', pl ? fmtNum(pl) : '—'],
+        ['ส่วนต่าง', g.txt || '—', 'gap ' + g.cls],
+        ['พนักงานประจำ', act ? `${fmtNum(sm.perm)} <small>/ สัญญาจ้าง ${fmtNum(act - sm.perm)}</small>` : '—'],
+        ['เกษียณภายใน 3 ปี', fmtNum(sm.retire), sm.retire ? 'warn' : '', `เกษียณภายในสิ้นปี ${new Date().getFullYear() + 3}`],
+        ['อายุงานเฉลี่ย', sm.svcN ? fmtYears(sm.svc / sm.svcN) : '—'],
+      ])}</div>`;
+    const kids = node.children.filter(c => !EXTERNAL.has(c.type));
+    if (kids.length) {
+      const max = Math.max(1, ...kids.map(c => Math.max(P.roll.get(c.id) || 0, plan.get(c.id) || 0)));
+      const own = (P.byNode.get(node.id) || []).length;
+      subs = `<section class="wf-subs"><h3>หน่วยงานภายใต้ <span class="muted">${kids.length} หน่วย</span></h3>
+        ${own ? `<p class="wf-own">อยู่ที่ระดับหน่วยนี้โดยตรง <b>${fmtNum(own)}</b> คน</p>` : ''}
+        <div class="ws-list">${kids.map(c => {
+          const a = P.roll.get(c.id) || 0, p = plan.get(c.id) || 0, gi = gapInfo(p, a);
+          return `<button class="wf-sub" data-act="wf-unit" data-id="${c.id}">
+            <span class="ws-name"><i class="dot tc-${c.type}"></i><span>${esc(c.name || 'ไม่มีชื่อ')}</span>${c.staff ? '<span class="tag">Staff</span>' : ''}</span>
+            <span class="ws-num"><b>${fmtNum(a)}</b> คน${p ? ` <span class="muted">/ แผน ${fmtNum(p)}</span>` : ''}</span>
+            <span class="ws-bar"><i class="a" style="width:${(a / max) * 100}%"></i>${p ? `<i class="p" style="left:${Math.min(100, (p / max) * 100)}%"></i>` : ''}</span>
+            <span class="ws-gap ${gi.cls}">${gi.txt}</span></button>`;
+        }).join('')}</div></section>`;
+    }
+  }
+  return `<div class="wf-page" id="wf-page">${alert}<nav class="crumbs" aria-label="ลำดับหน่วยงาน">${crumbs}</nav>${head}
+    ${subs}<section class="wf-people"><h3>รายชื่อ <span class="muted" id="wf-count">${peopleCount(list)}</span></h3><div id="wf-people">${wfPeopleHTML(v, P, list, out)}</div></section></div>`;
+}
+function wfFilter(list) {
+  const q = S.wfQuery.trim().toLowerCase();
+  if (!q) return list;
+  return list.filter(p => [p.id, wfName(p), wfNameEn(p), p.pos, p.lvl].some(x => String(x || '').toLowerCase().includes(q)));
+}
+function peopleCount(list) { const n = wfFilter(list).length; return `${fmtNum(n)} คน${n !== list.length ? ` จาก ${fmtNum(list.length)}` : ''}`; }
+function wfPeopleHTML(v, P, list, out) {
+  const rows = sortPeople(wfFilter(list));
+  const showUnit = out || S.wfScope === 'all';
+  const unitOf = p => {
+    if (out) { const r = P.unitTo.get(p.unit); const was = r && r.was && P.act ? find(P.act.root, r.was) : null; return (S.wf.units[p.unit] || {}).name + (was ? ` (เดิม: ${was.node.name})` : ''); }
+    const n = find(v.root, P.nodeOf.get(p)); return n ? n.node.name : '';
+  };
+  if (!rows.length) return `<p class="empty">${list.length ? 'ไม่พบรายชื่อที่ตรงกับคำค้น' : 'ยังไม่มีพนักงานในหน่วยนี้'}</p>`;
+  const year = new Date().getFullYear();
+  return `<div class="pl-wrap"><table class="pl"><thead><tr><th>รหัส</th><th>ชื่อ-สกุล</th><th>ตำแหน่ง</th><th>ระดับ</th><th>กลุ่มพนักงาน</th><th>ประเภท</th><th class="num">อายุงาน</th><th class="num">เกษียณ</th>${showUnit ? `<th>${out ? 'หน่วยงานในระบบ HR' : 'หน่วยงาน'}</th>` : ''}</tr></thead><tbody>
+    ${rows.map(p => `<tr><td class="mono">${esc(p.id)}</td><td><b>${esc(wfName(p))}</b>${p.owner ? ` <span class="tag ${p.owner === 'Top' ? 'head' : ''}" title="Structure Owner: ${esc(p.owner)}">${p.owner === 'Top' ? 'หัวหน้าหน่วย' : esc(p.owner)}</span>` : ''}${wfNameEn(p) ? `<small>${esc(wfNameEn(p))}</small>` : ''}</td>
+      <td>${esc(p.pos)}</td><td class="mono">${esc(p.lvl)}</td><td>${esc(p.grp)}</td><td>${p.emp === 'ประจำ' ? 'ประจำ' : `<span class="tag">${esc(p.emp)}</span>`}</td>
+      <td class="num">${fmtYears(wfYears(p.start))}</td><td class="num${retireSoon(p) ? ' soon' : ''}">${p.retire ? p.retire + 543 : '—'}</td>${showUnit ? `<td class="unit">${esc(unitOf(p))}</td>` : ''}</tr>`).join('')}
+    </tbody></table></div>${rows.some(p => p.retire && p.retire <= year + 3) ? '<p class="pl-note">ปีที่เกษียณเป็น พ.ศ. · ตัวเลขสีส้ม = เกษียณภายใน 3 ปี</p>' : ''}`;
+}
+function wfRefreshPeople() {
+  const v = curVersion(), box = $('#wf-people');
+  if (!v || !box || !S.wf) return;
+  const P = wfPlace(v), cur = wfCurId(v), out = cur === '__out';
+  const node = out ? null : find(v.root, cur).node;
+  const list = out ? P.unplaced.concat(P.gone) : S.wfScope === 'all' ? wfUnder(P, node) : (P.byNode.get(node.id) || []);
+  box.innerHTML = wfPeopleHTML(v, P, list, out);
+  const c = $('#wf-count');
+  if (c) c.textContent = peopleCount(list);
+}
+
+/* ---------- right panel on the Workforce / Planning pages ---------- */
+const LVL_ORDER = ['ระดับ 1–2', 'ระดับ 3–4', 'ระดับ 5–6', 'ระดับ 7–8', 'ระดับ 9 ขึ้นไป', 'ไม่ระบุ'];
+const SVC_ORDER = ['ไม่ถึง 1 ปี', '1–3 ปี', '3–5 ปี', '5–10 ปี', '10 ปีขึ้นไป', 'ไม่ระบุ'];
+function barsHTML(title, obj, total, order) {
+  const ent = Object.entries(obj).sort((a, b) => (order ? order.indexOf(a[0]) - order.indexOf(b[0]) : b[1] - a[1]));
+  if (!ent.length) return '';
+  return `<div class="field"><span>${title}</span><div class="bars">${ent.map(([k, n]) => `<div class="bar"><span class="bl">${esc(k)}</span><span class="bt"><i style="width:${(n / total) * 100}%"></i></span><span class="bn">${fmtNum(n)}</span></div>`).join('')}</div></div>`;
+}
+function wfInspHTML(v) {
+  if (!v) return '';
+  const head = `<div class="ip-head"><div><h3>${S.page === 'planning' ? 'Workforce Planning' : 'Workforce'}</h3><h2>${S.page === 'planning' ? 'วางแผนกำลังคน' : 'ข้อมูลกำลังคน'}</h2></div><button class="ibtn ip-close" data-act="close-insp" aria-label="ปิด">${I.close}</button></div>`;
+  const tip = S.page === 'planning'
+    ? `<div class="tip"><b>วางแผนอย่างไร</b><span>อัตรากำลังตามแผนเป็นส่วนหนึ่งของเวอร์ชันโครงสร้าง แก้ได้ใน Draft แล้ว Publish พร้อมโครงสร้าง</span><span>Draft ที่สร้างจาก Active ใช้กล่องเดิม คนจึงตามหน่วยเดิมไปอัตโนมัติ หน่วยที่ถูกยุบจะแสดงรายชื่อคนที่ต้องจัดสรรใหม่</span></div>`
+    : `<div class="tip"><b>ข้อมูลส่วนบุคคล</b><span>รายชื่อพนักงานเก็บใน repository แบบเข้ารหัสเท่านั้น ถอดรหัสในเบราว์เซอร์ด้วยรหัสผ่านข้อมูลกำลังคน ใช้เพื่องานบริหารบุคคลขององค์กร</span></div>`;
+  if (!S.wf) {
+    return `<section class="panel">${head}${S.wfEnv ? `<p class="muted">ข้อมูลพนักงานถูกเข้ารหัสไว้ ปลดล็อกที่หน้ากำลังคนเพื่อดูรายชื่อ</p>` : '<p class="muted">ยังไม่มีข้อมูลพนักงาน</p>'}
+      ${canEditApp() ? `<button class="btn sm" data-act="wf-import">${I.upload}นำเข้าไฟล์พนักงาน</button>` : ''}</section>${tip}`;
+  }
+  const P = wfPlace(v);
+  const cur = wfCurId(v), node = cur === '__out' ? null : find(v.root, cur).node;
+  const list = S.page === 'planning' ? wfUnder(P, v.root) : node ? (S.wfScope === 'all' ? wfUnder(P, node) : (P.byNode.get(node.id) || [])) : P.unplaced.concat(P.gone);
+  const sm = wfSummary(list);
+  const placed = P.total - P.unplaced.length - P.gone.length;
+  const others = Object.values(S.wf.units).filter(u => !company(u.co)).map(u => u.co);
+  const extra = [...new Set(others)].map(co => `${co} ${fmtNum(S.wf.people.filter(p => p.co === co).length)} คน`).join(', ');
+  return `<section class="panel">${head}
+    <dl class="kv"><dt>ข้อมูล ณ</dt><dd>${fmtDate(S.wf.asOf)}</dd><dt>ไฟล์ต้นทาง</dt><dd>${esc(S.wf.source || '—')}</dd><dt>นำเข้า</dt><dd>${fmtDateTime(S.wf.importedAt)} · ${esc(S.wf.importedBy || '')}</dd>
+      <dt>พนักงาน ${esc(v.companyCode)}</dt><dd>${fmtNum(P.total)} คน · อยู่ในผังนี้ ${fmtNum(placed)} คน${P.total - placed ? ` · <a href="#" data-act="wf-unit" data-id="__out">ยังไม่ลงกล่อง ${fmtNum(P.total - placed)}</a>` : ''}</dd>
+      ${extra ? `<dt>บริษัทที่ไม่มีผัง</dt><dd>${esc(extra)}</dd>` : ''}</dl>
+    <div class="btnrow">${canEditApp() ? `<button class="btn sm" data-act="wf-import">${I.upload}นำเข้าไฟล์ใหม่</button>` : ''}<button class="btn sm" data-act="wf-map">${I.link}จับคู่หน่วยงาน</button>
+      ${canEditApp() ? `<button class="btn sm" data-act="wf-pass">${I.lock}เปลี่ยนรหัสผ่าน</button>` : ''}<button class="btn sm ghost" data-act="wf-lock">${I.lock}ล็อก</button></div></section>
+  ${list.length ? `<section class="panel"><h3>องค์ประกอบ${S.page === 'planning' ? 'ทั้งบริษัท' : node ? `: ${esc(node.name)}` : ''} · ${fmtNum(list.length)} คน</h3>
+    ${barsHTML('กลุ่มพนักงาน', sm.grp, list.length)}${barsHTML('ระดับ', sm.lvl, list.length, LVL_ORDER)}${barsHTML('ประเภทการจ้าง', sm.emp, list.length)}${barsHTML('อายุงาน', sm.svcB, list.length, SVC_ORDER)}</section>` : ''}
+  ${tip}`;
+}
+
+/* ---------- Workforce Planning page: plan vs actual per unit ---------- */
+function planRows(v) {
+  const P = S.wf ? wfPlace(v) : null, plan = rollup(v.root);
+  const act = activeOf(v.companyCode), base = act && act.id !== v.id ? act : null;
+  const baseIdx = base ? new Map(flatten(base.root).map(x => [x.n.id, x.n])) : null;
+  return {
+    P, plan, base,
+    rows: flatten(v.root).filter(x => !EXTERNAL.has(x.n.type)).map(x => {
+      const n = x.n, pl = +n.hc || 0, own = P ? (P.byNode.get(n.id) || []) : [];
+      const a = P ? own.length : null;
+      return { n, depth: x.depth, pl, a, rp: plan.get(n.id), ra: P ? P.roll.get(n.id) : null, g: gapInfo(pl, a || 0), retire: own.filter(retireSoon).length,
+        isNew: !!(baseIdx && !baseIdx.has(n.id)), basePl: baseIdx && baseIdx.has(n.id) ? +baseIdx.get(n.id).hc || 0 : null };
+    }),
+  };
+}
+function planPageHTML(v) {
+  const { P, base, rows } = planRows(v), edit = canEdit(v);
+  const sum = (f) => rows.reduce((t, r) => t + f(r), 0);
+  const tp = sum(r => r.pl), ta = P ? sum(r => r.a) : null;
+  const short = sum(r => (r.pl && r.a < r.pl ? r.pl - r.a : 0)), over = sum(r => (r.pl && r.a > r.pl ? r.a - r.pl : 0));
+  const nop = rows.filter(r => r.g.cls === 'nop').length, fresh = rows.filter(r => r.isNew);
+  const kp = kpiHTML([
+    ['อัตรากำลังตามแผน', tp ? fmtNum(tp) : '—'],
+    ['คนจริงในผัง', P ? fmtNum(ta) : '—'],
+    P ? ['ขาดคน (ตำแหน่งว่าง)', fmtNum(short), short ? 'short' : ''] : null,
+    P ? ['เกินแผน', fmtNum(over), over ? 'over' : ''] : null,
+    P ? ['หน่วยที่ยังไม่กำหนดแผน', fmtNum(nop), nop ? 'nop' : '', 'มีคนอยู่แต่ยังไม่ได้กำหนดอัตรากำลังตามแผน'] : null,
+    base ? ['หน่วยใหม่ใน Draft', fmtNum(fresh.length), '', `หน่วยที่ไม่มีใน Active v${base.versionNo}`] : null,
+    P && base ? ['ต้องจัดสรรใหม่', fmtNum(P.gone.length) + ' คน', P.gone.length ? 'warn' : '', 'คนจากหน่วยที่ไม่มีในเวอร์ชันนี้'] : null,
+  ]);
+  const f = S.planFilter;
+  const shown = rows.filter(r => f === 'all' || (f === 'new' ? r.isNew : r.g.cls === f));
+  const head = `<div class="pt-row pt-head"><div>หน่วยงาน</div><div class="num">แผน</div><div class="num">คนจริง</div><div>ส่วนต่าง</div><div class="num" title="รวมหน่วยย่อยทั้งหมด">รวมทั้งสาย แผน / คน</div><div class="num" title="เกษียณภายใน 3 ปี">ใกล้เกษียณ</div>${base ? `<div class="num" title="อัตรากำลังตามแผนใน Active v${base.versionNo}">แผนใน Active</div>` : ''}</div>`;
+  const body = shown.map(r => `<div class="pt-row${r.isNew ? ' new' : ''}" data-id="${r.n.id}">
+      <div class="pt-name" style="--d:${f === 'all' ? r.depth : 0}"><i class="dot tc-${r.n.type}"></i><span>${esc(r.n.name || 'ไม่มีชื่อ')}</span>${r.isNew ? '<span class="tag new">ใหม่</span>' : ''}${r.n.staff ? '<span class="tag">Staff</span>' : ''}</div>
+      <div class="num">${edit ? `<input class="pt-in" type="text" inputmode="numeric" data-plan="${r.n.id}" value="${r.pl || ''}" placeholder="0" aria-label="อัตรากำลังตามแผน ${esc(r.n.name)}">` : (r.pl ? fmtNum(r.pl) : '—')}</div>
+      <div class="num">${P ? (r.a ? `<a href="#" data-act="wf-open-unit" data-id="${r.n.id}">${fmtNum(r.a)}</a>` : '0') : '—'}</div>
+      <div><span class="gap ${r.g.cls}">${P ? r.g.txt : ''}</span></div>
+      <div class="num muted">${fmtNum(r.rp)} / ${P ? fmtNum(r.ra) : '—'}</div>
+      <div class="num${r.retire ? ' soon' : ''}">${r.retire || ''}</div>
+      ${base ? `<div class="num muted">${r.isNew ? '—' : r.basePl ? fmtNum(r.basePl) : ''}${!r.isNew && r.basePl !== r.pl && (r.basePl || r.pl) ? `<small class="delta">${r.pl - r.basePl > 0 ? '+' : ''}${fmtNum(r.pl - r.basePl)}</small>` : ''}</div>` : ''}
+    </div>`).join('') || `<p class="empty">ไม่มีหน่วยงานในกลุ่มนี้</p>`;
+  let goneHTML = '';
+  if (P && P.gone.length) {
+    const groups = new Map();
+    P.gone.forEach(p => { const r = P.unitTo.get(p.unit), was = r && r.was && base ? find(base.root, r.was) : null; const k = was ? was.node.name : (S.wf.units[p.unit] || {}).name; if (!groups.has(k)) groups.set(k, []); groups.get(k).push(p); });
+    goneHTML = `<section class="pt-gone"><h3>คนที่ต้องจัดสรรใหม่ <span class="muted">${fmtNum(P.gone.length)} คน · หน่วยเดิมไม่มีในเวอร์ชันนี้</span></h3>
+      ${[...groups].map(([k, ps]) => `<div class="gone-g"><b>${esc(k)}</b> <span class="muted">${ps.length} คน</span><ul>${sortPeople(ps).map(p => `<li>${esc(wfName(p))} <span class="muted">· ${esc(p.pos)} · ระดับ ${esc(p.lvl)}</span></li>`).join('')}</ul></div>`).join('')}
+      <p class="muted">จัดคนลงหน่วยใหม่ได้ที่ “จับคู่หน่วยงาน” โดยเลือกกล่องในเวอร์ชันนี้</p></section>`;
+  }
+  const lockNote = !S.wf ? `<div class="wf-alert">${I.lock}<div>${S.wfEnv ? wfGateHTML(true) : '<p>ยังไม่มีข้อมูลพนักงาน จึงแสดงเฉพาะอัตรากำลังตามแผน</p>'}</div></div>` : '';
+  const editNote = !edit && v.status !== 'draft' ? `<p class="pt-note">${I.lock} เวอร์ชัน ${ST[v.status]} อ่านอย่างเดียว — ${canEditApp() ? 'กด “สร้าง Draft เพื่อแก้ไข” ด้านบนเพื่อวางแผนอัตรากำลังในโครงสร้างใหม่' : 'เข้าสู่ระบบเพื่อวางแผน'}</p>` : '';
+  return `<div class="wf-page pt-page" id="pt-page">${lockNote}${kp}${editNote}<div class="pt" role="table">${head}${body}</div>${goneHTML}</div>`;
+}
+function onPlanInput(t) {
+  const v = curVersion();
+  if (!canEdit(v)) return;
+  const f = find(v.root, t.dataset.plan);
+  if (!f) return;
+  const val = Math.max(0, Math.min(99999, parseInt(String(t.value).replace(/[^\d]/g, ''), 10) || 0));
+  if ((+f.node.hc || 0) === val) return;
+  beginEdit(v, v.id + 'plan' + f.node.id);
+  f.node.hc = val;
+  touch(v, 'กำหนดอัตรากำลังตามแผน');
+  const id = f.node.id, raw = t.value;
+  // redraw the table (gaps, totals) but stay in the same field and the same undo step
+  S.redrawing = true;
+  setHTML('#body', planPageHTML(v));
+  setHTML('#vhead', vheadHTML(v));
+  const el = $(`[data-plan="${id}"]`);
+  if (el) { el.value = raw; el.focus(); el.setSelectionRange(raw.length, raw.length); }
+  S.redrawing = false;
+}
+
+/* ---------- unit mapping (HR system unit -> box) ---------- */
+function wfMapModal() {
+  const v = curVersion();
+  if (!v || !S.wf) { toast('ปลดล็อกข้อมูลพนักงานก่อน'); return; }
+  const co = v.companyCode, P = wfPlace(v), edit = canEditApp();
+  const act = activeOf(co), ix = wfIndex(act && act.id !== v.id ? act : v), ixV = wfIndex(v);
+  const map = (S.wf.map && S.wf.map[co]) || {};
+  const count = {};
+  S.wf.people.forEach(p => { if (p.co === co) count[p.unit] = (count[p.unit] || 0) + 1; });
+  const nodes = flatten(v.root).filter(x => !EXTERNAL.has(x.n.type));
+  const nodeName = id => { const n = find(v.root, id); return n ? n.node.name : ''; };
+  const HOW = { exact: 'ตรงชื่อหน่วย', parent: 'ลงที่หน่วยแม่', manual: 'กำหนดเอง', none: 'ไม่ได้อยู่ในผัง', gone: 'หน่วยเดิมไม่มีในเวอร์ชันนี้' };
+  const units = Object.entries(S.wf.units).filter(([, u]) => u.co === co).map(([k, u]) => ({ k, u, r: P.unitTo.get(k) || { how: 'none' }, n: count[k] || 0 }))
+    .sort((a, b) => (a.r.id ? 1 : 0) - (b.r.id ? 1 : 0) || (a.r.how === 'parent' ? 0 : 1) - (b.r.how === 'parent' ? 0 : 1) || b.n - a.n);
+  const rows = units.map(({ k, u, r, n }) => {
+    const auto = wfAuto(u, ix), autoIn = auto && find(v.root, auto.id) ? auto : wfAuto(u, ixV);
+    const cur = k in map ? (map[k] === '' ? '-' : map[k]) : '';
+    const opts = `<option value="">อัตโนมัติ${autoIn ? ': ' + esc(nodeName(autoIn.id)) : ' (ไม่พบกล่องที่ตรง)'}</option><option value="-" ${cur === '-' ? 'selected' : ''}>— ไม่อยู่ในผังนี้ —</option>`
+      + nodes.map(x => `<option value="${x.n.id}" ${cur === x.n.id ? 'selected' : ''}>${'  '.repeat(x.depth)}${esc(x.n.name || 'ไม่มีชื่อ')}</option>`).join('');
+    return `<div class="mp-row${r.id && r.how !== 'parent' ? ' done' : ''}" data-k="${esc(k)}">
+      <div class="mp-u"><b>${esc(u.name)}</b><small>${esc(u.chain.slice(0, -1).join(' › '))}</small><small class="mono">${esc(u.code)} · ${n} คน</small></div>
+      <div class="mp-to"><span class="mp-how ${r.how}">${HOW[r.how] || ''}${r.id ? ': ' + esc(nodeName(r.id)) : ''}</span>
+        <select class="inp sm" data-mk="${esc(k)}" ${edit ? '' : 'disabled'} aria-label="กล่องสำหรับ ${esc(u.name)}">${opts}</select></div></div>`;
+  }).join('');
+  const todo = units.filter(x => !x.r.id || x.r.how === 'parent').length;
+  openModal({
+    title: `จับคู่หน่วยงานในระบบ HR กับกล่องในผัง · ${co}`,
+    wide: true,
+    body: `<p class="muted">ระบบจับคู่จากชื่อหน่วยงานและสายสังกัดให้อัตโนมัติ เลือกกล่องเองได้สำหรับหน่วยที่จับคู่ไม่ได้หรือไม่ตรง การจับคู่ใช้กับทุกเวอร์ชันที่มีกล่องนั้น และจำไว้สำหรับการนำเข้าไฟล์ครั้งถัดไป</p>
+      <label class="check"><input type="checkbox" id="mp-todo" ${todo ? 'checked' : ''}><span>แสดงเฉพาะที่ยังต้องตรวจ (${todo} หน่วย)</span></label>
+      <div class="mp-list${todo ? ' todo' : ''}" id="mp-list">${rows}</div>`,
+    foot: edit ? [{ label: 'ยกเลิก', onClick: c => c() }, { label: 'บันทึกการจับคู่', cls: 'primary', onClick: (c, el) => {
+      const m = Object.assign({}, map);
+      let changed = 0;
+      el.querySelectorAll('[data-mk]').forEach(s => {
+        const k = s.dataset.mk, val = s.value === '-' ? '' : s.value;
+        const before = k in m ? m[k] : null;
+        if (s.value === '') delete m[k]; else m[k] = val;
+        if ((k in m ? m[k] : null) !== before) changed++;
+      });
+      c();
+      if (!changed) return;
+      S.wf.map = Object.assign({}, S.wf.map, { [co]: m });
+      wfChanged(`${co}: จับคู่หน่วยงาน HR กับผัง (${changed} หน่วย)`);
+    } }] : [{ label: 'ปิด', onClick: c => c() }],
+    onMount: el => { el.querySelector('#mp-todo').addEventListener('change', e => el.querySelector('#mp-list').classList.toggle('todo', e.target.checked)); },
+  });
+}
+
+/* ---------- import, unlock, passphrase ---------- */
+function wfImportModal() {
+  if (!canEditApp()) { toast('เข้าสู่ระบบด้วย GitHub Token หรือเปิดโหมดทดลองเพื่อนำเข้าไฟล์'); return; }
+  const needPass = !S.wfKey;
+  let parsed = null;
+  openModal({
+    title: 'นำเข้าไฟล์พนักงานจากระบบ HR',
+    body: `<p class="muted">รองรับไฟล์ .xlsx ที่มีคอลัมน์ Employee Code, Company Code และ Structure Unit Code (รูปแบบเดียวกับ Employee_workforce.xlsx) อ่านไฟล์ในเบราว์เซอร์นี้</p>
+      <label class="field"><span>ไฟล์ Excel</span><input class="inp" type="file" id="wi-file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"></label>
+      <label class="field"><span>ข้อมูล ณ วันที่</span><input class="inp" type="date" id="wi-date" value="${todayISO()}"></label>
+      ${needPass ? `${S.wfEnv ? '<p class="warnp">ข้อมูลเดิมยังล็อกอยู่ การนำเข้าครั้งนี้จะแทนที่ข้อมูลเดิมทั้งหมดและใช้รหัสผ่านใหม่ (ถ้าจำรหัสผ่านเดิมได้ ให้ปลดล็อกก่อนเพื่อเก็บการจับคู่หน่วยงานไว้)</p>' : ''}
+        <div class="row2"><label class="field"><span>ตั้งรหัสผ่านข้อมูลกำลังคน</span><input class="inp" type="password" id="wi-p1" autocomplete="new-password" minlength="12" placeholder="อย่างน้อย 12 ตัวอักษร"></label>
+        <label class="field"><span>ยืนยันรหัสผ่าน</span><input class="inp" type="password" id="wi-p2" autocomplete="new-password"></label></div>
+        <small class="muted">ใช้รหัสผ่านนี้เปิดดูรายชื่อ เก็บให้ปลอดภัยและแจ้งเฉพาะผู้ที่ต้องใช้ ถ้าลืมจะเปิดไฟล์เดิมไม่ได้ ต้องนำเข้าใหม่</small>` : ''}
+      <div class="field"><span>ข้อมูลที่เก็บ</span><p class="note">เก็บเฉพาะ ${WF_KEEP} · <b>ไม่เก็บ</b> ${WF_DROP} · ไฟล์ใน GitHub เข้ารหัสทั้งหมด</p></div>
+      <div id="wi-prev"></div>`,
+    foot: [{ label: 'ยกเลิก', onClick: c => c() }, { label: 'นำเข้า', cls: 'primary', id: 'wi-go', onClick: async (c, el, b) => {
+      if (!parsed) return;
+      let k = S.wfKey;
+      if (!k) {
+        const p1 = el.querySelector('#wi-p1').value, p2 = el.querySelector('#wi-p2').value;
+        if (p1.length < 12) { toast('รหัสผ่านต้องมีอย่างน้อย 12 ตัวอักษร', 'err'); return; }
+        if (p1 !== p2) { toast('ยืนยันรหัสผ่านไม่ตรงกัน', 'err'); return; }
+        b.disabled = true; b.textContent = 'กำลังเข้ารหัส…';
+        k = await wfDeriveKey(p1);
+      }
+      parsed.asOf = el.querySelector('#wi-date').value || todayISO();
+      if (S.wf && S.wf.map) parsed.map = S.wf.map;
+      S.wfKey = k; S.wf = parsed;
+      c();
+      const n = parsed.people.length;
+      await wfChanged(`นำเข้าข้อมูลพนักงาน ${fmtNum(n)} คน ณ ${parsed.asOf} จาก ${parsed.source}`);
+      toast(`นำเข้าพนักงาน ${fmtNum(n)} คนแล้ว — กด “บันทึก” เพื่อเก็บไฟล์แบบเข้ารหัสขึ้น GitHub`, 'ok', null, 7000);
+    } }],
+    onMount: el => {
+      const go = el.querySelector('#wi-go');
+      go.disabled = true;
+      el.querySelector('#wi-file').addEventListener('change', async e => {
+        const file = e.target.files[0], prev = el.querySelector('#wi-prev');
+        parsed = null; go.disabled = true;
+        if (!file) { prev.innerHTML = ''; return; }
+        prev.innerHTML = '<p class="muted">กำลังอ่านไฟล์…</p>';
+        try {
+          parsed = wfFromRows(await readXlsx(await file.arrayBuffer()), { file: file.name, asOf: todayISO() });
+          const byCo = {};
+          parsed.people.forEach(p => { byCo[p.co] = (byCo[p.co] || 0) + 1; });
+          const known = Object.keys(byCo).filter(c => company(c)), unknown = Object.keys(byCo).filter(c => !company(c));
+          prev.innerHTML = `<div class="field"><span>พบพนักงาน ${fmtNum(parsed.people.length)} คน · ${Object.keys(parsed.units).length} หน่วยงาน</span>
+            <div class="co-chips">${known.map(c => `<span class="tag">${esc(c)} ${fmtNum(byCo[c])}</span>`).join('')}</div>
+            ${unknown.length ? `<small class="muted">ไม่มีผังในระบบ: ${unknown.map(c => `${esc(c)} ${byCo[c]} คน`).join(', ')} (เก็บไว้ แต่ยังไม่แสดงในหน้าบริษัท)</small>` : ''}</div>`;
+          go.disabled = false;
+        } catch (err) { prev.innerHTML = `<p class="warnp">${esc(err.message)}</p>`; }
+      });
+    },
+  });
+}
+async function wfUnlock(pass, remember, silent) {
+  if (!S.wfEnv || !pass) return false;
+  try {
+    const k = await wfDeriveKey(pass, S.wfEnv.kdf.salt, +S.wfEnv.kdf.iterations);
+    const data = await wfOpen(S.wfEnv, k);
+    S.wfKey = k; S.wf = data;
+    if (remember) sSet(SS_WFPASS, pass, 's'); else sDel(SS_WFPASS, 's');
+    if (!silent) toast(`ปลดล็อกข้อมูลพนักงาน ${fmtNum(data.people.length)} คนแล้ว`, 'ok');
+    return true;
+  } catch (e) {
+    if (silent) sDel(SS_WFPASS, 's'); else toast('รหัสผ่านไม่ถูกต้อง', 'err');
+    return false;
+  } finally { if (S.route.view === 'co') refresh(); else render(); }
+}
+function wfLock() {
+  S.wf = null; S.wfKey = null;
+  sDel(SS_WFPASS, 's');
+  refresh();
+  toast('ล็อกข้อมูลพนักงานแล้ว');
+}
+function wfPassModal() {
+  if (!S.wf) return;
+  openModal({
+    title: 'เปลี่ยนรหัสผ่านข้อมูลกำลังคน',
+    body: `<p class="muted">เข้ารหัสไฟล์ใหม่ด้วยรหัสผ่านใหม่ หลังบันทึกขึ้น GitHub รหัสผ่านเดิมจะใช้ไม่ได้ แจ้งรหัสผ่านใหม่ให้ผู้ที่ต้องใช้</p>
+      <label class="field"><span>รหัสผ่านใหม่</span><input class="inp" type="password" id="wp-1" autocomplete="new-password" placeholder="อย่างน้อย 12 ตัวอักษร"></label>
+      <label class="field"><span>ยืนยันรหัสผ่านใหม่</span><input class="inp" type="password" id="wp-2" autocomplete="new-password"></label>`,
+    foot: [{ label: 'ยกเลิก', onClick: c => c() }, { label: 'เปลี่ยนรหัสผ่าน', cls: 'primary', onClick: async (c, el, b) => {
+      const p1 = el.querySelector('#wp-1').value, p2 = el.querySelector('#wp-2').value;
+      if (p1.length < 12) { toast('รหัสผ่านต้องมีอย่างน้อย 12 ตัวอักษร', 'err'); return; }
+      if (p1 !== p2) { toast('ยืนยันรหัสผ่านไม่ตรงกัน', 'err'); return; }
+      b.disabled = true;
+      S.wfKey = await wfDeriveKey(p1);
+      if (sGet(SS_WFPASS, 's')) sSet(SS_WFPASS, p1, 's');
+      c();
+      await wfChanged('เปลี่ยนรหัสผ่านข้อมูลกำลังคน');
+      toast('เปลี่ยนรหัสผ่านแล้ว — กด “บันทึก” เพื่อขึ้น GitHub', 'ok');
+    } }],
+  });
+}
+
+/* ---------- keeping, loading and saving the encrypted file ---------- */
+function persistWf() {
+  if (!S.wfEnv) { sDel(LS_WF); return; }
+  sSet(LS_WF, JSON.stringify({ env: S.wfEnv, sha: S.wfSha, dirty: S.wfDirty, changes: S.wfChanges }));
+}
+async function wfChanged(desc) {
+  S.wfEnv = await wfSeal(S.wf, S.wfKey);
+  S.wfDirty = true;
+  if (desc && S.wfChanges[S.wfChanges.length - 1] !== desc) S.wfChanges.push(desc);
+  persistWf();
+  if (S.route.view === 'co') refresh(); else render();
+}
+async function wfFetch(token) {
+  const ref = `?ref=${encodeURIComponent(S.cfg.branch)}`;
+  if (token) {
+    try {
+      const j = await gh(wfContentPath() + ref, {}, token);
+      const env = j.content ? JSON.parse(b64decode(j.content)) : await gh(wfContentPath() + ref, { headers: { Accept: 'application/vnd.github.raw+json' } }, token);
+      return { sha: j.sha, env: typeof env === 'string' ? JSON.parse(env) : env };
+    } catch (e) { if (e.status === 404) return null; throw e; }
+  }
+  if (/^https?:$/.test(location.protocol)) {
+    try { const res = await fetch(wfPath(), { cache: 'no-store' }); if (res.ok) return { sha: null, env: await res.json() }; if (res.status === 404) return null; } catch (e) { /* not published with the page */ }
+  }
+  try { const j = await gh(wfContentPath() + ref, {}, null); return { sha: j.sha, env: JSON.parse(b64decode(j.content)) }; } catch (e) { return null; }
+}
+async function wfSync() {
+  let r;
+  try { r = await wfFetch(S.token); } catch (e) { return; }
+  if (r && r.sha && !S.wfDirty) S.wfSha = r.sha;
+  if (r && !S.wfDirty && (!S.wfEnv || r.env.data !== S.wfEnv.data)) {
+    S.wfEnv = r.env;
+    if (S.wf) {
+      if (sameKey(r.env, S.wfKey)) { try { S.wf = await wfOpen(r.env, S.wfKey); } catch (e) { S.wf = null; } } else { S.wf = null; S.wfKey = null; }
+    }
+    persistWf();
+  }
+  if (!S.wf && S.wfEnv) { const pass = sGet(SS_WFPASS, 's'); if (pass) { await wfUnlock(pass, true, true); return; } }
+  if (S.route.view === 'co') refresh(); else render();
+}
+function wfCommitMessage() {
+  return S.wfChanges.length === 1 ? `Workforce: ${S.wfChanges[0]}` : `Workforce: อัปเดตข้อมูลกำลังคน (${S.wfChanges.length} รายการ)\n\n${S.wfChanges.map(x => '- ' + x).join('\n')}`;
+}
+async function commitWorkforce(attempt = 0) {
+  S.busy = true; refreshTop();
+  const n = S.wfChanges.length;
+  try {
+    const body = { message: wfCommitMessage() + `\n\nไฟล์นี้เข้ารหัส (AES-256-GCM) ไม่มีข้อมูลส่วนบุคคลแบบอ่านได้`, content: b64encode(JSON.stringify(S.wfEnv, null, 1) + '\n'), branch: S.cfg.branch };
+    if (S.wfSha) body.sha = S.wfSha;
+    const r = await gh(wfContentPath(), { method: 'PUT', body });
+    S.wfSha = r.content.sha;
+    S.wfChanges.splice(0, n);
+    S.wfDirty = S.wfChanges.length > 0;
+    persistWf();
+    toast(`บันทึกข้อมูลกำลังคน (เข้ารหัส) ขึ้น GitHub แล้ว · ${r.commit.sha.slice(0, 7)}`, 'ok');
+  } catch (e) {
+    if ((e.status === 409 || (e.status === 422 && /sha/i.test(e.message))) && attempt < 2) {
+      S.busy = false;
+      await wfMergeRemote(attempt);
+      return;
+    }
+    toast('บันทึกข้อมูลกำลังคนไม่สำเร็จ: ' + e.message, 'err', null, 8000);
+  } finally { S.busy = false; if (S.route.view === 'co') refresh(); else render(); }
+}
+// someone saved the workforce file first: keep the newer import, combine unit mappings (this browser wins on the same unit)
+async function wfMergeRemote(attempt) {
+  let r;
+  try { r = await wfFetch(S.token); } catch (e) { toast('โหลดข้อมูลกำลังคนจาก GitHub ไม่สำเร็จ: ' + e.message, 'err'); return; }
+  if (!r) { S.wfSha = null; commitWorkforce(attempt + 1); return; }
+  let theirs = null;
+  if (sameKey(r.env, S.wfKey)) { try { theirs = await wfOpen(r.env, S.wfKey); } catch (e) { theirs = null; } }
+  if (!theirs) {
+    openModal({
+      title: 'ข้อมูลกำลังคนใน GitHub ถูกเปลี่ยน',
+      body: '<p>มีผู้อื่นนำเข้าไฟล์ใหม่หรือเปลี่ยนรหัสผ่านข้อมูลกำลังคนหลังจากที่คุณโหลดมา จึงรวมข้อมูลอัตโนมัติไม่ได้</p>',
+      foot: [
+        { label: 'ใช้ข้อมูลจาก GitHub', onClick: c => { c(); S.wfEnv = r.env; S.wfSha = r.sha; S.wfDirty = false; S.wfChanges = []; S.wf = null; S.wfKey = null; persistWf(); refresh(); } },
+        { label: 'บันทึกทับด้วยข้อมูลของฉัน', cls: 'danger', onClick: c => { c(); S.wfSha = r.sha; commitWorkforce(attempt + 1); } },
+      ],
+    });
+    return;
+  }
+  const mine = S.wf, base = String(theirs.importedAt) > String(mine.importedAt) ? theirs : mine;
+  const map = {};
+  new Set([...Object.keys(theirs.map || {}), ...Object.keys(mine.map || {})]).forEach(co => { map[co] = Object.assign({}, (theirs.map || {})[co], (mine.map || {})[co]); });
+  S.wf = Object.assign({}, base, { map });
+  S.wfEnv = await wfSeal(S.wf, S.wfKey);
+  S.wfSha = r.sha;
+  persistWf();
+  commitWorkforce(attempt + 1);
+}
+function wfExport(kind) {
+  const v = curVersion();
+  if (!v) return;
+  const csv = rows => '﻿' + rows.map(r => r.map(c => { const s = String(c ?? ''); return /[",\n\r]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; }).join(',')).join('\r\n');
+  if (kind === 'plan') {
+    const { P, base, rows } = planRows(v);
+    const out = [['ระดับ', 'หน่วยงาน', 'ประเภท', 'อัตรากำลังตามแผน', 'คนจริง', 'ส่วนต่าง', 'แผนรวมทั้งสาย', 'คนรวมทั้งสาย', 'เกษียณภายใน 3 ปี'].concat(base ? ['แผนใน Active', 'หน่วยใหม่'] : [])];
+    rows.forEach(r => out.push([r.depth + 1, r.n.name, TYPES[r.n.type].th, r.pl, P ? r.a : '', P ? r.g.txt : '', r.rp, P ? r.ra : '', r.retire].concat(base ? [r.basePl ?? '', r.isNew ? 'ใช่' : ''] : [])));
+    download(`${slug(v)}-workforce-plan.csv`, csv(out), 'text/csv;charset=utf-8');
+    return;
+  }
+  if (!S.wf) return;
+  const P = wfPlace(v), cur = wfCurId(v), out = cur === '__out';
+  const node = out ? null : find(v.root, cur).node;
+  const list = sortPeople(wfFilter(out ? P.unplaced.concat(P.gone) : S.wfScope === 'all' ? wfUnder(P, node) : (P.byNode.get(node.id) || [])));
+  const rows = [['รหัสพนักงาน', 'ชื่อ-สกุล', 'Name', 'ตำแหน่ง', 'ระดับ', 'กลุ่มพนักงาน', 'ประเภทการจ้าง', 'วันเริ่มงาน', 'ปีที่เกษียณ (พ.ศ.)', 'สถานที่ทำงาน', 'หน่วยงานในผัง', 'หน่วยงานในระบบ HR', 'Structure Owner']];
+  list.forEach(p => { const n = P.nodeOf.get(p) && find(v.root, P.nodeOf.get(p)); rows.push([p.id, wfName(p), wfNameEn(p), p.pos, p.lvl, p.grp, p.emp, p.start, p.retire ? p.retire + 543 : '', p.loc, n ? n.node.name : '', (S.wf.units[p.unit] || {}).name, p.owner]); });
+  download(`${slug(v)}-workforce-${out ? 'unplaced' : (node.code || node.name || 'unit').replace(/[^\w฀-๿-]+/g, '_').slice(0, 40)}.csv`, csv(rows), 'text/csv;charset=utf-8');
+  toast('ไฟล์นี้มีข้อมูลส่วนบุคคล โปรดเก็บรักษาตามนโยบาย PDPA ขององค์กร', 'info', null, 6000);
 }
 
 /* ============================================================
@@ -3092,6 +4070,23 @@ const A = {
   'co': el => go(el.dataset.code),
   'version': el => openVersion(el.dataset.vid),
   'tab': el => { S.tab = el.dataset.tab; render(); },
+  'page': el => { if (S.page !== el.dataset.page) go(S.route.code, el.dataset.page); },
+  'wf-unit': el => { const v = curVersion(); if (!v) return; S.wfUnit[v.id] = el.dataset.id; if (S.page !== 'workforce') { go(S.route.code, 'workforce'); return; } refresh(); $('#body .wf-page')?.scrollTo({ top: 0 }); },
+  'wf-open-unit': el => { const v = curVersion(); if (!v) return; S.wfUnit[v.id] = el.dataset.id; S.wfScope = el.dataset.scope || 'direct'; S.wfQuery = ''; go(S.route.code, 'workforce'); },
+  'wf-scope': el => { S.wfScope = el.dataset.scope; refresh(); },
+  'wf-import': () => wfImportModal(),
+  'wf-map': () => wfMapModal(),
+  'wf-pass': () => wfPassModal(),
+  'wf-lock': () => wfLock(),
+  'wf-export': () => wfExport('people'),
+  'plan-export': () => wfExport('plan'),
+  'plan-filter': el => { S.planFilter = el.dataset.f; refresh(); },
+  'plan-fill': () => mutate('ตั้งอัตรากำลังตามแผนเท่ากับคนจริง', v => {
+    const P = wfPlace(v);
+    let k = 0;
+    walk(v.root, n => { const a = (P.byNode.get(n.id) || []).length; if (!EXTERNAL.has(n.type) && !(+n.hc) && a) { n.hc = a; k++; } });
+    toast(k ? `ตั้งแผนให้ ${k} หน่วยงานเท่ากับจำนวนคนจริงแล้ว` : 'ทุกหน่วยที่มีคนมีแผนอยู่แล้ว', k ? 'ok' : 'info');
+  }),
   'new-draft': () => newDraftModal(),
   'draft-from': el => newDraftModal(el.dataset.vid),
   'publish': () => publishModal(),
@@ -3217,6 +4212,8 @@ document.addEventListener('click', e => {
 });
 document.addEventListener('input', e => {
   const t = e.target;
+  if (t.matches('[data-wf="q"]')) { S.wfQuery = t.value; wfRefreshPeople(); return; }
+  if (t.matches('[data-plan]')) { onPlanInput(t); return; }
   if (t.matches('[data-f]') && t.type !== 'checkbox' && t.tagName !== 'SELECT') onNodeFieldInput(t);
   else if (t.matches('[data-of]') && t.tagName !== 'SELECT') onOutlineInput(t);
   else if (t.matches('[data-vf]')) onVersionField(t);
@@ -3251,7 +4248,15 @@ document.addEventListener('focusin', e => {
   const row = e.target.closest?.('.ol-row[data-id]');
   if (row && row.dataset.id !== S.selected && e.target.matches('input, select')) selectNode(row.dataset.id, { sheet: false });
 });
-document.addEventListener('focusout', e => { if (e.target.matches?.('[data-f], [data-of], [data-vf], [data-vd]')) S.esKey = null; });
+document.addEventListener('focusout', e => { if (!S.redrawing && e.target.matches?.('[data-f], [data-of], [data-vf], [data-vd], [data-plan]')) S.esKey = null; });
+document.addEventListener('submit', e => {
+  const f = e.target.closest('[data-form="wf-unlock"]');
+  if (!f) return;
+  e.preventDefault();
+  const b = f.querySelector('button[type="submit"]');
+  if (b) { b.disabled = true; b.lastChild.textContent = 'กำลังถอดรหัส…'; }
+  wfUnlock(f.elements.pass.value, f.elements.remember.checked);
+});
 $('#file-json').addEventListener('change', e => { const f = e.target.files[0]; if (f) importJSONFile(f); });
 
 // Outline keyboard flow: Enter = next unit, Tab = indent, Shift+Tab = outdent
@@ -3302,6 +4307,7 @@ document.addEventListener('keydown', e => {
   if (!v) return;
   if (mod && k === 'z') { e.preventDefault(); if (e.shiftKey) redo(); else undo(); return; }
   if (mod && k === 'y') { e.preventDefault(); redo(); return; }
+  if (S.page !== 'structure') return;
   if (e.key === 'Escape' && S.selected) { selectNode(null); return; }
   const f = S.selected ? find(v.root, S.selected) : null;
   if (!f) return;
@@ -3348,6 +4354,7 @@ async function boot() {
     const local = JSON.parse(sGet(LS_DATA) || 'null');
     if (local && local.data) {
       S.data = migrate(local.data);
+      S.base = local.dirty ? (local.base ? migrate(local.base) : null) : clone(S.data);
       S.sha = local.sha || null;
       S.dirty = !!local.dirty;
       S.changes = Array.isArray(local.changes) ? local.changes : [];
@@ -3355,12 +4362,16 @@ async function boot() {
     }
   } catch (e) { S.data = null; }
   if (!S.data) { S.data = freshData(); S.sha = null; S.dirty = false; S.changes = []; }
+  try {
+    const w = JSON.parse(sGet(LS_WF) || 'null');
+    if (w && w.env) { S.wfEnv = w.env; S.wfSha = w.sha || null; S.wfDirty = !!w.dirty; S.wfChanges = Array.isArray(w.changes) ? w.changes : []; }
+  } catch (e) { /* ignore a bad cache */ }
   S.demo = isStarter() || S.dirty;
   setRoute(decodeURIComponent(location.hash.slice(1)));
   render();
   const token = sGet(LS_TOKEN, 's') || sGet(LS_TOKEN, 'l');
   if (token) await doLogin(token, !!sGet(LS_TOKEN, 'l'), true);
-  else await loadPublic();
+  else { await loadPublic(); wfSync(); }
 }
 boot();
 })();
