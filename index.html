@@ -514,7 +514,7 @@ details.help ol,details.help ul{margin:8px 0 2px;padding-left:20px;display:grid;
 .warnp{margin:0;color:var(--warn);font-size:13px}
 .co-chips{display:flex;flex-wrap:wrap;gap:4px}
 
-.wf-badge{position:absolute;top:-11px;right:-9px;z-index:3;display:inline-flex;align-items:baseline;gap:1px;padding:1px 7px;border-radius:999px;font:600 12px/1.45 var(--f-body);background:#0d6672;color:#fff;white-space:nowrap;box-shadow:0 1px 3px rgba(0,0,0,.28);pointer-events:none;transform-origin:100% 0;transform:scale(max(1,calc(var(--hz,1) * .7)))}
+.wf-badge{position:absolute;top:-11px;right:-9px;z-index:3;display:inline-flex;align-items:baseline;gap:1px;padding:1px 7px;border-radius:999px;font:600 12px/1.45 var(--f-body);background:#0d6672;color:#fff;white-space:nowrap;box-shadow:0 1px 3px rgba(0,0,0,.28);pointer-events:none;transform-origin:100% 0;transform:scale(max(1,min(var(--hz,1),4)))}
 .wf-badge small{font-size:10px;font-weight:500;opacity:.9}
 .wf-badge.short{background:#b03636} .wf-badge.over{background:#94600f} .wf-badge.ok{background:#1c7a47} .wf-badge.nop{background:#3a59a8}
 .wf-badge.zero{background:#eef1f3;color:#66747e;box-shadow:0 0 0 1px #cfd7dc}
@@ -549,6 +549,36 @@ details.help ol,details.help ul{margin:8px 0 2px;padding-left:20px;display:grid;
 .wf-mix[open] summary::before{content:"▾"}
 .wf-mix summary h3{margin:0}
 .wf-src{font-size:12.5px}
+
+.wf-badge .wb-head{font-weight:600;padding-right:6px;margin-right:6px;border-right:1px solid rgba(255,255,255,.5)}
+.wf-badge .wb-n{font-weight:600}
+.wf-badge.zero .wb-head{border-right-color:#cfd7dc}
+.stage.far .wf-badge .wb-head{display:none}
+.hd{display:grid;gap:2px;background:var(--accent-weak);border-radius:9px;padding:9px 11px;font-size:12.5px;color:var(--ink-2)}
+.hd b{font:600 15px/1.3 var(--f-display);color:var(--ink)}
+.hd-l{font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--accent-ink)}
+.hd-pick{display:grid;gap:3px;margin-top:6px;font-size:11.5px;color:var(--muted)}
+.hd-none{margin:0;font-size:12.5px}
+.pp-e{display:flex;gap:5px;align-items:flex-start;font-size:11.5px;color:var(--muted)}
+.pp-e svg{width:13px;height:13px;flex:none;margin-top:2px}
+.pp.head{background:var(--accent-weak);border-radius:6px;padding-inline:7px;border-bottom-color:transparent;margin:3px 0}
+.pp-g{display:flex;justify-content:space-between;align-items:baseline;gap:8px;padding:10px 2px 3px;border-bottom:1px solid var(--line-strong)}
+.pp-gh{border:0;background:none;padding:0;font:600 12.5px/1.35 var(--f-body);color:var(--accent-ink);cursor:pointer;text-align:left}
+.pp-gh:hover{text-decoration:underline}
+.pp-g .muted{white-space:nowrap}
+.su-list{display:grid;gap:4px}
+.su{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1px 10px;text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:7px 9px;cursor:pointer;color:var(--ink);font-size:12.5px}
+.su:hover{border-color:var(--accent);background:var(--accent-weak)}
+.su-n{display:flex;gap:6px;align-items:center;font-weight:500;min-width:0}
+.su-h{grid-column:1;color:var(--ink-2);font-size:12px}
+.su-c{grid-column:2;grid-row:1 / span 2;align-self:center;white-space:nowrap;font-variant-numeric:tabular-nums}
+.su-c small{color:var(--muted)}
+.pl td small{display:block}
+.pl tr.is-head td{background:color-mix(in srgb,var(--accent-weak) 70%,transparent)}
+.pl td.edu{min-width:150px;font-size:12.5px}
+.pt-hd{font-size:11.5px;color:var(--muted);white-space:nowrap;margin-left:2px}
+.pt-hd::before{content:"· "}
+.ws-hd{grid-column:1;font-size:12px;color:var(--ink-2)}
 
 /* ---------- responsive ---------- */
 @media (max-width:1600px){
@@ -759,6 +789,7 @@ const I = {
   download: ic('<path d="M12 4v11M7 10l5 5 5-5M5 20h14"/>'),
   upload: ic('<path d="M12 20V9M7 14l5-5 5 5M5 4h14"/>'),
   info: ic('<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/>'),
+  edu: ic('<path d="M2 9l10-5 10 5-10 5-10-5z"/><path d="M6 11v5c3 2.5 9 2.5 12 0v-5"/>'),
   people: ic('<circle cx="9" cy="8" r="3.2"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14.2A4.5 4.5 0 0 1 21 18.5"/>'),
   plan: ic('<path d="M3 20h18"/><path d="M6 20v-6M11 20V8M16 20v-9M21 4l-5 5-4-3-6 6"/>'),
   link: ic('<path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1"/><path d="M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"/>'),
@@ -874,7 +905,7 @@ const S = {
   wf: null,            // decrypted workforce data (memory only)
   wfEnv: null, wfSha: null, wfKey: null, wfDirty: false, wfChanges: [],
   wfUnit: {},          // versionId -> node id shown on the Workforce page
-  wfScope: 'all', wfQuery: '', planFilter: 'all',
+  wfScope: 'direct', wfQuery: '', planFilter: 'all',
   wfView: 'chart',     // Workforce page: chart (org chart + drill down) | table
   ui: { rail: false, insp: false, hideRail: false, hideInsp: false },   // rail/insp: mobile drawers; hide*: desktop panels
   layout: null,
@@ -1951,9 +1982,10 @@ function nodeHTML(it, ctx) {
   const pill = EXTERNAL.has(n.type) || wf ? '' : (total ? fmtNum(total) + ' คน' : '');
   let badge = '';
   if (wf && !EXTERNAL.has(n.type)) {
-    const a = wf.P.roll.get(n.id) || 0, p = wf.plan.get(n.id) || 0, g = gapInfo(p, a), own = (wf.P.byNode.get(n.id) || []).length;
-    const tipW = `คนจริง ${fmtNum(a)} คน${own !== a ? ` (อยู่ที่หน่วยนี้โดยตรง ${fmtNum(own)})` : ''}${p ? ` · แผน ${fmtNum(p)} คน · ${g.txt}` : ''}`;
-    badge = `<span class="wf-badge${a ? '' : ' zero'} ${g.cls}" title="${esc(tipW)}">${fmtNum(a)}${p ? `<small>/${fmtNum(p)}</small>` : ''}<small> คน</small></span>`;
+    // the box's own people (not the boxes under it) and the person who heads it
+    const own = (wf.P.byNode.get(n.id) || []).length, all = wf.P.roll.get(n.id) || 0, p = +n.hc || 0, g = gapInfo(p, own), hd = wf.P.heads.get(n.id);
+    const tipW = [hd ? `หัวหน้าหน่วย: ${wfName(hd)} · ${hd.pos} · ระดับ ${hd.lvl}` : 'ยังไม่มีคนในกล่องนี้', `ในกล่องนี้ ${fmtNum(own)} คน${all !== own ? ` · รวมทั้งสายงาน ${fmtNum(all)} คน` : ''}`, p ? `แผน ${fmtNum(p)} คน · ${g.txt}` : ''].filter(Boolean).join('\n');
+    badge = `<span class="wf-badge${own ? '' : ' zero'} ${g.cls}" title="${esc(tipW)}">${hd ? `<span class="wb-head">${esc(shortName(hd))}</span>` : ''}<span class="wb-n">${fmtNum(own)}${p ? `<small>/${fmtNum(p)}</small>` : ''}<small> คน</small></span></span>`;
   }
   const tip = [n.name, n.nameEn, TYPES[n.type].th + (n.staff ? ' · Staff' : '') + (n.code ? ' · ' + n.code : ''), n.title && n.head ? n.title + ': ' + n.head : '', n.note].filter(Boolean).join('\n');
   const fpx = ctx.free ? ptPx(st, ctx.v) : fontPx(st, n);
@@ -1976,6 +2008,7 @@ function applyView() {
   const w = view();
   st.style.transform = `translate(${w.x}px, ${w.y}px) scale(${w.z})`;
   st.style.setProperty('--hz', (1 / w.z).toFixed(3));
+  st.classList.toggle('far', w.z < 0.42);
   const zv = $('#zv'); if (zv) zv.textContent = Math.round(w.z * 100) + '%';
 }
 function fitView() {
@@ -2926,7 +2959,7 @@ function helpModal() {
         <dt><kbd>[</kbd> <kbd>]</kbd></dt><dd>ซ่อน / แสดงแผงซ้าย (เวอร์ชัน) และแผงขวา (รายละเอียด) ให้แผนผังกว้างเต็มจอ</dd></dl></div>
       <div><h3>กำลังคนและวางแผนกำลังคน</h3>
         <ul><li>แต่ละบริษัทมีหน้า “กำลังคน” และ “วางแผนกำลังคน” แยกจากหน้าโครงสร้างองค์กร</li>
-        <li>หน้ากำลังคนเป็นผังองค์กรเดียวกัน คลิกกล่องเพื่อเจาะลึก: ผังซูมไปที่สายงานนั้นและแผงขวาแสดงตัวเลขและรายชื่อ</li>
+        <li>หน้ากำลังคนเป็นผังองค์กรเดียวกัน ป้ายบนกล่อง = หัวหน้าหน่วย · จำนวนคนในกล่องนั้น คลิกกล่องเพื่อเจาะลึก: ผังซูมไปที่สายงานนั้นและแผงขวาแสดงหัวหน้า หน่วยย่อย และรายชื่อ</li>
         <li>รายชื่อพนักงานเก็บแบบเข้ารหัส เปิดดูด้วยรหัสผ่านข้อมูลกำลังคน · อัตรากำลังตามแผนแก้ได้ใน Draft</li></ul></div>
       <div><h3>การบันทึกและสิทธิ์</h3>
         <ul><li>ทุกคนเปิดดูได้ ผู้มีสิทธิ์แก้ไขเข้าสู่ระบบด้วย GitHub Token ที่มีสิทธิ์ Contents: Read and write</li>
@@ -3213,8 +3246,8 @@ const wfPath = () => S.cfg.path.replace(/[^/]*$/, WF_FILE);
 const wfContentPath = () => `${repoPath()}/contents/${wfPath().split('/').map(encodeURIComponent).join('/')}`;
 const EMP_LABEL = { PM: 'ประจำ', CT2: 'สัญญาจ้าง', CT1: 'สัญญาจ้างหลังเกษียณ' };
 const PAGES = [['structure', 'โครงสร้างองค์กร', 'layers'], ['workforce', 'กำลังคน', 'people'], ['planning', 'วางแผนกำลังคน', 'plan']];
-const WF_KEEP = 'รหัสพนักงาน ชื่อ-สกุล (ไทย/อังกฤษ) ตำแหน่ง ระดับ กลุ่มพนักงาน ประเภทการจ้าง วันเริ่มงาน ปีที่เกษียณ สถานที่ทำงาน หน่วยงาน และหัวหน้าหน่วย (Structure Owner)';
-const WF_DROP = 'วันเกิด อายุ เพศ ประวัติการศึกษา และคอลัมน์อื่นๆ';
+const WF_KEEP = 'รหัสพนักงาน ชื่อ-สกุล (ไทย/อังกฤษ) ตำแหน่ง ระดับ กลุ่มพนักงาน ประเภทการจ้าง วันเริ่มงาน ปีที่เกษียณ สถานที่ทำงาน หน่วยงาน Structure Owner และการศึกษา (วุฒิ ปริญญา สาขา สถาบัน)';
+const WF_DROP = 'วันเกิด อายุ เพศ และคอลัมน์อื่นๆ';
 
 /* ---------- bytes, compression, encryption ---------- */
 function bytesToB64(u8) { let s = ''; for (let i = 0; i < u8.length; i += 0x8000) s += String.fromCharCode.apply(null, u8.subarray(i, i + 0x8000)); return btoa(s); }
@@ -3312,6 +3345,7 @@ const WF_COLS = {
   empCode: ['employment type code'], emp: ['employment type'], grp: ['employee group'],
   unit: ['structure unit code'], unitName: ['structure unit namealt', 'structure unit name'],
   start: ['start job date', 'service date'], retire: ['retireddate', 'retired date'], owner: ['structure owner'],
+  edu: ['education level'], deg: ['education degree'], major: ['major name'], school: ['education school'],
 };
 const wfClean = s => String(s ?? '').replace(/_x000D_/gi, ' ').replace(/\s+/g, ' ').trim();
 function wfFromRows(rows, meta) {
@@ -3342,6 +3376,7 @@ function wfFromRows(rows, meta) {
       pos: wfClean(g('pos')), lvl: wfClean(g('lvl')), grp: wfClean(g('grp')), emp: EMP_LABEL[empCode] || wfClean(g('emp')) || empCode,
       start: xlDate(g('start')), retire: retire ? +retire.slice(0, 4) : null, loc: wfClean(g('loc')),
       owner: ['top', 'middle', 'lower'].includes(owner) ? owner[0].toUpperCase() + owner.slice(1) : '',
+      edu: wfClean(g('edu')), deg: wfClean(g('deg')), major: wfClean(g('major')), school: wfClean(g('school')),
     });
   });
   if (!people.length) throw new Error('ไม่พบรายชื่อพนักงานในไฟล์');
@@ -3362,6 +3397,9 @@ function dice(a, b) {
   B.forEach(c => { n += c; });
   return n ? (2 * inter) / n : 0;
 }
+// numbers / roman numerals in a name must agree (a box without one may still hold Team-1, Team-2 …)
+const NUM_TOKEN = /^(\d+|i{1,3}|iv|vi{0,3}|ix|x)$/;
+const sameNumbers = (hr, box) => { const nb = box.split(' ').filter(t => NUM_TOKEN.test(t)).join(' '); return !nb || hr.split(' ').filter(t => NUM_TOKEN.test(t)).join(' ') === nb; };
 function wfIndex(v) {
   const keys = new Map(), list = [];
   (function rec(n, anc) {
@@ -3384,9 +3422,13 @@ function wfAuto(u, ix) {
     const k = chain[i];
     let cands = k ? ix.keys.get(k) : null;
     if (!cands && i === chain.length - 1 && k.length > 6) {   // spelling slips in the HR system (Vender / Vendor)
-      let best = 0, hit = null;
-      ix.list.forEach(it => it.ks.forEach(kk => { const d = dice(k, kk); if (d > best) { best = d; hit = it; } }));
-      if (best >= 0.86) cands = [hit];
+      let best = 0, hits = [];
+      ix.list.forEach(it => it.ks.forEach(kk => {
+        if (!sameNumbers(k, kk)) return;   // Section I is not Section II
+        const d = dice(k, kk);
+        if (d > best + 1e-9) { best = d; hits = [it]; } else if (Math.abs(d - best) < 1e-9 && !hits.includes(it)) hits.push(it);
+      }));
+      if (best >= 0.86) cands = hits;   // equally close boxes are told apart by their parents below
     }
     if (!cands) {
       const a = wfAcr(u.chain[i]);
@@ -3406,7 +3448,8 @@ const wfCache = new Map();
 function wfPlace(v) {
   const co = v.companyCode, act = activeOf(co);
   const map = (S.wf.map && S.wf.map[co]) || {};
-  const ck = [v.id, v.updatedAt, act && act.id, act && act.updatedAt, S.wf.importedAt, S.wf.people.length, JSON.stringify(map)].join('|');
+  const hmap = (S.wf.heads && S.wf.heads[co]) || {};
+  const ck = [v.id, v.updatedAt, act && act.id, act && act.updatedAt, S.wf.importedAt, S.wf.people.length, JSON.stringify(map), JSON.stringify(hmap)].join('|');
   if (wfCache.has(ck)) return wfCache.get(ck);
   const ids = new Set();
   walk(v.root, n => { if (!EXTERNAL.has(n.type)) ids.add(n.id); });
@@ -3434,11 +3477,16 @@ function wfPlace(v) {
   });
   const roll = new Map();
   (function rec(n) { let t = (byNode.get(n.id) || []).length; n.children.forEach(c => { t += rec(c); }); roll.set(n.id, t); return t; })(v.root);
-  const res = { byNode, nodeOf, roll, unplaced, gone, unitTo, act: ixA ? act : null, total: S.wf.people.filter(p => p.co === co).length };
+  // head of a box: chosen by hand, otherwise the highest level among the people in that box (not in the boxes under it)
+  const heads = new Map();
+  byNode.forEach((ps, id) => heads.set(id, (hmap[id] && ps.find(p => p.id === hmap[id])) || ps.slice().sort(byRank)[0]));
+  const res = { byNode, nodeOf, roll, unplaced, gone, unitTo, heads, headSet: new Set(heads.values()), act: ixA ? act : null, total: S.wf.people.filter(p => p.co === co).length };
   if (wfCache.size > 40) wfCache.clear();
   wfCache.set(ck, res);
   return res;
 }
+const OWNER_RANK = { Top: 3, Middle: 2, Lower: 1 };
+const byRank = (a, b) => lvlNum(b.lvl) - lvlNum(a.lvl) || (OWNER_RANK[b.owner] || 0) - (OWNER_RANK[a.owner] || 0) || wfName(a).localeCompare(wfName(b), 'th');
 function wfUnder(P, n) { const out = []; walk(n, x => { (P.byNode.get(x.id) || []).forEach(p => out.push(p)); }); return out; }
 function nodeTrail(root, id) {
   const out = [];
@@ -3456,19 +3504,21 @@ const svcBand = y => (y == null ? 'ไม่ระบุ' : y < 1 ? 'ไม่�
 const retireSoon = p => p.retire && p.retire <= new Date().getFullYear() + 3;
 const fmtYears = y => (y == null ? '—' : y < 1 ? Math.max(0, Math.round(y * 12)) + ' ด.' : y.toFixed(1) + ' ปี');
 function wfSummary(list) {
-  const s = { n: list.length, perm: 0, retire: 0, svc: 0, svcN: 0, heads: 0, grp: {}, emp: {}, lvl: {}, svcB: {} };
+  const s = { n: list.length, perm: 0, retire: 0, svc: 0, svcN: 0, grp: {}, emp: {}, lvl: {}, svcB: {}, edu: {} };
   const add = (o, k) => { o[k] = (o[k] || 0) + 1; };
   list.forEach(p => {
     if (p.emp === 'ประจำ') s.perm++;
     if (retireSoon(p)) s.retire++;
-    if (p.owner === 'Top') s.heads++;
+    add(s.edu, p.edu || 'ไม่ระบุ');
     const y = wfYears(p.start);
     if (y != null) { s.svc += y; s.svcN++; }
     add(s.grp, p.grp || 'ไม่ระบุ'); add(s.emp, p.emp || 'ไม่ระบุ'); add(s.lvl, lvlBand(p.lvl)); add(s.svcB, svcBand(y));
   });
   return s;
 }
-const sortPeople = list => list.slice().sort((a, b) => (b.owner === 'Top') - (a.owner === 'Top') || lvlNum(b.lvl) - lvlNum(a.lvl) || wfName(a).localeCompare(wfName(b), 'th'));
+const sortPeople = (list, P) => list.slice().sort((a, b) => (P ? P.headSet.has(b) - P.headSet.has(a) : 0) || byRank(a, b));
+const shortName = p => `${p.fn} ${p.ln}`.trim();
+const eduText = p => [p.edu, p.deg && p.deg !== p.edu ? p.deg : '', p.major, p.school].filter(Boolean).join(' · ');
 function gapInfo(plan, actual) {
   if (!plan) return actual ? { cls: 'nop', txt: 'ยังไม่กำหนดแผน' } : { cls: '', txt: '' };
   if (actual < plan) return { cls: 'short', txt: `ขาด ${fmtNum(plan - actual)}` };
@@ -3568,6 +3618,7 @@ function wfPageHTML(v) {
           const a = P.roll.get(c.id) || 0, p = plan.get(c.id) || 0, gi = gapInfo(p, a);
           return `<button class="wf-sub" data-act="wf-unit" data-id="${c.id}">
             <span class="ws-name"><i class="dot tc-${c.type}"></i><span>${esc(c.name || 'ไม่มีชื่อ')}</span>${c.staff ? '<span class="tag">Staff</span>' : ''}</span>
+            ${P.heads.get(c.id) ? `<span class="ws-hd">หัวหน้า: ${esc(wfName(P.heads.get(c.id)))}</span>` : ''}
             <span class="ws-num"><b>${fmtNum(a)}</b> คน${p ? ` <span class="muted">/ แผน ${fmtNum(p)}</span>` : ''}</span>
             <span class="ws-bar"><i class="a" style="width:${(a / max) * 100}%"></i>${p ? `<i class="p" style="left:${Math.min(100, (p / max) * 100)}%"></i>` : ''}</span>
             <span class="ws-gap ${gi.cls}">${gi.txt}</span></button>`;
@@ -3580,11 +3631,11 @@ function wfPageHTML(v) {
 function wfFilter(list) {
   const q = S.wfQuery.trim().toLowerCase();
   if (!q) return list;
-  return list.filter(p => [p.id, wfName(p), wfNameEn(p), p.pos, p.lvl].some(x => String(x || '').toLowerCase().includes(q)));
+  return list.filter(p => [p.id, wfName(p), wfNameEn(p), p.pos, p.lvl, p.edu, p.deg, p.major, p.school].some(x => String(x || '').toLowerCase().includes(q)));
 }
 function peopleCount(list) { const n = wfFilter(list).length; return `${fmtNum(n)} คน${n !== list.length ? ` จาก ${fmtNum(list.length)}` : ''}`; }
 function wfPeopleHTML(v, P, list, out) {
-  const rows = sortPeople(wfFilter(list));
+  const rows = sortPeople(wfFilter(list), P);
   const showUnit = out || S.wfScope === 'all';
   const unitOf = p => {
     if (out) { const r = P.unitTo.get(p.unit); const was = r && r.was && P.act ? find(P.act.root, r.was) : null; return (S.wf.units[p.unit] || {}).name + (was ? ` (เดิม: ${was.node.name})` : ''); }
@@ -3592,9 +3643,9 @@ function wfPeopleHTML(v, P, list, out) {
   };
   if (!rows.length) return `<p class="empty">${list.length ? 'ไม่พบรายชื่อที่ตรงกับคำค้น' : 'ยังไม่มีพนักงานในหน่วยนี้'}</p>`;
   const year = new Date().getFullYear();
-  return `<div class="pl-wrap"><table class="pl"><thead><tr><th>รหัส</th><th>ชื่อ-สกุล</th><th>ตำแหน่ง</th><th>ระดับ</th><th>กลุ่มพนักงาน</th><th>ประเภท</th><th class="num">อายุงาน</th><th class="num">เกษียณ</th>${showUnit ? `<th>${out ? 'หน่วยงานในระบบ HR' : 'หน่วยงาน'}</th>` : ''}</tr></thead><tbody>
-    ${rows.map(p => `<tr><td class="mono">${esc(p.id)}</td><td><b>${esc(wfName(p))}</b>${p.owner ? ` <span class="tag ${p.owner === 'Top' ? 'head' : ''}" title="Structure Owner: ${esc(p.owner)}">${p.owner === 'Top' ? 'หัวหน้าหน่วย' : esc(p.owner)}</span>` : ''}${wfNameEn(p) ? `<small>${esc(wfNameEn(p))}</small>` : ''}</td>
-      <td>${esc(p.pos)}</td><td class="mono">${esc(p.lvl)}</td><td>${esc(p.grp)}</td><td>${p.emp === 'ประจำ' ? 'ประจำ' : `<span class="tag">${esc(p.emp)}</span>`}</td>
+  return `<div class="pl-wrap"><table class="pl"><thead><tr><th>รหัส</th><th>ชื่อ-สกุล</th><th>ตำแหน่ง</th><th>ระดับ</th><th>การศึกษา</th><th>ประเภท</th><th class="num">อายุงาน</th><th class="num">เกษียณ</th>${showUnit ? `<th>${out ? 'หน่วยงานในระบบ HR' : 'หน่วยงาน'}</th>` : ''}</tr></thead><tbody>
+    ${rows.map(p => `<tr${P.headSet.has(p) ? ' class="is-head"' : ''}><td class="mono">${esc(p.id)}</td><td><b>${esc(wfName(p))}</b>${P.headSet.has(p) ? ' <span class="tag head">หัวหน้าหน่วย</span>' : ''}${wfNameEn(p) ? `<small>${esc(wfNameEn(p))}</small>` : ''}</td>
+      <td>${esc(p.pos)}<small>${esc(p.grp)}</small></td><td class="mono">${esc(p.lvl)}</td><td class="edu">${esc(p.edu || '—')}${p.deg || p.major ? `<small>${esc([p.deg !== p.edu ? p.deg : '', p.major].filter(Boolean).join(' · '))}</small>` : ''}${p.school ? `<small>${esc(p.school)}</small>` : ''}</td><td>${p.emp === 'ประจำ' ? 'ประจำ' : `<span class="tag">${esc(p.emp)}</span>`}</td>
       <td class="num">${fmtYears(wfYears(p.start))}</td><td class="num${retireSoon(p) ? ' soon' : ''}">${p.retire ? p.retire + 543 : '—'}</td>${showUnit ? `<td class="unit">${esc(unitOf(p))}</td>` : ''}</tr>`).join('')}
     </tbody></table></div>${rows.some(p => p.retire && p.retire <= year + 3) ? '<p class="pl-note">ปีที่เกษียณเป็น พ.ศ. · ตัวเลขสีส้ม = เกษียณภายใน 3 ปี</p>' : ''}`;
 }
@@ -3603,8 +3654,8 @@ function wfRefreshPeople() {
   if (!v || !S.wf) return;
   const cards = $('#wfp-list');
   if (cards) {
-    const P = wfPlace(v), { out, list } = wfListOf(v, P);
-    cards.innerHTML = wfCardsHTML(v, P, list, out);
+    const P = wfPlace(v), { out, list, node } = wfListOf(v, P);
+    cards.innerHTML = wfCardsHTML(v, P, list, out, node);
     const c = $('#wf-count');
     if (c) c.textContent = peopleCount(list);
     return;
@@ -3652,7 +3703,7 @@ function wfInspHTML(v) {
     <div class="btnrow">${canEditApp() ? `<button class="btn sm" data-act="wf-import">${I.upload}นำเข้าไฟล์ใหม่</button>` : ''}<button class="btn sm" data-act="wf-map">${I.link}จับคู่หน่วยงาน</button>
       ${canEditApp() ? `<button class="btn sm" data-act="wf-pass">${I.lock}เปลี่ยนรหัสผ่าน</button>` : ''}<button class="btn sm ghost" data-act="wf-lock">${I.lock}ล็อก</button></div></section>
   ${list.length ? `<section class="panel"><h3>องค์ประกอบ${S.page === 'planning' ? 'ทั้งบริษัท' : node ? `: ${esc(node.name)}` : ''} · ${fmtNum(list.length)} คน</h3>
-    ${barsHTML('กลุ่มพนักงาน', sm.grp, list.length)}${barsHTML('ระดับ', sm.lvl, list.length, LVL_ORDER)}${barsHTML('ประเภทการจ้าง', sm.emp, list.length)}${barsHTML('อายุงาน', sm.svcB, list.length, SVC_ORDER)}</section>` : ''}
+    ${barsHTML('วุฒิการศึกษา', sm.edu, list.length)}${barsHTML('กลุ่มพนักงาน', sm.grp, list.length)}${barsHTML('ระดับ', sm.lvl, list.length, LVL_ORDER)}${barsHTML('ประเภทการจ้าง', sm.emp, list.length)}${barsHTML('อายุงาน', sm.svcB, list.length, SVC_ORDER)}</section>` : ''}
   ${tip}`;
 }
 
@@ -3661,50 +3712,69 @@ function wfListOf(v, P) {
   const cur = wfCurId(v), out = cur === '__out', node = out ? null : find(v.root, cur).node;
   return { cur, out, node, list: out ? P.unplaced.concat(P.gone) : S.wfScope === 'all' ? wfUnder(P, node) : (P.byNode.get(node.id) || []) };
 }
-function wfCardsHTML(v, P, list, out) {
-  const rows = sortPeople(wfFilter(list));
+function personHTML(p, P, unit) {
+  const head = P.headSet.has(p), edu = eduText(p);
+  return `<div class="pp${head ? ' head' : ''}"><div class="pp-n"><b>${esc(wfName(p))}</b>${head ? ' <span class="tag head">หัวหน้าหน่วย</span>' : ''}${p.emp !== 'ประจำ' ? ` <span class="tag">${esc(p.emp)}</span>` : ''}</div>
+    <div class="pp-m">${esc(p.pos)} · ระดับ ${esc(p.lvl)} · อายุงาน ${fmtYears(wfYears(p.start))}${retireSoon(p) ? ` · <span class="soon">เกษียณ ${p.retire + 543}</span>` : ''}</div>
+    ${edu ? `<div class="pp-e">${I.edu}${esc(edu)}</div>` : ''}${unit ? `<div class="pp-u">${esc(unit)}</div>` : ''}</div>`;
+}
+function wfCardsHTML(v, P, list, out, node) {
+  const rows = wfFilter(list);
   if (!rows.length) return `<p class="empty">${list.length ? 'ไม่พบรายชื่อที่ตรงกับคำค้น' : 'ยังไม่มีพนักงานในหน่วยนี้'}</p>`;
-  const showUnit = out || S.wfScope === 'all';
-  const unitOf = p => {
-    if (out) { const r = P.unitTo.get(p.unit), was = r && r.was && P.act ? find(P.act.root, r.was) : null; return (S.wf.units[p.unit] || {}).name + (was ? ` (เดิม: ${was.node.name})` : ''); }
-    const id = P.nodeOf.get(p), n = id && find(v.root, id);
-    return n && id !== wfCurId(v) ? n.node.name : '';
-  };
-  const shown = rows.slice(0, 300);
-  return shown.map(p => {
-    const u = showUnit ? unitOf(p) : '';
-    return `<div class="pp"><div class="pp-n"><b>${esc(wfName(p))}</b>${p.owner === 'Top' ? ' <span class="tag head">หัวหน้าหน่วย</span>' : p.owner ? ` <span class="tag">${esc(p.owner)}</span>` : ''}${p.emp !== 'ประจำ' ? ` <span class="tag">${esc(p.emp)}</span>` : ''}</div>
-      <div class="pp-m">${esc(p.pos)} · ระดับ ${esc(p.lvl)} · อายุงาน ${fmtYears(wfYears(p.start))}${retireSoon(p) ? ` · <span class="soon">เกษียณ ${p.retire + 543}</span>` : ''}</div>${u ? `<div class="pp-u">${esc(u)}</div>` : ''}</div>`;
-  }).join('') + (rows.length > shown.length ? `<p class="muted pp-more">แสดง ${shown.length} จาก ${fmtNum(rows.length)} คน · ค้นหาหรือเลือกหน่วยย่อยเพื่อดูเพิ่ม หรือ Export รายชื่อ</p>` : '');
+  if (out) {
+    return sortPeople(rows, P).map(p => {
+      const r = P.unitTo.get(p.unit), was = r && r.was && P.act ? find(P.act.root, r.was) : null;
+      return personHTML(p, P, 'ในระบบ HR: ' + (S.wf.units[p.unit] || {}).name + (was ? ` (เดิม: ${was.node.name})` : ''));
+    }).join('');
+  }
+  if (S.wfScope !== 'all' || !node) return sortPeople(rows, P).map(p => personHTML(p, P)).join('');
+  // the whole branch, box by box in the order of the chart, each box led by its head
+  const keep = new Set(rows);
+  let html = '';
+  walk(node, n => {
+    const ps = (P.byNode.get(n.id) || []).filter(p => keep.has(p));
+    if (!ps.length) return;
+    html += `<div class="pp-g"><button class="pp-gh" data-act="wf-unit" data-id="${n.id}">${esc(n.name || 'ไม่มีชื่อ')}</button><span class="muted">${ps.length} คน</span></div>` + sortPeople(ps, P).map(p => personHTML(p, P)).join('');
+  });
+  return html;
 }
 function wfUnitPanelHTML(v) {
-  const P = wfPlace(v), plan = rollup(v.root), { out, node, list } = wfListOf(v, P);
+  const P = wfPlace(v), { out, node, list } = wfListOf(v, P);
   const sm = wfSummary(list), miss = P.unplaced.length + P.gone.length;
   const close = `<button class="ibtn ip-close" data-act="close-insp" aria-label="ปิด">${I.close}</button>`;
-  let head, kpis = '';
+  let head, kpis = '', lead = '', subs = '';
   if (out) head = `<div class="ip-head"><div><h3>กำลังคน</h3><h2>ยังไม่ได้อยู่ในกล่องของผังนี้</h2></div>${close}</div><p class="muted">จัดลงกล่องได้ที่ “จับคู่หน่วยงาน”</p>`;
   else {
     const trail = nodeTrail(v.root, node.id).slice(0, -1).map(n => n.name).join(' › ');
-    const pl = S.wfScope === 'all' ? plan.get(node.id) : (+node.hc || 0), a = list.length, g = gapInfo(pl, a);
-    const own = (P.byNode.get(node.id) || []).length, kids = node.children.filter(c => !EXTERNAL.has(c.type)).length;
+    const own = P.byNode.get(node.id) || [], all = P.roll.get(node.id) || 0, pl = +node.hc || 0, g = gapInfo(pl, own.length);
+    const ownSum = wfSummary(own), hd = P.heads.get(node.id);
     head = `<div class="ip-head"><div><h3><i class="dot tc-${node.type}"></i> ${esc(TYPES[node.type].th)}${node.staff ? ' · Staff' : ''}</h3><h2>${esc(node.name || 'ไม่มีชื่อ')}</h2>${trail ? `<p class="muted ip-path">${esc(trail)}</p>` : ''}</div>${close}</div>`;
+    if (hd) {
+      const pick = (S.wf.heads && S.wf.heads[v.companyCode] && S.wf.heads[v.companyCode][node.id]) || '';
+      lead = `<div class="hd"><span class="hd-l">หัวหน้าหน่วย</span><b>${esc(wfName(hd))}</b><span>${esc(hd.pos)} · ระดับ ${esc(hd.lvl)} · อายุงาน ${fmtYears(wfYears(hd.start))}</span>${eduText(hd) ? `<span class="pp-e">${I.edu}${esc(eduText(hd))}</span>` : ''}
+        ${canEditApp() && own.length > 1 ? `<label class="hd-pick"><span>เปลี่ยนหัวหน้าหน่วย</span><select class="inp sm" data-change="wf-head" data-node="${node.id}"><option value="">อัตโนมัติ (ระดับสูงสุดในกล่องนี้)</option>${sortPeople(own).map(p => `<option value="${esc(p.id)}" ${pick === p.id ? 'selected' : ''}>${esc(wfName(p))} · ${esc(p.lvl)}</option>`).join('')}</select></label>` : ''}</div>`;
+    } else lead = `<p class="muted hd-none">ยังไม่มีคนในกล่องนี้${all ? ` · หน่วยย่อยมี ${fmtNum(all)} คน` : ''}</p>`;
     kpis = `<div class="statgrid">
-      <div class="stat"><b>${fmtNum(a)}</b><span>คนจริง${S.wfScope === 'all' && kids ? ' (รวมหน่วยย่อย)' : ''}</span></div>
+      <div class="stat"><b>${fmtNum(own.length)}</b><span>คนในกล่องนี้</span></div>
       <div class="stat"><b>${pl ? fmtNum(pl) : '—'}</b><span>อัตรากำลังตามแผน</span></div>
       <div class="stat gap ${g.cls}"><b>${g.txt ? g.txt.replace('ยังไม่กำหนดแผน', 'ไม่มีแผน').replace('ครบตามแผน', 'ครบ') : '—'}</b><span>ส่วนต่าง</span></div>
-      <div class="stat"><b>${fmtNum(sm.perm)}<small> / ${fmtNum(a - sm.perm)}</small></b><span>ประจำ / สัญญาจ้าง</span></div>
-      <div class="stat${sm.retire ? ' warn' : ''}"><b>${fmtNum(sm.retire)}</b><span>เกษียณภายใน 3 ปี</span></div>
-      <div class="stat"><b>${sm.svcN ? fmtYears(sm.svc / sm.svcN) : '—'}</b><span>อายุงานเฉลี่ย</span></div></div>
-      ${kids ? `<p class="muted ip-note">อยู่ที่หน่วยนี้โดยตรง ${fmtNum(own)} คน · มีหน่วยย่อย ${kids} หน่วย — คลิกกล่องในผังเพื่อเจาะลึก</p>` : ''}`;
+      <div class="stat"><b>${fmtNum(all)}</b><span>รวมทั้งสายงาน</span></div>
+      <div class="stat${ownSum.retire ? ' warn' : ''}"><b>${fmtNum(ownSum.retire)}</b><span>เกษียณภายใน 3 ปี</span></div>
+      <div class="stat"><b>${ownSum.svcN ? fmtYears(ownSum.svc / ownSum.svcN) : '—'}</b><span>อายุงานเฉลี่ย</span></div></div>`;
+    const kids = node.children.filter(c => !EXTERNAL.has(c.type));
+    if (kids.length) subs = `<section class="panel"><h3>หน่วยย่อย · ${kids.length} หน่วย</h3><div class="su-list">${kids.map(c => {
+      const h = P.heads.get(c.id), o = (P.byNode.get(c.id) || []).length, t = P.roll.get(c.id) || 0;
+      return `<button class="su" data-act="wf-unit" data-id="${c.id}"><span class="su-n"><i class="dot tc-${c.type}"></i>${esc(c.name || 'ไม่มีชื่อ')}</span><span class="su-h">${h ? esc(wfName(h)) : '<span class="muted">ยังไม่มีคน</span>'}</span><span class="su-c">${fmtNum(o)} คน${t !== o ? `<small> · ทั้งสาย ${fmtNum(t)}</small>` : ''}</span></button>`;
+    }).join('')}</div></section>`;
   }
   const alert = miss && !out ? `<div class="wf-alert sm">${I.info}<p>${fmtNum(miss)} คนยังไม่ได้อยู่ในกล่องของผังนี้</p><button class="btn sm" data-act="wf-unit" data-id="__out">ดูรายชื่อ</button></div>` : '';
-  const scope = out ? '' : `<div class="tabs" role="group" aria-label="ขอบเขตรายชื่อ"><button class="tab" data-act="wf-scope" data-scope="all" aria-pressed="${S.wfScope === 'all'}" aria-selected="${S.wfScope === 'all'}">รวมหน่วยย่อย</button><button class="tab" data-act="wf-scope" data-scope="direct" aria-pressed="${S.wfScope === 'direct'}" aria-selected="${S.wfScope === 'direct'}">เฉพาะหน่วยนี้</button></div>`;
-  return `<section class="panel">${head}${kpis}${alert}</section>
+  const scope = out ? '' : `<div class="tabs" role="group" aria-label="ขอบเขตรายชื่อ"><button class="tab" data-act="wf-scope" data-scope="direct" aria-pressed="${S.wfScope !== 'all'}" aria-selected="${S.wfScope !== 'all'}">เฉพาะกล่องนี้</button><button class="tab" data-act="wf-scope" data-scope="all" aria-pressed="${S.wfScope === 'all'}" aria-selected="${S.wfScope === 'all'}">ทั้งสายงาน</button></div>`;
+  return `<section class="panel">${head}${lead}${kpis}${alert}</section>${subs}
     <section class="panel wf-pp"><h3 class="pp-h">รายชื่อ <span class="muted" id="wf-count">${peopleCount(list)}</span></h3>${scope}
-      <input class="inp sm" type="search" data-wf="q" value="${esc(S.wfQuery)}" placeholder="ค้นหาชื่อ รหัส หรือตำแหน่ง" aria-label="ค้นหาพนักงาน">
-      <div class="pp-list" id="wfp-list">${wfCardsHTML(v, P, list, out)}</div></section>
+      <input class="inp sm" type="search" data-wf="q" value="${esc(S.wfQuery)}" placeholder="ค้นหาชื่อ รหัส ตำแหน่ง หรือการศึกษา" aria-label="ค้นหาพนักงาน">
+      <div class="pp-list" id="wfp-list">${wfCardsHTML(v, P, list, out, node)}</div></section>
     ${list.length ? `<details class="panel wf-mix"><summary><h3>องค์ประกอบ · ${fmtNum(list.length)} คน</h3></summary>
-      ${barsHTML('กลุ่มพนักงาน', sm.grp, list.length)}${barsHTML('ระดับ', sm.lvl, list.length, LVL_ORDER)}${barsHTML('ประเภทการจ้าง', sm.emp, list.length)}${barsHTML('อายุงาน', sm.svcB, list.length, SVC_ORDER)}</details>` : ''}
+      ${barsHTML('วุฒิการศึกษา', sm.edu, list.length)}${barsHTML('กลุ่มพนักงาน', sm.grp, list.length)}${barsHTML('ระดับ', sm.lvl, list.length, LVL_ORDER)}${barsHTML('ประเภทการจ้าง', sm.emp, list.length)}${barsHTML('อายุงาน', sm.svcB, list.length, SVC_ORDER)}</details>` : ''}
     <section class="panel wf-src"><dl class="kv"><dt>ข้อมูล ณ</dt><dd>${fmtDate(S.wf.asOf)} · ${esc(S.wf.source || '')}</dd><dt>พนักงาน ${esc(v.companyCode)}</dt><dd>${fmtNum(P.total)} คน · อยู่ในผังนี้ ${fmtNum(P.total - miss)} คน${miss ? ` · <a href="#" data-act="wf-unit" data-id="__out">ยังไม่ลงกล่อง ${fmtNum(miss)}</a>` : ''}</dd></dl>
       <div class="btnrow">${canEditApp() ? `<button class="btn sm" data-act="wf-import">${I.upload}นำเข้าไฟล์ใหม่</button><button class="btn sm" data-act="wf-pass">${I.lock}เปลี่ยนรหัสผ่าน</button>` : ''}<button class="btn sm ghost" data-act="wf-lock">${I.lock}ล็อก</button></div></section>`;
 }
@@ -3752,7 +3822,7 @@ function planRows(v) {
     rows: flatten(v.root).filter(x => !EXTERNAL.has(x.n.type)).map(x => {
       const n = x.n, pl = +n.hc || 0, own = P ? (P.byNode.get(n.id) || []) : [];
       const a = P ? own.length : null;
-      return { n, depth: x.depth, pl, a, rp: plan.get(n.id), ra: P ? P.roll.get(n.id) : null, g: gapInfo(pl, a || 0), retire: own.filter(retireSoon).length,
+      return { n, depth: x.depth, pl, a, rp: plan.get(n.id), ra: P ? P.roll.get(n.id) : null, g: gapInfo(pl, a || 0), retire: own.filter(retireSoon).length, head: P ? P.heads.get(n.id) : null,
         isNew: !!(baseIdx && !baseIdx.has(n.id)), basePl: baseIdx && baseIdx.has(n.id) ? +baseIdx.get(n.id).hc || 0 : null };
     }),
   };
@@ -3776,7 +3846,7 @@ function planPageHTML(v) {
   const shown = rows.filter(r => f === 'all' || (f === 'new' ? r.isNew : r.g.cls === f));
   const head = `<div class="pt-row pt-head"><div>หน่วยงาน</div><div class="num">แผน</div><div class="num">คนจริง</div><div>ส่วนต่าง</div><div class="num" title="รวมหน่วยย่อยทั้งหมด">รวมทั้งสาย แผน / คน</div><div class="num" title="เกษียณภายใน 3 ปี">ใกล้เกษียณ</div>${base ? `<div class="num" title="อัตรากำลังตามแผนใน Active v${base.versionNo}">แผนใน Active</div>` : ''}</div>`;
   const body = shown.map(r => `<div class="pt-row${r.isNew ? ' new' : ''}" data-id="${r.n.id}">
-      <div class="pt-name" style="--d:${f === 'all' ? r.depth : 0}"><i class="dot tc-${r.n.type}"></i><span>${esc(r.n.name || 'ไม่มีชื่อ')}</span>${r.isNew ? '<span class="tag new">ใหม่</span>' : ''}${r.n.staff ? '<span class="tag">Staff</span>' : ''}</div>
+      <div class="pt-name" style="--d:${f === 'all' ? r.depth : 0}"><i class="dot tc-${r.n.type}"></i><span>${esc(r.n.name || 'ไม่มีชื่อ')}</span>${r.isNew ? '<span class="tag new">ใหม่</span>' : ''}${r.n.staff ? '<span class="tag">Staff</span>' : ''}${r.head ? `<span class="pt-hd" title="หัวหน้าหน่วย">${esc(shortName(r.head))}</span>` : ''}</div>
       <div class="num">${edit ? `<input class="pt-in" type="text" inputmode="numeric" data-plan="${r.n.id}" value="${r.pl || ''}" placeholder="0" aria-label="อัตรากำลังตามแผน ${esc(r.n.name)}">` : (r.pl ? fmtNum(r.pl) : '—')}</div>
       <div class="num">${P ? (r.a ? `<a href="#" data-act="wf-open-unit" data-id="${r.n.id}">${fmtNum(r.a)}</a>` : '0') : '—'}</div>
       <div><span class="gap ${r.g.cls}">${P ? r.g.txt : ''}</span></div>
@@ -3789,7 +3859,7 @@ function planPageHTML(v) {
     const groups = new Map();
     P.gone.forEach(p => { const r = P.unitTo.get(p.unit), was = r && r.was && base ? find(base.root, r.was) : null; const k = was ? was.node.name : (S.wf.units[p.unit] || {}).name; if (!groups.has(k)) groups.set(k, []); groups.get(k).push(p); });
     goneHTML = `<section class="pt-gone"><h3>คนที่ต้องจัดสรรใหม่ <span class="muted">${fmtNum(P.gone.length)} คน · หน่วยเดิมไม่มีในเวอร์ชันนี้</span></h3>
-      ${[...groups].map(([k, ps]) => `<div class="gone-g"><b>${esc(k)}</b> <span class="muted">${ps.length} คน</span><ul>${sortPeople(ps).map(p => `<li>${esc(wfName(p))} <span class="muted">· ${esc(p.pos)} · ระดับ ${esc(p.lvl)}</span></li>`).join('')}</ul></div>`).join('')}
+      ${[...groups].map(([k, ps]) => `<div class="gone-g"><b>${esc(k)}</b> <span class="muted">${ps.length} คน</span><ul>${sortPeople(ps, P).map(p => `<li>${esc(wfName(p))} <span class="muted">· ${esc(p.pos)} · ระดับ ${esc(p.lvl)}</span></li>`).join('')}</ul></div>`).join('')}
       <p class="muted">จัดคนลงหน่วยใหม่ได้ที่ “จับคู่หน่วยงาน” โดยเลือกกล่องในเวอร์ชันนี้</p></section>`;
   }
   const lockNote = !S.wf ? `<div class="wf-alert">${I.lock}<div>${S.wfEnv ? wfGateHTML(true) : '<p>ยังไม่มีข้อมูลพนักงาน จึงแสดงเฉพาะอัตรากำลังตามแผน</p>'}</div></div>` : '';
@@ -3826,7 +3896,7 @@ function wfMapModal() {
   const count = {};
   S.wf.people.forEach(p => { if (p.co === co) count[p.unit] = (count[p.unit] || 0) + 1; });
   const nodes = flatten(v.root).filter(x => !EXTERNAL.has(x.n.type));
-  const nodeName = id => { const n = find(v.root, id); return n ? n.node.name : ''; };
+  const nodeName = id => { const t = nodeTrail(v.root, id).slice(1).map(n => n.name); return t.length > 3 ? '… › ' + t.slice(-3).join(' › ') : t.join(' › '); };
   const HOW = { exact: 'ตรงชื่อหน่วย', parent: 'ลงที่หน่วยแม่', manual: 'กำหนดเอง', none: 'ไม่ได้อยู่ในผัง', gone: 'หน่วยเดิมไม่มีในเวอร์ชันนี้' };
   const units = Object.entries(S.wf.units).filter(([, u]) => u.co === co).map(([k, u]) => ({ k, u, r: P.unitTo.get(k) || { how: 'none' }, n: count[k] || 0 }))
     .sort((a, b) => (a.r.id ? 1 : 0) - (b.r.id ? 1 : 0) || (a.r.how === 'parent' ? 0 : 1) - (b.r.how === 'parent' ? 0 : 1) || b.n - a.n);
@@ -3893,6 +3963,7 @@ function wfImportModal() {
       }
       parsed.asOf = el.querySelector('#wi-date').value || todayISO();
       if (S.wf && S.wf.map) parsed.map = S.wf.map;
+      if (S.wf && S.wf.heads) parsed.heads = S.wf.heads;
       S.wfKey = k; S.wf = parsed;
       c();
       const n = parsed.people.length;
@@ -4047,7 +4118,9 @@ async function wfMergeRemote(attempt) {
   const mine = S.wf, base = String(theirs.importedAt) > String(mine.importedAt) ? theirs : mine;
   const map = {};
   new Set([...Object.keys(theirs.map || {}), ...Object.keys(mine.map || {})]).forEach(co => { map[co] = Object.assign({}, (theirs.map || {})[co], (mine.map || {})[co]); });
-  S.wf = Object.assign({}, base, { map });
+  const heads = {};
+  new Set([...Object.keys(theirs.heads || {}), ...Object.keys(mine.heads || {})]).forEach(co => { heads[co] = Object.assign({}, (theirs.heads || {})[co], (mine.heads || {})[co]); });
+  S.wf = Object.assign({}, base, { map, heads });
   S.wfEnv = await wfSeal(S.wf, S.wfKey);
   S.wfSha = r.sha;
   persistWf();
@@ -4059,17 +4132,17 @@ function wfExport(kind) {
   const csv = rows => '﻿' + rows.map(r => r.map(c => { const s = String(c ?? ''); return /[",\n\r]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; }).join(',')).join('\r\n');
   if (kind === 'plan') {
     const { P, base, rows } = planRows(v);
-    const out = [['ระดับ', 'หน่วยงาน', 'ประเภท', 'อัตรากำลังตามแผน', 'คนจริง', 'ส่วนต่าง', 'แผนรวมทั้งสาย', 'คนรวมทั้งสาย', 'เกษียณภายใน 3 ปี'].concat(base ? ['แผนใน Active', 'หน่วยใหม่'] : [])];
-    rows.forEach(r => out.push([r.depth + 1, r.n.name, TYPES[r.n.type].th, r.pl, P ? r.a : '', P ? r.g.txt : '', r.rp, P ? r.ra : '', r.retire].concat(base ? [r.basePl ?? '', r.isNew ? 'ใช่' : ''] : [])));
+    const out = [['ระดับ', 'หน่วยงาน', 'ประเภท', 'หัวหน้าหน่วย', 'อัตรากำลังตามแผน', 'คนจริง', 'ส่วนต่าง', 'แผนรวมทั้งสาย', 'คนรวมทั้งสาย', 'เกษียณภายใน 3 ปี'].concat(base ? ['แผนใน Active', 'หน่วยใหม่'] : [])];
+    rows.forEach(r => out.push([r.depth + 1, r.n.name, TYPES[r.n.type].th, r.head ? wfName(r.head) : '', r.pl, P ? r.a : '', P ? r.g.txt : '', r.rp, P ? r.ra : '', r.retire].concat(base ? [r.basePl ?? '', r.isNew ? 'ใช่' : ''] : [])));
     download(`${slug(v)}-workforce-plan.csv`, csv(out), 'text/csv;charset=utf-8');
     return;
   }
   if (!S.wf) return;
   const P = wfPlace(v), cur = wfCurId(v), out = cur === '__out';
   const node = out ? null : find(v.root, cur).node;
-  const list = sortPeople(wfFilter(out ? P.unplaced.concat(P.gone) : S.wfScope === 'all' ? wfUnder(P, node) : (P.byNode.get(node.id) || [])));
-  const rows = [['รหัสพนักงาน', 'ชื่อ-สกุล', 'Name', 'ตำแหน่ง', 'ระดับ', 'กลุ่มพนักงาน', 'ประเภทการจ้าง', 'วันเริ่มงาน', 'ปีที่เกษียณ (พ.ศ.)', 'สถานที่ทำงาน', 'หน่วยงานในผัง', 'หน่วยงานในระบบ HR', 'Structure Owner']];
-  list.forEach(p => { const n = P.nodeOf.get(p) && find(v.root, P.nodeOf.get(p)); rows.push([p.id, wfName(p), wfNameEn(p), p.pos, p.lvl, p.grp, p.emp, p.start, p.retire ? p.retire + 543 : '', p.loc, n ? n.node.name : '', (S.wf.units[p.unit] || {}).name, p.owner]); });
+  const list = sortPeople(wfFilter(out ? P.unplaced.concat(P.gone) : S.wfScope === 'all' ? wfUnder(P, node) : (P.byNode.get(node.id) || [])), P);
+  const rows = [['รหัสพนักงาน', 'ชื่อ-สกุล', 'Name', 'ตำแหน่ง', 'ระดับ', 'กลุ่มพนักงาน', 'ประเภทการจ้าง', 'วันเริ่มงาน', 'ปีที่เกษียณ (พ.ศ.)', 'สถานที่ทำงาน', 'วุฒิการศึกษา', 'ปริญญา', 'สาขา', 'สถาบัน', 'หน่วยงานในผัง', 'หัวหน้าหน่วย', 'หน่วยงานในระบบ HR', 'Structure Owner']];
+  list.forEach(p => { const n = P.nodeOf.get(p) && find(v.root, P.nodeOf.get(p)); rows.push([p.id, wfName(p), wfNameEn(p), p.pos, p.lvl, p.grp, p.emp, p.start, p.retire ? p.retire + 543 : '', p.loc, p.edu, p.deg, p.major, p.school, n ? n.node.name : '', P.headSet.has(p) ? 'ใช่' : '', (S.wf.units[p.unit] || {}).name, p.owner]); });
   download(`${slug(v)}-workforce-${out ? 'unplaced' : (node.code || node.name || 'unit').replace(/[^\w฀-๿-]+/g, '_').slice(0, 40)}.csv`, csv(rows), 'text/csv;charset=utf-8');
   toast('ไฟล์นี้มีข้อมูลส่วนบุคคล โปรดเก็บรักษาตามนโยบาย PDPA ขององค์กร', 'info', null, 6000);
 }
@@ -4252,7 +4325,7 @@ const A = {
     wfSelect(el.dataset.id);
     $('#body .wf-page')?.scrollTo({ top: 0 });
   },
-  'wf-open-unit': el => { const v = curVersion(); if (!v) return; S.wfUnit[v.id] = el.dataset.id; S.wfScope = el.dataset.scope || 'direct'; S.wfQuery = ''; S.wfZoomPending = true; go(S.route.code, 'workforce'); },
+  'wf-open-unit': el => { const v = curVersion(); if (!v) return; S.wfUnit[v.id] = el.dataset.id; S.wfScope = 'direct'; S.wfQuery = ''; S.wfZoomPending = true; go(S.route.code, 'workforce'); },
   'wf-view': el => { S.wfView = el.dataset.view; refresh(); if (S.wfView === 'chart') wfZoomTo(wfCurId(curVersion())); },
   'wf-scope': el => { S.wfScope = el.dataset.scope; refresh(); },
   'wf-import': () => wfImportModal(),
@@ -4376,6 +4449,16 @@ function outlineOp(el, op, focusSel = '.ol-in') {
   focusRow(target, focusSel);
 }
 const CHANGES = {
+  'wf-head': t => {
+    const v = curVersion();
+    if (!v || !S.wf || !canEditApp()) return;
+    const co = v.companyCode, id = t.dataset.node, f = find(v.root, id);
+    const heads = Object.assign({}, S.wf.heads), mine = Object.assign({}, heads[co]);
+    if (t.value) mine[id] = t.value; else delete mine[id];
+    heads[co] = mine;
+    S.wf.heads = heads;
+    wfChanged(`${co}: กำหนดหัวหน้าหน่วย “${f ? f.node.name : ''}”`);
+  },
   compare: t => { S.compareWith = t.value || null; refresh(); },
   level: t => setLevel(t.value),
   reparent: t => opReparent(S.selected, t.value),
