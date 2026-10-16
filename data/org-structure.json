@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-10-16T08:56:30.608Z",
+  "updatedAt": "2026-10-16T08:59:11.734Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -8477,7 +8477,7 @@
       "basedOn": "v_pem_2026r3",
       "createdAt": "2026-10-16T02:26:36.993Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-10-16T08:54:34.629Z",
+      "updatedAt": "2026-10-16T08:58:52.731Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE ELECTRIC MANUFACTURING CO., LTD. (PEM) 2026",
@@ -9182,7 +9182,7 @@
                   {
                     "id": "n_pem_149",
                     "type": "department",
-                    "name": "Digital Organization Development",
+                    "name": "Agentic Organization Development & Information Capital",
                     "nameEn": "",
                     "code": "",
                     "title": "",
@@ -9191,73 +9191,12 @@
                     "staff": false,
                     "layout": "auto",
                     "note": "",
-                    "children": [
-                      {
-                        "id": "n_pem_82",
-                        "type": "department",
-                        "name": "Digital Business Architecture (DBA)",
-                        "nameEn": "",
-                        "code": "",
-                        "title": "",
-                        "head": "",
-                        "hc": 0,
-                        "staff": false,
-                        "layout": "auto",
-                        "note": "",
-                        "children": [],
-                        "style": {
-                          "fill": null,
-                          "line": "#ED7D31",
-                          "lw": 1.33,
-                          "text": "#000000",
-                          "bold": false,
-                          "size": 12,
-                          "align": "l"
-                        },
-                        "link": "#ED7D31",
-                        "box": {
-                          "x": 1200.5,
-                          "y": 770.2,
-                          "w": 333.7,
-                          "h": 34.4
-                        }
-                      },
-                      {
-                        "id": "n_pem_150",
-                        "type": "department",
-                        "name": "Data Governance",
-                        "nameEn": "",
-                        "code": "",
-                        "title": "",
-                        "head": "",
-                        "hc": 0,
-                        "staff": false,
-                        "layout": "auto",
-                        "note": "",
-                        "children": [],
-                        "style": {
-                          "fill": null,
-                          "line": "#ED7D31",
-                          "lw": 1.33,
-                          "text": "#000000",
-                          "bold": false,
-                          "size": 12,
-                          "align": "l"
-                        },
-                        "link": "#ED7D31",
-                        "box": {
-                          "x": 1204,
-                          "y": 816,
-                          "w": 335.3,
-                          "h": 34.5
-                        }
-                      }
-                    ],
+                    "children": [],
                     "style": {
-                      "fill": null,
+                      "fill": "#FBE5D6",
                       "line": "#ED7D31",
                       "lw": 1.33,
-                      "text": "#000000",
+                      "text": "#FF0000",
                       "bold": true,
                       "size": 12,
                       "align": "l"
@@ -9267,8 +9206,9 @@
                       "x": 1160.6,
                       "y": 714.8,
                       "w": 374.4,
-                      "h": 41
-                    }
+                      "h": 57.200000000000045
+                    },
+                    "hl": true
                   },
                   {
                     "id": "n_pem_84",
@@ -9307,10 +9247,10 @@
                         },
                         "link": "#ED7D31",
                         "box": {
-                          "x": 1202.9,
-                          "y": 977.5,
+                          "x": 1192,
+                          "y": 841,
                           "w": 330.5,
-                          "h": 45.9
+                          "h": 51
                         }
                       },
                       {
@@ -9337,10 +9277,10 @@
                         },
                         "link": "#ED7D31",
                         "box": {
-                          "x": 1203,
-                          "y": 1038.4,
-                          "w": 330.5,
-                          "h": 47.2
+                          "x": 1200,
+                          "y": 900,
+                          "w": 324,
+                          "h": 52
                         }
                       }
                     ],
@@ -9355,10 +9295,10 @@
                     },
                     "link": "#ED7D31",
                     "box": {
-                      "x": 1164.8,
-                      "y": 921.7,
+                      "x": 1164,
+                      "y": 781,
                       "w": 369.5,
-                      "h": 43.3
+                      "h": 47
                     }
                   },
                   {
@@ -9385,10 +9325,10 @@
                     },
                     "link": "#ED7D31",
                     "box": {
-                      "x": 1200.9,
-                      "y": 1113.4,
+                      "x": 1184,
+                      "y": 968,
                       "w": 332,
-                      "h": 40.5
+                      "h": 48.5
                     }
                   }
                 ],
