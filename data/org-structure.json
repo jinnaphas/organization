@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-10-16T04:11:55.817Z",
+  "updatedAt": "2026-10-16T04:20:57.238Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -13846,7 +13846,7 @@
       "basedOn": "v_psp_2026r3",
       "createdAt": "2026-10-16T02:18:37.847Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-10-16T04:11:36.366Z",
+      "updatedAt": "2026-10-16T04:20:52.312Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE SYSTEM & PROJECT CO., LTD. (PSP) 2026",
@@ -16431,9 +16431,9 @@
                         },
                         "box": {
                           "x": 2913,
-                          "y": 670,
-                          "w": 343,
-                          "h": 60.4
+                          "y": 669,
+                          "w": 355,
+                          "h": 58
                         },
                         "link": "#70AD47",
                         "hl": true
@@ -16463,9 +16463,9 @@
                         "link": "#70AD47",
                         "box": {
                           "x": 2912,
-                          "y": 744,
-                          "w": 344,
-                          "h": 60.4
+                          "y": 739,
+                          "w": 356,
+                          "h": 56
                         },
                         "hl": true
                       }
@@ -16922,7 +16922,7 @@
                           "x": 2448,
                           "y": 1893.5,
                           "w": 372,
-                          "h": 67.5
+                          "h": 54.5
                         },
                         "hl": true
                       },
@@ -16951,9 +16951,9 @@
                         "link": "#70AD47",
                         "box": {
                           "x": 2448,
-                          "y": 1975,
+                          "y": 1960,
                           "w": 372,
-                          "h": 67.5
+                          "h": 57
                         },
                         "hl": true
                       }
@@ -17014,8 +17014,8 @@
                         "link": "#70AD47",
                         "box": {
                           "x": 2912,
-                          "y": 895,
-                          "w": 352,
+                          "y": 884,
+                          "w": 360,
                           "h": 60
                         },
                         "hl": true
@@ -17046,9 +17046,9 @@
                         "hl": true,
                         "box": {
                           "x": 2912,
-                          "y": 968.5,
-                          "w": 352,
-                          "h": 67.5
+                          "y": 954.5,
+                          "w": 360,
+                          "h": 61.5
                         }
                       }
                     ],
@@ -17064,11 +17064,345 @@
                     "link": "#70AD47",
                     "box": {
                       "x": 2892,
-                      "y": 816,
+                      "y": 806,
                       "w": 384,
                       "h": 67.5
                     },
                     "hl": true
+                  },
+                  {
+                    "id": "n_unu60bd3kc",
+                    "type": "office",
+                    "name": "Total Customer Solution Revenue Stream Type Management (Acquisition, Agreement Process for DE)",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": true,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [
+                      {
+                        "id": "n_yzvw2ee85s",
+                        "type": "office",
+                        "name": "Channel Member and key Account Management",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": true,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "box": {
+                          "x": 2916,
+                          "y": 1107.5,
+                          "w": 372,
+                          "h": 60.5
+                        }
+                      },
+                      {
+                        "id": "n_lpyk9uf1ug",
+                        "type": "office",
+                        "name": "Customer Value Management",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": true,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "box": {
+                          "x": 2916,
+                          "y": 1180,
+                          "w": 372,
+                          "h": 60.5
+                        }
+                      }
+                    ],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 2892,
+                      "y": 1028,
+                      "w": 396,
+                      "h": 67.5
+                    }
+                  },
+                  {
+                    "id": "n_cis01zfsm5",
+                    "type": "office",
+                    "name": "Supply Chain Management (Supply, Agreement Process for DE)",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": true,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [
+                      {
+                        "id": "n_60yekjh2s8",
+                        "type": "office",
+                        "name": "Equipment and Component for DE",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": true,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "box": {
+                          "x": 2924,
+                          "y": 1329,
+                          "w": 372,
+                          "h": 55.5
+                        }
+                      },
+                      {
+                        "id": "n_0upjthhold",
+                        "type": "office",
+                        "name": "Global Sourcing for DE",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": true,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "box": {
+                          "x": 2924,
+                          "y": 1397.5,
+                          "w": 372,
+                          "h": 55.5
+                        }
+                      }
+                    ],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 2900,
+                      "y": 1253,
+                      "w": 396,
+                      "h": 67.5
+                    }
+                  },
+                  {
+                    "id": "n_lacykbiync",
+                    "type": "office",
+                    "name": "Commercial Advisory & Review Division",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": true,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [
+                      {
+                        "id": "n_c9at32jzku",
+                        "type": "office",
+                        "name": "Tender & Contract Commercial Review Section",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": true,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "box": {
+                          "x": 2924,
+                          "y": 1547,
+                          "w": 372,
+                          "h": 67.5
+                        }
+                      }
+                    ],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 2896,
+                      "y": 1467,
+                      "w": 396,
+                      "h": 67.5
+                    }
+                  },
+                  {
+                    "id": "n_zkjak5kl4j",
+                    "type": "office",
+                    "name": "Business Logistic & Vendor Management Division",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": true,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [
+                      {
+                        "id": "n_kevgldlc9l",
+                        "type": "office",
+                        "name": "Business Logistic & Vendor Management Section",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": true,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "box": {
+                          "x": 2920,
+                          "y": 1708.5,
+                          "w": 372,
+                          "h": 67.5
+                        }
+                      },
+                      {
+                        "id": "n_w0th0qm69d",
+                        "type": "office",
+                        "name": "Warehouse & Packing Section",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": true,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "box": {
+                          "x": 2920,
+                          "y": 1788,
+                          "w": 372,
+                          "h": 67.5
+                        }
+                      }
+                    ],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 2896,
+                      "y": 1628,
+                      "w": 396,
+                      "h": 67.5
+                    }
                   }
                 ],
                 "style": {
