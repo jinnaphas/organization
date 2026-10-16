@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-10-16T09:16:37.180Z",
+  "updatedAt": "2026-10-16T09:17:03.942Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -20155,10 +20155,10 @@
       "basedOn": "v_ppp_2025r2",
       "createdAt": "2026-10-16T03:23:04.407Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-10-16T03:48:38.118Z",
+      "updatedAt": "2026-10-16T09:16:55.875Z",
       "updatedBy": "@jinnaphas",
       "doc": {
-        "title": "PRECISE POWER PRODUCER CO., LTD (PPP) 2025",
+        "title": "PRECISE POWER PRODUCER CO., LTD (PPP) 2027",
         "titleColor": "#FF0000",
         "titleSize": 44,
         "legendSize": 16,
@@ -20221,10 +20221,10 @@
             "RENEWABLE ENERGY"
           ],
           [
-            "REVISIONS of Year : No.2"
+            "REVISIONS of Year : No.0"
           ],
           [
-            "DATE: July 1, 2025"
+            "DATE: Jan 1, 2027"
           ],
           [
             "OFFER",
