@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-10-16T04:20:57.238Z",
+  "updatedAt": "2026-10-16T04:24:47.988Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -13846,7 +13846,7 @@
       "basedOn": "v_psp_2026r3",
       "createdAt": "2026-10-16T02:18:37.847Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-10-16T04:20:52.312Z",
+      "updatedAt": "2026-10-16T04:24:09.747Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE SYSTEM & PROJECT CO., LTD. (PSP) 2026",
@@ -16405,7 +16405,7 @@
                     "hc": 0,
                     "staff": false,
                     "layout": "auto",
-                    "note": "",
+                    "note": "สื่อถึงบริการต่อเนื่องตลอด 24 ชม. และงานด้านการตลาดดิจิทัล/Inbound)",
                     "children": [
                       {
                         "id": "n_hq43noz8ix",
@@ -16418,7 +16418,7 @@
                         "hc": 0,
                         "staff": true,
                         "layout": "auto",
-                        "note": "",
+                        "note": ".Recurring Services Section (ส่วนงานบริการลูกค้า) : รับแจ้ง · ติดตามงาน · ดูแลลูกค้าตามรอบสัญญา · ต่ออายุ/ขายเพิ่มจากฐานลูกค้าเดิม  -->แนว Service ที่ดูแล อุปกรณ์หลังจากการขายไปแล้วค่ะ / Tracking ดูแลสินทรัพย์ลุกค้า (MA) / และรับแจ้งเคส เวลาลูกค้าต้องการ เคลมสินค้า หรือแจ้งซ่อม (SLA)",
                         "children": [],
                         "style": {
                           "fill": "#FBE5D6",
@@ -16449,7 +16449,7 @@
                         "hc": 0,
                         "staff": true,
                         "layout": "auto",
-                        "note": "",
+                        "note": "2.Digital Solutions Section (หาจุดที่เติมชั้นดิจิทัลเข้า core product แล้วลูกค้าได้คุณค่าเพิ่ม) ; • สำรวจ core product ว่าจุดไหนเติมโซลูชันได้ (เช่น ติด sensor → Predictive Maintenance)\n• ออกแบบโซลูชันร่วมกับเจ้าของผลิตภัณฑ์\n• สร้าง Demand ผ่านช่องทางดิจิทัล (Inbound)\n• นำเสนอและขายโซลูชัน DE & STEM",
                         "children": [],
                         "style": {
                           "fill": "#FBE5D6",
