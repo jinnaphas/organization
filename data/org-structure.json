@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-10-16T09:35:05.743Z",
+  "updatedAt": "2026-10-16T10:11:17.546Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -23159,7 +23159,7 @@
       "basedOn": "v_pde_2026r1",
       "createdAt": "2026-10-16T08:41:36.013Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-10-16T09:15:56.751Z",
+      "updatedAt": "2026-10-16T09:38:20.195Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE DIGITAL ECONOMY CO., LTD. (PDE) 2027",
@@ -23682,7 +23682,7 @@
                   {
                     "id": "n_pde_12",
                     "type": "team",
-                    "name": "Digital Infrastructure Tean",
+                    "name": "Digital Infrastructure Team",
                     "nameEn": "",
                     "code": "",
                     "title": "",
@@ -23853,7 +23853,7 @@
                       "line": "#ED7D31",
                       "lw": 1.33,
                       "text": "#FF0000",
-                      "bold": false,
+                      "bold": true,
                       "size": 12,
                       "align": "l"
                     },
@@ -23910,12 +23910,11 @@
                     "layout": "auto",
                     "note": "",
                     "children": [],
-                    "hl": true,
                     "style": {
-                      "fill": "#FBE5D6",
+                      "fill": "#FFFFFF",
                       "line": "#70AD47",
                       "lw": 1.33,
-                      "text": "#FF0000",
+                      "text": "#000000",
                       "bold": true,
                       "size": 14,
                       "align": "l"
@@ -23941,12 +23940,11 @@
                     "layout": "auto",
                     "note": "",
                     "children": [],
-                    "hl": true,
                     "style": {
-                      "fill": "#FBE5D6",
+                      "fill": "#FFFFFF",
                       "line": "#70AD47",
                       "lw": 1.33,
-                      "text": "#FF0000",
+                      "text": "#000000",
                       "bold": true,
                       "size": 14,
                       "align": "l"
@@ -23972,12 +23970,11 @@
                     "layout": "auto",
                     "note": "",
                     "children": [],
-                    "hl": true,
                     "style": {
-                      "fill": "#FBE5D6",
+                      "fill": "#FFFFFF",
                       "line": "#70AD47",
                       "lw": 1.33,
-                      "text": "#FF0000",
+                      "text": "#000000",
                       "bold": true,
                       "size": 14,
                       "align": "l"
@@ -24003,12 +24000,11 @@
                     "layout": "auto",
                     "note": "",
                     "children": [],
-                    "hl": true,
                     "style": {
-                      "fill": "#FBE5D6",
+                      "fill": "#FFFFFF",
                       "line": "#70AD47",
                       "lw": 1.33,
-                      "text": "#FF0000",
+                      "text": "#000000",
                       "bold": true,
                       "size": 14,
                       "align": "l"
@@ -24034,12 +24030,11 @@
                     "layout": "auto",
                     "note": "",
                     "children": [],
-                    "hl": true,
                     "style": {
-                      "fill": "#FBE5D6",
+                      "fill": "#FFFFFF",
                       "line": "#70AD47",
                       "lw": 1.33,
-                      "text": "#FF0000",
+                      "text": "#000000",
                       "bold": true,
                       "size": 14,
                       "align": "l"
@@ -24065,12 +24060,11 @@
                     "layout": "auto",
                     "note": "",
                     "children": [],
-                    "hl": true,
                     "style": {
-                      "fill": "#FBE5D6",
+                      "fill": "#FFFFFF",
                       "line": "#70AD47",
                       "lw": 1.33,
-                      "text": "#FF0000",
+                      "text": "#000000",
                       "bold": true,
                       "size": 14,
                       "align": "l"
@@ -24115,7 +24109,7 @@
                   }
                 ],
                 "style": {
-                  "fill": "#FBE5D6",
+                  "fill": "#FFFFFF",
                   "line": "#70AD47",
                   "lw": 1.33,
                   "text": "#000000",
@@ -24123,13 +24117,13 @@
                   "size": 18,
                   "align": "c"
                 },
-                "link": "#70AD47",
                 "box": {
                   "x": 2121.5,
                   "y": 464,
                   "w": 504.8,
                   "h": 106.8
-                }
+                },
+                "link": "#70AD47"
               }
             ],
             "style": {
