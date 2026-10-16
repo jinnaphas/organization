@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-10-16T08:44:23.540Z",
+  "updatedAt": "2026-10-16T08:50:47.795Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -23289,6 +23289,1063 @@
           "y": 194.4,
           "w": 454.9,
           "h": 82
+        }
+      },
+      "layout": "free"
+    },
+    {
+      "id": "v_3ha3shxw5p",
+      "companyCode": "PDE",
+      "versionNo": 2,
+      "name": "ร่างโครงสร้างองค์กร พ.ศ. 2570",
+      "status": "draft",
+      "model": "industrial",
+      "effectiveDate": null,
+      "endDate": null,
+      "plannedDate": "",
+      "note": "",
+      "approvalRef": "",
+      "basedOn": "v_pde_2026r1",
+      "createdAt": "2026-10-16T08:41:36.013Z",
+      "createdBy": "@jinnaphas",
+      "updatedAt": "2026-10-16T08:47:46.803Z",
+      "updatedBy": "@jinnaphas",
+      "doc": {
+        "title": "PRECISE DIGITAL ECONOMY CO., LTD. (PDE) 2027",
+        "titleColor": "#FF0000",
+        "titleSize": 44,
+        "legendSize": 18,
+        "footerSize": 14,
+        "frameBoxes": {
+          "title": {
+            "x": 24,
+            "y": 24,
+            "w": 2781.2,
+            "h": 140.7
+          },
+          "legend": {
+            "x": 375.2,
+            "y": 1273.9,
+            "w": 652.4,
+            "h": 95.6
+          },
+          "footer": [
+            {
+              "x": 104,
+              "y": 1633.7,
+              "w": 418.9,
+              "h": 161.2
+            },
+            {
+              "x": 523.3,
+              "y": 1633,
+              "w": 418.9,
+              "h": 161.2
+            },
+            {
+              "x": 942.6,
+              "y": 1633,
+              "w": 418.9,
+              "h": 161.2
+            },
+            {
+              "x": 1361.9,
+              "y": 1633,
+              "w": 460.1,
+              "h": 161.2
+            },
+            {
+              "x": 1821.1,
+              "y": 1633.7,
+              "w": 463.3,
+              "h": 161.2
+            },
+            {
+              "x": 2285.4,
+              "y": 1633.7,
+              "w": 460.1,
+              "h": 161.2
+            }
+          ]
+        },
+        "footer": [
+          [
+            "REVENUE STREAM",
+            "DIGITAL, AUTOMATION AND ESG SOLUTION"
+          ],
+          [
+            "REVISIONS of Year : No.1"
+          ],
+          [
+            "DATE: Sep 1, 2026"
+          ],
+          [
+            "OFFER",
+            "_____________/________________/_____________",
+            "( COO/CTO/CFO)"
+          ],
+          [
+            "VERIFIED",
+            "__________________________________",
+            "( CEO-RS)"
+          ],
+          [
+            "APPROVED",
+            "__________________________________",
+            "( CEO)"
+          ]
+        ],
+        "legend": "PDE = Precise Digital Economy Co., Ltd.\nPPD = Pacific Prosperity Development Co., Ltd."
+      },
+      "root": {
+        "id": "n_pde_2",
+        "type": "board",
+        "name": "Board of Director (BOD)",
+        "nameEn": "",
+        "code": "BOD",
+        "title": "",
+        "head": "",
+        "hc": 0,
+        "staff": false,
+        "layout": "auto",
+        "note": "",
+        "children": [
+          {
+            "id": "n_pde_3",
+            "type": "executive",
+            "name": "Chief Executive Officer (CEO)",
+            "nameEn": "",
+            "code": "CEO",
+            "title": "",
+            "head": "",
+            "hc": 0,
+            "staff": false,
+            "layout": "auto",
+            "note": "",
+            "children": [
+              {
+                "id": "n_pde_17",
+                "type": "executive",
+                "name": "Chief Financial Officer (CFO)",
+                "nameEn": "",
+                "code": "CFO",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [
+                  {
+                    "id": "n_pde_18",
+                    "type": "department",
+                    "name": "Accounting Management",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#4472C4",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#4472C4",
+                    "box": {
+                      "x": 190.5,
+                      "y": 582.6,
+                      "w": 354.7,
+                      "h": 56.4
+                    }
+                  },
+                  {
+                    "id": "n_pde_19",
+                    "type": "department",
+                    "name": "Financial Management",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#4472C4",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#4472C4",
+                    "box": {
+                      "x": 191.4,
+                      "y": 652.1,
+                      "w": 354.7,
+                      "h": 56.3
+                    }
+                  }
+                ],
+                "style": {
+                  "fill": "#FFFFFF",
+                  "line": "#4472C4",
+                  "lw": 1.33,
+                  "text": "#000000",
+                  "bold": true,
+                  "size": 18,
+                  "align": "c"
+                },
+                "link": "#4472C4",
+                "box": {
+                  "x": 123.6,
+                  "y": 476,
+                  "w": 424.1,
+                  "h": 83.4
+                }
+              },
+              {
+                "id": "n_pde_14",
+                "type": "office",
+                "name": "Project Management Office (PMO)",
+                "nameEn": "",
+                "code": "PMO",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [],
+                "style": {
+                  "fill": "#FFFFFF",
+                  "line": "#4472C4",
+                  "lw": 1.33,
+                  "text": "#000000",
+                  "bold": false,
+                  "size": 12,
+                  "align": "l"
+                },
+                "link": "#4472C4",
+                "box": {
+                  "x": 642.8,
+                  "y": 645.7,
+                  "w": 323.6,
+                  "h": 54
+                }
+              },
+              {
+                "id": "n_pde_11",
+                "type": "department",
+                "name": "Strategy, Business Development and Business Model and Agile Innovation Capital",
+                "nameEn": "",
+                "code": "",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [],
+                "style": {
+                  "fill": "#FFFFFF",
+                  "line": "#4472C4",
+                  "lw": 1.33,
+                  "text": "#000000",
+                  "bold": false,
+                  "size": 12,
+                  "align": "l"
+                },
+                "link": "#4472C4",
+                "box": {
+                  "x": 642.6,
+                  "y": 723.9,
+                  "w": 323.9,
+                  "h": 60.7
+                }
+              },
+              {
+                "id": "n_pde_9",
+                "type": "department",
+                "name": "Augmented Human Capital Management",
+                "nameEn": "",
+                "code": "",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [],
+                "style": {
+                  "fill": "#FFFFFF",
+                  "line": "#4472C4",
+                  "lw": 1.33,
+                  "text": "#000000",
+                  "bold": false,
+                  "size": 12,
+                  "align": "l"
+                },
+                "link": "#4472C4",
+                "box": {
+                  "x": 643.1,
+                  "y": 801.2,
+                  "w": 325.4,
+                  "h": 50.9
+                }
+              },
+              {
+                "id": "n_pde_39",
+                "type": "department",
+                "name": "Digital Process Capital (ISO / Digital Manual) Management",
+                "nameEn": "",
+                "code": "",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [],
+                "style": {
+                  "fill": "#FFFFFF",
+                  "line": "#4472C4",
+                  "lw": 1.33,
+                  "text": "#000000",
+                  "bold": false,
+                  "size": 12,
+                  "align": "l"
+                },
+                "link": "#4472C4",
+                "box": {
+                  "x": 640.2,
+                  "y": 869,
+                  "w": 328.5,
+                  "h": 53.6
+                }
+              },
+              {
+                "id": "n_pde_10",
+                "type": "department",
+                "name": "Risk and Compliance Management",
+                "nameEn": "",
+                "code": "",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [],
+                "style": {
+                  "fill": "#FFFFFF",
+                  "line": "#4472C4",
+                  "lw": 1.33,
+                  "text": "#000000",
+                  "bold": false,
+                  "size": 12,
+                  "align": "l"
+                },
+                "link": "#4472C4",
+                "box": {
+                  "x": 640.7,
+                  "y": 938.5,
+                  "w": 327.1,
+                  "h": 49.3
+                }
+              },
+              {
+                "id": "n_pde_5",
+                "type": "executive",
+                "name": "Chief Technology Officer (CTO)",
+                "nameEn": "",
+                "code": "CTO",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [
+                  {
+                    "id": "n_pde_46",
+                    "type": "team",
+                    "name": "Digital Business & Operation Process (ERP) Team",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#ED7D31",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "box": {
+                      "x": 1236,
+                      "y": 600.5,
+                      "w": 411.8,
+                      "h": 61.2
+                    },
+                    "link": "#ED7D31"
+                  },
+                  {
+                    "id": "n_pde_45",
+                    "type": "team",
+                    "name": "Digital Technology Platform & Ecosystem (Smart Factory) Team",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#ED7D31",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "box": {
+                      "x": 1234.9,
+                      "y": 680.4,
+                      "w": 412.9,
+                      "h": 59.9
+                    },
+                    "link": "#ED7D31"
+                  },
+                  {
+                    "id": "n_pde_58",
+                    "type": "department",
+                    "name": "Data Management",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [
+                      {
+                        "id": "n_pde_7",
+                        "type": "team",
+                        "name": "Data Governance & Data Visualization and Analytics Team",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#ED7D31",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": true,
+                          "size": 14,
+                          "align": "l"
+                        },
+                        "box": {
+                          "x": 1266.1,
+                          "y": 820.6,
+                          "w": 380.1,
+                          "h": 59.3
+                        },
+                        "link": "#ED7D31"
+                      },
+                      {
+                        "id": "n_pde_48",
+                        "type": "team",
+                        "name": "Enterprise Data Engineering Team",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#ED7D31",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": true,
+                          "size": 14,
+                          "align": "l"
+                        },
+                        "box": {
+                          "x": 1268.4,
+                          "y": 887.4,
+                          "w": 379.4,
+                          "h": 62.4
+                        },
+                        "link": "#ED7D31"
+                      }
+                    ],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#ED7D31",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "box": {
+                      "x": 1234.4,
+                      "y": 756.8,
+                      "w": 413.2,
+                      "h": 50
+                    },
+                    "link": "#ED7D31"
+                  },
+                  {
+                    "id": "n_pde_12",
+                    "type": "team",
+                    "name": "Digital Infrastructure Tean",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "hl": true,
+                    "style": {
+                      "fill": "#FBE5D6",
+                      "line": "#ED7D31",
+                      "lw": 1.33,
+                      "text": "#FF0000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#ED7D31",
+                    "box": {
+                      "x": 1234.7,
+                      "y": 957.5,
+                      "w": 412.7,
+                      "h": 69.8
+                    }
+                  },
+                  {
+                    "id": "n_pde_49",
+                    "type": "team",
+                    "name": "DBTP with AI Project Team",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [
+                      {
+                        "id": "n_sghqn90e0v",
+                        "type": "office",
+                        "name": "LLM & Open-source AI cover STEM & DE, DBTP, Platform & Ecosystem capitalism (Closed System)",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": true,
+                        "layout": "auto",
+                        "note": "LLM & Open-source AI cover STEM & DE, DBTP, Platform & Ecosystem capitalism (Closed System)",
+                        "children": [],
+                        "style": {
+                          "fill": "#FBE5D6",
+                          "line": "#ED7D31",
+                          "lw": 1.33,
+                          "text": "#FF0000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#ED7D31",
+                        "box": {
+                          "x": 1257.9,
+                          "y": 1122.8,
+                          "w": 387.6,
+                          "h": 68.2
+                        },
+                        "hl": true
+                      },
+                      {
+                        "id": "n_p2opj53kp5",
+                        "type": "office",
+                        "name": "DBTP Bamboo Social Enterprise (SFAM)",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": true,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FBE5D6",
+                          "line": "#ED7D31",
+                          "lw": 1.33,
+                          "text": "#FF0000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#ED7D31",
+                        "hl": true,
+                        "box": {
+                          "x": 1257.9,
+                          "y": 1203,
+                          "w": 387.6,
+                          "h": 68.2
+                        }
+                      },
+                      {
+                        "id": "n_alkssq3qmj",
+                        "type": "office",
+                        "name": "DBTP framework แลัวประสาน PEM (RAMI)",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": true,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FBE5D6",
+                          "line": "#ED7D31",
+                          "lw": 1.33,
+                          "text": "#FF0000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#ED7D31",
+                        "hl": true,
+                        "box": {
+                          "x": 1257.9,
+                          "y": 1283.2,
+                          "w": 387.6,
+                          "h": 68.2
+                        }
+                      }
+                    ],
+                    "hl": true,
+                    "style": {
+                      "fill": "#FBE5D6",
+                      "line": "#ED7D31",
+                      "lw": 1.33,
+                      "text": "#FF0000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#ED7D31",
+                    "box": {
+                      "x": 1233.9,
+                      "y": 1037.6,
+                      "w": 411.6,
+                      "h": 68.2
+                    }
+                  },
+                  {
+                    "id": "n_p05iam4vyn",
+                    "type": "office",
+                    "name": "IT Governance Platform",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": true,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": "#FBE5D6",
+                      "line": "#ED7D31",
+                      "lw": 1.33,
+                      "text": "#FF0000",
+                      "bold": false,
+                      "size": 12,
+                      "align": "l"
+                    },
+                    "link": "#ED7D31",
+                    "box": {
+                      "x": 1232,
+                      "y": 1364,
+                      "w": 411.6,
+                      "h": 68.2
+                    },
+                    "hl": true
+                  }
+                ],
+                "style": {
+                  "fill": "#FFFFFF",
+                  "line": "#ED7D31",
+                  "lw": 1.33,
+                  "text": "#000000",
+                  "bold": true,
+                  "size": 18,
+                  "align": "c"
+                },
+                "box": {
+                  "x": 1175.2,
+                  "y": 477.4,
+                  "w": 470.9,
+                  "h": 98
+                },
+                "link": "#ED7D31"
+              },
+              {
+                "id": "n_pde_6",
+                "type": "executive",
+                "name": "Chief Operating Officer (COO)",
+                "nameEn": "",
+                "code": "COO",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [
+                  {
+                    "id": "n_pde_47",
+                    "type": "department",
+                    "name": "Project Management (PMO & Develivery)",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "hl": true,
+                    "style": {
+                      "fill": "#FBE5D6",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#FF0000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 2188.9,
+                      "y": 600.6,
+                      "w": 437.5,
+                      "h": 63.3
+                    }
+                  },
+                  {
+                    "id": "n_pde_44",
+                    "type": "team",
+                    "name": "Solution Sale Architecture (Sale &KA / Commercial & Technical Proposal) Team",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "hl": true,
+                    "style": {
+                      "fill": "#FBE5D6",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#FF0000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 2189.5,
+                      "y": 681.9,
+                      "w": 436.5,
+                      "h": 58.6
+                    }
+                  },
+                  {
+                    "id": "n_pde_13",
+                    "type": "team",
+                    "name": "Development Operation (Devops) and System Integration Team",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "hl": true,
+                    "style": {
+                      "fill": "#FBE5D6",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#FF0000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 2189,
+                      "y": 764.4,
+                      "w": 437.3,
+                      "h": 68.1
+                    }
+                  },
+                  {
+                    "id": "n_pde_59",
+                    "type": "team",
+                    "name": "ERP Implement Team",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "hl": true,
+                    "style": {
+                      "fill": "#FBE5D6",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#FF0000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 2188.8,
+                      "y": 851.1,
+                      "w": 437.5,
+                      "h": 64.4
+                    }
+                  },
+                  {
+                    "id": "n_pde_8",
+                    "type": "team",
+                    "name": "Infrastructure IT Support & Help Desk Team",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "hl": true,
+                    "style": {
+                      "fill": "#FBE5D6",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#FF0000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 2187.2,
+                      "y": 938,
+                      "w": 439.4,
+                      "h": 60
+                    }
+                  },
+                  {
+                    "id": "n_pde_16",
+                    "type": "team",
+                    "name": "Application Software Maintenance and Support Service Team",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "hl": true,
+                    "style": {
+                      "fill": "#FBE5D6",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#FF0000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 2185.6,
+                      "y": 1018.3,
+                      "w": 439.1,
+                      "h": 67.1
+                    }
+                  },
+                  {
+                    "id": "n_pde_38",
+                    "type": "company",
+                    "name": "PPD (PDE 100%)",
+                    "nameEn": "Pacific Prosperity Development Co., Ltd.",
+                    "code": "PPD",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "บริษัทในเครือ ถือหุ้นโดย PDE 100%",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 2192.2,
+                      "y": 1142.2,
+                      "w": 371.1,
+                      "h": 56.2
+                    }
+                  }
+                ],
+                "style": {
+                  "fill": "#FBE5D6",
+                  "line": "#70AD47",
+                  "lw": 1.33,
+                  "text": "#000000",
+                  "bold": true,
+                  "size": 18,
+                  "align": "c"
+                },
+                "link": "#70AD47",
+                "box": {
+                  "x": 2121.5,
+                  "y": 464,
+                  "w": 504.8,
+                  "h": 106.8
+                }
+              }
+            ],
+            "style": {
+              "fill": "#FFFFFF",
+              "line": "#000000",
+              "lw": 3,
+              "text": "#000000",
+              "bold": true,
+              "size": 18,
+              "align": "c",
+              "dash": "solid"
+            },
+            "link": "#000000",
+            "box": {
+              "x": 1183.5,
+              "y": 310.8,
+              "w": 456.1,
+              "h": 93.8
+            }
+          },
+          {
+            "id": "n_pde_15",
+            "type": "office",
+            "name": "Company Secretary",
+            "nameEn": "",
+            "code": "",
+            "title": "",
+            "head": "",
+            "hc": 0,
+            "staff": true,
+            "layout": "auto",
+            "note": "",
+            "children": [],
+            "style": {
+              "fill": "#FFFFFF",
+              "line": "#000000",
+              "lw": 2,
+              "text": "#000000",
+              "bold": true,
+              "size": 14,
+              "align": "l",
+              "dash": "solid"
+            },
+            "link": "#000000",
+            "box": {
+              "x": 1771.4,
+              "y": 213.4,
+              "w": 276.1,
+              "h": 57.7
+            }
+          }
+        ],
+        "style": {
+          "fill": "#FFFFFF",
+          "line": "#000000",
+          "lw": 3,
+          "text": "#000000",
+          "bold": true,
+          "size": 18,
+          "align": "c",
+          "dash": "solid"
+        },
+        "box": {
+          "x": 1183.5,
+          "y": 201.7,
+          "w": 456.1,
+          "h": 84.1
         }
       },
       "layout": "free"
