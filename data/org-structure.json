@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-10-16T09:18:01.441Z",
+  "updatedAt": "2026-10-16T09:18:30.787Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -8477,10 +8477,10 @@
       "basedOn": "v_pem_2026r3",
       "createdAt": "2026-10-16T02:26:36.993Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-10-16T08:58:52.731Z",
+      "updatedAt": "2026-10-16T09:18:20.450Z",
       "updatedBy": "@jinnaphas",
       "doc": {
-        "title": "PRECISE ELECTRIC MANUFACTURING CO., LTD. (PEM) 2026",
+        "title": "PRECISE ELECTRIC MANUFACTURING CO., LTD. (PEM) 2027",
         "titleColor": "#FF0000",
         "titleSize": 44,
         "legendSize": 18,
@@ -8543,10 +8543,10 @@
             "Power Distribution & Energy Management"
           ],
           [
-            "REVISIONS of Year : No.3"
+            "REVISIONS of Year : No.0"
           ],
           [
-            "DATE: July 1, 2026"
+            "DATE: Jan 1, 2027"
           ],
           [
             "OFFER",
