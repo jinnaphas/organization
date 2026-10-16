@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-10-16T08:53:14.736Z",
+  "updatedAt": "2026-10-16T08:55:05.784Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -8477,7 +8477,7 @@
       "basedOn": "v_pem_2026r3",
       "createdAt": "2026-10-16T02:26:36.993Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-10-16T08:52:15.485Z",
+      "updatedAt": "2026-10-16T08:54:34.629Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE ELECTRIC MANUFACTURING CO., LTD. (PEM) 2026",
@@ -9246,40 +9246,10 @@
                         },
                         "link": "#ED7D31",
                         "box": {
-                          "x": 1199.6,
-                          "y": 817.5,
+                          "x": 1204,
+                          "y": 816,
                           "w": 335.3,
                           "h": 34.5
-                        }
-                      },
-                      {
-                        "id": "n_pem_146",
-                        "type": "department",
-                        "name": "ICT Infrastructure, Cyber Security",
-                        "nameEn": "",
-                        "code": "",
-                        "title": "",
-                        "head": "",
-                        "hc": 0,
-                        "staff": false,
-                        "layout": "auto",
-                        "note": "",
-                        "children": [],
-                        "style": {
-                          "fill": null,
-                          "line": "#ED7D31",
-                          "lw": 1.33,
-                          "text": "#000000",
-                          "bold": false,
-                          "size": 12,
-                          "align": "l"
-                        },
-                        "link": "#ED7D31",
-                        "box": {
-                          "x": 1198.9,
-                          "y": 863.6,
-                          "w": 335.8,
-                          "h": 37.4
                         }
                       }
                     ],
@@ -9415,8 +9385,8 @@
                     },
                     "link": "#ED7D31",
                     "box": {
-                      "x": 1183,
-                      "y": 1104,
+                      "x": 1200.9,
+                      "y": 1113.4,
                       "w": 332,
                       "h": 40.5
                     }
@@ -9990,7 +9960,7 @@
                     },
                     "link": "#70AD47",
                     "box": {
-                      "x": 1669.4,
+                      "x": 1693.4,
                       "y": 1459.3,
                       "w": 337,
                       "h": 49.7
