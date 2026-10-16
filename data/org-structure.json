@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-10-16T02:27:31.419Z",
+  "updatedAt": "2026-10-16T02:39:36.999Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -17216,7 +17216,7 @@
       "basedOn": "v_pem_2026r3",
       "createdAt": "2026-10-16T02:26:36.993Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-10-16T02:27:05.042Z",
+      "updatedAt": "2026-10-16T02:38:32.049Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE ELECTRIC MANUFACTURING CO., LTD. (PEM) 2026",
@@ -18133,7 +18133,7 @@
                   {
                     "id": "n_pem_37",
                     "type": "office",
-                    "name": "Cyber-Physical Calibration Center",
+                    "name": "Calibration and Quality Assurance Team",
                     "nameEn": "",
                     "code": "",
                     "title": "",
