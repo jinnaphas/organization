@@ -17,8 +17,8 @@
     },
     {
       "code": "PSL",
-      "nameTh": "",
-      "nameEn": "Precise Smart Life Co., Ltd."
+      "nameTh": "บริษัท พรีไซซ แบมบู ไบโออินดัสทรีส์ จำกัด (สำนักงานใหญ่)",
+      "nameEn": "Precise Bamboo Bioindustries Co., Ltd."
     },
     {
       "code": "PPP",
@@ -2282,7 +2282,7 @@
       "publishedBy": "",
       "layout": "free",
       "doc": {
-        "title": "PRECISE SMART LIFE CO., LTD. (PSL) 2025",
+        "title": "PRECISE BAMBOO BIOINDUSTRIES CO., LTD. (PSL) 2025",
         "titleColor": "#FF0000",
         "titleSize": 44,
         "legendSize": 18,
@@ -2366,7 +2366,7 @@
             "( CEO)"
           ]
         ],
-        "legend": "PSL = Precise Smart Life Co., Ltd."
+        "legend": "PSL = Precise Bamboo Bioindustries Co., Ltd."
       },
       "source": {
         "file": "Organization_Current_2026-2027.xlsx",
