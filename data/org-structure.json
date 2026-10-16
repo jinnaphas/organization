@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-10-16T09:17:29.062Z",
+  "updatedAt": "2026-10-16T09:18:01.441Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -24197,6 +24197,362 @@
           "y": 201.7,
           "w": 456.1,
           "h": 84.1
+        }
+      },
+      "layout": "free"
+    },
+    {
+      "id": "v_8v60ef89nw",
+      "companyCode": "PCE",
+      "versionNo": 2,
+      "name": "ร่างโครงสร้างองค์กร พ.ศ. 2570",
+      "status": "draft",
+      "model": "industrial",
+      "effectiveDate": null,
+      "endDate": null,
+      "plannedDate": "",
+      "note": "",
+      "approvalRef": "",
+      "basedOn": "v_pce_2025r2",
+      "createdAt": "2026-10-16T09:17:39.692Z",
+      "createdBy": "@jinnaphas",
+      "updatedAt": "2026-10-16T09:17:56.332Z",
+      "updatedBy": "@jinnaphas",
+      "doc": {
+        "title": "PRECISE CLEAN ENERGY CO., LTD. (PCE) 2027",
+        "titleColor": "#FF0000",
+        "titleSize": 44,
+        "legendSize": 20,
+        "footerSize": 14,
+        "frameBoxes": {
+          "title": {
+            "x": 24,
+            "y": 24,
+            "w": 2414.4,
+            "h": 138.8
+          },
+          "legend": {
+            "x": 277.1,
+            "y": 1099.2,
+            "w": 545.3,
+            "h": 84.4
+          },
+          "footer": [
+            {
+              "x": 77.4,
+              "y": 1294.7,
+              "w": 372.3,
+              "h": 94.3
+            },
+            {
+              "x": 450.1,
+              "y": 1294.3,
+              "w": 372.3,
+              "h": 94.3
+            },
+            {
+              "x": 822.8,
+              "y": 1294.3,
+              "w": 372.3,
+              "h": 94.3
+            },
+            {
+              "x": 1195.5,
+              "y": 1294.3,
+              "w": 408.9,
+              "h": 94.3
+            },
+            {
+              "x": 1605.6,
+              "y": 1294.7,
+              "w": 408.9,
+              "h": 94.3
+            },
+            {
+              "x": 2016.3,
+              "y": 1294.7,
+              "w": 408.9,
+              "h": 94.3
+            }
+          ]
+        },
+        "footer": [
+          [
+            "REVENUE STREAM",
+            "RENEWABLE ENERGY"
+          ],
+          [
+            "REVISIONS of Year : No.0"
+          ],
+          [
+            "DATE: Jan 1, 2027"
+          ],
+          [
+            "OFFER",
+            "__________________________________",
+            "( MD)"
+          ],
+          [
+            "VERIFIED",
+            "__________________________________",
+            "( CEO-RS)"
+          ],
+          [
+            "APPROVED",
+            "__________________________________",
+            "( CEO)"
+          ]
+        ],
+        "legend": "PCE = Precise Clean Energy Co., Ltd."
+      },
+      "root": {
+        "id": "n_pce_2",
+        "type": "board",
+        "name": "Board of Director (BOD)",
+        "nameEn": "",
+        "code": "BOD",
+        "title": "",
+        "head": "",
+        "hc": 0,
+        "staff": false,
+        "layout": "auto",
+        "note": "",
+        "children": [
+          {
+            "id": "n_pce_3",
+            "type": "executive",
+            "name": "Managing Director (MD)",
+            "nameEn": "",
+            "code": "MD",
+            "title": "",
+            "head": "",
+            "hc": 0,
+            "staff": false,
+            "layout": "auto",
+            "note": "",
+            "children": [
+              {
+                "id": "n_pce_22",
+                "type": "section",
+                "name": "Account and Financial Section",
+                "nameEn": "",
+                "code": "",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [],
+                "hl": true,
+                "style": {
+                  "fill": "#FBE5D6",
+                  "line": "#70AD47",
+                  "lw": 1.33,
+                  "text": "#FF0000",
+                  "bold": false,
+                  "size": 12,
+                  "align": "l"
+                },
+                "link": "#70AD47",
+                "box": {
+                  "x": 555.8,
+                  "y": 476.2,
+                  "w": 334.1,
+                  "h": 42.8
+                }
+              },
+              {
+                "id": "n_pce_16",
+                "type": "line",
+                "name": "Business Engineering Solution Division (PCE101)",
+                "nameEn": "",
+                "code": "PCE101",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [
+                  {
+                    "id": "n_pce_19",
+                    "type": "department",
+                    "name": "Sale & Operation Planning and Project Management",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "hl": true,
+                    "style": {
+                      "fill": "#FBE5D6",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#FF0000",
+                      "bold": false,
+                      "size": 12,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 1498.9,
+                      "y": 559.5,
+                      "w": 334.1,
+                      "h": 54.8
+                    }
+                  },
+                  {
+                    "id": "n_pce_20",
+                    "type": "department",
+                    "name": "Digital Engineering & Total Customer Solution Sale Management",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "hl": true,
+                    "style": {
+                      "fill": "#FBE5D6",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#FF0000",
+                      "bold": false,
+                      "size": 12,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 1499.7,
+                      "y": 631.9,
+                      "w": 334.1,
+                      "h": 55.2
+                    }
+                  },
+                  {
+                    "id": "n_pce_24",
+                    "type": "department",
+                    "name": "Project Management",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "hl": true,
+                    "style": {
+                      "fill": "#FBE5D6",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#FF0000",
+                      "bold": false,
+                      "size": 12,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 1500.6,
+                      "y": 704,
+                      "w": 334.1,
+                      "h": 55.2
+                    }
+                  }
+                ],
+                "hl": true,
+                "style": {
+                  "fill": "#FBE5D6",
+                  "line": "#70AD47",
+                  "lw": 1.33,
+                  "text": "#FF0000",
+                  "bold": true,
+                  "size": 16,
+                  "align": "l"
+                },
+                "link": "#70AD47",
+                "box": {
+                  "x": 1380.3,
+                  "y": 462.4,
+                  "w": 442.6,
+                  "h": 71.2
+                }
+              }
+            ],
+            "style": {
+              "fill": "#FFFFFF",
+              "line": "#000000",
+              "lw": 3,
+              "text": "#000000",
+              "bold": true,
+              "size": 18,
+              "align": "c",
+              "dash": "solid"
+            },
+            "link": "#000000",
+            "box": {
+              "x": 932.7,
+              "y": 303.6,
+              "w": 454.9,
+              "h": 82.3
+            }
+          },
+          {
+            "id": "n_pce_6",
+            "type": "office",
+            "name": "Company Secretary",
+            "nameEn": "",
+            "code": "",
+            "title": "",
+            "head": "",
+            "hc": 0,
+            "staff": true,
+            "layout": "auto",
+            "note": "",
+            "children": [],
+            "style": {
+              "fill": "#FFFFFF",
+              "line": "#000000",
+              "lw": 2,
+              "text": "#000000",
+              "bold": true,
+              "size": 14,
+              "align": "l",
+              "dash": "solid"
+            },
+            "link": "#000000",
+            "box": {
+              "x": 1521.5,
+              "y": 205.2,
+              "w": 278.9,
+              "h": 59.9
+            }
+          }
+        ],
+        "style": {
+          "fill": "#FFFFFF",
+          "line": "#000000",
+          "lw": 3,
+          "text": "#000000",
+          "bold": true,
+          "size": 18,
+          "align": "c",
+          "dash": "solid"
+        },
+        "box": {
+          "x": 932.7,
+          "y": 194.4,
+          "w": 454.9,
+          "h": 82
         }
       },
       "layout": "free"
