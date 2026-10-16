@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-10-16T04:24:47.988Z",
+  "updatedAt": "2026-10-16T04:32:18.435Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -16,9 +16,9 @@
       "nameEn": "Precise Digital Economy Co., Ltd."
     },
     {
-      "code": "PBI",
-      "nameTh": "บริษัท พรีไซซ แบมบู ไบโออินดัสทรีส์ จำกัด (สำนักงานใหญ่)",
-      "nameEn": "Precise Bamboo Bioindustries Co., Ltd."
+      "code": "PSL",
+      "nameTh": "",
+      "nameEn": "Precise Smart Life Co., Ltd."
     },
     {
       "code": "PPP",
@@ -2263,7 +2263,7 @@
     },
     {
       "id": "v_psl_2025r4",
-      "companyCode": "PBI",
+      "companyCode": "PSL",
       "versionNo": 1,
       "name": "โครงสร้างองค์กร พ.ศ. 2568 (Revision 4)",
       "status": "active",
@@ -2271,7 +2271,7 @@
       "effectiveDate": "2025-10-01",
       "endDate": null,
       "plannedDate": "",
-      "note": "นำเข้าจากไฟล์ Organization_Current_2026-2027.xlsx แท็บ “Org PSL Current”\nRevenue stream: Bamboo-Based Innovative Products\nผู้ลงนาม: เสนอ MD · ตรวจสอบ CEO-RS · อนุมัติ CEO\nหมายเหตุในแท็บ (นอกพื้นที่พิมพ์): Job Role 2569 1. Sale: รับซื้อ และขาย รับซื้อ: Special Raw material - 2569 ต้นกล้า 300,000 กล้า (OKRs 2569) - ย่อย Target รายเดือน - 2570 ต้นกล้า 500,000 กล้า - 2571 ต้นกล้า 500,000 จาก External, 300,000 จาก Internal (ขึ้นอยู่กับแผน PBI103 20 ล้านไร่ใน 10 ปี) ขาย: Sale เจรจาผ่าน ส่งเสิรมการเกษตรเพื่อขายกล้าไผ่ให้เกษตรกร - 2570 - Product: ต้นกล้า (Timeline ของ Products) Customer: Channel ส่งเสริม (เกษตรกร), External Demand",
+      "note": "นำเข้าจากไฟล์ Organization_Current_2026-2027.xlsx แท็บ “Org PSL Current”\nRevenue stream: Bamboo-Based Innovative Products\nผู้ลงนาม: เสนอ MD · ตรวจสอบ CEO-RS · อนุมัติ CEO\nหมายเหตุในแท็บ (นอกพื้นที่พิมพ์): Job Role 2569 1. Sale: รับซื้อ และขาย รับซื้อ: Special Raw material - 2569 ต้นกล้า 300,000 กล้า (OKRs 2569) - ย่อย Target รายเดือน - 2570 ต้นกล้า 500,000 กล้า - 2571 ต้นกล้า 500,000 จาก External, 300,000 จาก Internal (ขึ้นอยู่กับแผน PSL103 20 ล้านไร่ใน 10 ปี) ขาย: Sale เจรจาผ่าน ส่งเสิรมการเกษตรเพื่อขายกล้าไผ่ให้เกษตรกร - 2570 - Product: ต้นกล้า (Timeline ของ Products) Customer: Channel ส่งเสริม (เกษตรกร), External Demand",
       "approvalRef": "เอกสารโครงสร้างองค์กร No.4 ลงวันที่ Oct 1, 2025",
       "basedOn": null,
       "createdAt": "2026-10-15T00:00:00.000Z",
@@ -2282,7 +2282,7 @@
       "publishedBy": "",
       "layout": "free",
       "doc": {
-        "title": "PRECISE BAMBOO BIOINDUSTRIES CO., LTD. (PBI) 2025",
+        "title": "PRECISE SMART LIFE CO., LTD. (PSL) 2025",
         "titleColor": "#FF0000",
         "titleSize": 44,
         "legendSize": 18,
@@ -2366,7 +2366,7 @@
             "( CEO)"
           ]
         ],
-        "legend": "PBI = Precise Bamboo Bioindustries Co., Ltd."
+        "legend": "PSL = Precise Smart Life Co., Ltd."
       },
       "source": {
         "file": "Organization_Current_2026-2027.xlsx",
@@ -2917,9 +2917,9 @@
               {
                 "id": "n_psl_50",
                 "type": "line",
-                "name": "Pulp & Packaging Business (PBI 101)",
+                "name": "Pulp & Packaging Business (PSL 101)",
                 "nameEn": "",
-                "code": "PBI101",
+                "code": "PSL101",
                 "title": "",
                 "head": "",
                 "hc": 0,
@@ -3038,9 +3038,9 @@
               {
                 "id": "n_psl_54",
                 "type": "line",
-                "name": "Micropropagation Plantlet (PBI 102)",
+                "name": "Micropropagation Plantlet (PSL 102)",
                 "nameEn": "",
-                "code": "PBI102",
+                "code": "PSL102",
                 "title": "",
                 "head": "",
                 "hc": 0,
@@ -3159,9 +3159,9 @@
               {
                 "id": "n_psl_55",
                 "type": "line",
-                "name": "Bamboo Production Farm Business (PBI 103)",
+                "name": "Bamboo Production Farm Business (PSL 103)",
                 "nameEn": "",
-                "code": "PBI103",
+                "code": "PSL103",
                 "title": "",
                 "head": "",
                 "hc": 0,
@@ -3280,9 +3280,9 @@
               {
                 "id": "n_psl_53",
                 "type": "line",
-                "name": "Biochar Business (PBI 104)",
+                "name": "Biochar Business (PSL 104)",
                 "nameEn": "",
-                "code": "PBI104",
+                "code": "PSL104",
                 "title": "",
                 "head": "",
                 "hc": 0,
@@ -13846,7 +13846,7 @@
       "basedOn": "v_psp_2026r3",
       "createdAt": "2026-10-16T02:18:37.847Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-10-16T04:24:09.747Z",
+      "updatedAt": "2026-10-16T04:32:08.681Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE SYSTEM & PROJECT CO., LTD. (PSP) 2026",
@@ -16893,7 +16893,7 @@
                     "hc": 0,
                     "staff": true,
                     "layout": "auto",
-                    "note": "",
+                    "note": "ธุรกิจ Smart City / Smart District / นิคมอุตสาหกรรม ใช้กรอบสถาปัตยกรรม SCIAM แบบเดียวกับ SGAM, หาและปิดดีลโครงการ Smart City",
                     "children": [
                       {
                         "id": "n_bjt7e0oxk5",
@@ -16906,7 +16906,7 @@
                         "hc": 0,
                         "staff": true,
                         "layout": "auto",
-                        "note": "",
+                        "note": "หาลูกค้า (อปท., นิคมฯ, อสังหา, หน่วยงานรัฐ), ติดตาม TOR, ปิดการขาย, บริหารสัญญาและ Pipeline",
                         "children": [],
                         "style": {
                           "fill": "#FBE5D6",
@@ -16937,7 +16937,7 @@
                         "hc": 0,
                         "staff": true,
                         "layout": "auto",
-                        "note": "",
+                        "note": "ออกแบบ Solution ตามชั้นของ SCIAM, ทำ Proposal, BOQ และราคา, ประสานกับ Agentic SGAM Lab (CTO)",
                         "children": [],
                         "style": {
                           "fill": "#FBE5D6",
@@ -16987,7 +16987,7 @@
                     "hc": 0,
                     "staff": true,
                     "layout": "auto",
-                    "note": "",
+                    "note": "หาโครงการและออกแบบระดับ Concept\nออกแบบละเอียด ก่อสร้าง และทดสอบระบบ\nดูแลระบบหลังส่งมอบ เป็นรายได้ประจำ",
                     "children": [
                       {
                         "id": "n_rwn8088jgj",
@@ -17000,7 +17000,7 @@
                         "hc": 0,
                         "staff": true,
                         "layout": "auto",
-                        "note": "",
+                        "note": "หาลูกค้า (Enterprise, Colocation, Edge DC), ประสาน BOI/สัญญาพลังงาน, บริหาร Pipeline",
                         "children": [],
                         "style": {
                           "fill": "#FBE5D6",
@@ -17031,7 +17031,7 @@
                         "hc": 0,
                         "staff": true,
                         "layout": "auto",
-                        "note": "",
+                        "note": "1. ออกแบบตามมาตรฐาน TIA-942 / Uptime Tier, วางเป้า PUE, ทำ Proposal และราคา\n2. MV/LV, UPS, Genset, ATS, Power Quality (ร่วมกับ PSP104), บริหารโครงการก่อสร้าง\n3. ดูแลระบบสำคัญเป็นกะ 24/7, ใช้ขั้นตอนมาตรฐานสำหรับงานปกติและเหตุฉุกเฉิน (MOP/EOP), รับมือเหตุขัดข้อง\n4. ดูแล DCIM/BMS, ระบบ Network และ Infra, Cyber Security และ Compliance (ISO 27001, PDPA) ตามที่ประชุมให้ตั้งทีม IT Governance",
                         "children": [],
                         "style": {
                           "fill": "#FBE5D6",
