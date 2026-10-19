@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-10-16T10:30:52.832Z",
+  "updatedAt": "2026-10-19T02:50:10.465Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -16553,7 +16553,7 @@
       "basedOn": "v_psp_2026r3",
       "createdAt": "2026-10-16T02:18:37.847Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-10-16T10:25:02.825Z",
+      "updatedAt": "2026-10-19T02:50:03.655Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE SYSTEM & PROJECT CO., LTD. (PSP) 2027",
@@ -19546,7 +19546,7 @@
                       {
                         "id": "n_bjt7e0oxk5",
                         "type": "office",
-                        "name": "Sale and Operation Management Section",
+                        "name": "Solution Architecture & Proposal Section หรือ Digital Twin & Spatial Engineering Section",
                         "nameEn": "",
                         "code": "",
                         "title": "",
@@ -19554,7 +19554,7 @@
                         "hc": 0,
                         "staff": true,
                         "layout": "auto",
-                        "note": "หาลูกค้า (อปท., นิคมฯ, อสังหา, หน่วยงานรัฐ), ติดตาม TOR, ปิดการขาย, บริหารสัญญาและ Pipeline",
+                        "note": "ออกแบบ Solution ตามชั้นของ SCIAM, ทำ Proposal, BOQ และราคา, ประสานกับ Agentic SGAM Lab (CTO) หรือ ทำ GIS, 3D City Model, Digital Twin, วิเคราะห์ข้อมูลเมือง, งาน Spatial และ Water Management, บริหารโครงการส่งมอบ",
                         "children": [],
                         "style": {
                           "fill": "#FBE5D6",
@@ -19577,7 +19577,7 @@
                       {
                         "id": "n_s885g4p36e",
                         "type": "office",
-                        "name": "Solution Architecture & Proposal Section",
+                        "name": "Urban Data Platform & IoT Integration Section",
                         "nameEn": "",
                         "code": "",
                         "title": "",
@@ -19585,7 +19585,7 @@
                         "hc": 0,
                         "staff": true,
                         "layout": "auto",
-                        "note": "ออกแบบ Solution ตามชั้นของ SCIAM, ทำ Proposal, BOQ และราคา, ประสานกับ Agentic SGAM Lab (CTO)",
+                        "note": "ติดตั้งและเชื่อมต่อ Sensor/IoT, เครือข่ายสื่อสาร, Platform กลาง, เชื่อมข้อมูลจาก AMI/SCADA/น้ำ",
                         "children": [],
                         "style": {
                           "fill": "#FBE5D6",
@@ -19640,7 +19640,7 @@
                       {
                         "id": "n_rwn8088jgj",
                         "type": "office",
-                        "name": "Sale and Operation Management Section",
+                        "name": "Data Center Solution Architecture & Proposal Section",
                         "nameEn": "",
                         "code": "",
                         "title": "",
@@ -19648,7 +19648,7 @@
                         "hc": 0,
                         "staff": true,
                         "layout": "auto",
-                        "note": "หาลูกค้า (Enterprise, Colocation, Edge DC), ประสาน BOI/สัญญาพลังงาน, บริหาร Pipeline",
+                        "note": "1. ออกแบบตามมาตรฐาน TIA-942 / Uptime Tier, วางเป้า PUE, ทำ Proposal และราคา\n2. MV/LV, UPS, Genset, ATS, Power Quality (ร่วมกับ PSP104), บริหารโครงการก่อสร้าง\n3. ดูแลระบบสำคัญเป็นกะ 24/7, ใช้ขั้นตอนมาตรฐานสำหรับงานปกติและเหตุฉุกเฉิน (MOP/EOP), รับมือเหตุขัดข้อง\n4. ดูแล DCIM/BMS, ระบบ Network และ Infra, Cyber Security และ Compliance (ISO 27001, PDPA) ตามที่ประชุมให้ตั้งทีม IT Governance",
                         "children": [],
                         "style": {
                           "fill": "#FBE5D6",
@@ -19671,7 +19671,7 @@
                       {
                         "id": "n_p6t70u9hjz",
                         "type": "office",
-                        "name": "Data Center Solution Architecture & Proposal Section",
+                        "name": "Critical Facility O&M Section หรือ DCIM, ICT & IT Governance Section",
                         "nameEn": "",
                         "code": "",
                         "title": "",
@@ -19679,7 +19679,7 @@
                         "hc": 0,
                         "staff": true,
                         "layout": "auto",
-                        "note": "1. ออกแบบตามมาตรฐาน TIA-942 / Uptime Tier, วางเป้า PUE, ทำ Proposal และราคา\n2. MV/LV, UPS, Genset, ATS, Power Quality (ร่วมกับ PSP104), บริหารโครงการก่อสร้าง\n3. ดูแลระบบสำคัญเป็นกะ 24/7, ใช้ขั้นตอนมาตรฐานสำหรับงานปกติและเหตุฉุกเฉิน (MOP/EOP), รับมือเหตุขัดข้อง\n4. ดูแล DCIM/BMS, ระบบ Network และ Infra, Cyber Security และ Compliance (ISO 27001, PDPA) ตามที่ประชุมให้ตั้งทีม IT Governance",
+                        "note": "ดูแลระบบสำคัญเป็นกะ 24/7, ใช้ขั้นตอนมาตรฐานสำหรับงานปกติและเหตุฉุกเฉิน (MOP/EOP), รับมือเหตุขัดข้อง หรือ ดูแล DCIM/BMS, ระบบ Network และ Infra, Cyber Security และ Compliance (ISO 27001, PDPA) ตามที่ประชุมให้ตั้งทีม IT Governance",
                         "children": [],
                         "style": {
                           "fill": "#FBE5D6",
