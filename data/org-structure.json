@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-10-22T08:59:37.228Z",
+  "updatedAt": "2026-10-22T17:12:04.580Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -15306,7 +15306,7 @@
       "basedOn": "v_pcc_2026r1",
       "createdAt": "2026-10-16T02:00:08.677Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-10-22T08:06:51.377Z",
+      "updatedAt": "2026-10-22T17:12:00.019Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "โครงสร้างองค์กรบริษัทพรีไซซคอร์ปอเรชั่น จำกัด (มหาชน) (2570)\nORGANIZATION PRECISE CORPORATION PCL (2027)",
@@ -15906,36 +15906,6 @@
                       "w": 476.6,
                       "h": 69.5
                     }
-                  },
-                  {
-                    "id": "n_mked2eb2n4",
-                    "type": "office",
-                    "name": "หน่วยงานพัฒนาทุนนวัตกรรม",
-                    "nameEn": "Innovation Capital Development",
-                    "code": "",
-                    "title": "",
-                    "head": "",
-                    "hc": 0,
-                    "staff": true,
-                    "layout": "auto",
-                    "note": "",
-                    "children": [],
-                    "style": {
-                      "fill": "#FBE5D6",
-                      "line": "#000000",
-                      "lw": 1.33,
-                      "text": "#FF0000",
-                      "bold": true,
-                      "size": 14,
-                      "align": "l"
-                    },
-                    "box": {
-                      "x": 710.1,
-                      "y": 1668.8,
-                      "w": 476.6,
-                      "h": 69.5
-                    },
-                    "hl": true
                   }
                 ],
                 "style": {
