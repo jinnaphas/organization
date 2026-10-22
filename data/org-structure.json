@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-10-22T08:06:56.568Z",
+  "updatedAt": "2026-10-22T08:56:58.326Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -16551,7 +16551,7 @@
       "basedOn": "v_psp_2026r3",
       "createdAt": "2026-10-16T02:18:37.847Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-10-19T02:50:03.655Z",
+      "updatedAt": "2026-10-22T08:55:50.295Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE SYSTEM & PROJECT CO., LTD. (PSP) 2027",
@@ -19078,7 +19078,7 @@
                         "box": {
                           "x": 2913,
                           "y": 669,
-                          "w": 355,
+                          "w": 363,
                           "h": 58
                         },
                         "link": "#70AD47",
@@ -19110,7 +19110,7 @@
                         "box": {
                           "x": 2912,
                           "y": 739,
-                          "w": 356,
+                          "w": 364,
                           "h": 56
                         },
                         "hl": true
@@ -19128,7 +19128,7 @@
                     "box": {
                       "x": 2882,
                       "y": 591,
-                      "w": 390,
+                      "w": 394,
                       "h": 68.39999999999998
                     },
                     "link": "#70AD47",
@@ -19996,7 +19996,7 @@
                         },
                         "link": "#70AD47",
                         "box": {
-                          "x": 2920,
+                          "x": 2922,
                           "y": 1708.5,
                           "w": 372,
                           "h": 67.5
@@ -20026,7 +20026,7 @@
                         },
                         "link": "#70AD47",
                         "box": {
-                          "x": 2920,
+                          "x": 2923,
                           "y": 1788,
                           "w": 372,
                           "h": 67.5
