@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-10-22T03:40:57.730Z",
+  "updatedAt": "2026-10-22T03:42:07.710Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -15306,7 +15306,7 @@
       "basedOn": "v_pcc_2026r1",
       "createdAt": "2026-10-16T02:00:08.677Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-10-22T03:40:08.159Z",
+      "updatedAt": "2026-10-22T03:41:47.991Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "โครงสร้างองค์กรบริษัทพรีไซซคอร์ปอเรชั่น จำกัด (มหาชน) (2570)\nORGANIZATION PRECISE CORPORATION PCL (2027)",
@@ -16351,97 +16351,6 @@
                 }
               },
               {
-                "id": "n_pcc_29",
-                "type": "department",
-                "name": "หน่วยงานบริหารกฎหมาย ความเสี่ยง และการกำกับดูแล",
-                "nameEn": "Legal, Risk and Compliance Management",
-                "code": "",
-                "title": "",
-                "head": "",
-                "hc": 0,
-                "staff": false,
-                "layout": "auto",
-                "note": "",
-                "children": [
-                  {
-                    "id": "n_pcc_46",
-                    "type": "department",
-                    "name": "หน่วยงานบริหารกฎหมาย",
-                    "nameEn": "Legal Management",
-                    "code": "",
-                    "title": "",
-                    "head": "",
-                    "hc": 0,
-                    "staff": false,
-                    "layout": "auto",
-                    "note": "",
-                    "children": [],
-                    "style": {
-                      "fill": "#FFFFFF",
-                      "line": "#000000",
-                      "lw": 1.33,
-                      "text": "#000000",
-                      "bold": true,
-                      "size": 14,
-                      "align": "l"
-                    },
-                    "link": "#000000",
-                    "box": {
-                      "x": 2401.4,
-                      "y": 1073.3,
-                      "w": 387.2,
-                      "h": 68
-                    }
-                  },
-                  {
-                    "id": "n_pcc_47",
-                    "type": "department",
-                    "name": "หน่วยงานบริหารความเสี่ยง และการกำกับดูแล",
-                    "nameEn": "Risk and Compliance Management",
-                    "code": "",
-                    "title": "",
-                    "head": "",
-                    "hc": 0,
-                    "staff": false,
-                    "layout": "auto",
-                    "note": "",
-                    "children": [],
-                    "style": {
-                      "fill": "#FFFFFF",
-                      "line": "#000000",
-                      "lw": 1.33,
-                      "text": "#000000",
-                      "bold": true,
-                      "size": 14,
-                      "align": "l"
-                    },
-                    "link": "#000000",
-                    "box": {
-                      "x": 2401.4,
-                      "y": 1157.1,
-                      "w": 387.2,
-                      "h": 67.6
-                    }
-                  }
-                ],
-                "style": {
-                  "fill": "#FFFFFF",
-                  "line": "#000000",
-                  "lw": 3,
-                  "text": "#000000",
-                  "bold": true,
-                  "size": 16,
-                  "align": "l"
-                },
-                "link": "#000000",
-                "box": {
-                  "x": 2324.6,
-                  "y": 944.1,
-                  "w": 463.5,
-                  "h": 106.5
-                }
-              },
-              {
                 "id": "n_pcc_81",
                 "type": "office",
                 "name": "ศูนย์การพัฒนาเทคโนโลยีกลุ่มบริษัท",
@@ -16464,8 +16373,8 @@
                   "align": "c"
                 },
                 "box": {
-                  "x": 2329.7,
-                  "y": 1254.4,
+                  "x": 2336,
+                  "y": 1000,
                   "w": 463.2,
                   "h": 81.7
                 }
@@ -16494,8 +16403,8 @@
                 },
                 "link": "#000000",
                 "box": {
-                  "x": 2328.4,
-                  "y": 1355,
+                  "x": 2332,
+                  "y": 1100,
                   "w": 466.9,
                   "h": 86.2
                 }
