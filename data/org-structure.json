@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-10-19T02:50:10.465Z",
+  "updatedAt": "2026-10-22T03:40:57.730Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -15306,7 +15306,7 @@
       "basedOn": "v_pcc_2026r1",
       "createdAt": "2026-10-16T02:00:08.677Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-10-16T09:06:02.465Z",
+      "updatedAt": "2026-10-22T03:40:08.159Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "โครงสร้างองค์กรบริษัทพรีไซซคอร์ปอเรชั่น จำกัด (มหาชน) (2570)\nORGANIZATION PRECISE CORPORATION PCL (2027)",
@@ -15969,9 +15969,9 @@
                 "children": [
                   {
                     "id": "n_pcc_38",
-                    "type": "department",
+                    "type": "office",
                     "name": "หน่วยงานกำกับดูแลกิจการ",
-                    "nameEn": "Corporate Governance",
+                    "nameEn": "Governance Management",
                     "code": "",
                     "title": "",
                     "head": "",
@@ -15979,12 +15979,103 @@
                     "staff": false,
                     "layout": "auto",
                     "note": "",
-                    "children": [],
+                    "children": [
+                      {
+                        "id": "n_2gi8nbm9ru",
+                        "type": "section",
+                        "name": "หน่วยงานกำกับดูแล",
+                        "nameEn": "Compliance",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": true,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FBE5D6",
+                          "line": "#000000",
+                          "lw": 1.33,
+                          "text": "#FF0000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "box": {
+                          "x": 1376.2,
+                          "y": 1152.5,
+                          "w": 363.2,
+                          "h": 55.5
+                        },
+                        "hl": true
+                      },
+                      {
+                        "id": "n_a3sy2toshq",
+                        "type": "section",
+                        "name": "หน่วยงานบริหารความเสี่ยงองค์กร",
+                        "nameEn": "Enterprise Risk Management",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": true,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FBE5D6",
+                          "line": "#000000",
+                          "lw": 1.33,
+                          "text": "#FF0000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "box": {
+                          "x": 1376.2,
+                          "y": 1220,
+                          "w": 363.2,
+                          "h": 55.5
+                        },
+                        "hl": true
+                      },
+                      {
+                        "id": "n_i9b2sjqvp3",
+                        "type": "section",
+                        "name": "หน่วยงานบริหารกฎหมาย",
+                        "nameEn": "Legal Management",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": true,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FBE5D6",
+                          "line": "#000000",
+                          "lw": 1.33,
+                          "text": "#FF0000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "box": {
+                          "x": 1376.2,
+                          "y": 1287.5,
+                          "w": 363.2,
+                          "h": 55.5
+                        },
+                        "hl": true
+                      }
+                    ],
                     "style": {
-                      "fill": "#FFFFFF",
+                      "fill": "#FBE5D6",
                       "line": "#000000",
                       "lw": 1.33,
-                      "text": "#000000",
+                      "text": "#FF0000",
                       "bold": true,
                       "size": 14,
                       "align": "l"
@@ -15995,13 +16086,14 @@
                       "y": 1057.2,
                       "w": 387.2,
                       "h": 67.3
-                    }
+                    },
+                    "hl": true
                   },
                   {
                     "id": "n_pcc_39",
                     "type": "department",
-                    "name": "หน่วยงานสนับสนุนการเติบโตแบบยั่งยืนของชุมชนที่ตั้งของธุรกิจ",
-                    "nameEn": "ESG & Sustainable Development for Corporate & Smart Community",
+                    "name": "หน่วยงานพัฒนาการเติบโตแบบยั่งยืน",
+                    "nameEn": "Sustainable Development",
                     "code": "",
                     "title": "",
                     "head": "",
@@ -16011,21 +16103,22 @@
                     "note": "",
                     "children": [],
                     "style": {
-                      "fill": "#FFFFFF",
+                      "fill": "#FBE5D6",
                       "line": "#000000",
                       "lw": 1.33,
-                      "text": "#000000",
+                      "text": "#FF0000",
                       "bold": true,
                       "size": 14,
                       "align": "l"
                     },
                     "link": "#000000",
                     "box": {
-                      "x": 1355.7,
-                      "y": 1148.7,
+                      "x": 1348,
+                      "y": 1374,
                       "w": 387.2,
-                      "h": 113.1
-                    }
+                      "h": 69.79999999999995
+                    },
+                    "hl": true
                   }
                 ],
                 "style": {
@@ -16361,17 +16454,15 @@
                 "layout": "auto",
                 "note": "",
                 "children": [],
-                "hl": true,
                 "style": {
-                  "fill": "#FFF2CC",
+                  "fill": "#FFFFFF",
                   "line": "#000000",
                   "lw": 1.33,
-                  "text": "#FF0000",
+                  "text": "#000000",
                   "bold": true,
                   "size": 16,
                   "align": "c"
                 },
-                "link": "#000000",
                 "box": {
                   "x": 2329.7,
                   "y": 1254.4,
