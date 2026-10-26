@@ -633,6 +633,14 @@ body.dragging-people .node{outline:1px dashed rgba(58,89,168,.45);outline-offset
 .mv-row.mv-head{font-size:11.5px;font-weight:600;color:var(--muted)}
 
 .wf-badge .wb-rec{margin-left:6px;padding:0 6px;border-radius:999px;font-size:10.5px;font-weight:700;background:#fff;color:#3a59a8;box-shadow:inset 0 0 0 1.5px currentColor}
+.wf-badge .wb-rec.hot{color:#fff;box-shadow:none}
+.wf-badge .wb-rec.hot.late{box-shadow:0 0 0 2px #b03636}
+.wf-badge .wb-rec.hot.st-plan{background:#55636d}
+.wf-badge .wb-rec.hot.st-open{background:#3a59a8}
+.wf-badge .wb-rec.hot.st-interview{background:#7a5aa6}
+.wf-badge .wb-rec.hot.st-offer{background:#a35f00}
+.wf-badge .wb-rec.hot.st-hired{background:#1c7a47}
+.tag.hot{border-color:var(--danger);color:var(--danger);background:var(--danger-weak)}
 .wf-badge .wb-rec.late{box-shadow:inset 0 0 0 1.5px currentColor,0 0 0 2px #b03636}
 /* on the chart (paper, same in light and dark mode) */
 .wb-rec.st-plan{color:#55636d}
@@ -4338,7 +4346,7 @@ function recTableHTML(v, P) {
       <span class="mv-acts"><button class="btn sm" data-act="rec-export">${I.download}Export</button></span></h3>
     <div class="mv-table"><div class="act-row mv-head"><div>หน่วยงาน</div><div>ตำแหน่ง</div><div>สถานะ</div><div class="num">กำหนดได้ตัว</div></div>
     ${rows.map(({ r, n }) => `<div class="act-row${REC_ST[r.status].open ? '' : ' shut'}"><div><a href="#" data-act="plan-open-unit" data-id="${n.id}">${esc(n.name)}</a><small>คนจริง ${fmtNum((P.byNode.get(n.id) || []).length)} · แผน ${+n.hc ? fmtNum(+n.hc) : '—'}</small></div>
-      <div><b>${esc(r.pos)}</b><small>${fmtNum(+r.n || 1)} อัตรา · ${esc(REC_WHY[r.why] || '')}${r.owner ? ' · ' + esc(r.owner) : ''}</small></div>
+      <div><b>${esc(r.pos)}</b>${r.urgent ? ' <span class="tag hot">ด่วน</span>' : ''}<small>${fmtNum(+r.n || 1)} อัตรา · ${esc(REC_WHY[r.why] || '')}${r.owner ? ' · ' + esc(r.owner) : ''}</small></div>
       <div>${recChip(r)}</div><div class="num"><span class="${recLate(r) ? 'late-t' : ''}">${r.due ? fmtDate(r.due) : '—'}</span>${recLate(r) ? '<small class="late-t">เลยกำหนด</small>' : ''}</div></div>`).join('')}</div></section>`;
 }
 function actingTableHTML(v, P) {
@@ -4751,8 +4759,8 @@ function wfExport(kind) {
   const csv = rows => '﻿' + rows.map(r => r.map(c => { const s = String(c ?? ''); return /[",\n\r]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; }).join(',')).join('\r\n');
   if (kind === 'recruit') {
     if (!S.wf) return;
-    const P = wfPlace(v), out = [['หน่วยงาน', 'สายงาน', 'คนจริง', 'อัตรากำลังตามแผน', 'ตำแหน่งที่สรรหา', 'จำนวน (อัตรา)', 'สถานะ', 'เหตุผล', 'วันที่เปิด', 'กำหนดได้ตัว', 'เลยกำหนด', 'ผู้รับผิดชอบ', 'หมายเหตุ', 'แก้ไขล่าสุด']];
-    recRows(v).forEach(({ r, n }) => out.push([n.name, nodeTrail(v.root, n.id).slice(1, -1).map(x => x.name).join(' › '), (P.byNode.get(n.id) || []).length, +n.hc || 0, r.pos, +r.n || 1, REC_ST[r.status].th, REC_WHY[r.why] || '', r.opened || '', r.due || '', recLate(r) ? 'ใช่' : '', r.owner || '', r.note || '', `${r.by || ''} ${r.at ? fmtDateTime(r.at) : ''}`]));
+    const P = wfPlace(v), out = [['หน่วยงาน', 'สายงาน', 'คนจริง', 'อัตรากำลังตามแผน', 'ตำแหน่งที่สรรหา', 'จำนวน (อัตรา)', 'สถานะ', 'เหตุผล', 'อัตราเร่งด่วน', 'วันที่เปิด', 'กำหนดได้ตัว', 'เลยกำหนด', 'ผู้รับผิดชอบ', 'หมายเหตุ', 'ที่มา', 'แก้ไขล่าสุด']];
+    recRows(v).forEach(({ r, n }) => out.push([n.name, nodeTrail(v.root, n.id).slice(1, -1).map(x => x.name).join(' › '), (P.byNode.get(n.id) || []).length, +n.hc || 0, r.pos, +r.n || 1, REC_ST[r.status].th, REC_WHY[r.why] || '', r.urgent ? 'ใช่' : '', r.opened || '', r.due || '', recLate(r) ? 'ใช่' : '', r.owner || '', r.note || '', r.src || '', `${r.by || ''} ${r.at ? fmtDateTime(r.at) : ''}`]));
     download(`${slug(v)}-recruitment.csv`, csv(out), 'text/csv;charset=utf-8');
     return;
   }
@@ -5260,7 +5268,8 @@ async function actDrop(key) {
   toast(`ยกเลิกรักษาการของ ${p ? wfName(p) : a.emp} แล้ว`, 'ok', { label: 'เลิกทำ', fn: async () => { const e2 = actEditsCopy(); delete e2.drop[key]; await actSave(e2, `${a.co}: คืนผู้รักษาการ — ${p ? wfName(p) : a.emp}`); } });
 }
 /* ---------- recruitment per box (Planning page) ---------- */
-// S.wf.recruit = { CO: { boxId: [{ id, pos, n, why, status, opened, due, owner, note, by, at, del? }] } }
+// S.wf.recruit = { CO: { boxId: [{ id, pos, n, why, status, urgent?, opened, due, owner, note, src?, by, at, del? }] } }
+// src = where an imported row came from (file and row)
 // kept in the encrypted workforce file; a box id is the same in Active and the Drafts copied from it
 const REC_ST = {
   plan: { th: 'วางแผน (ยังไม่เปิด)', short: 'แผนสรรหา', open: true },
@@ -5272,7 +5281,7 @@ const REC_ST = {
   cancel: { th: 'ยกเลิก', short: 'ยกเลิก', open: false },
 };
 const REC_ORDER = Object.keys(REC_ST);
-const REC_WHY = { replace: 'ทดแทนคนออก / เกษียณ / ย้าย', grow: 'อัตราเพิ่มตามแผน', new: 'หน่วยใหม่ตามโครงสร้าง', other: 'อื่น ๆ' };
+const REC_WHY = { replace: 'ทดแทนคนออก / เกษียณ / ย้าย', grow: 'อัตราเพิ่มตามแผน', new: 'หน่วยใหม่ตามโครงสร้าง', contract: 'สัญญาจ้าง / Contract', other: 'อื่น ๆ' };
 const recLive = (co, id) => ((((S.wf && S.wf.recruit) || {})[co] || {})[id] || []).filter(r => !r.del);
 const recOpen = (co, id) => recLive(co, id).filter(r => (REC_ST[r.status] || {}).open);
 const recN = rs => rs.reduce((t, r) => t + (+r.n || 1), 0);
@@ -5288,10 +5297,10 @@ function recRows(v) {
 }
 function planBadgeHTML(n, ctx) {
   const P = ctx.wf.P, own = (P.byNode.get(n.id) || []).length, pl = +n.hc || 0, g = gapInfo(pl, own);
-  const rs = recOpen(ctx.v.companyCode, n.id), rn = recN(rs), late = rs.some(recLate);
+  const rs = recOpen(ctx.v.companyCode, n.id), rn = recN(rs), late = rs.some(recLate), hot = rs.some(r => r.urgent);
   const tip = [`คนจริง ${fmtNum(own)} คน · แผน ${pl ? fmtNum(pl) + ' คน' : 'ยังไม่กำหนด'}${g.txt ? ' · ' + g.txt : ''}`]
-    .concat(rs.map(r => `สรรหา: ${r.pos} ${r.n || 1} อัตรา · ${REC_ST[r.status].th}${r.due ? ' · กำหนดได้ตัว ' + fmtDate(r.due) : ''}${recLate(r) ? ' (เลยกำหนด)' : ''}`)).join('\n');
-  return `<span class="wf-badge pb ${g.cls}${own || pl ? '' : ' zero'}" title="${esc(tip)}"><span class="wb-n">${fmtNum(own)}${pl ? `<small>/${fmtNum(pl)}</small>` : ''}<small> คน</small></span>${rn ? `<span class="wb-rec st-${recStage(rs)}${late ? ' late' : ''}">สรรหา ${fmtNum(rn)}</span>` : ''}</span>`;
+    .concat(rs.map(r => `สรรหา${r.urgent ? ' (ด่วน)' : ''}: ${r.pos} ${r.n || 1} อัตรา · ${REC_ST[r.status].th}${r.due ? ' · กำหนดได้ตัว ' + fmtDate(r.due) : ''}${recLate(r) ? ' (เลยกำหนด)' : ''}`)).join('\n');
+  return `<span class="wf-badge pb ${g.cls}${own || pl ? '' : ' zero'}" title="${esc(tip)}"><span class="wb-n">${fmtNum(own)}${pl ? `<small>/${fmtNum(pl)}</small>` : ''}<small> คน</small></span>${rn ? `<span class="wb-rec st-${recStage(rs)}${late ? ' late' : ''}${hot ? ' hot' : ''}">สรรหา ${fmtNum(rn)}</span>` : ''}</span>`;
 }
 function planUnitPanelHTML(v) {
   const P = wfPlace(v), id = wfCurId(v), co = v.companyCode, edit = canEditApp();
@@ -5303,10 +5312,10 @@ function planUnitPanelHTML(v) {
   const left = pl ? pl - own.length - rn : null;
   const afterTxt = left === null ? '—' : left > 0 ? `ขาดอีก ${fmtNum(left)}` : left < 0 ? `เกิน ${fmtNum(-left)}` : 'ครบ';
   const ah = P.actHead.get(id), hd = P.heads.get(id);
-  const card = r => `<div class="rc${recLate(r) ? ' late' : ''}"><div class="rc-t"><b>${esc(r.pos)}</b> ${recChip(r)} <span class="muted">${fmtNum(+r.n || 1)} อัตรา</span>
+  const card = r => `<div class="rc${recLate(r) ? ' late' : ''}"><div class="rc-t"><b>${esc(r.pos)}</b> ${recChip(r)}${r.urgent ? ' <span class="tag hot">ด่วน</span>' : ''} <span class="muted">${fmtNum(+r.n || 1)} อัตรา</span>
       ${edit ? `<span class="pp-ed"><button class="pp-mv" data-act="rec-edit" data-node="${id}" data-rid="${esc(r.id)}">${I.edit}แก้ไข</button><button class="pp-mv danger" data-act="rec-del" data-node="${id}" data-rid="${esc(r.id)}">${I.trash}ลบ</button></span>` : ''}</div>
     <div class="rc-m">${esc(REC_WHY[r.why] || '')}${r.opened ? ` · เปิดเมื่อ ${fmtDate(r.opened)}` : ''}${r.due ? ` · กำหนดได้ตัว <span class="${recLate(r) ? 'late-t' : ''}">${fmtDate(r.due)}${recLate(r) ? ' (เลยกำหนด)' : ''}</span>` : ''}${r.owner ? ` · ผู้รับผิดชอบ ${esc(r.owner)}` : ''}</div>
-    ${r.note ? `<div class="rc-n">${esc(r.note)}</div>` : ''}</div>`;
+    ${r.note ? `<div class="rc-n">${esc(r.note)}</div>` : ''}${r.src ? `<div class="rc-m">ที่มา: ${esc(r.src)}</div>` : ''}</div>`;
   return `<section class="panel"><div class="ip-head"><div><h3><i class="dot tc-${node.type}"></i> ${esc(TYPES[node.type].th)} · วางแผนกำลังคน</h3><h2>${esc(node.name || 'ไม่มีชื่อ')}</h2>${trail ? `<p class="muted ip-path">${esc(trail)}</p>` : ''}</div>${close}</div>
     <div class="statgrid">
       <div class="stat"><b>${fmtNum(own.length)}</b><span>คนในกล่องนี้</span></div>
@@ -5335,11 +5344,12 @@ function planSummaryHTML(v, P, close) {
       <div class="stat${short ? ' warn' : ''}"><b>${fmtNum(short)}</b><span>ขาดคนตามแผน</span></div>
       <div class="stat rec"><b>${fmtNum(recN(open.map(x => x.r)))}</b><span>กำลังสรรหา (อัตรา)</span></div>
       <div class="stat"><b>${fmtNum(boxes)}</b><span>หน่วยที่กำลังสรรหา</span></div>
-      <div class="stat${late ? ' warn' : ''}"><b>${fmtNum(late)}</b><span>เลยกำหนดได้ตัว</span></div></div>
+      <div class="stat${late ? ' warn' : ''}"><b>${fmtNum(late)}</b><span>เลยกำหนดได้ตัว</span></div>
+      <div class="stat${open.some(x => x.r.urgent) ? ' warn' : ''}"><b>${fmtNum(recN(open.filter(x => x.r.urgent).map(x => x.r)))}</b><span>อัตราเร่งด่วน</span></div></div>
     ${barsHTML('ตามขั้นตอน (อัตรา)', byStage, recN(open.map(x => x.r)) || 1, REC_ORDER.map(k => REC_ST[k].th))}
     <p class="muted">คลิกกล่องบนผังเพื่อดูแผนกับคนจริง และบันทึกการสรรหา ป้าย “สรรหา N” บนกล่องมีสีตามขั้นตอน ขอบแดง = เลยกำหนดได้ตัว</p></section>
-  ${open.length ? `<section class="panel"><h3>หน่วยที่กำลังสรรหา</h3><div class="rec-list">${open.map(x => `<button class="rec-row" data-act="wf-unit" data-id="${x.n.id}"><span><b>${esc(x.n.name)}</b><small>${esc(x.r.pos)} · ${fmtNum(+x.r.n || 1)} อัตรา${x.r.due ? ` · กำหนด ${fmtDate(x.r.due)}` : ''}</small></span>${recChip(x.r)}</button>`).join('')}</div></section>` : ''}
-  <div class="tip"><b>ใช้งานอย่างไร</b><span>อัตรากำลังตามแผนมาจากเวอร์ชันโครงสร้าง (แก้ได้ใน Draft) ส่วนการสรรหาบันทึกได้ทุกเวอร์ชันและเก็บในไฟล์กำลังคนแบบเข้ารหัส</span><span>สีบนป้าย: เทา = วางแผน · น้ำเงิน = รับสมัคร · ม่วง = สัมภาษณ์ · ส้ม = เสนองาน · เขียว = รอเริ่มงาน</span></div>`;
+  ${open.length ? `<section class="panel"><h3>หน่วยที่กำลังสรรหา</h3><div class="rec-list">${open.map(x => `<button class="rec-row" data-act="wf-unit" data-id="${x.n.id}"><span><b>${esc(x.n.name)}</b><small>${x.r.urgent ? '<span class="late-t">ด่วน</span> · ' : ''}${esc(x.r.pos)} · ${fmtNum(+x.r.n || 1)} อัตรา${x.r.due ? ` · กำหนด ${fmtDate(x.r.due)}` : ''}</small></span>${recChip(x.r)}</button>`).join('')}</div></section>` : ''}
+  <div class="tip"><b>ใช้งานอย่างไร</b><span>อัตรากำลังตามแผนมาจากเวอร์ชันโครงสร้าง (แก้ได้ใน Draft) ส่วนการสรรหาบันทึกได้ทุกเวอร์ชันและเก็บในไฟล์กำลังคนแบบเข้ารหัส</span><span>สีบนป้าย: เทา = วางแผน · น้ำเงิน = รับสมัคร · ม่วง = สัมภาษณ์ · ส้ม = เสนองาน · เขียว = รอเริ่มงาน · ป้ายทึบ = มีอัตราเร่งด่วน</span></div>`;
 }
 function recModal(v, nodeId, rid) {
   const f = v && find(v.root, nodeId);
@@ -5356,6 +5366,7 @@ function recModal(v, nodeId, rid) {
         <label class="field"><span>เหตุผล</span>${sel('rc-why', REC_WHY, old ? old.why : (pl > own ? 'grow' : 'replace'))}</label></div>
       <div class="row2"><label class="field"><span>วันที่เปิด</span><input class="inp" type="date" id="rc-open" value="${esc(old ? old.opened || '' : todayISO())}"></label>
         <label class="field"><span>กำหนดได้ตัว</span><input class="inp" type="date" id="rc-due" value="${esc(old ? old.due || '' : '')}"></label></div>
+      <label class="check"><input type="checkbox" id="rc-hot" ${old && old.urgent ? 'checked' : ''}><span>อัตราเร่งด่วน</span></label>
       <label class="field"><span>ผู้รับผิดชอบ (Recruiter / Hiring manager)</span><input class="inp" id="rc-owner" value="${esc(old ? old.owner || '' : '')}"></label>
       <label class="field"><span>หมายเหตุ</span><textarea class="inp" id="rc-note" rows="2" placeholder="เช่น ช่องทางสรรหา คุณสมบัติสำคัญ">${esc(old ? old.note || '' : '')}</textarea></label>
       <small class="muted">ไม่บันทึกข้อมูลผู้สมัคร เก็บเฉพาะสถานะการสรรหาของตำแหน่ง</small>`,
@@ -5364,6 +5375,8 @@ function recModal(v, nodeId, rid) {
       if (!pos) { toast('ใส่ตำแหน่งที่สรรหา', 'err'); return; }
       const r = { id: old ? old.id : uid('rc'), pos, n: Math.max(1, parseInt(el.querySelector('#rc-n').value, 10) || 1), status: el.querySelector('#rc-st').value, why: el.querySelector('#rc-why').value,
         opened: el.querySelector('#rc-open').value, due: el.querySelector('#rc-due').value, owner: el.querySelector('#rc-owner').value.trim(), note: el.querySelector('#rc-note').value.trim(), by: who(), at: nowISO() };
+      if (el.querySelector('#rc-hot').checked) r.urgent = true;
+      if (old && old.src) r.src = old.src;
       c();
       await recPut(co, nodeId, r, `${co}: ${old ? 'แก้ไข' : 'เปิด'}การสรรหา “${f.node.name || ''}” — ${pos} (${REC_ST[r.status].th})`);
     } }],
