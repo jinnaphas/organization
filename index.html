@@ -220,6 +220,12 @@ textarea.inp{min-height:84px;resize:vertical;line-height:1.5}
 .lk{fill:none;stroke-width:1.25}
 .lk.dash{stroke-dasharray:6 4}
 .lk.dot{stroke-dasharray:2 3}
+.wire-ui{position:absolute;left:0;top:0;overflow:visible;pointer-events:none;z-index:6}
+.wire-ui .wsel{fill:none;stroke:#0d6672;stroke-width:calc(3px * var(--hz, 1));opacity:.45}
+.wire-ui .wh{pointer-events:all;cursor:grab;stroke:#ffffff;stroke-width:calc(1.5px * var(--hz, 1))}
+.wire-ui .wh-end{r:calc(6px * var(--hz, 1));fill:#0d6672}
+.wire-ui .wh-seg{r:calc(5px * var(--hz, 1));fill:#c27c0e}
+.wire-ui .wh:hover{stroke:#13202a}
 
 /* unit boxes: colours, weight and alignment come from each unit's style (taken from the Excel charts) */
 .node{position:absolute;width:200px;height:88px;padding:5px 8px;display:flex;flex-direction:column;justify-content:safe center;cursor:pointer;user-select:none;-webkit-user-select:none;font-family:var(--f-doc);line-height:1.17;overflow:visible}
@@ -558,6 +564,8 @@ details.help ol,details.help ul{margin:8px 0 2px;padding-left:20px;display:grid;
 .hd{display:grid;gap:2px;background:var(--accent-weak);border-radius:9px;padding:9px 11px;font-size:12.5px;color:var(--ink-2)}
 .hd b{font:600 15px/1.3 var(--f-display);color:var(--ink)}
 .hd-l{font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--accent-ink)}
+.hd-how{font-weight:400;letter-spacing:0;color:var(--muted)}
+.tag.own{border-color:var(--plat);color:var(--plat)}
 .hd-pick{display:grid;gap:3px;margin-top:6px;font-size:11.5px;color:var(--muted)}
 .hd-none{margin:0;font-size:12.5px}
 .pp-e{display:flex;gap:5px;align-items:flex-start;font-size:11.5px;color:var(--muted)}
@@ -587,6 +595,16 @@ details.help ol,details.help ul{margin:8px 0 2px;padding-left:20px;display:grid;
 .pp.moved{box-shadow:inset 3px 0 0 var(--plat)}
 .pp-n{display:flex;flex-wrap:wrap;align-items:center;gap:4px}
 .pp-ck{margin:0 4px 0 0;accent-color:var(--accent)}
+.pp-ed{margin-left:auto;display:inline-flex;gap:4px}
+.pp-ed .pp-mv{margin-left:0}
+.pp-mv.danger{color:var(--danger)}
+.act-sec h3{display:flex;align-items:center;gap:8px}
+.act-sec h3 .btn{margin-left:auto}
+.ac-list{display:grid;gap:2px;max-height:260px;overflow:auto;border:1px solid var(--line);border-radius:8px;padding:4px}
+.ac-o{display:grid;grid-template-columns:auto 1fr;gap:2px 8px;align-items:start;padding:5px 6px;border-radius:6px;cursor:pointer}
+.ac-o:hover{background:var(--surface-2)}
+.ac-o input{margin-top:3px}
+.ac-o small{grid-column:2;color:var(--muted);font-size:11.5px}
 .pp-mv{margin-left:auto;display:inline-flex;align-items:center;gap:4px;border:1px solid var(--line-strong);background:var(--surface);border-radius:6px;padding:1px 7px;font-size:11.5px;cursor:pointer;color:var(--ink-2)}
 .pp-mv:hover{border-color:var(--accent);color:var(--accent-ink)}
 .pp-mv svg{width:12px;height:12px}
@@ -614,6 +632,39 @@ body.dragging-people .node{outline:1px dashed rgba(58,89,168,.45);outline-offset
 .mv-row small{display:block;color:var(--muted);font-size:11.5px}
 .mv-row.mv-head{font-size:11.5px;font-weight:600;color:var(--muted)}
 
+.wf-badge .wb-rec{margin-left:6px;padding:0 6px;border-radius:999px;font-size:10.5px;font-weight:700;background:#fff;color:#3a59a8;box-shadow:inset 0 0 0 1.5px currentColor}
+.wf-badge .wb-rec.late{box-shadow:inset 0 0 0 1.5px currentColor,0 0 0 2px #b03636}
+/* on the chart (paper, same in light and dark mode) */
+.wb-rec.st-plan{color:#55636d}
+.wb-rec.st-open{color:#3a59a8}
+.wb-rec.st-interview{color:#7a5aa6}
+.wb-rec.st-offer{color:#a35f00}
+.wb-rec.st-hired{color:#1c7a47}
+/* in the panels (follow the theme) */
+.rc-st.st-plan,.pt-rec.st-plan,.rc-st.st-done,.rc-st.st-cancel{color:var(--muted)}
+.rc-st.st-open,.pt-rec.st-open{color:var(--plat)}
+.rc-st.st-interview,.pt-rec.st-interview{color:var(--partner)}
+.rc-st.st-offer,.pt-rec.st-offer{color:var(--warn)}
+.rc-st.st-hired,.pt-rec.st-hired{color:var(--ok)}
+.rc-st,.pt-rec{display:inline-block;padding:0 7px;border-radius:999px;font-size:11px;font-weight:600;background:var(--surface);box-shadow:inset 0 0 0 1.2px currentColor;white-space:nowrap}
+.pt-rec{margin-left:6px;font-size:10.5px}
+.rec-sec h3{display:flex;align-items:center;gap:8px}
+.rec-sec h3 .btn{margin-left:auto}
+.rc{border:1px solid var(--line);border-radius:9px;padding:8px 10px;display:grid;gap:3px;margin-bottom:6px;background:var(--surface)}
+.rc.late{border-color:var(--danger)}
+.rc-t{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.rc-m{font-size:12px;color:var(--muted)}
+.rc-n{font-size:12.5px;color:var(--ink-2)}
+.rc-old summary{cursor:pointer;font-size:12.5px;color:var(--muted);margin:4px 0}
+.late-t{color:var(--danger);font-weight:600}
+.stat.rec b{color:var(--plat)}
+.wf-kpis .rec dd{color:var(--plat)}
+.rec-list{display:grid;gap:4px}
+.rec-row{display:flex;align-items:center;justify-content:space-between;gap:8px;text-align:left;border:1px solid var(--line);border-radius:8px;background:var(--surface);padding:6px 9px;cursor:pointer}
+.rec-row:hover{border-color:var(--accent)}
+.rec-row small{display:block;color:var(--muted);font-size:11.5px}
+.act-row.shut{opacity:.6}
+.tbtn.on{background:var(--accent-weak);color:var(--accent-ink)}
 .wf-badge.acting{background:#fff8e6;color:#7a4b00;box-shadow:0 0 0 1.5px #c27c0e,0 1px 3px rgba(0,0,0,.2)}
 .wf-badge.acting .wb-head{border-right-color:#e2b866}
 .wf-badge.acting.t2{box-shadow:0 0 0 2px #b03636,0 1px 3px rgba(0,0,0,.2)}
@@ -641,6 +692,30 @@ body.dragging-people .node{outline:1px dashed rgba(58,89,168,.45);outline-offset
 .act-row small{display:block;color:var(--muted);font-size:11.5px}
 .act-row small b{color:var(--warn)}
 .act-row .num small{text-align:right}
+
+/* ---------- print / PDF for signing ---------- */
+#print-root{display:none}
+.pr-signs{display:grid;gap:6px}
+.pr-signs[hidden]{display:none}
+.pr-page{display:flex;flex-direction:column;overflow:hidden;font-family:var(--f-body);color:#000;background:#fff}
+.pr-head{display:flex;gap:18px;align-items:baseline;justify-content:space-between;height:30px;flex:none;border-bottom:1.5px solid #000;font-size:12px;padding:0 2px 4px}
+.pr-head b{font-size:13.5px}
+.pr-chart{display:flex;align-items:center;justify-content:center;overflow:hidden;flex:none;padding-top:6px}
+.pr-fit{position:relative;overflow:hidden;flex:none}
+.pr-stage{transform-origin:0 0;background:#fff;color:#000}
+.pr-stage .n-tog,.pr-stage .n-add,.pr-stage .rh,.pr-stage .wire-ui{display:none!important}
+.pr-sign{display:grid;gap:22px;height:132px;flex:none;padding:8px 24px 0;border-top:1px solid #000;font-size:12.5px;text-align:center}
+.pr-role{font-weight:700;margin-bottom:34px}
+.pr-line{border-bottom:1px solid #000;margin:0 18px 6px}
+.pr-dots{display:inline-block;width:150px;border-bottom:1px dotted #000}
+.pr-pos .pr-dots{width:120px}
+.pr-date{margin-top:4px}
+.pr-foot{height:16px;flex:none;font-size:9.5px;color:#444;text-align:right}
+@media print{
+  html,body{height:auto!important;overflow:visible!important;background:#fff!important}
+  body>*:not(#print-root){display:none!important}
+  #print-root{display:block!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
 
 /* ---------- responsive ---------- */
 @media (max-width:1600px){
@@ -818,7 +893,7 @@ function freezeLayout(v) {
   v.layout = 'free';
 }
 function unfreezeLayout(v) {
-  walk(v.root, n => { delete n.box; });
+  walk(v.root, n => { delete n.box; delete n.wire; });
   if (v.doc) delete v.doc.frameBoxes;
   delete v.fontScale;
   v.layout = 'auto';
@@ -970,6 +1045,8 @@ const S = {
   wfUnit: {},          // versionId -> node id shown on the Workforce page
   wfScope: 'direct', wfQuery: '', planFilter: 'all',
   wfView: 'chart',     // Workforce page: chart (org chart + drill down) | table
+  planView: 'chart',   // Planning page: chart (plan vs actual + recruitment per box) | table
+  recOnly: false,      // Planning chart: dim the boxes that are not recruiting
   wfSel: new Set(),    // people ticked for a move (employee codes)
   ui: { rail: false, insp: false, hideRail: false, hideInsp: false },   // rail/insp: mobile drawers; hide*: desktop panels
   layout: null,
@@ -1368,7 +1445,7 @@ function freeLayout(v, col) {
 }
 function routeChildren(P, kids, out) {
   const PB = P.y + P.h, PR = P.x + P.w, PCX = P.x + P.w / 2;
-  const push = (d, c) => out.links.push({ d, cls: linkCls(c.n), color: c.color });
+  const push = (d, c) => out.links.push({ d: okWire(c.n.wire) ? ptsD(wirePts(P, c, c.n.wire)) : d, auto: d, id: c.n.id, cls: linkCls(c.n), color: c.color });
   const side = [], below = [], above = [];
   kids.forEach(c => {
     if (c.y + c.h <= P.y + 2) above.push(c);
@@ -1420,6 +1497,92 @@ function routeChildren(P, kids, out) {
     const ccx = c.x + c.w / 2, cb = c.y + c.h;
     push(`M${PCX} ${P.y}V${(cb + P.y) / 2}H${ccx}V${cb}`, c);
   });
+}
+/* ---------- connector lines you can shape (free layout) ---------- */
+// n.wire = { a: { s, t } where the line leaves the parent box, b: { s, t } where it enters this box,
+//            k: [where each leg turns] } · s = side (t top · b bottom · l left · r right), t = 0..1 along it.
+// The legs alternate vertical / horizontal; the last turn lines up with the end point by itself.
+const WSIDE = { t: 'v', b: 'v', l: 'h', r: 'h' };
+const WSIDE_TH = { b: 'ด้านล่าง', t: 'ด้านบน', l: 'ด้านซ้าย', r: 'ด้านขวา' };
+const okEnd = e => !!(e && WSIDE[e.s] && Number.isFinite(e.t));
+const okWire = w => !!(w && okEnd(w.a) && okEnd(w.b) && Array.isArray(w.k) && w.k.every(Number.isFinite) && (w.k.length % 2 === 1) === (WSIDE[w.a.s] === WSIDE[w.b.s]));
+const otherAx = a => (a === 'v' ? 'h' : 'v');
+const ptsD = pts => 'M' + pts.map(q => q[0] + ' ' + q[1]).join('L');
+function sidePt(b, e) {
+  const t = clamp(e.t, 0, 1);
+  return e.s === 't' ? [b.x + t * b.w, b.y] : e.s === 'b' ? [b.x + t * b.w, b.y + b.h] : e.s === 'l' ? [b.x, b.y + t * b.h] : [b.x + b.w, b.y + t * b.h];
+}
+// the simplest turns for these two ends: one bend between a vertical and a horizontal end, a middle leg otherwise
+function wireDefaultK(P, C, w) {
+  const S = sidePt(P, w.a), E = sidePt(C, w.b), A = WSIDE[w.a.s];
+  return A !== WSIDE[w.b.s] ? [] : [Math.round(A === 'v' ? (S[1] + E[1]) / 2 : (S[0] + E[0]) / 2)];
+}
+function wirePts(P, C, w) {
+  const S = sidePt(P, w.a), E = sidePt(C, w.b);
+  const pts = [S];
+  let ax = WSIDE[w.a.s];
+  w.k.forEach(c => {
+    const q = pts[pts.length - 1];
+    pts.push(ax === 'v' ? [q[0], c] : [c, q[1]]);
+    ax = otherAx(ax);
+  });
+  const q = pts[pts.length - 1];
+  pts.push(ax === 'v' ? [q[0], E[1]] : [E[0], q[1]]);
+  pts.push(E);
+  return pts;
+}
+// a line that was never shaped: read its automatic route, so editing starts from what is on screen
+function wireFromPath(P, C, d) {
+  const pts = [];
+  let x = 0, y = 0;
+  String(d || '').replace(/([MLHV])\s*(-?[\d.]+)(?:[ ,](-?[\d.]+))?/g, (m, c, a, b) => {
+    if (c === 'H') x = +a; else if (c === 'V') y = +a; else { x = +a; y = +b; }
+    pts.push([x, y]);
+    return m;
+  });
+  const end = (B, q) => {
+    const near = (u, v) => Math.abs(u - v) < 1.5;
+    if (near(q[1], B.y + B.h)) return { s: 'b', t: (q[0] - B.x) / B.w };
+    if (near(q[1], B.y)) return { s: 't', t: (q[0] - B.x) / B.w };
+    if (near(q[0], B.x)) return { s: 'l', t: (q[1] - B.y) / B.h };
+    return { s: 'r', t: (q[1] - B.y) / B.h };
+  };
+  if (pts.length < 2) return null;
+  const w = { a: end(P, pts[0]), b: end(C, pts[pts.length - 1]), k: [] };
+  // corners only: drop repeated points and points in the middle of a straight run
+  const cs = pts.filter((q, i) => !i || q[0] !== pts[i - 1][0] || q[1] !== pts[i - 1][1]);
+  const bends = cs.slice(1, -1).filter((q, i) => { const a = cs[i], b = cs[i + 2]; return !((a[0] === q[0] && q[0] === b[0]) || (a[1] === q[1] && q[1] === b[1])); });
+  let ax = WSIDE[w.a.s];
+  bends.slice(0, -1).forEach(q => { w.k.push(ax === 'v' ? q[1] : q[0]); ax = otherAx(ax); });
+  if (!okWire(w)) w.k = wireDefaultK(P, C, w);
+  return w;
+}
+function wireOf(P, C, L) {
+  if (okWire(C.n.wire)) return clone(C.n.wire);
+  const l = L.links.find(o => o.id === C.n.id);
+  return l ? wireFromPath(P, C, l.auto || l.d) : null;
+}
+// the point on a box edge nearest to (X, Y), as a side and a place along it (snaps to the middle)
+function nearestEnd(b, X, Y, free) {
+  const cx = clamp(X, b.x, b.x + b.w), cy = clamp(Y, b.y, b.y + b.h);
+  const c = [['t', Math.hypot(X - cx, Y - b.y)], ['b', Math.hypot(X - cx, Y - b.y - b.h)], ['l', Math.hypot(X - b.x, Y - cy)], ['r', Math.hypot(X - b.x - b.w, Y - cy)]].sort((p, q) => p[1] - q[1])[0][0];
+  const len = WSIDE[c] === 'v' ? b.w : b.h, along = WSIDE[c] === 'v' ? cx - b.x : cy - b.y;
+  let t = clamp((free ? along : Math.round(along / SNAP) * SNAP) / len, 0, 1);
+  if (!free && Math.abs(t - 0.5) * len < 8) t = 0.5;
+  return { s: c, t: Math.round(t * 1000) / 1000 };
+}
+// handles on the selected box's line to its parent: round = the ends, square = a leg you can slide
+function wireUI(v, L, id) {
+  const f = find(v.root, id);
+  if (!f || !f.parent) return '';
+  const C = L.nodes.find(o => o.n.id === id), P = L.nodes.find(o => o.n.id === f.parent.id);
+  const w = C && P && wireOf(P, C, L);
+  if (!w) return '';
+  const pts = wirePts(P, C, w), last = pts.length - 1;
+  const segs = w.k.map((c, i) => { const a = pts[i + 1], b = pts[i + 2]; return `<circle class="wh wh-seg" data-wh="seg" data-j="${i}" r="5" cx="${(a[0] + b[0]) / 2}" cy="${(a[1] + b[1]) / 2}"><title>ลากเพื่อเลื่อนแนวเส้น</title></circle>`; }).join('');
+  return `<svg class="wire-ui" width="${L.w}" height="${L.h}" viewBox="0 0 ${L.w} ${L.h}"><path class="wsel" d="${ptsD(pts)}"/>
+    <circle class="wh wh-end" data-wh="a" r="6" cx="${pts[0][0]}" cy="${pts[0][1]}"><title>จุดเชื่อมที่หน่วยแม่ · ลากไปตามขอบกล่อง</title></circle>
+    <circle class="wh wh-end" data-wh="b" r="6" cx="${pts[last][0]}" cy="${pts[last][1]}"><title>จุดเชื่อมที่หน่วยนี้ · ลากไปตามขอบกล่อง</title></circle>${segs}</svg>`;
 }
 function freeFrame(doc, maxR, maxB) {
   if (!doc) return null;
@@ -1761,7 +1924,7 @@ function render() {
     (S.route.view === 'home' ? homeHTML() : workspaceHTML());
   if (S.route.view === 'co') {
     const r = $('#rail'); if (r) r.scrollTop = railScroll;
-    if ($('#canvas')) { bindCanvas(); renderStage(); if (S.page === 'workforce' && S.wfZoomPending) { S.wfZoomPending = false; wfZoomTo(wfCurId(curVersion())); } }
+    if ($('#canvas')) { bindCanvas(); renderStage(); if (S.page !== 'structure' && S.wfZoomPending) { S.wfZoomPending = false; wfZoomTo(wfCurId(curVersion())); } }
   }
 }
 function refresh() {
@@ -1878,7 +2041,7 @@ function canvasHTML() {
       <div class="zoomctl"><button class="ibtn" data-act="zoom-out" title="ย่อ" aria-label="ย่อ">${I.minus}</button><button class="zv" data-act="zoom-reset" id="zv" title="ขนาดจริง 100%">100%</button><button class="ibtn" data-act="zoom-in" title="ขยาย" aria-label="ขยาย">${I.plus}</button><button class="ibtn" data-act="zoom-fit" title="พอดีหน้าจอ" aria-label="พอดีหน้าจอ">${I.fit}</button></div></div>`;
 }
 // the structure chart, or the same chart with headcounts on the Workforce page
-const wantCanvas = v => !!v && (S.page === 'structure' ? S.tab === 'chart' : S.page === 'workforce' && !!S.wf && S.wfView === 'chart');
+const wantCanvas = v => !!v && (S.page === 'structure' ? S.tab === 'chart' : !!S.wf && (S.page === 'workforce' ? S.wfView : S.planView) === 'chart');
 function workspaceHTML() {
   const v = curVersion();
   let body;
@@ -1972,6 +2135,7 @@ function toolsHTML(v) {
         <button class="tab" data-act="layout-auto" aria-pressed="${!isFree(v)}" aria-selected="${!isFree(v)}" ${edit ? '' : 'disabled'}>จัดอัตโนมัติ</button><button class="tab" data-act="layout-free" aria-pressed="${isFree(v)}" aria-selected="${isFree(v)}" ${edit ? '' : 'disabled'}>จัดวางอิสระ</button></div>` : ''}
       ${S.tab === 'chart' ? `<select class="inp sm" data-change="level" aria-label="ระดับที่แสดง"><option value="" ${lv === '' ? 'selected' : ''}>แสดงทุกระดับ</option><option value="2" ${lv === '2' ? 'selected' : ''}>แสดง 2 ระดับ</option><option value="3" ${lv === '3' ? 'selected' : ''}>แสดง 3 ระดับ</option><option value="4" ${lv === '4' ? 'selected' : ''}>แสดง 4 ระดับ</option></select>` : ''}
       <details class="dd"><summary class="tbtn keep" title="Export">${I.download}<span class="tl">Export</span></summary><div class="dd-menu right">
+        <button data-act="print-chart">${I.download}พิมพ์ / PDF สำหรับลงนามอนุมัติ (A3 แนวนอน)</button>
         <button data-act="export-png">${I.download}ภาพแผนผัง (PNG)</button><button data-act="export-csv">${I.download}ตารางหน่วยงาน (CSV สำหรับ Excel)</button><button data-act="export-json-version">${I.download}JSON เฉพาะเวอร์ชันนี้</button></div></details>
       <button class="tbtn m-only" data-act="open-insp" aria-label="รายละเอียด">${I.info}</button>
       ${panelBtn('insp')}
@@ -2007,10 +2171,15 @@ function renderStage() {
     const sel = wfCurId(v), focus = sel !== '__out' && sel !== v.root.id ? new Set() : null;
     if (focus) walk(find(v.root, sel).node, n => focus.add(n.id));
     ctx.wf = { P: wfPlace(v), plan: ctx.roll, sel, focus };
+    if (S.page === 'planning') {
+      ctx.planning = true;
+      if (S.recOnly) { const rec = new Set(); walk(v.root, n => { if (recOpen(v.companyCode, n.id).length) rec.add(n.id); }); ctx.wf.focus = rec; }
+    }
   }
   let html = frameHTML(L.frame);
   html += `<svg class="links" width="${L.w}" height="${L.h}" viewBox="0 0 ${L.w} ${L.h}">${L.links.map(l => `<path class="lk ${l.cls || ''}" d="${l.d}" stroke="${l.color}"/>`).join('')}</svg>`;
   html += L.nodes.map(it => nodeHTML(it, ctx)).join('');
+  if (ctx.free && ctx.edit && S.selected) html += wireUI(v, L, S.selected);
   stage.classList.toggle('free', ctx.free);
   stage.classList.toggle('editable', ctx.edit);
   stage.style.width = L.w + 'px';
@@ -2047,7 +2216,8 @@ function nodeHTML(it, ctx) {
   const wf = ctx.wf;
   const pill = EXTERNAL.has(n.type) || wf ? '' : (total ? fmtNum(total) + ' คน' : '');
   let badge = '';
-  if (wf && !EXTERNAL.has(n.type)) {
+  if (wf && ctx.planning && !EXTERNAL.has(n.type)) badge = planBadgeHTML(n, ctx);
+  else if (wf && !EXTERNAL.has(n.type)) {
     // the box's own people (not the boxes under it) and the person who heads it
     const own = (wf.P.byNode.get(n.id) || []).length, all = wf.P.roll.get(n.id) || 0, p = +n.hc || 0, g = gapInfo(p, own), hd = wf.P.heads.get(n.id);
     const mi = wf.P.movIn.get(n.id) || 0, mo = wf.P.movOut.get(n.id) || 0;
@@ -2069,7 +2239,7 @@ function nodeHTML(it, ctx) {
     ${ctx.free && ctx.edit ? ['nw', 'n', 'ne', 'e', 'se', 's', 'sw', 'w'].map(h => `<i class="rh rh-${h}" data-h="${h}"></i>`).join('') : ''}
   </div>`;
 }
-const viewKey = () => S.versionId + (S.page === 'workforce' ? '#wf' : '');
+const viewKey = () => S.versionId + (S.page !== 'structure' ? '#wf' : '');
 function view() { const k = viewKey(); return S.views[k] || (S.views[k] = { x: 0, y: 0, z: 1 }); }
 function applyView() {
   const st = $('#stage'), cv = $('#canvas');
@@ -2128,6 +2298,9 @@ function selectNode(id, o = {}) {
   $$('.ol-row.sel').forEach(el => el.classList.remove('sel'));
   if (id) { const row = $(`.ol-row[data-id="${id}"]`); if (row) row.classList.add('sel'); }
   const v = curVersion();
+  // free layout: handles on the selected box's line
+  const st = $('#stage');
+  if (st && S.layout && S.layout.free) { st.querySelector('.wire-ui')?.remove(); if (id && v && chartEdit(v)) st.insertAdjacentHTML('beforeend', wireUI(v, S.layout, id)); }
   setHTML('#insp', inspHTML(v));
   setHTML('#tools', toolsHTML(v));
   const ws = $('#ws'); if (ws) ws.classList.toggle('insp-open', S.ui.insp);
@@ -2200,6 +2373,15 @@ function bindCanvas() {
     if (e.pointerType === 'mouse' && e.button !== 0) return;
     pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
     const v0 = curVersion(), freeEdit = isFree(v0) && chartEdit(v0);
+    const wh = freeEdit && e.target.closest('.wh');
+    if (wh && pts.size === 1) {
+      const f = find(v0.root, S.selected), L = S.layout;
+      const C = f && f.parent && L.nodes.find(o => o.n.id === f.node.id), P = C && L.nodes.find(o => o.n.id === f.parent.id);
+      const w0 = P && wireOf(P, C, L);
+      e.preventDefault();
+      if (w0) { live = { kind: 'wire', node: f.node, h: wh.dataset.wh, j: +wh.dataset.j || 0, P, C, w0, sx: e.clientX, sy: e.clientY, snap: snapshot(v0), moved: false }; capture(e); }
+      return;
+    }
     const rh = freeEdit && e.target.closest('.rh');
     if (rh && pts.size === 1) {
       const f = find(v0.root, rh.closest('.node').dataset.id);
@@ -2247,6 +2429,22 @@ function bindCanvas() {
       if (!live.moved && Math.abs(dx) + Math.abs(dy) < 2) return;
       live.moved = true;
       const v = curVersion();
+      if (live.kind === 'wire') {
+        const r = $('#stage').getBoundingClientRect(), X = (e.clientX - r.left) / z, Y = (e.clientY - r.top) / z;
+        const w = clone(live.w0), { P, C } = live;
+        if (live.h === 'seg') {
+          const pts = wirePts(P, C, w), a = pts[live.j + 1], b = pts[live.j + 2];
+          w.k[live.j] = Math.abs(a[1] - b[1]) < 0.5 ? snapTo(Y, e) : snapTo(X, e);
+        } else {
+          const end = nearestEnd(live.h === 'a' ? P : C, X, Y, e.altKey);
+          const turned = WSIDE[end.s] !== WSIDE[w[live.h].s];
+          w[live.h] = end;
+          if (turned || !okWire(w)) w.k = wireDefaultK(P, C, w);
+        }
+        live.node.wire = w;
+        redraw();
+        return;
+      }
       if (live.kind === 'resize') {
         const o = live.o, h = live.h, b = live.node.box;
         let x = o.x, y = o.y, w = o.w, hh = o.h;
@@ -2280,6 +2478,7 @@ function bindCanvas() {
       const z = view().z, o = drag.orig.get(drag.id);
       const ddx = snapTo(o.x + (e.clientX - drag.sx) / z, e) - o.x, ddy = snapTo(o.y + (e.clientY - drag.sy) / z, e) - o.y;
       drag.nodes.forEach(n => { const p = drag.orig.get(n.id); n.box.x = p.x + ddx; n.box.y = p.y + ddy; });
+      (drag.wires || []).forEach(({ n, k }) => { let ax = WSIDE[n.wire.a.s]; n.wire.k = k.map(c => { const r = c + (ax === 'v' ? ddy : ddx); ax = otherAx(ax); return r; }); });
       redraw();
       return;
     }
@@ -2294,6 +2493,8 @@ function bindCanvas() {
         drag.nodes = [];
         if (e.shiftKey) walk(f.node, n => { if (okBox(n.box)) drag.nodes.push(n); }); else drag.nodes.push(f.node);
         drag.orig = new Map(drag.nodes.map(n => [n.id, { x: n.box.x, y: n.box.y }]));
+        const ids = new Set(drag.nodes.map(n => n.id));
+        drag.wires = drag.nodes.filter(n => n !== f.node && okWire(n.wire) && ids.has(find(v.root, n.id).parent.id)).map(n => ({ n, k: n.wire.k.slice() }));
         if (S.selected !== drag.id) selectNode(drag.id, { sheet: false });
         capture(e);
         return;
@@ -2335,7 +2536,7 @@ function bindCanvas() {
       const l = live;
       live = null;
       cancelAnimationFrame(relinkRaf);
-      if (l.moved) commitLive(l.kind === 'resize' ? 'ปรับขนาดกล่อง' : 'ย้ายหัวกระดาษ / ท้ายกระดาษ', l.snap);
+      if (l.moved) commitLive(l.kind === 'wire' ? 'ปรับเส้นเชื่อม' : l.kind === 'resize' ? 'ปรับขนาดกล่อง' : 'ย้ายหัวกระดาษ / ท้ายกระดาษ', l.snap);
       else if (l.kind === 'resize') renderStage();
       return;
     }
@@ -2349,10 +2550,10 @@ function bindCanvas() {
     if (drag) {
       const d = drag;
       if (d.started) { const target = d.target; cleanupDrag(); if (target && e.type === 'pointerup') opReparent(d.id, target); }
-      else { drag = null; if (e.type === 'pointerup') { if (S.page === 'workforce') wfSelect(d.id); else selectNode(d.id); } }
+      else { drag = null; if (e.type === 'pointerup') { if (S.page !== 'structure') wfSelect(d.id); else selectNode(d.id); } }
     }
     if (pan) {
-      if (!pan.moved && e.type === 'pointerup' && S.page === 'workforce') wfSelect(null, { zoom: false });
+      if (!pan.moved && e.type === 'pointerup' && S.page !== 'structure') wfSelect(null, { zoom: false });
       else if (!pan.moved && e.type === 'pointerup' && S.selected) { S.ui.insp = false; selectNode(null); }
       pan = null;
       cv.classList.remove('panning');
@@ -2501,6 +2702,7 @@ function nodePanelHTML(v, f) {
     ${styleControls(n)}
     ${isFree(v) && okBox(n.box) ? `<div class="field"><span>ตำแหน่งและขนาดกล่อง (px)</span><div class="row4">${['x', 'y', 'w', 'h'].map(k => `<label>${{ x: 'X', y: 'Y', w: 'กว้าง', h: 'สูง' }[k]}<input type="number" id="nf-b${k}" data-bx="${k}" value="${Math.round(n.box[k])}" ${k === 'w' ? `min="${MIN_W}"` : k === 'h' ? `min="${MIN_H}"` : ''}></label>`).join('')}</div>
       <small class="muted">ลากกล่องเพื่อย้าย · ลากจุดที่ขอบ/มุมเพื่อปรับขนาด · Shift+ลาก = ย้ายพร้อมหน่วยย่อย · Ctrl+ลากไปวางบนกล่องอื่น = ย้ายสังกัด · ปุ่มลูกศร = ขยับทีละ 1 px</small></div>` : ''}
+    ${isFree(v) && okBox(n.box) && f.parent ? wireFieldHTML(v, f) : ''}
     ${subsidiaryLink(n)}
     <label class="field"><span>การจัดวางหน่วยย่อย</span><select class="inp" id="nf-layout" data-f="layout">
       <option value="auto" ${n.layout === 'auto' ? 'selected' : ''}>อัตโนมัติ</option><option value="h" ${n.layout === 'h' ? 'selected' : ''}>แนวนอน (เรียงข้างกัน)</option><option value="v" ${n.layout === 'v' ? 'selected' : ''}>แนวตั้ง (เป็นรายการ)</option></select></label>
@@ -2513,6 +2715,16 @@ function nodePanelHTML(v, f) {
       <button class="btn sm" data-act="add-staff">${I.staff}Staff</button>
       ${f.parent ? `<button class="btn sm danger" data-act="delete-node">${I.trash}ลบ</button>` : ''}
     </div></section>`;
+}
+// the line from the parent to this box: which sides it joins, and back to the automatic route
+function wireFieldHTML(v, f) {
+  const L = S.layout, C = L && L.nodes.find(o => o.n.id === f.node.id), P = C && L.nodes.find(o => o.n.id === f.parent.id);
+  const w = (P && wireOf(P, C, L)) || { a: { s: 'b' }, b: { s: 't' } };
+  const sel = (end, order) => `<select class="inp" data-wire="${end}" aria-label="${end === 'a' ? 'ด้านที่เส้นออกจากหน่วยแม่' : 'ด้านที่เส้นเข้าหน่วยนี้'}">${order.map(k => `<option value="${k}" ${w[end].s === k ? 'selected' : ''}>${WSIDE_TH[k]}</option>`).join('')}</select>`;
+  return `<div class="field wire-f"><span>เส้นเชื่อมกับหน่วยแม่${okWire(f.node.wire) ? ' <span class="tag">ปรับเอง</span>' : ''}</span>
+    <div class="row2"><label>ออกจาก “${esc(f.parent.name || 'หน่วยแม่')}”${sel('a', ['b', 't', 'l', 'r'])}</label><label>เข้ากล่องนี้${sel('b', ['t', 'l', 'r', 'b'])}</label></div>
+    <small class="muted">บนผัง: ลากจุดกลมที่ปลายเส้นเพื่อเลื่อนจุดเชื่อมไปตามขอบกล่อง · ลากจุดสีส้มเพื่อเลื่อนแนวเส้น · Alt = ไม่จัดให้ตรงตาราง</small>
+    ${okWire(f.node.wire) ? `<button class="btn sm" data-act="wire-reset">${I.undo}คืนค่าเส้นอัตโนมัติ</button>` : ''}</div>`;
 }
 function styleControls(n) {
   const st = styleOf(n);
@@ -3496,10 +3708,30 @@ function actDur(a, withLabel) {
   const t = actTier(a);
   return `<span class="act-d t${t}"${t ? ` title="${ACT_TIER[t]}"` : ''}>${fmtYears(actYears(a))}${withLabel && t ? ` · ${ACT_SHORT[t]}` : ''}</span>`;
 }
+// acting roles in effect: the HR acting file minus the ones taken off here, plus the ones added here.
+// S.wf.actEdits = { add: [{ id, emp, co, node, pos, grade, since, by, at }], drop: { key: { by, at } }, at }
+// key = emp|unit for a row of the HR file, +id for one added here (a box of the chart, not an HR unit)
+const actKey = a => (a.hand ? '+' + a.id : a.emp + '|' + a.unit);
+function actingList() {
+  if (!S.wf) return [];
+  const ed = S.wf.actEdits || {}, key = (S.wf.actingAt || '') + '|' + (ed.at || '');
+  if (actingList.wf === S.wf && actingList.key === key) return actingList.list;
+  const drop = ed.drop || {};
+  const list = (S.wf.acting || []).filter(a => !drop[a.emp + '|' + a.unit])
+    .concat((ed.add || []).filter(x => !drop['+' + x.id]).map(x => Object.assign({ hand: true }, x)));   // HR rows first
+  Object.assign(actingList, { wf: S.wf, key, list });
+  return list;
+}
+// the box or HR unit an acting role is in, by name
+function actUnitName(a) {
+  if (!a.hand) return (S.wf.units[a.unit] || {}).name || a.unit;
+  for (const v of versionsOf(a.co)) { const f = find(v.root, a.node); if (f) return f.node.name; }
+  return '';
+}
 // every acting role a person holds, in any company
 function actingOf(p) {
-  if (!S.wf || !S.wf.acting) return [];
-  if (actingOf.key !== S.wf.actingAt) { actingOf.key = S.wf.actingAt; actingOf.map = new Map(); S.wf.acting.forEach(a => { if (!actingOf.map.has(a.emp)) actingOf.map.set(a.emp, []); actingOf.map.get(a.emp).push(a); }); }
+  const list = actingList();
+  if (actingOf.list !== list) { actingOf.list = list; actingOf.map = new Map(); list.forEach(a => { if (!actingOf.map.has(a.emp)) actingOf.map.set(a.emp, []); actingOf.map.get(a.emp).push(a); }); }
   return actingOf.map.get(p.id) || [];
 }
 function personById(id) {
@@ -3574,7 +3806,7 @@ function wfPlace(v) {
   const map = (S.wf.map && S.wf.map[co]) || {};
   const hmap = (S.wf.heads && S.wf.heads[co]) || {};
   const moves = (S.wf.moves && S.wf.moves[v.id]) || {};
-  const ck = [v.id, v.updatedAt, act && act.id, act && act.updatedAt, S.wf.importedAt, S.wf.actingAt, S.wf.people.length, JSON.stringify(map), JSON.stringify(hmap), JSON.stringify(moves)].join('|');
+  const ck = [v.id, v.updatedAt, act && act.id, act && act.updatedAt, S.wf.importedAt, S.wf.actingAt, (S.wf.actEdits || {}).at, S.wf.people.length, JSON.stringify(map), JSON.stringify(hmap), JSON.stringify(moves)].join('|');
   if (wfCache.has(ck)) return wfCache.get(ck);
   const ids = new Set();
   walk(v.root, n => { if (!EXTERNAL.has(n.type)) ids.add(n.id); });
@@ -3612,19 +3844,34 @@ function wfPlace(v) {
   });
   const roll = new Map();
   (function rec(n) { let t = (byNode.get(n.id) || []).length; n.children.forEach(c => { t += rec(c); }); roll.set(n.id, t); return t; })(v.root);
-  // head of a box: chosen by hand, otherwise the highest level among the people in that box (not in the boxes under it)
-  const heads = new Map();
-  byNode.forEach((ps, id) => heads.set(id, (hmap[id] && ps.find(p => p.id === hmap[id])) || ps.slice().sort(byRank)[0]));
+  // head of a box (only the people in that box, not the boxes under it): chosen by hand, otherwise the person
+  // HR marks as Structure Owner = Top of a unit placed on this box (its own unit before a unit folded into it),
+  // otherwise the highest level. Top only counts where the person sits in their own unit, not after a planned move.
+  const heads = new Map(), headHow = new Map();
+  byNode.forEach((ps, id) => {
+    const hand = hmap[id] && ps.find(p => p.id === hmap[id]);
+    const tops = ps.filter(p => p.owner === 'Top' && !moved.has(p))
+      .sort((a, b) => ((unitTo.get(a.unit) || {}).how === 'parent') - ((unitTo.get(b.unit) || {}).how === 'parent') || byRank(a, b));
+    const h = hand || tops[0] || ps.slice().sort(byRank)[0];
+    heads.set(id, h);
+    headHow.set(id, hand ? 'manual' : tops[0] ? 'top' : 'level');
+  });
   // acting roles in this company: listed on their box; the highest acting role leads a box that has no
   // permanent head, or whose acting grade is above the permanent head's level (unless the head was chosen by hand).
   // Acting people are counted in their own box only.
   const acting = new Map(), actingOut = [], actHead = new Map();
   let byPos = null;
-  (S.wf.acting || []).forEach(a => {
+  actingList().forEach(a => {
     if (a.co !== co) return;
     const p = personById(a.emp);
     if (!p) return;
     const e = { a, p, cross: p.co !== co };
+    if (a.hand) {   // added here for a box: only in the versions that have that box, once per person
+      if (!ids.has(a.node) || (acting.get(a.node) || []).some(x => x.p === p)) return;
+      if (!acting.has(a.node)) acting.set(a.node, []);
+      acting.get(a.node).push(e);
+      return;
+    }
     let id = (unitTo.get(a.unit) || {}).id;
     // a role on a company-level unit has no box of its own: use the box named like the position, e.g. Managing Director (MD1)
     if (!id && !(a.unit in map)) {
@@ -3639,7 +3886,7 @@ function wfPlace(v) {
     if (h && hmap[id] === h.id) return;   // a head chosen by hand stays the head
     if (!h || lvlNum(es[0].a.grade) > lvlNum(h.lvl)) actHead.set(id, es[0]);
   });
-  const res = { byNode, nodeOf, roll, unplaced, gone, moved, left, movIn, movOut, unitTo, heads, headSet: new Set(heads.values()), acting, actingOut, actHead, act: ixA ? act : null, total: S.wf.people.filter(p => p.co === co).length };
+  const res = { byNode, nodeOf, roll, unplaced, gone, moved, left, movIn, movOut, unitTo, heads, headHow, headSet: new Set(heads.values()), acting, actingOut, actHead, act: ixA ? act : null, total: S.wf.people.filter(p => p.co === co).length };
   if (wfCache.size > 40) wfCache.clear();
   wfCache.set(ck, res);
   return res;
@@ -3675,7 +3922,8 @@ function wfSummary(list) {
   });
   return s;
 }
-const sortPeople = (list, P) => list.slice().sort((a, b) => (P ? P.headSet.has(b) - P.headSet.has(a) : 0) || byRank(a, b));
+const sortPeople = (list, P) => list.slice().sort((a, b) => (P ? P.headSet.has(b) - P.headSet.has(a) : 0) || (OWNER_RANK[b.owner] || 0) - (OWNER_RANK[a.owner] || 0) || byRank(a, b));
+const HEAD_HOW = { manual: 'เลือกเอง', top: 'ตาม Structure Owner = Top ในระบบ HR', level: 'ตามระดับสูงสุดในกล่อง (ไม่มี Structure Owner = Top)' };
 const shortName = p => `${p.fn} ${p.ln}`.trim();
 const eduText = p => [p.edu, p.deg && p.deg !== p.edu ? p.deg : '', p.major, p.school].filter(Boolean).join(' · ');
 function gapInfo(plan, actual) {
@@ -3710,10 +3958,17 @@ function wfToolsHTML(v) {
       <div class="tabs" role="group" aria-label="ขอบเขตรายชื่อ"><button class="tab" data-act="wf-scope" data-scope="all" aria-pressed="${S.wfScope === 'all'}" aria-selected="${S.wfScope === 'all'}">รวมหน่วยย่อย</button><button class="tab" data-act="wf-scope" data-scope="direct" aria-pressed="${S.wfScope === 'direct'}" aria-selected="${S.wfScope === 'direct'}">เฉพาะหน่วยนี้</button></div>
       <div class="tools-r"><button class="tbtn keep" data-act="wf-map">${I.link}<span class="tl">จับคู่หน่วยงาน</span></button><button class="tbtn keep" data-act="wf-export">${I.download}<span class="tl">Export รายชื่อ</span></button>${tail}</div>`;
   }
+  const pviews = S.wf ? `<div class="tabs" role="tablist"><button class="tab" role="tab" data-act="plan-view" data-view="chart" aria-selected="${S.planView === 'chart'}">ผังองค์กร</button><button class="tab" role="tab" data-act="plan-view" data-view="table" aria-selected="${S.planView !== 'chart'}">ตาราง</button></div>` : '';
+  if (S.wf && S.planView === 'chart') {
+    const lv = S.levelSel[v.id] || '';
+    return `${lead}${pviews}<button class="tbtn keep${S.recOnly ? ' on' : ''}" data-act="rec-only" aria-pressed="${S.recOnly}" title="ทำให้กล่องที่ไม่ได้สรรหาจางลง">${I.people}<span class="tl">เฉพาะกล่องที่กำลังสรรหา</span></button><span class="wf-hint">คลิกกล่องเพื่อดูแผนและบันทึกการสรรหา</span>
+      <div class="tools-r"><select class="inp sm" data-change="level" aria-label="ระดับที่แสดง"><option value="" ${lv === '' ? 'selected' : ''}>แสดงทุกระดับ</option>${['2', '3', '4'].map(k => `<option value="${k}" ${lv === k ? 'selected' : ''}>แสดง ${k} ระดับ</option>`).join('')}</select>
+        <button class="tbtn keep" data-act="rec-export">${I.download}<span class="tl">Export การสรรหา</span></button>${tail}</div>`;
+  }
   const f = S.planFilter;
   const seg = [['all', 'ทุกหน่วย'], ['short', 'ขาดคน'], ['over', 'เกินแผน'], ['nop', 'ยังไม่กำหนดแผน']].concat(activeOf(v.companyCode) && activeOf(v.companyCode).id !== v.id ? [['new', 'หน่วยใหม่']] : [])
     .map(([k, l]) => `<button class="tab" data-act="plan-filter" data-f="${k}" aria-pressed="${f === k}" aria-selected="${f === k}">${l}</button>`).join('');
-  return `${lead}<div class="tabs" role="group" aria-label="กรองหน่วยงาน">${seg}</div>
+  return `${lead}${pviews}<div class="tabs" role="group" aria-label="กรองหน่วยงาน">${seg}</div>
     <div class="tools-r">${canEdit(v) && S.wf ? `<button class="tbtn keep" data-act="plan-fill" title="กำหนดอัตรากำลังตามแผนให้เท่ากับจำนวนคนจริง สำหรับหน่วยที่ยังไม่มีแผน">${I.plan}<span class="tl">ตั้งแผนเท่าคนจริง</span></button>` : ''}
       <button class="tbtn keep" data-act="plan-export">${I.download}<span class="tl">Export แผน</span></button>${tail}</div>`;
 }
@@ -3840,6 +4095,7 @@ function barsHTML(title, obj, total, order) {
 function wfInspHTML(v) {
   if (!v) return '';
   if (S.page === 'workforce' && S.wf && S.wfView === 'chart') return wfUnitPanelHTML(v);
+  if (S.page === 'planning' && S.wf && S.planView === 'chart') return planUnitPanelHTML(v);
   const head = `<div class="ip-head"><div><h3>${S.page === 'planning' ? 'Workforce Planning' : 'Workforce'}</h3><h2>${S.page === 'planning' ? 'วางแผนกำลังคน' : 'ข้อมูลกำลังคน'}</h2></div><button class="ibtn ip-close" data-act="close-insp" aria-label="ปิด">${I.close}</button></div>`;
   const tip = S.page === 'planning'
     ? `<div class="tip"><b>วางแผนอย่างไร</b><span>อัตรากำลังตามแผนเป็นส่วนหนึ่งของเวอร์ชันโครงสร้าง แก้ได้ใน Draft แล้ว Publish พร้อมโครงสร้าง</span><span>Draft ที่สร้างจาก Active ใช้กล่องเดิม คนจึงตามหน่วยเดิมไปอัตโนมัติ หน่วยที่ถูกยุบจะแสดงรายชื่อคนที่ต้องจัดสรรใหม่</span></div>`
@@ -3882,12 +4138,13 @@ function movedFrom(v, P, p) {
 function actingLines(p, v) {
   const list = actingOf(p);
   if (!list.length) return '';
-  return `<div class="pp-act">${list.map(a => { const u = S.wf.units[a.unit]; return `<a href="#" class="act-l" data-act="wf-goto-acting" data-co="${esc(a.co)}" data-unit="${esc(a.unit)}" title="ไปที่หน่วยที่รักษาการ${actTier(a) ? ' · ' + ACT_TIER[actTier(a)] : ''}"><span class="act-k">รก.</span> ${a.co !== p.co || (v && a.co !== v.companyCode) ? `<b>${esc(a.co)}</b> ` : ''}${esc(u ? u.name : a.unit)} · ${esc(a.pos)} · ${actDur(a)}</a>`; }).join('')}</div>`;
+  return `<div class="pp-act">${list.map(a => `<a href="#" class="act-l" data-act="wf-goto-acting" data-co="${esc(a.co)}" data-k="${esc(actKey(a))}" title="ไปที่หน่วยที่รักษาการ${actTier(a) ? ' · ' + ACT_TIER[actTier(a)] : ''}"><span class="act-k">รก.</span> ${a.co !== p.co || (v && a.co !== v.companyCode) ? `<b>${esc(a.co)}</b> ` : ''}${esc(actUnitName(a))} · ${esc(a.pos)} · ${actDur(a)}</a>`).join('')}</div>`;
 }
 // a person acting in this box (their own box is elsewhere, maybe in another company)
-function actingCardHTML(e, isHead) {
-  const { a, p } = e, home = S.wf.units[p.unit];
-  return `<div class="pp act${isHead ? ' head' : ''}"><div class="pp-n"><b>${esc(wfName(p))}</b> <span class="tag act">${isHead ? 'รักษาการหัวหน้าหน่วย' : 'รักษาการ'}</span>${e.cross ? ` <span class="tag cross" title="ข้ามบริษัท">จาก ${esc(p.co)}</span>` : ''}</div>
+function actingCardHTML(e, isHead, edit) {
+  const { a, p } = e, home = S.wf.units[p.unit], k = esc(actKey(a));
+  return `<div class="pp act${isHead ? ' head' : ''}"><div class="pp-n"><b>${esc(wfName(p))}</b> <span class="tag act">${isHead ? 'รักษาการหัวหน้าหน่วย' : 'รักษาการ'}</span>${e.cross ? ` <span class="tag cross" title="ข้ามบริษัท">จาก ${esc(p.co)}</span>` : ''}${a.hand ? ` <span class="tag" title="เพิ่ม/แก้ไขในระบบนี้โดย ${esc(a.by || '')} ${esc(fmtDateTime(a.at))}">แก้ไขในระบบ</span>` : ''}
+      ${edit ? `<span class="pp-ed"><button class="pp-mv" data-act="act-edit" data-k="${k}" title="เปลี่ยนผู้รักษาการ ตำแหน่ง หรือวันที่">${I.edit}แก้ไข</button><button class="pp-mv danger" data-act="act-drop" data-k="${k}" title="นำออกจากรายการรักษาการ">${I.trash}ยกเลิก</button></span>` : ''}</div>
     <div class="pp-m">${esc(a.pos)}${a.grade ? ` · ระดับตำแหน่ง ${esc(a.grade)}` : ''} · ตั้งแต่ ${fmtDate(a.since)} · ${actDur(a, true)}</div>
     <div class="pp-u">สังกัดจริง: ${esc(p.co)} · ${esc(home ? home.name : '')} · ${esc(p.pos)} ระดับ ${esc(p.lvl)}${actingOf(p).length > 1 ? ` · รักษาการทั้งหมด ${actingOf(p).length} ตำแหน่ง` : ''}</div>
     ${eduText(p) ? `<div class="pp-e">${I.edu}${esc(eduText(p))}</div>` : ''}</div>`;
@@ -3895,7 +4152,7 @@ function actingCardHTML(e, isHead) {
 function personHTML(p, P, unit, v) {
   const head = P.headSet.has(p), edu = eduText(p), mv = v && P.moved.get(p), move = canMove(v);
   return `<div class="pp${head ? ' head' : ''}${mv ? ' moved' : ''}${S.wfSel.has(p.id) ? ' picked' : ''}" ${move ? `draggable="true" data-emp="${esc(p.id)}"` : ''}>
-    <div class="pp-n">${move ? `<input type="checkbox" class="pp-ck" data-sel="${esc(p.id)}" ${S.wfSel.has(p.id) ? 'checked' : ''} aria-label="เลือก ${esc(wfName(p))}">` : ''}<b>${esc(wfName(p))}</b>${head ? ' <span class="tag head">หัวหน้าหน่วย</span>' : ''}${mv ? ' <span class="tag mv">ย้ายตามแผน</span>' : ''}${p.emp !== 'ประจำ' ? ` <span class="tag">${esc(p.emp)}</span>` : ''}
+    <div class="pp-n">${move ? `<input type="checkbox" class="pp-ck" data-sel="${esc(p.id)}" ${S.wfSel.has(p.id) ? 'checked' : ''} aria-label="เลือก ${esc(wfName(p))}">` : ''}<b>${esc(wfName(p))}</b>${head ? ' <span class="tag head">หัวหน้าหน่วย</span>' : ''}${p.owner === 'Top' ? ' <span class="tag own" title="Structure Owner = Top ในระบบ HR">Owner Top</span>' : ''}${mv ? ' <span class="tag mv">ย้ายตามแผน</span>' : ''}${p.emp !== 'ประจำ' ? ` <span class="tag">${esc(p.emp)}</span>` : ''}
       ${move ? `<button class="pp-mv" data-act="wf-move" data-emp="${esc(p.id)}" title="ย้ายไปกล่องอื่นใน Draft นี้">${I.move}ย้าย</button>` : ''}</div>
     <div class="pp-m">${esc(p.pos)} · ระดับ ${esc(p.lvl)} · อายุงาน ${fmtYears(wfYears(p.start))}${retireSoon(p) ? ` · <span class="soon">เกษียณ ${p.retire + 543}</span>` : ''}</div>
     ${edu ? `<div class="pp-e">${I.edu}${esc(edu)}</div>` : ''}${unit ? `<div class="pp-u">${esc(unit)}</div>` : ''}
@@ -3935,11 +4192,15 @@ function wfUnitPanelHTML(v) {
     head = `<div class="ip-head"><div><h3><i class="dot tc-${node.type}"></i> ${esc(TYPES[node.type].th)}${node.staff ? ' · Staff' : ''}</h3><h2>${esc(node.name || 'ไม่มีชื่อ')}</h2>${trail ? `<p class="muted ip-path">${esc(trail)}</p>` : ''}</div>${close}</div>`;
     const ah = P.actHead.get(node.id), acts = P.acting.get(node.id) || [];
     if (ah) lead = `<div class="hd act"><span class="hd-l">รักษาการหัวหน้าหน่วย</span><b>${esc(wfName(ah.p))}</b><span>${esc(ah.a.pos)} · ตั้งแต่ ${fmtDate(ah.a.since)} · ${actDur(ah.a, true)}</span><span>สังกัดจริง: ${esc(ah.p.co)} · ${esc((S.wf.units[ah.p.unit] || {}).name || '')}</span></div>`;
-    if (acts.length) subs = `<section class="panel"><h3>รักษาการในหน่วยนี้ · ${acts.length} คน</h3><div class="pp-list">${acts.map(e => actingCardHTML(e, e === ah)).join('')}</div></section>`;
+    const edA = canEditApp(), drop = (S.wf.actEdits || {}).drop || {};
+    const dropped = edA ? (S.wf.acting || []).filter(a => a.co === v.companyCode && drop[a.emp + '|' + a.unit] && (P.unitTo.get(a.unit) || {}).id === node.id) : [];
+    if (acts.length || edA) subs = `<section class="panel act-sec"><h3>รักษาการในหน่วยนี้ · ${acts.length} คน${edA ? `<button class="btn sm" data-act="act-add" data-node="${node.id}">${I.plus}เพิ่มผู้รักษาการ</button>` : ''}</h3>
+      ${acts.length ? `<div class="pp-list">${acts.map(e => actingCardHTML(e, e === ah, edA)).join('')}</div>` : '<p class="muted">ยังไม่มีผู้รักษาการในหน่วยนี้</p>'}
+      ${dropped.length ? `<p class="muted act-dropped">ยกเลิกรายการตามไฟล์ HR ไว้ ${dropped.length} รายการ · <a href="#" data-act="act-restore" data-node="${node.id}">คืนค่าตามไฟล์ HR</a></p>` : ''}</section>`;
     if (hd) {
       const pick = (S.wf.heads && S.wf.heads[v.companyCode] && S.wf.heads[v.companyCode][node.id]) || '';
-      lead += `<div class="hd"><span class="hd-l">${ah ? 'หัวหน้าหน่วย (ประจำ)' : 'หัวหน้าหน่วย'}</span><b>${esc(wfName(hd))}</b><span>${esc(hd.pos)} · ระดับ ${esc(hd.lvl)} · อายุงาน ${fmtYears(wfYears(hd.start))}</span>${eduText(hd) ? `<span class="pp-e">${I.edu}${esc(eduText(hd))}</span>` : ''}
-        ${canEditApp() && (own.length > 1 || acts.length) ? `<label class="hd-pick"><span>เปลี่ยนหัวหน้าหน่วย</span><select class="inp sm" data-change="wf-head" data-node="${node.id}"><option value="">อัตโนมัติ (ระดับสูงสุดในกล่องนี้${acts.length ? ' หรือผู้รักษาการที่ระดับตำแหน่งสูงกว่า' : ''})</option>${sortPeople(own).map(p => `<option value="${esc(p.id)}" ${pick === p.id ? 'selected' : ''}>${esc(wfName(p))} · ${esc(p.lvl)}</option>`).join('')}</select></label>` : ''}</div>`;
+      lead += `<div class="hd"><span class="hd-l">${ah ? 'หัวหน้าหน่วย (ประจำ)' : 'หัวหน้าหน่วย'} <small class="hd-how">· ${HEAD_HOW[P.headHow.get(node.id)] || ''}</small></span><b>${esc(wfName(hd))}</b><span>${esc(hd.pos)} · ระดับ ${esc(hd.lvl)} · อายุงาน ${fmtYears(wfYears(hd.start))}</span>${eduText(hd) ? `<span class="pp-e">${I.edu}${esc(eduText(hd))}</span>` : ''}
+        ${canEditApp() && (own.length > 1 || acts.length) ? `<label class="hd-pick"><span>เปลี่ยนหัวหน้าหน่วย</span><select class="inp sm" data-change="wf-head" data-node="${node.id}"><option value="">อัตโนมัติ (Structure Owner = Top หรือระดับสูงสุดในกล่องนี้${acts.length ? ' · ผู้รักษาการที่ระดับตำแหน่งสูงกว่าเป็นหัวหน้า' : ''})</option>${sortPeople(own).map(p => `<option value="${esc(p.id)}" ${pick === p.id ? 'selected' : ''}>${esc(wfName(p))} · ${esc(p.lvl)}</option>`).join('')}</select></label>` : ''}</div>`;
     } else if (!ah) lead = `<p class="muted hd-none">ยังไม่มีคนในกล่องนี้${all ? ` · หน่วยย่อยมี ${fmtNum(all)} คน` : ''}</p>`;
     kpis = `<div class="statgrid">
       <div class="stat"><b>${fmtNum(own.length)}</b><span>คนในกล่องนี้</span></div>
@@ -4069,6 +4330,17 @@ function actingRows(v, P) {
   P.actingOut.forEach(e => out.push({ e, box: '', id: null, head: false }));
   return out.sort((a, b) => (actYears(b.e.a) || 0) - (actYears(a.e.a) || 0));
 }
+function recTableHTML(v, P) {
+  const rows = recRows(v);
+  if (!rows.length) return '';
+  const open = rows.filter(x => REC_ST[x.r.status].open);
+  return `<section class="pt-gone pt-rec-t"><h3>การสรรหา <span class="muted">${fmtNum(recN(open.map(x => x.r)))} อัตรากำลังสรรหา · ${fmtNum(rows.length - open.length)} รายการปิดแล้ว</span>
+      <span class="mv-acts"><button class="btn sm" data-act="rec-export">${I.download}Export</button></span></h3>
+    <div class="mv-table"><div class="act-row mv-head"><div>หน่วยงาน</div><div>ตำแหน่ง</div><div>สถานะ</div><div class="num">กำหนดได้ตัว</div></div>
+    ${rows.map(({ r, n }) => `<div class="act-row${REC_ST[r.status].open ? '' : ' shut'}"><div><a href="#" data-act="plan-open-unit" data-id="${n.id}">${esc(n.name)}</a><small>คนจริง ${fmtNum((P.byNode.get(n.id) || []).length)} · แผน ${+n.hc ? fmtNum(+n.hc) : '—'}</small></div>
+      <div><b>${esc(r.pos)}</b><small>${fmtNum(+r.n || 1)} อัตรา · ${esc(REC_WHY[r.why] || '')}${r.owner ? ' · ' + esc(r.owner) : ''}</small></div>
+      <div>${recChip(r)}</div><div class="num"><span class="${recLate(r) ? 'late-t' : ''}">${r.due ? fmtDate(r.due) : '—'}</span>${recLate(r) ? '<small class="late-t">เลยกำหนด</small>' : ''}</div></div>`).join('')}</div></section>`;
+}
 function actingTableHTML(v, P) {
   const rows = actingRows(v, P);
   if (!rows.length) return '';
@@ -4084,7 +4356,7 @@ function actingTableHTML(v, P) {
     <p class="act-legend muted"><span class="act-d t1">●</span> ${ACT_TIER[1]} <span class="act-d t2">●</span> ${ACT_TIER[2]}</p>
     <div class="mv-table"><div class="act-row mv-head"><div>หน่วยงานที่รักษาการ</div><div>ผู้รักษาการ</div><div>สังกัดจริง</div><div class="num">ระยะเวลา</div></div>
     ${shown.map(r => { const { a, p } = r.e, n = actingOf(p).length; return `<div class="act-row">
-      <div>${r.id ? `<a href="#" data-act="wf-open-unit" data-id="${r.id}">${esc(r.box)}</a>` : `<span class="muted">${esc((S.wf.units[a.unit] || {}).name || '')} (ยังไม่ลงกล่อง)</span>`}<small>${esc(a.pos)}${a.grade ? ` · ระดับตำแหน่ง ${esc(a.grade)}` : ''}${r.head ? ' · <b>หัวหน้าหน่วย</b>' : ''}</small></div>
+      <div>${r.id ? `<a href="#" data-act="wf-open-unit" data-id="${r.id}">${esc(r.box)}</a>` : `<span class="muted">${esc(actUnitName(a))} (ยังไม่ลงกล่อง)</span>`}${a.hand ? ' <span class="tag">แก้ไขในระบบ</span>' : ''}<small>${esc(a.pos)}${a.grade ? ` · ระดับตำแหน่ง ${esc(a.grade)}` : ''}${r.head ? ' · <b>หัวหน้าหน่วย</b>' : ''}</small></div>
       <div><b>${esc(wfName(p))}</b><small>${esc(p.pos)} · ระดับ ${esc(p.lvl)}${n > 1 ? ` · <span class="soon">รักษาการ ${n} ตำแหน่ง</span>` : ''}</small></div>
       <div>${r.e.cross ? `<span class="tag cross">${esc(p.co)}</span> ` : ''}${esc((S.wf.units[p.unit] || {}).name || '')}</div>
       <div class="num">${actDur(a)}<small>ตั้งแต่ ${fmtDate(a.since)}</small>${actTier(a) ? `<small class="act-d t${actTier(a)}">${ACT_SHORT[actTier(a)]}</small>` : ''}</div></div>`; }).join('') || '<p class="empty">ไม่มีรายการในกลุ่มนี้</p>'}</div></section>`;
@@ -4118,13 +4390,14 @@ function planPageHTML(v) {
     base ? ['หน่วยใหม่ใน Draft', fmtNum(fresh.length), '', `หน่วยที่ไม่มีใน Active v${base.versionNo}`] : null,
     P && base ? ['ต้องจัดสรรใหม่', fmtNum(P.gone.length) + ' คน', P.gone.length ? 'warn' : '', 'คนจากหน่วยที่ไม่มีในเวอร์ชันนี้'] : null,
     P && P.moved.size ? ['ย้ายตามแผน', fmtNum(P.moved.size) + ' คน', '', P.left.length ? `นำออกจากผัง ${P.left.length} คน` : ''] : null,
+    P ? (() => { const rr = recRows(v).filter(x => REC_ST[x.r.status].open); return rr.length ? ['กำลังสรรหา', fmtNum(recN(rr.map(x => x.r))) + ' อัตรา', 'rec', `${new Set(rr.map(x => x.n.id)).size} หน่วย · เลยกำหนด ${rr.filter(x => recLate(x.r)).length}`] : null; })() : null,
     P && (P.acting.size || P.actingOut.length) ? (() => { const all = actingRows(v, P); return ['ตำแหน่งที่มีผู้รักษาการ', fmtNum(all.length), 'warn', `ข้ามบริษัท ${all.filter(r => r.e.cross).length} · เกิน ${ACT_REVIEW} ปี ${all.filter(r => actTier(r.e.a) >= 1).length} · เกิน ${ACT_OVER} ปี ${all.filter(r => actTier(r.e.a) === 2).length}`]; })() : null,
   ]);
   const f = S.planFilter;
   const shown = rows.filter(r => f === 'all' || (f === 'new' ? r.isNew : r.g.cls === f));
   const head = `<div class="pt-row pt-head"><div>หน่วยงาน</div><div class="num">แผน</div><div class="num">คนจริง</div><div>ส่วนต่าง</div><div class="num" title="รวมหน่วยย่อยทั้งหมด">รวมทั้งสาย แผน / คน</div><div class="num" title="เกษียณภายใน 3 ปี">ใกล้เกษียณ</div>${base ? `<div class="num" title="อัตรากำลังตามแผนใน Active v${base.versionNo}">แผนใน Active</div>` : ''}</div>`;
   const body = shown.map(r => `<div class="pt-row${r.isNew ? ' new' : ''}" data-id="${r.n.id}">
-      <div class="pt-name" style="--d:${f === 'all' ? r.depth : 0}"><i class="dot tc-${r.n.type}"></i><span>${esc(r.n.name || 'ไม่มีชื่อ')}</span>${r.isNew ? '<span class="tag new">ใหม่</span>' : ''}${r.n.staff ? '<span class="tag">Staff</span>' : ''}${r.actHead ? `<span class="pt-hd act" title="รักษาการหัวหน้าหน่วย${r.actHead.cross ? ` (จาก ${esc(r.actHead.p.co)})` : ''}">รก. ${esc(shortName(r.actHead.p))}</span>` : r.head ? `<span class="pt-hd" title="หัวหน้าหน่วย">${esc(shortName(r.head))}</span>` : ''}</div>
+      <div class="pt-name" style="--d:${f === 'all' ? r.depth : 0}"><i class="dot tc-${r.n.type}"></i><span>${esc(r.n.name || 'ไม่มีชื่อ')}</span>${r.isNew ? '<span class="tag new">ใหม่</span>' : ''}${r.n.staff ? '<span class="tag">Staff</span>' : ''}${S.wf && recOpen(v.companyCode, r.n.id).length ? `<span class="pt-rec st-${recStage(recOpen(v.companyCode, r.n.id))}" title="กำลังสรรหา">สรรหา ${fmtNum(recN(recOpen(v.companyCode, r.n.id)))}</span>` : ''}${r.actHead ? `<span class="pt-hd act" title="รักษาการหัวหน้าหน่วย${r.actHead.cross ? ` (จาก ${esc(r.actHead.p.co)})` : ''}">รก. ${esc(shortName(r.actHead.p))}</span>` : r.head ? `<span class="pt-hd" title="หัวหน้าหน่วย">${esc(shortName(r.head))}</span>` : ''}</div>
       <div class="num">${edit ? `<input class="pt-in" type="text" inputmode="numeric" data-plan="${r.n.id}" value="${r.pl || ''}" placeholder="0" aria-label="อัตรากำลังตามแผน ${esc(r.n.name)}">` : (r.pl ? fmtNum(r.pl) : '—')}</div>
       <div class="num">${P ? (r.a ? `<a href="#" data-act="wf-open-unit" data-id="${r.n.id}">${fmtNum(r.a)}</a>` : '0') : '—'}</div>
       <div><span class="gap ${r.g.cls}">${P ? r.g.txt : ''}</span></div>
@@ -4152,7 +4425,7 @@ function planPageHTML(v) {
   }
   const lockNote = !S.wf ? `<div class="wf-alert">${I.lock}<div>${S.wfEnv ? wfGateHTML(true) : '<p>ยังไม่มีข้อมูลพนักงาน จึงแสดงเฉพาะอัตรากำลังตามแผน</p>'}</div></div>` : '';
   const editNote = !edit && v.status !== 'draft' ? `<p class="pt-note">${I.lock} เวอร์ชัน ${ST[v.status]} อ่านอย่างเดียว — ${canEditApp() ? 'กด “สร้าง Draft เพื่อแก้ไข” ด้านบนเพื่อวางแผนอัตรากำลังในโครงสร้างใหม่' : 'เข้าสู่ระบบเพื่อวางแผน'}</p>` : '';
-  return `<div class="wf-page pt-page" id="pt-page">${lockNote}${kp}${editNote}<div class="pt" role="table">${head}${body}</div>${goneHTML}${movesHTML}${P ? actingTableHTML(v, P) : ''}</div>`;
+  return `<div class="wf-page pt-page" id="pt-page">${lockNote}${kp}${editNote}<div class="pt" role="table">${head}${body}</div>${goneHTML}${movesHTML}${P ? recTableHTML(v, P) : ''}${P ? actingTableHTML(v, P) : ''}</div>`;
 }
 function onPlanInput(t) {
   const v = curVersion();
@@ -4165,9 +4438,9 @@ function onPlanInput(t) {
   f.node.hc = val;
   touch(v, 'กำหนดอัตรากำลังตามแผน');
   const id = f.node.id, raw = t.value;
-  // redraw the table (gaps, totals) but stay in the same field and the same undo step
+  // redraw the table (gaps, totals) — or the chart and the panel — but stay in the same field and the same undo step
   S.redrawing = true;
-  setHTML('#body', planPageHTML(v));
+  if ($('#canvas')) { renderStage(); setHTML('#insp', inspHTML(v)); } else setHTML('#body', planPageHTML(v));
   setHTML('#vhead', vheadHTML(v));
   const el = $(`[data-plan="${id}"]`);
   if (el) { el.value = raw; el.focus(); el.setSelectionRange(raw.length, raw.length); }
@@ -4260,7 +4533,7 @@ function wfImportModal() {
       if (parsed) {
         next = parsed;
         next.asOf = el.querySelector('#wi-date').value || todayISO();
-        ['map', 'heads', 'moves'].forEach(f => { if (S.wf && S.wf[f]) next[f] = S.wf[f]; });
+        ['map', 'heads', 'moves', 'actEdits', 'recruit'].forEach(f => { if (S.wf && S.wf[f]) next[f] = S.wf[f]; });
         // keep the current acting roles (and their units) unless a new acting file comes too
         if (!actRows && S.wf && S.wf.acting) {
           Object.assign(next, { acting: S.wf.acting, actingAt: S.wf.actingAt, actingSource: S.wf.actingSource });
@@ -4455,7 +4728,17 @@ async function wfMergeRemote(attempt) {
   const moves = {};
   new Set([...Object.keys(theirs.moves || {}), ...Object.keys(mine.moves || {})]).forEach(vid => { moves[vid] = Object.assign({}, (theirs.moves || {})[vid], (mine.moves || {})[vid]); });
   const actBase = String(theirs.actingAt || '') > String(mine.actingAt || '') ? theirs : mine;
-  S.wf = Object.assign({}, base, { units: Object.assign({}, base.units), map, heads, moves, acting: actBase.acting, actingAt: actBase.actingAt, actingSource: actBase.actingSource });
+  // acting changes and recruitment made here: entries from both sides, the newest change of each wins
+  const byId = (a, b) => { const m = new Map(); [...(a || []), ...(b || [])].forEach(x => { const o = m.get(x.id); if (!o || String(x.at) >= String(o.at)) m.set(x.id, x); }); return [...m.values()]; };
+  const ea = theirs.actEdits || {}, eb = mine.actEdits || {};
+  const actEdits = { add: byId(ea.add, eb.add), drop: Object.assign({}, ea.drop, eb.drop), at: nowISO() };
+  const recruit = {};
+  new Set([...Object.keys(theirs.recruit || {}), ...Object.keys(mine.recruit || {})]).forEach(co => {
+    const a = (theirs.recruit || {})[co] || {}, b = (mine.recruit || {})[co] || {};
+    recruit[co] = {};
+    new Set([...Object.keys(a), ...Object.keys(b)]).forEach(id => { recruit[co][id] = byId(a[id], b[id]); });
+  });
+  S.wf = Object.assign({}, base, { units: Object.assign({}, base.units), map, heads, moves, actEdits, recruit, acting: actBase.acting, actingAt: actBase.actingAt, actingSource: actBase.actingSource });
   if (actBase.acting) actBase.acting.forEach(a => { if (!S.wf.units[a.unit] && actBase.units[a.unit]) S.wf.units[a.unit] = actBase.units[a.unit]; });
   S.wfEnv = await wfSeal(S.wf, S.wfKey);
   S.wfSha = r.sha;
@@ -4466,11 +4749,18 @@ function wfExport(kind) {
   const v = curVersion();
   if (!v) return;
   const csv = rows => '﻿' + rows.map(r => r.map(c => { const s = String(c ?? ''); return /[",\n\r]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; }).join(',')).join('\r\n');
+  if (kind === 'recruit') {
+    if (!S.wf) return;
+    const P = wfPlace(v), out = [['หน่วยงาน', 'สายงาน', 'คนจริง', 'อัตรากำลังตามแผน', 'ตำแหน่งที่สรรหา', 'จำนวน (อัตรา)', 'สถานะ', 'เหตุผล', 'วันที่เปิด', 'กำหนดได้ตัว', 'เลยกำหนด', 'ผู้รับผิดชอบ', 'หมายเหตุ', 'แก้ไขล่าสุด']];
+    recRows(v).forEach(({ r, n }) => out.push([n.name, nodeTrail(v.root, n.id).slice(1, -1).map(x => x.name).join(' › '), (P.byNode.get(n.id) || []).length, +n.hc || 0, r.pos, +r.n || 1, REC_ST[r.status].th, REC_WHY[r.why] || '', r.opened || '', r.due || '', recLate(r) ? 'ใช่' : '', r.owner || '', r.note || '', `${r.by || ''} ${r.at ? fmtDateTime(r.at) : ''}`]));
+    download(`${slug(v)}-recruitment.csv`, csv(out), 'text/csv;charset=utf-8');
+    return;
+  }
   if (kind === 'acting') {
     if (!S.wf) return;
     const P = wfPlace(v);
-    const out = [['หน่วยงานที่รักษาการ', 'ตำแหน่งที่รักษาการ', 'ระดับตำแหน่ง', 'หัวหน้าหน่วย', 'รหัสพนักงาน', 'ผู้รักษาการ', 'ตำแหน่งจริง', 'ระดับ', 'บริษัทต้นสังกัด', 'หน่วยงานต้นสังกัด', 'เริ่มรักษาการ', 'ระยะเวลา (ปี)', 'สถานะระยะเวลา', 'จำนวนตำแหน่งที่รักษาการ']];
-    actingRows(v, P).forEach(r => { const { a, p } = r.e; out.push([r.box || (S.wf.units[a.unit] || {}).name, a.pos, a.grade, r.head ? 'ใช่' : '', p.id, wfName(p), p.pos, p.lvl, p.co, (S.wf.units[p.unit] || {}).name, a.since, (actYears(a) || 0).toFixed(1), ACT_TIER[actTier(a)], actingOf(p).length]); });
+    const out = [['หน่วยงานที่รักษาการ', 'ตำแหน่งที่รักษาการ', 'ระดับตำแหน่ง', 'หัวหน้าหน่วย', 'รหัสพนักงาน', 'ผู้รักษาการ', 'ตำแหน่งจริง', 'ระดับ', 'บริษัทต้นสังกัด', 'หน่วยงานต้นสังกัด', 'เริ่มรักษาการ', 'ระยะเวลา (ปี)', 'สถานะระยะเวลา', 'จำนวนตำแหน่งที่รักษาการ', 'ที่มา']];
+    actingRows(v, P).forEach(r => { const { a, p } = r.e; out.push([r.box || actUnitName(a), a.pos, a.grade, r.head ? 'ใช่' : '', p.id, wfName(p), p.pos, p.lvl, p.co, (S.wf.units[p.unit] || {}).name, a.since, (actYears(a) || 0).toFixed(1), ACT_TIER[actTier(a)], actingOf(p).length, a.hand ? `แก้ไขในระบบ (${a.by || ''})` : 'ไฟล์ HR']); });
     download(`${slug(v)}-acting.csv`, csv(out), 'text/csv;charset=utf-8');
     toast('ไฟล์นี้มีข้อมูลส่วนบุคคล โปรดเก็บรักษาตามนโยบาย PDPA ขององค์กร', 'info', null, 6000);
     return;
@@ -4675,7 +4965,8 @@ const A = {
   'wf-unit': el => {
     const v = curVersion();
     if (!v) return;
-    if (S.page !== 'workforce') { S.wfUnit[v.id] = el.dataset.id; S.wfZoomPending = true; go(S.route.code, 'workforce'); return; }
+    // from the structure page or the planning table: open the chart on that unit (planning chart stays on planning)
+    if (S.page === 'structure' || (S.page === 'planning' && !$('#canvas'))) { S.wfUnit[v.id] = el.dataset.id; S.wfZoomPending = true; if (S.page === 'planning') { S.planView = 'chart'; refresh(); } else go(S.route.code, 'workforce'); return; }
     wfSelect(el.dataset.id);
     $('#body .wf-page')?.scrollTo({ top: 0 });
   },
@@ -4685,12 +4976,34 @@ const A = {
   'wf-import': () => wfImportModal(),
   'act-filter': el => { S.actFilter = el.dataset.f; refresh(); },
   'acting-export': () => wfExport('acting'),
+  'act-add': el => actingModal(curVersion(), el.dataset.node),
+  'plan-view': el => { S.planView = el.dataset.view; refresh(); if (S.planView === 'chart') wfZoomTo(wfCurId(curVersion())); },
+  'rec-only': () => { S.recOnly = !S.recOnly; refresh(); },
+  'rec-add': el => recModal(curVersion(), el.dataset.node),
+  'rec-edit': el => recModal(curVersion(), el.dataset.node, el.dataset.rid),
+  'rec-del': async el => {
+    const v = curVersion(), r = recLive(v.companyCode, el.dataset.node).find(x => x.id === el.dataset.rid), f = find(v.root, el.dataset.node);
+    if (!r) return;
+    await recPut(v.companyCode, el.dataset.node, { id: r.id, del: true, by: who(), at: nowISO() }, `${v.companyCode}: ลบการสรรหา “${f ? f.node.name : ''}” — ${r.pos}`);
+    toast('ลบการสรรหาแล้ว', 'ok', { label: 'เลิกทำ', fn: () => recPut(v.companyCode, el.dataset.node, Object.assign({}, r, { at: nowISO() }), `${v.companyCode}: คืนการสรรหา — ${r.pos}`) });
+  },
+  'rec-export': () => wfExport('recruit'),
+  'plan-open-unit': el => { const v = curVersion(); S.wfUnit[v.id] = el.dataset.id; S.planView = 'chart'; S.wfZoomPending = true; refresh(); },
+  'act-edit': el => { const v = curVersion(), a = actingList().find(x => actKey(x) === el.dataset.k); let box = null; wfPlace(v).acting.forEach((es, id) => { if (!box && es.some(e => e.a === a)) box = id; }); if (box) actingModal(v, box, el.dataset.k); },
+  'act-drop': el => actDrop(el.dataset.k),
+  'act-restore': async el => {
+    const v = curVersion(), P = wfPlace(v), ed = actEditsCopy();
+    (S.wf.acting || []).forEach(a => { if (a.co === v.companyCode && (P.unitTo.get(a.unit) || {}).id === el.dataset.node) delete ed.drop[a.emp + '|' + a.unit]; });
+    await actSave(ed, `${v.companyCode}: คืนผู้รักษาการตามไฟล์ HR`);
+  },
   'wf-goto-acting': el => {
-    const co = el.dataset.co, v = activeOf(co);
+    const co = el.dataset.co, k = el.dataset.k, a = actingList().find(x => actKey(x) === k);
+    const v = (a && a.hand && versionsOf(co).find(x => find(x.root, a.node) && x.status !== 'inactive')) || activeOf(co);
     if (!v) { toast(`${co} ยังไม่มีผังในระบบ`); return; }
-    const r = wfPlace(v).unitTo.get(el.dataset.unit);
+    let box = null;
+    wfPlace(v).acting.forEach((es, id) => { if (!box && es.some(e => actKey(e.a) === k)) box = id; });
     S.versionId = v.id;
-    if (r && r.id) S.wfUnit[v.id] = r.id;
+    if (box) S.wfUnit[v.id] = box;
     S.wfZoomPending = true;
     go(co, 'workforce');
   },
@@ -4749,6 +5062,7 @@ const A = {
   'redo': () => redo(),
   'import-text': () => importModal(),
   'export-png': () => exportPNG(),
+  'print-chart': () => printModal(),
   'export-csv': () => exportCSV(),
   'export-json-version': () => exportJSON(false),
   'export-json-all': () => exportJSON(true),
@@ -4807,6 +5121,7 @@ const A = {
       foot: [{ label: 'ยกเลิก', onClick: c => c() }, { label: 'จัดอัตโนมัติ', cls: 'primary', onClick: c => { c(); S.views[v.id] = null; mutate('เปลี่ยนเป็นจัดวางอัตโนมัติ', v2 => { unfreezeLayout(v2); return undefined; }); } }],
     });
   },
+  'wire-reset': () => mutate('คืนค่าเส้นเชื่อมอัตโนมัติ', v => { const f = find(v.root, S.selected); if (!f) return undefined; delete f.node.wire; return f.node.id; }),
   'swatch': el => { const p = PALETTE[+el.dataset.k]; const patch = { fill: p.fill, text: p.text }; if (p.line) patch.line = p.line; setStyle(patch); },
   'select-row': el => selectNode(el.dataset.id),
   'ol-indent': el => outlineOp(el, 'indent'),
@@ -4819,6 +5134,247 @@ const A = {
 function afterAdd(id) {
   if (S.tab === 'chart') { revealNode(id); startRename(id); }
   else focusRow(id);
+}
+/* ---------- print / PDF for signing: the sheet on one A3 (or A4) landscape page ---------- */
+const PAPER = { A3: { w: 420, h: 297, th: 'A3 แนวนอน (420 × 297 มม.)' }, A4: { w: 297, h: 210, th: 'A4 แนวนอน (297 × 210 มม.)' } };
+const PRINT_MARGIN = 8;   // mm
+const SIGN_DEFAULT = [{ role: 'ผู้เสนอ' }, { role: 'ผู้ตรวจสอบ' }, { role: 'ผู้อนุมัติ' }];
+// the sheet already has signature lines (OFFER / VERIFIED / APPROVED from the Excel template)
+const sheetHasSign = v => ((v.doc && v.doc.footer) || []).some(c => c.some(l => /approv|verif|อนุมัติ|ลงนาม/i.test(l)));
+function printModal() {
+  const v = curVersion();
+  if (!v || S.tab !== 'chart' || !$('#stage')) { toast('เปิดแท็บ “แผนผัง” ก่อนพิมพ์'); return; }
+  let saved = null;
+  try { saved = JSON.parse(sGet('orgstudio.sign.' + v.companyCode) || 'null'); } catch (e) { saved = null; }
+  const signs = (saved && saved.length ? saved : SIGN_DEFAULT).slice(0, 4);
+  while (signs.length < 3) signs.push({ role: '' });
+  const hasSign = sheetHasSign(v), lv = S.levelSel[v.id];
+  openModal({
+    title: 'พิมพ์ / บันทึกเป็น PDF',
+    body: `<p class="muted">พิมพ์แผนผังทั้งแผ่นลงกระดาษ 1 หน้า ย่อให้พอดีอัตโนมัติ ในหน้าต่างพิมพ์เลือก “บันทึกเป็น PDF” (Save as PDF) เพื่อได้ไฟล์ PDF หรือเลือกเครื่องพิมพ์</p>
+      <label class="field"><span>ขนาดกระดาษ</span><select class="inp" id="pr-paper">${Object.entries(PAPER).map(([k, p]) => `<option value="${k}">${p.th}</option>`).join('')}</select></label>
+      <label class="check"><input type="checkbox" id="pr-head" checked><span>แถบข้อมูลเอกสารด้านบน<small>บริษัท เวอร์ชัน สถานะ และวันที่มีผล</small></span></label>
+      <label class="check"><input type="checkbox" id="pr-sign" ${hasSign ? '' : 'checked'}><span>ช่องลงนามอนุมัติท้ายกระดาษ<small>${hasSign ? 'ตารางท้ายผังของเวอร์ชันนี้มีช่องลงนาม (OFFER / VERIFIED / APPROVED) อยู่แล้ว' : 'ตารางท้ายผังของเวอร์ชันนี้ยังไม่มีช่องลงนาม'}</small></span></label>
+      <div class="pr-signs" id="pr-signs">${signs.map((x, i) => `<div class="row3"><label>ตำแหน่งในการลงนาม<input class="inp" data-sg="role" data-i="${i}" value="${esc(x.role || '')}" placeholder="${esc((SIGN_DEFAULT[i] || {}).role || 'เช่น ผู้รับทราบ')}"></label><label>ชื่อ-สกุล (ถ้ามี)<input class="inp" data-sg="name" data-i="${i}" value="${esc(x.name || '')}" placeholder="เว้นว่างเพื่อเขียนด้วยมือ"></label><label>ตำแหน่ง (ถ้ามี)<input class="inp" data-sg="pos" data-i="${i}" value="${esc(x.pos || '')}" placeholder="เช่น ประธานเจ้าหน้าที่บริหาร"></label></div>`).join('')}
+        <small class="muted">เว้นว่างช่อง “ตำแหน่งในการลงนาม” เพื่อไม่พิมพ์ช่องนั้น · ระบบจำชื่อไว้สำหรับบริษัทนี้ในเบราว์เซอร์นี้</small></div>
+      ${lv ? `<p class="warnp">ตอนนี้แสดง ${lv} ระดับ หน่วยที่ย่อไว้จะไม่ถูกพิมพ์ เลือก “แสดงทุกระดับ” ก่อนถ้าต้องการพิมพ์ครบ</p>` : ''}`,
+    foot: [{ label: 'ยกเลิก', onClick: c => c() }, { label: `${I.download}พิมพ์ / บันทึก PDF`, cls: 'primary', id: 'pr-go', onClick: (c, el) => {
+      const rows = [...el.querySelectorAll('#pr-signs .row3')].map(r => ({ role: r.querySelector('[data-sg="role"]').value.trim(), name: r.querySelector('[data-sg="name"]').value.trim(), pos: r.querySelector('[data-sg="pos"]').value.trim() }));
+      sSet('orgstudio.sign.' + v.companyCode, JSON.stringify(rows));
+      const opt = { paper: el.querySelector('#pr-paper').value, head: el.querySelector('#pr-head').checked, sign: el.querySelector('#pr-sign').checked ? rows.filter(r => r.role) : [] };
+      c();
+      printChart(v, opt);
+    } }],
+    onMount: el => {
+      const sync = () => { el.querySelector('#pr-signs').hidden = !el.querySelector('#pr-sign').checked; };
+      el.querySelector('#pr-sign').addEventListener('change', sync); sync();
+    },
+  });
+}
+function printChart(v, opt) {
+  const L = S.layout, col = colSet(v.id);
+  if (!L) return;
+  const paper = PAPER[opt.paper] || PAPER.A3, mm = 96 / 25.4;
+  const pageW = (paper.w - PRINT_MARGIN * 2) * mm, pageH = (paper.h - PRINT_MARGIN * 2) * mm;
+  const headH = opt.head ? 30 : 0, signH = opt.sign.length ? 132 : 0, footH = 16;
+  const k = Math.min(pageW / L.w, (pageH - headH - signH - footH - 6) / L.h);
+  const ctx = { col, roll: rollup(v.root), edit: false, free: !!L.free, v, diff: null };
+  const chart = frameHTML(L.frame)
+    + `<svg class="links" width="${L.w}" height="${L.h}" viewBox="0 0 ${L.w} ${L.h}">${L.links.map(l => `<path class="lk ${l.cls || ''}" d="${l.d}" stroke="${l.color}"/>`).join('')}</svg>`
+    + L.nodes.map(it => nodeHTML(it, ctx)).join('').replace(/ sel"/g, '"');
+  const co = company(v.companyCode);
+  const head = opt.head ? `<div class="pr-head"><b>${esc(v.companyCode)}${co && (co.nameTh || co.nameEn) ? ' · ' + esc(co.nameTh || co.nameEn) : ''}</b>
+      <span>${esc(v.name)} · v${v.versionNo} · ${esc(ST[v.status])}${v.status === 'draft' ? ' (เสนอขออนุมัติ)' : ''}</span><span>${esc(versionDateText(v))}</span></div>` : '';
+  const sign = opt.sign.length ? `<div class="pr-sign" style="grid-template-columns:repeat(${opt.sign.length},1fr)">${opt.sign.map(x => `<div class="pr-sg">
+      <div class="pr-role">${esc(x.role)}</div><div class="pr-line"></div>
+      <div>( ${x.name ? esc(x.name) : '<span class="pr-dots"></span>'} )</div>
+      <div class="pr-pos">${x.pos ? esc(x.pos) : 'ตำแหน่ง <span class="pr-dots"></span>'}</div>
+      <div class="pr-date">วันที่ ......../......../........</div></div>`).join('')}</div>` : '';
+  let root = $('#print-root');
+  if (!root) { root = document.createElement('div'); root.id = 'print-root'; document.body.appendChild(root); }
+  root.innerHTML = `<style>@page{size:${paper.w}mm ${paper.h}mm;margin:${PRINT_MARGIN}mm}</style>
+    <div class="pr-page" style="width:${pageW}px;height:${pageH}px">${head}
+      <div class="pr-chart" style="height:${pageH - headH - signH - footH}px"><div class="pr-fit" style="width:${L.w * k}px;height:${L.h * k}px">
+        <div class="stage pr-stage${L.free ? ' free' : ''}" style="width:${L.w}px;height:${L.h}px;transform:scale(${k})">${chart}</div></div></div>
+      ${sign}<div class="pr-foot">${esc(paper.th)} · พิมพ์เมื่อ ${esc(fmtDateTime(nowISO()))} โดย ${esc(who())} · Org Studio</div></div>`;
+  const done = () => { window.removeEventListener('afterprint', done); root.remove(); };
+  window.addEventListener('afterprint', done);
+  window.print();
+}
+/* ---------- acting roles changed here (on top of the HR acting file) ---------- */
+function actEditsCopy() {
+  const ed = clone(S.wf.actEdits || {});
+  return { add: ed.add || [], drop: ed.drop || {} };
+}
+async function actSave(ed, desc) {
+  ed.at = nowISO();
+  S.wf.actEdits = ed;
+  await wfChanged(desc);
+}
+// add someone acting in a box, or change an acting role (person, position, grade, since)
+function actingModal(v, nodeId, key) {
+  const f = v && find(v.root, nodeId);
+  if (!f || !S.wf || !canEditApp()) return;
+  const old = key ? actingList().find(a => actKey(a) === key) : null;
+  let pick = old ? old.emp : '';
+  const opt = p => `<label class="ac-o"><input type="radio" name="ac-p" value="${esc(p.id)}" ${pick === p.id ? 'checked' : ''}><b>${esc(wfName(p))}</b><small>${esc(p.co)} · ${esc(p.pos)} · ระดับ ${esc(p.lvl)} · ${esc((S.wf.units[p.unit] || {}).name || '')}</small></label>`;
+  const search = q => {
+    const t = q.trim().toLowerCase();
+    if (!t) return pick ? [personById(pick)].filter(Boolean) : [];
+    return S.wf.people.filter(p => [p.id, p.fn, p.ln, p.fnEn, p.lnEn, p.pos, wfName(p)].some(x => String(x || '').toLowerCase().includes(t))).slice(0, 40);
+  };
+  openModal({
+    title: `${old ? 'แก้ไขผู้รักษาการ' : 'เพิ่มผู้รักษาการ'} · ${f.node.name || ''}`,
+    body: `<p class="muted">${old && !old.hand ? 'รายการนี้มาจากไฟล์รักษาการของ HR การแก้ไขจะเก็บเป็นรายการของระบบนี้แทน (ไฟล์ HR ไม่เปลี่ยน) ' : ''}เลือกพนักงานได้ทุกบริษัท ระบบใช้ระดับตำแหน่งที่รักษาการตัดสินว่าแสดงเป็นหัวหน้าหน่วยหรือไม่</p>
+      <label class="field"><span>ค้นหาผู้รักษาการ</span><input class="inp" id="ac-q" placeholder="ชื่อ รหัสพนักงาน หรือตำแหน่ง" autocomplete="off" value="${old ? esc(wfName(personById(old.emp) || {})) : ''}"></label>
+      <div class="ac-list" id="ac-list">${search(old ? wfName(personById(old.emp) || {}) : '').map(opt).join('') || '<p class="muted">พิมพ์เพื่อค้นหา</p>'}</div>
+      <label class="field"><span>ตำแหน่งที่รักษาการ</span><input class="inp" id="ac-pos" value="${esc(old ? old.pos : f.node.title || '')}" placeholder="เช่น Division Manager (DM1)"></label>
+      <div class="row2"><label class="field"><span>ระดับตำแหน่ง</span><input class="inp" id="ac-grade" value="${esc(old ? old.grade || '' : '')}" placeholder="เช่น 9A"></label>
+        <label class="field"><span>รักษาการตั้งแต่</span><input class="inp" type="date" id="ac-since" value="${esc(old ? old.since || '' : todayISO())}"></label></div>`,
+    foot: [{ label: 'ยกเลิก', onClick: c => c() }, { label: 'บันทึก', cls: 'primary', onClick: async (c, el) => {
+      const emp = (el.querySelector('input[name="ac-p"]:checked') || {}).value;
+      const pos = el.querySelector('#ac-pos').value.trim();
+      if (!emp) { toast('เลือกผู้รักษาการก่อน', 'err'); return; }
+      if (!pos) { toast('ใส่ตำแหน่งที่รักษาการ', 'err'); return; }
+      const ed = actEditsCopy(), person = personById(emp);
+      const entry = { id: old && old.hand ? old.id : uid('ac'), emp, co: v.companyCode, node: nodeId, pos, grade: el.querySelector('#ac-grade').value.trim().toUpperCase(), since: el.querySelector('#ac-since').value || todayISO(), by: who(), at: nowISO() };
+      if (old && !old.hand) ed.drop[actKey(old)] = { by: who(), at: nowISO() };
+      if (old && old.hand) ed.add = ed.add.map(x => (x.id === old.id ? entry : x)); else ed.add.push(entry);
+      c();
+      await actSave(ed, `${v.companyCode}: ${old ? 'แก้ไข' : 'เพิ่ม'}ผู้รักษาการ “${f.node.name || ''}” — ${wfName(person)}`);
+      toast(`${old ? 'แก้ไข' : 'เพิ่ม'}ผู้รักษาการแล้ว — กด “บันทึก” เพื่อเก็บขึ้น GitHub`, 'ok');
+    } }],
+    onMount: el => {
+      const list = el.querySelector('#ac-list');
+      el.querySelector('#ac-q').addEventListener('input', e => { list.innerHTML = search(e.target.value).map(opt).join('') || '<p class="muted">ไม่พบพนักงาน</p>'; });
+      list.addEventListener('change', e => { if (e.target.name === 'ac-p') pick = e.target.value; });
+    },
+  });
+}
+async function actDrop(key) {
+  const a = actingList().find(x => actKey(x) === key);
+  if (!a || !canEditApp()) return;
+  const ed = actEditsCopy(), p = personById(a.emp);
+  ed.drop[key] = { by: who(), at: nowISO() };
+  await actSave(ed, `${a.co}: ยกเลิกผู้รักษาการ “${actUnitName(a)}” — ${p ? wfName(p) : a.emp}`);
+  toast(`ยกเลิกรักษาการของ ${p ? wfName(p) : a.emp} แล้ว`, 'ok', { label: 'เลิกทำ', fn: async () => { const e2 = actEditsCopy(); delete e2.drop[key]; await actSave(e2, `${a.co}: คืนผู้รักษาการ — ${p ? wfName(p) : a.emp}`); } });
+}
+/* ---------- recruitment per box (Planning page) ---------- */
+// S.wf.recruit = { CO: { boxId: [{ id, pos, n, why, status, opened, due, owner, note, by, at, del? }] } }
+// kept in the encrypted workforce file; a box id is the same in Active and the Drafts copied from it
+const REC_ST = {
+  plan: { th: 'วางแผน (ยังไม่เปิด)', short: 'แผนสรรหา', open: true },
+  open: { th: 'ประกาศรับสมัคร', short: 'รับสมัคร', open: true },
+  interview: { th: 'สัมภาษณ์ / คัดเลือก', short: 'สัมภาษณ์', open: true },
+  offer: { th: 'เสนองาน', short: 'เสนองาน', open: true },
+  hired: { th: 'ได้คนแล้ว รอเริ่มงาน', short: 'รอเริ่มงาน', open: true },
+  done: { th: 'เริ่มงานแล้ว (ปิด)', short: 'ปิดแล้ว', open: false },
+  cancel: { th: 'ยกเลิก', short: 'ยกเลิก', open: false },
+};
+const REC_ORDER = Object.keys(REC_ST);
+const REC_WHY = { replace: 'ทดแทนคนออก / เกษียณ / ย้าย', grow: 'อัตราเพิ่มตามแผน', new: 'หน่วยใหม่ตามโครงสร้าง', other: 'อื่น ๆ' };
+const recLive = (co, id) => ((((S.wf && S.wf.recruit) || {})[co] || {})[id] || []).filter(r => !r.del);
+const recOpen = (co, id) => recLive(co, id).filter(r => (REC_ST[r.status] || {}).open);
+const recN = rs => rs.reduce((t, r) => t + (+r.n || 1), 0);
+const recLate = r => !!(r.due && (REC_ST[r.status] || {}).open && r.status !== 'hired' && r.due < todayISO());
+// the earliest stage among a box's open recruitments: what still needs pushing
+const recStage = rs => rs.map(r => r.status).sort((a, b) => REC_ORDER.indexOf(a) - REC_ORDER.indexOf(b))[0] || '';
+const recChip = r => `<span class="rc-st st-${esc(r.status)}">${esc((REC_ST[r.status] || {}).short || r.status)}</span>`;
+// every recruitment on the boxes of this version
+function recRows(v) {
+  const out = [];
+  flatten(v.root).forEach(x => recLive(v.companyCode, x.n.id).forEach(r => out.push({ r, n: x.n })));
+  return out.sort((a, b) => REC_ORDER.indexOf(a.r.status) - REC_ORDER.indexOf(b.r.status) || String(a.r.due || '9').localeCompare(String(b.r.due || '9')));
+}
+function planBadgeHTML(n, ctx) {
+  const P = ctx.wf.P, own = (P.byNode.get(n.id) || []).length, pl = +n.hc || 0, g = gapInfo(pl, own);
+  const rs = recOpen(ctx.v.companyCode, n.id), rn = recN(rs), late = rs.some(recLate);
+  const tip = [`คนจริง ${fmtNum(own)} คน · แผน ${pl ? fmtNum(pl) + ' คน' : 'ยังไม่กำหนด'}${g.txt ? ' · ' + g.txt : ''}`]
+    .concat(rs.map(r => `สรรหา: ${r.pos} ${r.n || 1} อัตรา · ${REC_ST[r.status].th}${r.due ? ' · กำหนดได้ตัว ' + fmtDate(r.due) : ''}${recLate(r) ? ' (เลยกำหนด)' : ''}`)).join('\n');
+  return `<span class="wf-badge pb ${g.cls}${own || pl ? '' : ' zero'}" title="${esc(tip)}"><span class="wb-n">${fmtNum(own)}${pl ? `<small>/${fmtNum(pl)}</small>` : ''}<small> คน</small></span>${rn ? `<span class="wb-rec st-${recStage(rs)}${late ? ' late' : ''}">สรรหา ${fmtNum(rn)}</span>` : ''}</span>`;
+}
+function planUnitPanelHTML(v) {
+  const P = wfPlace(v), id = wfCurId(v), co = v.companyCode, edit = canEditApp();
+  const close = `<button class="ibtn ip-close" data-act="close-insp" aria-label="ปิด">${I.close}</button>`;
+  if (id === '__out' || id === v.root.id) return planSummaryHTML(v, P, close);
+  const node = find(v.root, id).node, own = P.byNode.get(id) || [], pl = +node.hc || 0, g = gapInfo(pl, own.length);
+  const trail = nodeTrail(v.root, id).slice(0, -1).map(n => n.name).join(' › ');
+  const rs = recLive(co, id), open = rs.filter(r => REC_ST[r.status].open), shut = rs.filter(r => !REC_ST[r.status].open), rn = recN(open);
+  const left = pl ? pl - own.length - rn : null;
+  const afterTxt = left === null ? '—' : left > 0 ? `ขาดอีก ${fmtNum(left)}` : left < 0 ? `เกิน ${fmtNum(-left)}` : 'ครบ';
+  const ah = P.actHead.get(id), hd = P.heads.get(id);
+  const card = r => `<div class="rc${recLate(r) ? ' late' : ''}"><div class="rc-t"><b>${esc(r.pos)}</b> ${recChip(r)} <span class="muted">${fmtNum(+r.n || 1)} อัตรา</span>
+      ${edit ? `<span class="pp-ed"><button class="pp-mv" data-act="rec-edit" data-node="${id}" data-rid="${esc(r.id)}">${I.edit}แก้ไข</button><button class="pp-mv danger" data-act="rec-del" data-node="${id}" data-rid="${esc(r.id)}">${I.trash}ลบ</button></span>` : ''}</div>
+    <div class="rc-m">${esc(REC_WHY[r.why] || '')}${r.opened ? ` · เปิดเมื่อ ${fmtDate(r.opened)}` : ''}${r.due ? ` · กำหนดได้ตัว <span class="${recLate(r) ? 'late-t' : ''}">${fmtDate(r.due)}${recLate(r) ? ' (เลยกำหนด)' : ''}</span>` : ''}${r.owner ? ` · ผู้รับผิดชอบ ${esc(r.owner)}` : ''}</div>
+    ${r.note ? `<div class="rc-n">${esc(r.note)}</div>` : ''}</div>`;
+  return `<section class="panel"><div class="ip-head"><div><h3><i class="dot tc-${node.type}"></i> ${esc(TYPES[node.type].th)} · วางแผนกำลังคน</h3><h2>${esc(node.name || 'ไม่มีชื่อ')}</h2>${trail ? `<p class="muted ip-path">${esc(trail)}</p>` : ''}</div>${close}</div>
+    <div class="statgrid">
+      <div class="stat"><b>${fmtNum(own.length)}</b><span>คนในกล่องนี้</span></div>
+      <div class="stat">${canEdit(v) ? `<input class="pt-in" type="text" inputmode="numeric" data-plan="${id}" value="${pl || ''}" placeholder="0" aria-label="อัตรากำลังตามแผน">` : `<b>${pl ? fmtNum(pl) : '—'}</b>`}<span>อัตรากำลังตามแผน</span></div>
+      <div class="stat gap ${g.cls}"><b>${g.txt ? g.txt.replace('ยังไม่กำหนดแผน', 'ไม่มีแผน').replace('ครบตามแผน', 'ครบ') : '—'}</b><span>ส่วนต่างตอนนี้</span></div>
+      <div class="stat${rn ? ' rec' : ''}"><b>${fmtNum(rn)}</b><span>กำลังสรรหา (อัตรา)</span></div>
+      <div class="stat${left > 0 ? ' warn' : ''}"><b>${afterTxt}</b><span>เมื่อสรรหาครบ</span></div>
+      <div class="stat"><b>${fmtNum(P.roll.get(id) || 0)}</b><span>รวมทั้งสายงาน</span></div></div>
+    ${ah ? `<p class="muted">รักษาการหัวหน้าหน่วย: <b>${esc(wfName(ah.p))}</b> (${esc(ah.p.co)})</p>` : hd ? `<p class="muted">หัวหน้าหน่วย: <b>${esc(wfName(hd))}</b> · ${esc(hd.pos)}</p>` : ''}
+    ${!canEdit(v) && v.status !== 'draft' ? '<p class="muted">อัตรากำลังตามแผนแก้ได้ใน Draft · การสรรหาบันทึกได้ทุกเวอร์ชัน</p>' : ''}</section>
+  <section class="panel rec-sec"><h3>การสรรหา${open.length ? ` · ${fmtNum(rn)} อัตรา` : ''}${edit ? `<button class="btn sm" data-act="rec-add" data-node="${id}">${I.plus}เปิดการสรรหา</button>` : ''}</h3>
+    ${open.length ? open.map(card).join('') : `<p class="muted">ยังไม่มีการสรรหาในกล่องนี้${g.cls === 'short' && edit ? ' · ขาดคนตามแผน กด “เปิดการสรรหา” เพื่อบันทึก' : ''}</p>`}
+    ${shut.length ? `<details class="rc-old"><summary>ปิดแล้ว / ยกเลิก ${shut.length} รายการ</summary>${shut.map(card).join('')}</details>` : ''}</section>
+  <p class="muted"><a href="#" data-act="wf-open-unit" data-id="${id}">ดูรายชื่อคนในหน่วยนี้ที่หน้ากำลังคน</a></p>`;
+}
+// nothing selected: the company's recruitment at a glance
+function planSummaryHTML(v, P, close) {
+  const rows = recRows(v), open = rows.filter(x => REC_ST[x.r.status].open);
+  const flat = flatten(v.root).filter(x => !EXTERNAL.has(x.n.type));
+  const short = flat.reduce((t, x) => { const pl = +x.n.hc || 0, a = (P.byNode.get(x.n.id) || []).length; return t + (pl > a ? pl - a : 0); }, 0);
+  const late = open.filter(x => recLate(x.r)).length, boxes = new Set(open.map(x => x.n.id)).size;
+  const byStage = {};
+  open.forEach(x => { const k = REC_ST[x.r.status].th; byStage[k] = (byStage[k] || 0) + (+x.r.n || 1); });
+  return `<section class="panel"><div class="ip-head"><div><h3>Workforce Planning</h3><h2>การสรรหา · ${esc(v.companyCode)}</h2></div>${close}</div>
+    <div class="statgrid">
+      <div class="stat${short ? ' warn' : ''}"><b>${fmtNum(short)}</b><span>ขาดคนตามแผน</span></div>
+      <div class="stat rec"><b>${fmtNum(recN(open.map(x => x.r)))}</b><span>กำลังสรรหา (อัตรา)</span></div>
+      <div class="stat"><b>${fmtNum(boxes)}</b><span>หน่วยที่กำลังสรรหา</span></div>
+      <div class="stat${late ? ' warn' : ''}"><b>${fmtNum(late)}</b><span>เลยกำหนดได้ตัว</span></div></div>
+    ${barsHTML('ตามขั้นตอน (อัตรา)', byStage, recN(open.map(x => x.r)) || 1, REC_ORDER.map(k => REC_ST[k].th))}
+    <p class="muted">คลิกกล่องบนผังเพื่อดูแผนกับคนจริง และบันทึกการสรรหา ป้าย “สรรหา N” บนกล่องมีสีตามขั้นตอน ขอบแดง = เลยกำหนดได้ตัว</p></section>
+  ${open.length ? `<section class="panel"><h3>หน่วยที่กำลังสรรหา</h3><div class="rec-list">${open.map(x => `<button class="rec-row" data-act="wf-unit" data-id="${x.n.id}"><span><b>${esc(x.n.name)}</b><small>${esc(x.r.pos)} · ${fmtNum(+x.r.n || 1)} อัตรา${x.r.due ? ` · กำหนด ${fmtDate(x.r.due)}` : ''}</small></span>${recChip(x.r)}</button>`).join('')}</div></section>` : ''}
+  <div class="tip"><b>ใช้งานอย่างไร</b><span>อัตรากำลังตามแผนมาจากเวอร์ชันโครงสร้าง (แก้ได้ใน Draft) ส่วนการสรรหาบันทึกได้ทุกเวอร์ชันและเก็บในไฟล์กำลังคนแบบเข้ารหัส</span><span>สีบนป้าย: เทา = วางแผน · น้ำเงิน = รับสมัคร · ม่วง = สัมภาษณ์ · ส้ม = เสนองาน · เขียว = รอเริ่มงาน</span></div>`;
+}
+function recModal(v, nodeId, rid) {
+  const f = v && find(v.root, nodeId);
+  if (!f || !S.wf || !canEditApp()) return;
+  const co = v.companyCode, old = rid ? recLive(co, nodeId).find(r => r.id === rid) : null;
+  const P = wfPlace(v), own = (P.byNode.get(nodeId) || []).length, pl = +f.node.hc || 0;
+  const sel = (id, obj, cur) => `<select class="inp" id="${id}">${Object.entries(obj).map(([k, x]) => `<option value="${k}" ${cur === k ? 'selected' : ''}>${esc(x.th || x)}</option>`).join('')}</select>`;
+  openModal({
+    title: `${old ? 'แก้ไขการสรรหา' : 'เปิดการสรรหา'} · ${f.node.name || ''}`,
+    body: `<p class="muted">คนจริง ${fmtNum(own)} คน · แผน ${pl ? fmtNum(pl) + ' คน' : 'ยังไม่กำหนด'}</p>
+      <div class="row2"><label class="field"><span>ตำแหน่งที่สรรหา</span><input class="inp" id="rc-pos" value="${esc(old ? old.pos : '')}" placeholder="เช่น Senior Engineer"></label>
+        <label class="field"><span>จำนวน (อัตรา)</span><input class="inp" id="rc-n" type="number" min="1" value="${old ? +old.n || 1 : Math.max(1, pl - own) || 1}"></label></div>
+      <div class="row2"><label class="field"><span>สถานะ</span>${sel('rc-st', REC_ST, old ? old.status : 'open')}</label>
+        <label class="field"><span>เหตุผล</span>${sel('rc-why', REC_WHY, old ? old.why : (pl > own ? 'grow' : 'replace'))}</label></div>
+      <div class="row2"><label class="field"><span>วันที่เปิด</span><input class="inp" type="date" id="rc-open" value="${esc(old ? old.opened || '' : todayISO())}"></label>
+        <label class="field"><span>กำหนดได้ตัว</span><input class="inp" type="date" id="rc-due" value="${esc(old ? old.due || '' : '')}"></label></div>
+      <label class="field"><span>ผู้รับผิดชอบ (Recruiter / Hiring manager)</span><input class="inp" id="rc-owner" value="${esc(old ? old.owner || '' : '')}"></label>
+      <label class="field"><span>หมายเหตุ</span><textarea class="inp" id="rc-note" rows="2" placeholder="เช่น ช่องทางสรรหา คุณสมบัติสำคัญ">${esc(old ? old.note || '' : '')}</textarea></label>
+      <small class="muted">ไม่บันทึกข้อมูลผู้สมัคร เก็บเฉพาะสถานะการสรรหาของตำแหน่ง</small>`,
+    foot: [{ label: 'ยกเลิก', onClick: c => c() }, { label: 'บันทึก', cls: 'primary', onClick: async (c, el) => {
+      const pos = el.querySelector('#rc-pos').value.trim();
+      if (!pos) { toast('ใส่ตำแหน่งที่สรรหา', 'err'); return; }
+      const r = { id: old ? old.id : uid('rc'), pos, n: Math.max(1, parseInt(el.querySelector('#rc-n').value, 10) || 1), status: el.querySelector('#rc-st').value, why: el.querySelector('#rc-why').value,
+        opened: el.querySelector('#rc-open').value, due: el.querySelector('#rc-due').value, owner: el.querySelector('#rc-owner').value.trim(), note: el.querySelector('#rc-note').value.trim(), by: who(), at: nowISO() };
+      c();
+      await recPut(co, nodeId, r, `${co}: ${old ? 'แก้ไข' : 'เปิด'}การสรรหา “${f.node.name || ''}” — ${pos} (${REC_ST[r.status].th})`);
+    } }],
+  });
+}
+async function recPut(co, nodeId, r, desc) {
+  const all = clone(S.wf.recruit || {}), box = ((all[co] = all[co] || {})[nodeId] = all[co][nodeId] || []);
+  const i = box.findIndex(x => x.id === r.id);
+  if (i >= 0) box[i] = r; else box.push(r);
+  S.wf.recruit = all;
+  await wfChanged(desc);
 }
 function outlineOp(el, op, focusSel = '.ol-in') {
   const id = el.closest('.ol-row').dataset.id;
@@ -4877,6 +5433,20 @@ document.addEventListener('change', e => {
   }
   if (t.matches('[data-change]')) { CHANGES[t.dataset.change]?.(t); return; }
   if (t.matches('select[data-of]')) { onOutlineInput(t); return; }
+  if (t.matches('[data-wire]')) {
+    const end = t.dataset.wire, side = t.value;
+    mutate('ปรับเส้นเชื่อม', v => {
+      const f = find(v.root, S.selected), L = S.layout;
+      const C = f && f.parent && L && L.nodes.find(o => o.n.id === f.node.id), P = C && L.nodes.find(o => o.n.id === f.parent.id);
+      const w = P && wireOf(P, C, L);
+      if (!w) return undefined;
+      w[end] = { s: side, t: 0.5 };
+      w.k = wireDefaultK(P, C, w);
+      f.node.wire = w;
+      return f.node.id;
+    });
+    return;
+  }
   if (t.matches('[data-bx]')) {
     const k = t.dataset.bx, val = parseFloat(t.value);
     if (!Number.isFinite(val)) return;
