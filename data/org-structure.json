@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-10-27T03:07:00.211Z",
+  "updatedAt": "2026-10-27T03:15:15.185Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -23127,7 +23127,7 @@
       "basedOn": "v_pde_2026r1",
       "createdAt": "2026-10-16T08:41:36.013Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-10-27T03:06:57.225Z",
+      "updatedAt": "2026-10-27T03:15:07.602Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE DIGITAL ECONOMY CO., LTD. (PDE) 2027",
@@ -23572,7 +23572,7 @@
                       {
                         "id": "n_pde_7",
                         "type": "team",
-                        "name": "Data Governance & Data Visualization and Analytics Team",
+                        "name": "Data Visualization and Analytics Team",
                         "nameEn": "",
                         "code": "",
                         "title": "",
@@ -23583,21 +23583,22 @@
                         "note": "",
                         "children": [],
                         "style": {
-                          "fill": "#FFFFFF",
+                          "fill": "#FBE5D6",
                           "line": "#ED7D31",
                           "lw": 1.33,
-                          "text": "#000000",
+                          "text": "#FF0000",
                           "bold": true,
                           "size": 14,
                           "align": "l"
                         },
                         "box": {
-                          "x": 1266.1,
-                          "y": 820.6,
+                          "x": 1265,
+                          "y": 886,
                           "w": 380.1,
                           "h": 59.3
                         },
-                        "link": "#ED7D31"
+                        "link": "#ED7D31",
+                        "hl": true
                       },
                       {
                         "id": "n_pde_48",
@@ -23622,8 +23623,8 @@
                           "align": "l"
                         },
                         "box": {
-                          "x": 1268.4,
-                          "y": 887.4,
+                          "x": 1267,
+                          "y": 816,
                           "w": 379.4,
                           "h": 62.4
                         },
@@ -23806,7 +23807,7 @@
                   {
                     "id": "n_p05iam4vyn",
                     "type": "office",
-                    "name": "IT Governance Platform",
+                    "name": "IT Governance Platform (Data + AI Goverance)",
                     "nameEn": "",
                     "code": "",
                     "title": "",
