@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-10-22T17:12:04.580Z",
+  "updatedAt": "2026-10-27T03:07:00.211Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -15306,7 +15306,7 @@
       "basedOn": "v_pcc_2026r1",
       "createdAt": "2026-10-16T02:00:08.677Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-10-22T17:12:00.019Z",
+      "updatedAt": "2026-10-26T05:38:41.125Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "โครงสร้างองค์กรบริษัทพรีไซซคอร์ปอเรชั่น จำกัด (มหาชน) (2570)\nORGANIZATION PRECISE CORPORATION PCL (2027)",
@@ -16521,7 +16521,7 @@
       "basedOn": "v_psp_2026r3",
       "createdAt": "2026-10-16T02:18:37.847Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-10-22T08:59:19.515Z",
+      "updatedAt": "2026-10-26T02:49:30.104Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE SYSTEM & PROJECT CO., LTD. (PSP) 2027",
@@ -23127,7 +23127,7 @@
       "basedOn": "v_pde_2026r1",
       "createdAt": "2026-10-16T08:41:36.013Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-10-16T09:38:20.195Z",
+      "updatedAt": "2026-10-27T03:06:57.225Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE DIGITAL ECONOMY CO., LTD. (PDE) 2027",
@@ -23756,7 +23756,7 @@
                       {
                         "id": "n_alkssq3qmj",
                         "type": "office",
-                        "name": "DBTP framework แลัวประสาน PEM (RAMI)",
+                        "name": "DBTP framework แลัวประสาน PEM (RAMI), PSP (SGAM, SCIAM)",
                         "nameEn": "",
                         "code": "",
                         "title": "",
