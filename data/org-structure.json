@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-10-28T08:32:11.324Z",
+  "updatedAt": "2026-10-28T08:33:19.695Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -8477,7 +8477,7 @@
       "basedOn": "v_pem_2026r3",
       "createdAt": "2026-10-16T02:26:36.993Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-10-28T08:28:52.432Z",
+      "updatedAt": "2026-10-28T08:33:06.129Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE ELECTRIC MANUFACTURING CO., LTD. (PEM) 2027",
@@ -9330,6 +9330,37 @@
                       "w": 360,
                       "h": 48.5
                     }
+                  },
+                  {
+                    "id": "n_259q6uwkwk",
+                    "type": "division",
+                    "name": "RAMI 4.0 ( Smart Factory ) Team",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": "#FBE5D6",
+                      "line": "#ED7D31",
+                      "lw": 1.33,
+                      "text": "#FF0000",
+                      "bold": true,
+                      "size": 16,
+                      "align": "l"
+                    },
+                    "link": "#ED7D31",
+                    "box": {
+                      "x": 1168,
+                      "y": 1028.5,
+                      "w": 360,
+                      "h": 48.5
+                    },
+                    "hl": true
                   }
                 ],
                 "style": {
