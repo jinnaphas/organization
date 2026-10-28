@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-10-28T07:17:19.852Z",
+  "updatedAt": "2026-10-28T07:18:12.832Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -16521,7 +16521,7 @@
       "basedOn": "v_psp_2026r3",
       "createdAt": "2026-10-16T02:18:37.847Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-10-28T07:17:02.560Z",
+      "updatedAt": "2026-10-28T07:18:09.129Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE SYSTEM & PROJECT CO., LTD. (PSP) 2027",
@@ -16630,7 +16630,7 @@
             "code": "CEO",
             "title": "",
             "head": "",
-            "hc": 1,
+            "hc": 0,
             "staff": false,
             "layout": "auto",
             "note": "",
