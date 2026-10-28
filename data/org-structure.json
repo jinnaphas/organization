@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-10-28T09:20:52.084Z",
+  "updatedAt": "2026-10-28T09:22:08.892Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -23158,7 +23158,7 @@
       "basedOn": "v_pde_2026r1",
       "createdAt": "2026-10-16T08:41:36.013Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-10-28T09:20:39.366Z",
+      "updatedAt": "2026-10-28T09:21:40.777Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE DIGITAL ECONOMY CO., LTD. (PDE) 2027",
@@ -23899,7 +23899,7 @@
                   {
                     "id": "n_pde_59",
                     "type": "team",
-                    "name": "ERP Implement Team & Digital Business & Operation Process (ERP) Team",
+                    "name": "Digital Business & Operation Process (ERP) Team",
                     "nameEn": "",
                     "code": "",
                     "title": "",
