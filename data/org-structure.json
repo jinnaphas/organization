@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-10-28T09:13:41.332Z",
+  "updatedAt": "2026-10-28T09:20:52.084Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -23158,7 +23158,7 @@
       "basedOn": "v_pde_2026r1",
       "createdAt": "2026-10-16T08:41:36.013Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-10-28T09:13:29.700Z",
+      "updatedAt": "2026-10-28T09:20:39.366Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE DIGITAL ECONOMY CO., LTD. (PDE) 2027",
@@ -23527,36 +23527,6 @@
                 "layout": "auto",
                 "note": "",
                 "children": [
-                  {
-                    "id": "n_pde_46",
-                    "type": "team",
-                    "name": "Digital Business & Operation Process (ERP) Team",
-                    "nameEn": "",
-                    "code": "",
-                    "title": "",
-                    "head": "",
-                    "hc": 0,
-                    "staff": false,
-                    "layout": "auto",
-                    "note": "",
-                    "children": [],
-                    "style": {
-                      "fill": "#FFFFFF",
-                      "line": "#ED7D31",
-                      "lw": 1.33,
-                      "text": "#000000",
-                      "bold": true,
-                      "size": 14,
-                      "align": "l"
-                    },
-                    "box": {
-                      "x": 1236,
-                      "y": 600.5,
-                      "w": 411.8,
-                      "h": 61.2
-                    },
-                    "link": "#ED7D31"
-                  },
                   {
                     "id": "n_pde_58",
                     "type": "department",
@@ -23929,7 +23899,7 @@
                   {
                     "id": "n_pde_59",
                     "type": "team",
-                    "name": "ERP Implement Team",
+                    "name": "ERP Implement Team & Digital Business & Operation Process (ERP) Team",
                     "nameEn": "",
                     "code": "",
                     "title": "",
