@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-10-29T02:27:15.083Z",
+  "updatedAt": "2026-10-29T03:01:10.008Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -23158,7 +23158,7 @@
       "basedOn": "v_pde_2026r1",
       "createdAt": "2026-10-16T08:41:36.013Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-10-29T02:26:57.531Z",
+      "updatedAt": "2026-10-29T03:01:05.052Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE DIGITAL ECONOMY CO., LTD. (PDE) 2027",
@@ -23554,10 +23554,10 @@
                         "note": "",
                         "children": [],
                         "style": {
-                          "fill": "#FBE5D6",
+                          "fill": "#FFFFFF",
                           "line": "#ED7D31",
                           "lw": 1.33,
-                          "text": "#FF0000",
+                          "text": "#000000",
                           "bold": true,
                           "size": 14,
                           "align": "l"
@@ -23568,8 +23568,7 @@
                           "w": 380.1,
                           "h": 50
                         },
-                        "link": "#ED7D31",
-                        "hl": true
+                        "link": "#ED7D31"
                       },
                       {
                         "id": "n_pde_48",
@@ -23952,7 +23951,7 @@
                     "link": "#70AD47",
                     "box": {
                       "x": 2192,
-                      "y": 1188,
+                      "y": 1156,
                       "w": 439.1,
                       "h": 67.1
                     }
@@ -23990,7 +23989,7 @@
                   {
                     "id": "n_s318yt7ehq",
                     "type": "office",
-                    "name": "Digital Infrastructure & Cloud Service Team",
+                    "name": "ICT Infrastructure & Cyber Security Team",
                     "nameEn": "",
                     "code": "",
                     "title": "",
@@ -24003,7 +24002,7 @@
                       {
                         "id": "n_d6p2ow8uhb",
                         "type": "office",
-                        "name": "สำนักใหม่",
+                        "name": "Digital Infrastructure & Cloud Service Team",
                         "nameEn": "",
                         "code": "",
                         "title": "",
@@ -24014,10 +24013,10 @@
                         "note": "",
                         "children": [],
                         "style": {
-                          "fill": "#FFFFFF",
+                          "fill": "#FBE5D6",
                           "line": "#70AD47",
                           "lw": 1.33,
-                          "text": "#000000",
+                          "text": "#FF0000",
                           "bold": false,
                           "size": 12,
                           "align": "l"
@@ -24028,7 +24027,8 @@
                           "y": 1012,
                           "w": 408,
                           "h": 56
-                        }
+                        },
+                        "hl": true
                       },
                       {
                         "id": "n_sfklc79d08",
