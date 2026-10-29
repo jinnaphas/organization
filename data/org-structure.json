@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-10-29T03:03:53.430Z",
+  "updatedAt": "2026-10-29T03:08:10.110Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -23158,7 +23158,7 @@
       "basedOn": "v_pde_2026r1",
       "createdAt": "2026-10-16T08:41:36.013Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-10-29T03:03:48.353Z",
+      "updatedAt": "2026-10-29T03:06:19.209Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE DIGITAL ECONOMY CO., LTD. (PDE) 2027",
@@ -23717,7 +23717,7 @@
                   {
                     "id": "n_p05iam4vyn",
                     "type": "office",
-                    "name": "IT Governance Platform (Data + AI Goverance)",
+                    "name": "IT Governance Platform",
                     "nameEn": "",
                     "code": "",
                     "title": "",
