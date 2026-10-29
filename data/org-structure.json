@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-10-29T03:03:23.661Z",
+  "updatedAt": "2026-10-29T03:03:53.430Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -23158,7 +23158,7 @@
       "basedOn": "v_pde_2026r1",
       "createdAt": "2026-10-16T08:41:36.013Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-10-29T03:02:06.506Z",
+      "updatedAt": "2026-10-29T03:03:48.353Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE DIGITAL ECONOMY CO., LTD. (PDE) 2027",
@@ -24004,7 +24004,7 @@
                       {
                         "id": "n_d6p2ow8uhb",
                         "type": "office",
-                        "name": "Digital Infrastructure & Cloud Service Team",
+                        "name": "Digital Infrastructure Team",
                         "nameEn": "",
                         "code": "",
                         "title": "",
@@ -24035,7 +24035,7 @@
                       {
                         "id": "n_sfklc79d08",
                         "type": "office",
-                        "name": "Infrastructure IT Support & Help Desk Team",
+                        "name": "Infrastructure Support & Help Desk Team",
                         "nameEn": "",
                         "code": "",
                         "title": "",
