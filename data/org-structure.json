@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-10-29T02:14:13.325Z",
+  "updatedAt": "2026-10-29T02:27:15.083Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -23158,7 +23158,7 @@
       "basedOn": "v_pde_2026r1",
       "createdAt": "2026-10-16T08:41:36.013Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-10-29T02:05:03.425Z",
+      "updatedAt": "2026-10-29T02:26:57.531Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE DIGITAL ECONOMY CO., LTD. (PDE) 2027",
@@ -23928,36 +23928,6 @@
                     "hl": true
                   },
                   {
-                    "id": "n_pde_8",
-                    "type": "team",
-                    "name": "Infrastructure IT Support & Help Desk Team",
-                    "nameEn": "",
-                    "code": "",
-                    "title": "",
-                    "head": "",
-                    "hc": 0,
-                    "staff": false,
-                    "layout": "auto",
-                    "note": "",
-                    "children": [],
-                    "style": {
-                      "fill": "#FFFFFF",
-                      "line": "#70AD47",
-                      "lw": 1.33,
-                      "text": "#000000",
-                      "bold": true,
-                      "size": 14,
-                      "align": "l"
-                    },
-                    "link": "#70AD47",
-                    "box": {
-                      "x": 2187.2,
-                      "y": 938,
-                      "w": 439.4,
-                      "h": 60
-                    }
-                  },
-                  {
                     "id": "n_pde_16",
                     "type": "team",
                     "name": "Application Software Maintenance and Support Service Team",
@@ -23981,8 +23951,8 @@
                     },
                     "link": "#70AD47",
                     "box": {
-                      "x": 2185.6,
-                      "y": 1018.3,
+                      "x": 2192,
+                      "y": 1188,
                       "w": 439.1,
                       "h": 67.1
                     }
@@ -24029,7 +23999,69 @@
                     "staff": true,
                     "layout": "auto",
                     "note": "",
-                    "children": [],
+                    "children": [
+                      {
+                        "id": "n_d6p2ow8uhb",
+                        "type": "office",
+                        "name": "สำนักใหม่",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": true,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FFFFFF",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#000000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "box": {
+                          "x": 2212,
+                          "y": 1012,
+                          "w": 408,
+                          "h": 56
+                        }
+                      },
+                      {
+                        "id": "n_sfklc79d08",
+                        "type": "office",
+                        "name": "Infrastructure IT Support & Help Desk Team",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": true,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FBE5D6",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#FF0000",
+                          "bold": false,
+                          "size": 12,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "box": {
+                          "x": 2212,
+                          "y": 1081,
+                          "w": 408,
+                          "h": 56
+                        },
+                        "hl": true
+                      }
+                    ],
                     "style": {
                       "fill": "#FBE5D6",
                       "line": "#70AD47",
@@ -24042,8 +24074,8 @@
                     "link": "#70AD47",
                     "box": {
                       "x": 2188,
-                      "y": 1116,
-                      "w": 432,
+                      "y": 932,
+                      "w": 440,
                       "h": 64
                     },
                     "hl": true
