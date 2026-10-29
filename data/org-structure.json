@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-10-29T03:01:10.008Z",
+  "updatedAt": "2026-10-29T03:03:23.661Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -23158,7 +23158,7 @@
       "basedOn": "v_pde_2026r1",
       "createdAt": "2026-10-16T08:41:36.013Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-10-29T03:01:05.052Z",
+      "updatedAt": "2026-10-29T03:02:06.506Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE DIGITAL ECONOMY CO., LTD. (PDE) 2027",
@@ -23543,7 +23543,7 @@
                       {
                         "id": "n_pde_7",
                         "type": "team",
-                        "name": "Data Visualization and Analytics Team",
+                        "name": "Data Analytics Team",
                         "nameEn": "",
                         "code": "",
                         "title": "",
@@ -23554,10 +23554,10 @@
                         "note": "",
                         "children": [],
                         "style": {
-                          "fill": "#FFFFFF",
+                          "fill": "#FBE5D6",
                           "line": "#ED7D31",
                           "lw": 1.33,
-                          "text": "#000000",
+                          "text": "#FF0000",
                           "bold": true,
                           "size": 14,
                           "align": "l"
@@ -23568,12 +23568,13 @@
                           "w": 380.1,
                           "h": 50
                         },
-                        "link": "#ED7D31"
+                        "link": "#ED7D31",
+                        "hl": true
                       },
                       {
                         "id": "n_pde_48",
                         "type": "team",
-                        "name": "Enterprise Data Engineering Team",
+                        "name": "Data Engineering Team",
                         "nameEn": "",
                         "code": "",
                         "title": "",
@@ -23584,10 +23585,10 @@
                         "note": "",
                         "children": [],
                         "style": {
-                          "fill": "#FFFFFF",
+                          "fill": "#FBE5D6",
                           "line": "#ED7D31",
                           "lw": 1.33,
-                          "text": "#000000",
+                          "text": "#FF0000",
                           "bold": true,
                           "size": 14,
                           "align": "l"
@@ -23598,7 +23599,8 @@
                           "w": 379.4,
                           "h": 56
                         },
-                        "link": "#ED7D31"
+                        "link": "#ED7D31",
+                        "hl": true
                       }
                     ],
                     "style": {
