@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-10-29T03:08:10.110Z",
+  "updatedAt": "2026-10-29T03:16:11.143Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -23158,7 +23158,7 @@
       "basedOn": "v_pde_2026r1",
       "createdAt": "2026-10-16T08:41:36.013Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-10-29T03:06:19.209Z",
+      "updatedAt": "2026-10-29T03:15:48.302Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE DIGITAL ECONOMY CO., LTD. (PDE) 2027",
@@ -23623,7 +23623,7 @@
                   {
                     "id": "n_pde_49",
                     "type": "team",
-                    "name": "DBTP with AI Project Team",
+                    "name": "Digital Business Technology Platform (DBTP ) Team",
                     "nameEn": "",
                     "code": "",
                     "title": "",
@@ -23667,7 +23667,7 @@
                       {
                         "id": "n_alkssq3qmj",
                         "type": "office",
-                        "name": "DBTP framework แลัวประสาน PEM (RAMI), PSP (SGAM, SCIAM)",
+                        "name": "DBTP Framework (SGAM, SCIAM, RAMI4.0)",
                         "nameEn": "",
                         "code": "",
                         "title": "",
