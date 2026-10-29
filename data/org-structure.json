@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-10-29T06:29:03.810Z",
+  "updatedAt": "2026-10-29T06:45:54.459Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -16552,7 +16552,7 @@
       "basedOn": "v_psp_2026r3",
       "createdAt": "2026-10-16T02:18:37.847Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-10-29T06:28:45.342Z",
+      "updatedAt": "2026-10-29T06:45:25.824Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE SYSTEM & PROJECT CO., LTD. (PSP) 2027",
@@ -19929,6 +19929,37 @@
                       "w": 396,
                       "h": 67.5
                     }
+                  },
+                  {
+                    "id": "n_yl2vzqhqsn",
+                    "type": "office",
+                    "name": "PPD (PSP100%)",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": true,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": "#FBE5D6",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#FF0000",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 2904,
+                      "y": 1964,
+                      "w": 396,
+                      "h": 67.5
+                    },
+                    "hl": true
                   }
                 ],
                 "style": {
