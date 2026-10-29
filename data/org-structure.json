@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-10-29T03:19:03.522Z",
+  "updatedAt": "2026-10-29T06:29:03.810Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -16552,7 +16552,7 @@
       "basedOn": "v_psp_2026r3",
       "createdAt": "2026-10-16T02:18:37.847Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-10-28T07:18:09.129Z",
+      "updatedAt": "2026-10-29T06:28:45.342Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE SYSTEM & PROJECT CO., LTD. (PSP) 2027",
@@ -18480,127 +18480,6 @@
                         }
                       },
                       {
-                        "id": "n_psp_94",
-                        "type": "division",
-                        "name": "Smart District Division",
-                        "nameEn": "",
-                        "code": "",
-                        "title": "",
-                        "head": "",
-                        "hc": 0,
-                        "staff": false,
-                        "layout": "auto",
-                        "note": "",
-                        "children": [
-                          {
-                            "id": "n_psp_95",
-                            "type": "section",
-                            "name": "Sale and Operation Management Section",
-                            "nameEn": "",
-                            "code": "",
-                            "title": "",
-                            "head": "",
-                            "hc": 0,
-                            "staff": false,
-                            "layout": "auto",
-                            "note": "",
-                            "children": [],
-                            "style": {
-                              "fill": "#FFFFFF",
-                              "line": "#70AD47",
-                              "lw": 1.33,
-                              "text": "#000000",
-                              "bold": false,
-                              "size": 12,
-                              "align": "l"
-                            },
-                            "link": "#70AD47",
-                            "box": {
-                              "x": 2023.1,
-                              "y": 1306.1,
-                              "w": 327,
-                              "h": 42.4
-                            }
-                          },
-                          {
-                            "id": "n_psp_216",
-                            "type": "section",
-                            "name": "Spatial Engineering & Land Development Engineering Section",
-                            "nameEn": "",
-                            "code": "",
-                            "title": "",
-                            "head": "",
-                            "hc": 0,
-                            "staff": false,
-                            "layout": "auto",
-                            "note": "",
-                            "children": [],
-                            "style": {
-                              "fill": "#FFFFFF",
-                              "line": "#70AD47",
-                              "lw": 1.33,
-                              "text": "#000000",
-                              "bold": false,
-                              "size": 12,
-                              "align": "l"
-                            },
-                            "link": "#70AD47",
-                            "box": {
-                              "x": 2024.2,
-                              "y": 1360.1,
-                              "w": 325.2,
-                              "h": 39
-                            }
-                          },
-                          {
-                            "id": "n_psp_214",
-                            "type": "section",
-                            "name": "Intergrated Water Management Digital Engineering Section",
-                            "nameEn": "",
-                            "code": "",
-                            "title": "",
-                            "head": "",
-                            "hc": 0,
-                            "staff": false,
-                            "layout": "auto",
-                            "note": "",
-                            "children": [],
-                            "style": {
-                              "fill": "#FFFFFF",
-                              "line": "#70AD47",
-                              "lw": 1.33,
-                              "text": "#000000",
-                              "bold": false,
-                              "size": 12,
-                              "align": "l"
-                            },
-                            "link": "#70AD47",
-                            "box": {
-                              "x": 2024.9,
-                              "y": 1408.8,
-                              "w": 325.2,
-                              "h": 45.7
-                            }
-                          }
-                        ],
-                        "style": {
-                          "fill": "#FFFFFF",
-                          "line": "#70AD47",
-                          "lw": 1.33,
-                          "text": "#000000",
-                          "bold": true,
-                          "size": 15,
-                          "align": "l"
-                        },
-                        "link": "#70AD47",
-                        "box": {
-                          "x": 1972.8,
-                          "y": 1241.7,
-                          "w": 377.8,
-                          "h": 50.9
-                        }
-                      },
-                      {
                         "id": "n_psp_96",
                         "type": "division",
                         "name": "Engineering Division",
@@ -19532,7 +19411,7 @@
                   {
                     "id": "n_884j8thh1y",
                     "type": "office",
-                    "name": "SCIAM Business Division (PSP106)",
+                    "name": "SCIAM Business Division (PSP106) + Smart District",
                     "nameEn": "",
                     "code": "",
                     "title": "",
