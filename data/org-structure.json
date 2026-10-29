@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-10-29T01:58:43.095Z",
+  "updatedAt": "2026-10-29T02:14:13.325Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -23158,7 +23158,7 @@
       "basedOn": "v_pde_2026r1",
       "createdAt": "2026-10-16T08:41:36.013Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-10-29T01:58:29.887Z",
+      "updatedAt": "2026-10-29T02:05:03.425Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE DIGITAL ECONOMY CO., LTD. (PDE) 2027",
@@ -23657,8 +23657,8 @@
                         "link": "#ED7D31",
                         "hl": true,
                         "box": {
-                          "x": 1257.9,
-                          "y": 904,
+                          "x": 1256,
+                          "y": 976,
                           "w": 387.6,
                           "h": 56
                         }
@@ -23688,8 +23688,8 @@
                         "link": "#ED7D31",
                         "hl": true,
                         "box": {
-                          "x": 1257.9,
-                          "y": 974.2,
+                          "x": 1256,
+                          "y": 896,
                           "w": 387.6,
                           "h": 68.2
                         }
