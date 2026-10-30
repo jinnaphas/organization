@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-10-30T02:38:09.079Z",
+  "updatedAt": "2026-10-30T08:53:45.164Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -8477,7 +8477,7 @@
       "basedOn": "v_pem_2026r3",
       "createdAt": "2026-10-16T02:26:36.993Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-10-29T03:18:58.755Z",
+      "updatedAt": "2026-10-30T08:53:06.699Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE ELECTRIC MANUFACTURING CO., LTD. (PEM) 2027",
@@ -9187,7 +9187,7 @@
                     "code": "",
                     "title": "",
                     "head": "",
-                    "hc": 3,
+                    "hc": 4,
                     "staff": false,
                     "layout": "auto",
                     "note": "",
@@ -9988,7 +9988,7 @@
                         "code": "",
                         "title": "",
                         "head": "",
-                        "hc": 13,
+                        "hc": 14,
                         "staff": false,
                         "layout": "auto",
                         "note": "",
