@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-11-11T02:37:55.109Z",
+  "updatedAt": "2026-11-11T02:40:24.610Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -8477,7 +8477,7 @@
       "basedOn": "v_pem_2026r3",
       "createdAt": "2026-10-16T02:26:36.993Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-11-11T02:36:58.107Z",
+      "updatedAt": "2026-11-11T02:40:20.811Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE ELECTRIC MANUFACTURING CO., LTD. (PEM) 2027",
@@ -9060,128 +9060,6 @@
                     }
                   },
                   {
-                    "id": "n_pem_149",
-                    "type": "department",
-                    "name": "Agentic Organization Development & Information Capital",
-                    "nameEn": "",
-                    "code": "",
-                    "title": "",
-                    "head": "",
-                    "hc": 3,
-                    "staff": false,
-                    "layout": "auto",
-                    "note": "",
-                    "children": [],
-                    "style": {
-                      "fill": "#FBE5D6",
-                      "line": "#ED7D31",
-                      "lw": 1.33,
-                      "text": "#FF0000",
-                      "bold": true,
-                      "size": 12,
-                      "align": "l"
-                    },
-                    "link": "#ED7D31",
-                    "box": {
-                      "x": 1160.6,
-                      "y": 714.8,
-                      "w": 374.4,
-                      "h": 57.200000000000045
-                    },
-                    "hl": true
-                  },
-                  {
-                    "id": "n_pem_84",
-                    "type": "department",
-                    "name": "Digital Process Capital",
-                    "nameEn": "",
-                    "code": "",
-                    "title": "",
-                    "head": "",
-                    "hc": 1,
-                    "staff": false,
-                    "layout": "auto",
-                    "note": "",
-                    "children": [
-                      {
-                        "id": "n_pem_151",
-                        "type": "department",
-                        "name": "Digital Process for Management (ISO & Standard Certificated)",
-                        "nameEn": "",
-                        "code": "",
-                        "title": "",
-                        "head": "",
-                        "hc": 3,
-                        "staff": false,
-                        "layout": "auto",
-                        "note": "",
-                        "children": [],
-                        "style": {
-                          "fill": null,
-                          "line": "#ED7D31",
-                          "lw": 1.33,
-                          "text": "#000000",
-                          "bold": false,
-                          "size": 12,
-                          "align": "l"
-                        },
-                        "link": "#ED7D31",
-                        "box": {
-                          "x": 1192,
-                          "y": 841,
-                          "w": 330.5,
-                          "h": 51
-                        }
-                      },
-                      {
-                        "id": "n_pem_152",
-                        "type": "department",
-                        "name": "Digital Process for Technology and Operation Support",
-                        "nameEn": "",
-                        "code": "",
-                        "title": "",
-                        "head": "",
-                        "hc": 0,
-                        "staff": false,
-                        "layout": "auto",
-                        "note": "",
-                        "children": [],
-                        "style": {
-                          "fill": null,
-                          "line": "#ED7D31",
-                          "lw": 1.33,
-                          "text": "#000000",
-                          "bold": false,
-                          "size": 12,
-                          "align": "l"
-                        },
-                        "link": "#ED7D31",
-                        "box": {
-                          "x": 1192,
-                          "y": 900,
-                          "w": 332,
-                          "h": 52
-                        }
-                      }
-                    ],
-                    "style": {
-                      "fill": null,
-                      "line": "#ED7D31",
-                      "lw": 1.33,
-                      "text": "#000000",
-                      "bold": true,
-                      "size": 12,
-                      "align": "l"
-                    },
-                    "link": "#ED7D31",
-                    "box": {
-                      "x": 1164,
-                      "y": 781,
-                      "w": 369.5,
-                      "h": 47
-                    }
-                  },
-                  {
                     "id": "n_pem_37",
                     "type": "office",
                     "name": "Calibration and Quality Assurance Team",
@@ -9205,8 +9083,8 @@
                     },
                     "link": "#ED7D31",
                     "box": {
-                      "x": 1168,
-                      "y": 968,
+                      "x": 1172,
+                      "y": 720,
                       "w": 360,
                       "h": 48.5
                     }
@@ -9230,13 +9108,13 @@
                       "lw": 1.33,
                       "text": "#FF0000",
                       "bold": true,
-                      "size": 16,
+                      "size": 12,
                       "align": "l"
                     },
                     "link": "#ED7D31",
                     "box": {
-                      "x": 1168,
-                      "y": 1028.5,
+                      "x": 1172,
+                      "y": 788,
                       "w": 360,
                       "h": 48.5
                     },
