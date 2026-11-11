@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-11-11T05:47:53.518Z",
+  "updatedAt": "2026-11-11T07:19:27.412Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -8477,7 +8477,7 @@
       "basedOn": "v_pem_2026r3",
       "createdAt": "2026-10-16T02:26:36.993Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-11-11T04:40:59.445Z",
+      "updatedAt": "2026-11-11T07:19:21.605Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE ELECTRIC MANUFACTURING CO., LTD. (PEM) 2027",
@@ -8949,8 +8949,38 @@
                 },
                 "link": "#4472C4",
                 "box": {
-                  "x": 488,
-                  "y": 1212,
+                  "x": 660,
+                  "y": 1160,
+                  "w": 316.8,
+                  "h": 45.4
+                }
+              },
+              {
+                "id": "n_f40kzz10bk",
+                "type": "department",
+                "name": "Project Management Office (PMO)",
+                "nameEn": "",
+                "code": "",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [],
+                "style": {
+                  "fill": "#FFFFFF",
+                  "line": "#4472C4",
+                  "lw": 1.33,
+                  "text": "#000000",
+                  "bold": false,
+                  "size": 12,
+                  "align": "l"
+                },
+                "link": "#4472C4",
+                "box": {
+                  "x": 656,
+                  "y": 1020,
                   "w": 316.8,
                   "h": 45.4
                 }
@@ -8979,8 +9009,8 @@
                 },
                 "link": "#4472C4",
                 "box": {
-                  "x": 468,
-                  "y": 1128,
+                  "x": 656,
+                  "y": 1084,
                   "w": 316.8,
                   "h": 46.1
                 }
@@ -10928,10 +10958,10 @@
                     "note": "",
                     "children": [],
                     "style": {
-                      "fill": "#FFFFFF",
+                      "fill": "#FBE5D6",
                       "line": "#4472C4",
                       "lw": 1.33,
-                      "text": "#000000",
+                      "text": "#FF0000",
                       "bold": false,
                       "size": 12,
                       "align": "l"
@@ -10942,7 +10972,8 @@
                       "y": 584,
                       "w": 344,
                       "h": 56
-                    }
+                    },
+                    "hl": true
                   },
                   {
                     "id": "n_0fnhnh7a0f",
@@ -10958,10 +10989,10 @@
                     "note": "",
                     "children": [],
                     "style": {
-                      "fill": "#FFFFFF",
+                      "fill": "#FBE5D6",
                       "line": "#4472C4",
                       "lw": 1.33,
-                      "text": "#000000",
+                      "text": "#FF0000",
                       "bold": false,
                       "size": 12,
                       "align": "l"
@@ -10972,7 +11003,8 @@
                       "y": 652,
                       "w": 344,
                       "h": 56
-                    }
+                    },
+                    "hl": true
                   },
                   {
                     "id": "n_ns6h5b7itp",
@@ -10988,10 +11020,10 @@
                     "note": "",
                     "children": [],
                     "style": {
-                      "fill": "#FFFFFF",
+                      "fill": "#FBE5D6",
                       "line": "#4472C4",
                       "lw": 1.33,
-                      "text": "#000000",
+                      "text": "#FF0000",
                       "bold": false,
                       "size": 12,
                       "align": "l"
@@ -11002,7 +11034,8 @@
                       "y": 720,
                       "w": 344,
                       "h": 56
-                    }
+                    },
+                    "hl": true
                   },
                   {
                     "id": "n_e20lno85wj",
@@ -11018,10 +11051,10 @@
                     "note": "",
                     "children": [],
                     "style": {
-                      "fill": "#FFFFFF",
+                      "fill": "#FBE5D6",
                       "line": "#4472C4",
                       "lw": 1.33,
-                      "text": "#000000",
+                      "text": "#FF0000",
                       "bold": false,
                       "size": 12,
                       "align": "l"
@@ -11032,7 +11065,8 @@
                       "y": 788,
                       "w": 344,
                       "h": 56
-                    }
+                    },
+                    "hl": true
                   },
                   {
                     "id": "n_c6kboa8sc7",
@@ -11048,10 +11082,10 @@
                     "note": "",
                     "children": [],
                     "style": {
-                      "fill": "#FFFFFF",
+                      "fill": "#FBE5D6",
                       "line": "#4472C4",
                       "lw": 1.33,
-                      "text": "#000000",
+                      "text": "#FF0000",
                       "bold": false,
                       "size": 12,
                       "align": "l"
@@ -11062,7 +11096,8 @@
                       "y": 856,
                       "w": 344,
                       "h": 56
-                    }
+                    },
+                    "hl": true
                   },
                   {
                     "id": "n_yy2se58xal",
@@ -11078,10 +11113,10 @@
                     "note": "",
                     "children": [],
                     "style": {
-                      "fill": "#FFFFFF",
+                      "fill": "#FBE5D6",
                       "line": "#4472C4",
                       "lw": 1.33,
-                      "text": "#000000",
+                      "text": "#FF0000",
                       "bold": false,
                       "size": 12,
                       "align": "l"
@@ -11092,7 +11127,8 @@
                       "y": 924,
                       "w": 344,
                       "h": 56
-                    }
+                    },
+                    "hl": true
                   }
                 ],
                 "style": {
