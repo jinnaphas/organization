@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-11-06T05:05:57.889Z",
+  "updatedAt": "2026-11-11T02:37:55.109Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -8477,7 +8477,7 @@
       "basedOn": "v_pem_2026r3",
       "createdAt": "2026-10-16T02:26:36.993Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-10-29T03:18:58.755Z",
+      "updatedAt": "2026-11-11T02:36:58.107Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE ELECTRIC MANUFACTURING CO., LTD. (PEM) 2027",
@@ -8919,130 +8919,10 @@
                 },
                 "link": "#4472C4",
                 "box": {
-                  "x": 669.7,
-                  "y": 676.1,
+                  "x": 700,
+                  "y": 324,
                   "w": 321.2,
                   "h": 42.2
-                }
-              },
-              {
-                "id": "n_pem_83",
-                "type": "department",
-                "name": "Strategy, Business Development and Business Model and Agile Innovation Capital",
-                "nameEn": "",
-                "code": "",
-                "title": "",
-                "head": "",
-                "hc": 0,
-                "staff": false,
-                "layout": "auto",
-                "note": "",
-                "children": [],
-                "style": {
-                  "fill": "#FFFFFF",
-                  "line": "#4472C4",
-                  "lw": 1.33,
-                  "text": "#000000",
-                  "bold": false,
-                  "size": 12,
-                  "align": "l"
-                },
-                "link": "#4472C4",
-                "box": {
-                  "x": 669.9,
-                  "y": 732.1,
-                  "w": 318.5,
-                  "h": 51.3
-                }
-              },
-              {
-                "id": "n_pem_147",
-                "type": "department",
-                "name": "Ecosystem Capital Management",
-                "nameEn": "",
-                "code": "",
-                "title": "",
-                "head": "",
-                "hc": 0,
-                "staff": false,
-                "layout": "auto",
-                "note": "",
-                "children": [],
-                "style": {
-                  "fill": "#FFFFFF",
-                  "line": "#4472C4",
-                  "lw": 1.33,
-                  "text": "#000000",
-                  "bold": false,
-                  "size": 12,
-                  "align": "l"
-                },
-                "link": "#4472C4",
-                "box": {
-                  "x": 673.7,
-                  "y": 799.2,
-                  "w": 316.8,
-                  "h": 45.4
-                }
-              },
-              {
-                "id": "n_pem_18",
-                "type": "department",
-                "name": "Augmented Human Capital Management",
-                "nameEn": "",
-                "code": "",
-                "title": "",
-                "head": "",
-                "hc": 4,
-                "staff": false,
-                "layout": "auto",
-                "note": "",
-                "children": [],
-                "style": {
-                  "fill": "#FFFFFF",
-                  "line": "#4472C4",
-                  "lw": 1.33,
-                  "text": "#000000",
-                  "bold": false,
-                  "size": 12,
-                  "align": "l"
-                },
-                "link": "#4472C4",
-                "box": {
-                  "x": 672,
-                  "y": 859.7,
-                  "w": 316.8,
-                  "h": 52.6
-                }
-              },
-              {
-                "id": "n_pem_19",
-                "type": "department",
-                "name": "Customer Experience & Platform Capital Management",
-                "nameEn": "",
-                "code": "",
-                "title": "",
-                "head": "",
-                "hc": 1,
-                "staff": false,
-                "layout": "auto",
-                "note": "",
-                "children": [],
-                "style": {
-                  "fill": "#FFFFFF",
-                  "line": "#4472C4",
-                  "lw": 1.33,
-                  "text": "#000000",
-                  "bold": false,
-                  "size": 12,
-                  "align": "l"
-                },
-                "link": "#4472C4",
-                "box": {
-                  "x": 670.8,
-                  "y": 937.5,
-                  "w": 316.8,
-                  "h": 46.4
                 }
               },
               {
@@ -9069,8 +8949,8 @@
                 },
                 "link": "#4472C4",
                 "box": {
-                  "x": 670.9,
-                  "y": 1009.5,
+                  "x": 540,
+                  "y": 1192,
                   "w": 316.8,
                   "h": 45.4
                 }
@@ -9099,8 +8979,8 @@
                 },
                 "link": "#4472C4",
                 "box": {
-                  "x": 671.1,
-                  "y": 1074.9,
+                  "x": 428,
+                  "y": 1124,
                   "w": 316.8,
                   "h": 46.1
                 }
@@ -9375,9 +9255,22 @@
                 "link": "#ED7D31",
                 "box": {
                   "x": 1101.8,
-                  "y": 473.4,
-                  "w": 434.5,
-                  "h": 81.9
+                  "y": 476,
+                  "w": 434.20000000000005,
+                  "h": 79.29999999999995
+                },
+                "wire": {
+                  "a": {
+                    "s": "b",
+                    "t": 0.49999999999999983
+                  },
+                  "b": {
+                    "s": "t",
+                    "t": 0.5
+                  },
+                  "k": [
+                    429.65
+                  ]
                 }
               },
               {
@@ -11128,6 +11021,217 @@
                   "y": 482.4,
                   "w": 424.4,
                   "h": 84.8
+                }
+              },
+              {
+                "id": "n_xt7v8vzqwc",
+                "type": "division",
+                "name": "Chief Strategy Officer (CSO)",
+                "nameEn": "",
+                "code": "",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": false,
+                "layout": "auto",
+                "note": "",
+                "children": [
+                  {
+                    "id": "n_1681za4jjn",
+                    "type": "department",
+                    "name": "Strategy, Business Development and Business Model and Agile Innovation Capital",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#4472C4",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": false,
+                      "size": 12,
+                      "align": "l"
+                    },
+                    "link": "#4472C4",
+                    "box": {
+                      "x": 684,
+                      "y": 584,
+                      "w": 344,
+                      "h": 56
+                    }
+                  },
+                  {
+                    "id": "n_0fnhnh7a0f",
+                    "type": "department",
+                    "name": "Agentic Organization Development & Information Capital",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#4472C4",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": false,
+                      "size": 12,
+                      "align": "l"
+                    },
+                    "link": "#4472C4",
+                    "box": {
+                      "x": 684,
+                      "y": 652,
+                      "w": 344,
+                      "h": 56
+                    }
+                  },
+                  {
+                    "id": "n_ns6h5b7itp",
+                    "type": "department",
+                    "name": "Augmented Human Capital Management",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#4472C4",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": false,
+                      "size": 12,
+                      "align": "l"
+                    },
+                    "link": "#4472C4",
+                    "box": {
+                      "x": 684,
+                      "y": 720,
+                      "w": 344,
+                      "h": 56
+                    }
+                  },
+                  {
+                    "id": "n_e20lno85wj",
+                    "type": "department",
+                    "name": "Digital Process Capital",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#4472C4",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": false,
+                      "size": 12,
+                      "align": "l"
+                    },
+                    "link": "#4472C4",
+                    "box": {
+                      "x": 684,
+                      "y": 788,
+                      "w": 344,
+                      "h": 56
+                    }
+                  },
+                  {
+                    "id": "n_c6kboa8sc7",
+                    "type": "department",
+                    "name": "Customer Capital Development",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#4472C4",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": false,
+                      "size": 12,
+                      "align": "l"
+                    },
+                    "link": "#4472C4",
+                    "box": {
+                      "x": 684,
+                      "y": 856,
+                      "w": 344,
+                      "h": 56
+                    }
+                  },
+                  {
+                    "id": "n_yy2se58xal",
+                    "type": "department",
+                    "name": "Platform Ecosystem and Relationship Capital",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "line": "#4472C4",
+                      "lw": 1.33,
+                      "text": "#000000",
+                      "bold": false,
+                      "size": 12,
+                      "align": "l"
+                    },
+                    "link": "#4472C4",
+                    "box": {
+                      "x": 684,
+                      "y": 924,
+                      "w": 344,
+                      "h": 56
+                    }
+                  }
+                ],
+                "style": {
+                  "fill": "#FFE699",
+                  "line": "#0070C0",
+                  "lw": 1.33,
+                  "text": "#0000FF",
+                  "bold": true,
+                  "size": 18,
+                  "align": "c"
+                },
+                "link": "#4472C4",
+                "box": {
+                  "x": 644,
+                  "y": 476,
+                  "w": 390,
+                  "h": 80
                 }
               }
             ],
