@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-11-11T02:40:24.610Z",
+  "updatedAt": "2026-11-11T04:01:41.981Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -16534,7 +16534,7 @@
       "basedOn": "v_psp_2026r3",
       "createdAt": "2026-10-16T02:18:37.847Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-11-06T05:05:02.925Z",
+      "updatedAt": "2026-11-11T04:01:16.586Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE SYSTEM & PROJECT CO., LTD. (PSP) 2027",
@@ -16975,130 +16975,10 @@
                 },
                 "link": "#4472C4",
                 "box": {
-                  "x": 678.1,
-                  "y": 572.6,
-                  "w": 313.6,
-                  "h": 49.5
-                }
-              },
-              {
-                "id": "n_psp_61",
-                "type": "department",
-                "name": "Strategy, Business Development and Business Model and Agile Innovation Capital",
-                "nameEn": "",
-                "code": "",
-                "title": "",
-                "head": "",
-                "hc": 0,
-                "staff": false,
-                "layout": "auto",
-                "note": "",
-                "children": [],
-                "style": {
-                  "fill": "#FFFFFF",
-                  "line": "#4472C4",
-                  "lw": 1.33,
-                  "text": "#000000",
-                  "bold": false,
-                  "size": 12,
-                  "align": "l"
-                },
-                "link": "#4472C4",
-                "box": {
-                  "x": 681,
-                  "y": 630.2,
-                  "w": 310.4,
-                  "h": 52.7
-                }
-              },
-              {
-                "id": "n_psp_208",
-                "type": "department",
-                "name": "Ecosystem Capital Management",
-                "nameEn": "",
-                "code": "",
-                "title": "",
-                "head": "",
-                "hc": 0,
-                "staff": false,
-                "layout": "auto",
-                "note": "",
-                "children": [],
-                "style": {
-                  "fill": "#FFFFFF",
-                  "line": "#4472C4",
-                  "lw": 1.33,
-                  "text": "#000000",
-                  "bold": false,
-                  "size": 12,
-                  "align": "l"
-                },
-                "link": "#4472C4",
-                "box": {
-                  "x": 681,
-                  "y": 693.3,
-                  "w": 310.4,
-                  "h": 46.4
-                }
-              },
-              {
-                "id": "n_psp_15",
-                "type": "department",
-                "name": "Augmented Human Capital Management",
-                "nameEn": "",
-                "code": "",
-                "title": "",
-                "head": "",
-                "hc": 0,
-                "staff": false,
-                "layout": "auto",
-                "note": "",
-                "children": [],
-                "style": {
-                  "fill": "#FFFFFF",
-                  "line": "#4472C4",
-                  "lw": 1.33,
-                  "text": "#000000",
-                  "bold": false,
-                  "size": 12,
-                  "align": "l"
-                },
-                "link": "#4472C4",
-                "box": {
-                  "x": 680.7,
-                  "y": 748.6,
-                  "w": 310.4,
-                  "h": 42.1
-                }
-              },
-              {
-                "id": "n_psp_16",
-                "type": "department",
-                "name": "Customer Experience & Platform Capital Management",
-                "nameEn": "",
-                "code": "",
-                "title": "",
-                "head": "",
-                "hc": 0,
-                "staff": false,
-                "layout": "auto",
-                "note": "",
-                "children": [],
-                "style": {
-                  "fill": "#FFFFFF",
-                  "line": "#4472C4",
-                  "lw": 1.33,
-                  "text": "#000000",
-                  "bold": false,
-                  "size": 12,
-                  "align": "l"
-                },
-                "link": "#4472C4",
-                "box": {
-                  "x": 681,
-                  "y": 800.4,
-                  "w": 310.4,
-                  "h": 55.3
+                  "x": 684,
+                  "y": 932,
+                  "w": 340,
+                  "h": 70.5
                 }
               },
               {
@@ -17126,9 +17006,9 @@
                 "link": "#4472C4",
                 "box": {
                   "x": 680,
-                  "y": 866.2,
-                  "w": 310.4,
-                  "h": 42.4
+                  "y": 1021.2,
+                  "w": 344,
+                  "h": 70.79999999999995
                 }
               },
               {
@@ -17156,9 +17036,9 @@
                 "link": "#4472C4",
                 "box": {
                   "x": 679.8,
-                  "y": 924,
-                  "w": 310.4,
-                  "h": 52.6
+                  "y": 1111,
+                  "w": 344.20000000000005,
+                  "h": 76
                 }
               },
               {
@@ -17199,9 +17079,9 @@
                     "link": "#ED7D31",
                     "box": {
                       "x": 1094.8,
-                      "y": 584,
+                      "y": 576,
                       "w": 363.6,
-                      "h": 64.60000000000002
+                      "h": 72.60000000000002
                     }
                   },
                   {
@@ -17459,7 +17339,7 @@
                 },
                 "link": "#ED7D31",
                 "box": {
-                  "x": 1045.4,
+                  "x": 1058.4,
                   "y": 477.4,
                   "w": 413.4,
                   "h": 82.3
@@ -18745,8 +18625,8 @@
                     },
                     "link": "#70AD47",
                     "box": {
-                      "x": 1960.5,
-                      "y": 587.5,
+                      "x": 1961.5,
+                      "y": 592.5,
                       "w": 389.2,
                       "h": 67.5
                     }
@@ -19960,6 +19840,162 @@
                   "w": 434.9,
                   "h": 82.4
                 }
+              },
+              {
+                "id": "n_5pm2mf9l6w",
+                "type": "office",
+                "name": "Chief Strategy Officer (CSO)",
+                "nameEn": "",
+                "code": "",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": true,
+                "layout": "auto",
+                "note": "รับผิดชอบการกำหนดและขับเคลื่อนกลยุทธ์องค์กรให้สอดคล้องกับวิสัยทัศน์และเป้าหมายทางธุรกิจ วิเคราะห์โอกาสการเติบโต การลงทุน และการพัฒนาธุรกิจใหม่ บริหารกลุ่มธุรกิจและทรัพยากรเชิงกลยุทธ์ ตลอดจนผลักดันการเปลี่ยนแปลงองค์กรและติดตามผลการดำเนินงาน เพื่อเสริมสร้างขีดความสามารถในการแข่งขันและการเติบโตอย่างยั่งยืน",
+                "children": [
+                  {
+                    "id": "n_6j000zg4uc",
+                    "type": "office",
+                    "name": "Strategy, Business Development and Business Model and Agile Innovation Capital",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": true,
+                    "layout": "auto",
+                    "note": "รับผิดชอบการกำหนดและขับเคลื่อนกลยุทธ์องค์กร การวิเคราะห์และพัฒนาโอกาสทางธุรกิจใหม่ การออกแบบและพัฒนารูปแบบธุรกิจเพื่อสร้างแหล่งรายได้และคุณค่าใหม่ ตลอดจนการบริหารทุนด้านนวัตกรรมและส่งเสริมการพัฒนานวัตกรรมด้วยแนวคิด Agile รวมถึงการสร้างพันธมิตรเชิงกลยุทธ์และระบบนิเวศทางธุรกิจ เพื่อยกระดับขีดความสามารถในการแข่งขันและสร้างการเติบโตอย่างยั่งยืน",
+                    "children": [],
+                    "style": {
+                      "fill": "#FBE5D6",
+                      "line": "#4472C4",
+                      "lw": 1.33,
+                      "text": "#FF0000",
+                      "bold": false,
+                      "size": 12,
+                      "align": "l"
+                    },
+                    "link": "#4472C4",
+                    "box": {
+                      "x": 696,
+                      "y": 579,
+                      "w": 328,
+                      "h": 64
+                    },
+                    "hl": true
+                  },
+                  {
+                    "id": "n_1dckk5gox4",
+                    "type": "office",
+                    "name": "Ecosystem Capital Management",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": true,
+                    "layout": "auto",
+                    "note": "รับผิดชอบกำหนดกลยุทธ์และบริหารจัดการระบบนิเวศทางธุรกิจ (Business Ecosystem) สร้างและพัฒนาเครือข่ายพันธมิตรเชิงกลยุทธ์ เชื่อมโยงทรัพยากร องค์ความรู้ เทคโนโลยี และศักยภาพของผู้มีส่วนได้ส่วนเสียทั้งภายในและภายนอกองค์กร ตลอดจนส่งเสริมความร่วมมือและพัฒนาโอกาสทางธุรกิจ เพื่อสร้างคุณค่าร่วมกัน เพิ่มขีดความสามารถในการแข่งขัน และสนับสนุนการเติบโตอย่างยั่งยืน",
+                    "children": [],
+                    "style": {
+                      "fill": "#FBE5D6",
+                      "line": "#4472C4",
+                      "lw": 1.33,
+                      "text": "#FF0000",
+                      "bold": false,
+                      "size": 12,
+                      "align": "l"
+                    },
+                    "link": "#4472C4",
+                    "hl": true,
+                    "box": {
+                      "x": 696,
+                      "y": 656,
+                      "w": 328,
+                      "h": 64
+                    }
+                  },
+                  {
+                    "id": "n_ga4bqvh2lj",
+                    "type": "office",
+                    "name": "Augmented Human Capital Management",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": true,
+                    "layout": "auto",
+                    "note": "รับผิดชอบกำหนดกลยุทธ์และบริหารการพัฒนาทุนมนุษย์ให้สอดคล้องกับทิศทางและเป้าหมายองค์กร วางแผนกำลังคนและขีดความสามารถในอนาคต ยกระดับศักยภาพบุคลากรด้วย Digital, AI และ Automation พัฒนาบุคลากรศักยภาพสูง เส้นทางความก้าวหน้าในอาชีพและผู้นำทุกระดับ ตลอดจนส่งเสริมระบบบริหารผลงาน การใช้ข้อมูลทุนมนุษย์ และการเปลี่ยนแปลงองค์กร เพื่อเพิ่มผลิตภาพ ขีดความสามารถในการแข่งขัน และการเติบโตอย่างยั่งยืน",
+                    "children": [],
+                    "style": {
+                      "fill": "#FBE5D6",
+                      "line": "#4472C4",
+                      "lw": 1.33,
+                      "text": "#FF0000",
+                      "bold": false,
+                      "size": 12,
+                      "align": "l"
+                    },
+                    "link": "#4472C4",
+                    "hl": true,
+                    "box": {
+                      "x": 696,
+                      "y": 732,
+                      "w": 328,
+                      "h": 64
+                    }
+                  },
+                  {
+                    "id": "n_73wlrnhfal",
+                    "type": "office",
+                    "name": "Customer Experience & Platform Capital Management",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": true,
+                    "layout": "auto",
+                    "note": "รับผิดชอบกำหนดกลยุทธ์และบริหารประสบการณ์ลูกค้าตลอดวงจรธุรกิจ วิเคราะห์ข้อมูลและความต้องการลูกค้า เพื่อพัฒนาคุณค่าของผลิตภัณฑ์และบริการ ตลอดจนกำหนดกลยุทธ์และบริหารทุนแพลตฟอร์มทางธุรกิจ เชื่อมโยงข้อมูล เทคโนโลยี ลูกค้า และพันธมิตร เพื่อยกระดับประสบการณ์ลูกค้า สร้างโอกาสทางธุรกิจและรายได้ต่อเนื่อง เพิ่มขีดความสามารถในการแข่งขัน และสนับสนุนการเติบโตอย่างยั่งยืน",
+                    "children": [],
+                    "style": {
+                      "fill": "#FBE5D6",
+                      "line": "#4472C4",
+                      "lw": 1.33,
+                      "text": "#FF0000",
+                      "bold": false,
+                      "size": 12,
+                      "align": "l"
+                    },
+                    "link": "#4472C4",
+                    "hl": true,
+                    "box": {
+                      "x": 696,
+                      "y": 808,
+                      "w": 328,
+                      "h": 64
+                    }
+                  }
+                ],
+                "style": {
+                  "fill": "#FBE5D6",
+                  "line": "#4472C4",
+                  "lw": 1.33,
+                  "text": "#FF0000",
+                  "bold": true,
+                  "size": 18,
+                  "align": "c"
+                },
+                "box": {
+                  "x": 672,
+                  "y": 478,
+                  "w": 364,
+                  "h": 84
+                },
+                "link": "#4472C4",
+                "hl": true
               }
             ],
             "style": {
@@ -23050,7 +23086,7 @@
       "basedOn": "v_pde_2026r1",
       "createdAt": "2026-10-16T08:41:36.013Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-10-30T03:15:12.495Z",
+      "updatedAt": "2026-11-11T03:29:30.342Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE DIGITAL ECONOMY CO., LTD. (PDE) 2027",
@@ -23991,6 +24027,35 @@
                   "h": 106.8
                 },
                 "link": "#70AD47"
+              },
+              {
+                "id": "n_bxufe77qcv",
+                "type": "office",
+                "name": "สำนักใหม่",
+                "nameEn": "",
+                "code": "",
+                "title": "",
+                "head": "",
+                "hc": 0,
+                "staff": true,
+                "layout": "auto",
+                "note": "",
+                "children": [],
+                "style": {
+                  "fill": "#FFFFFF",
+                  "line": "#000000",
+                  "lw": 1.33,
+                  "text": "#000000",
+                  "bold": false,
+                  "size": 12,
+                  "align": "l"
+                },
+                "box": {
+                  "x": 640.7,
+                  "y": 999.8,
+                  "w": 327.1,
+                  "h": 49.3
+                }
               }
             ],
             "style": {
