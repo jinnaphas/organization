@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-11-11T07:25:02.412Z",
+  "updatedAt": "2026-11-11T09:21:47.494Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -8477,7 +8477,7 @@
       "basedOn": "v_pem_2026r3",
       "createdAt": "2026-10-16T02:26:36.993Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-11-11T07:24:55.344Z",
+      "updatedAt": "2026-11-11T08:39:52.422Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE ELECTRIC MANUFACTURING CO., LTD. (PEM) 2027",
@@ -10923,6 +10923,96 @@
                         585.5,
                         2552
                       ]
+                    }
+                  },
+                  {
+                    "id": "n_ixhbe08qgg",
+                    "type": "division",
+                    "name": "ACOO Omni",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFE699",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#0000FF",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 2688,
+                      "y": 468,
+                      "w": 345.8,
+                      "h": 42.4
+                    }
+                  },
+                  {
+                    "id": "n_jj7auubgt3",
+                    "type": "division",
+                    "name": "ACOO TCS + Recurring",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFE699",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#0000FF",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 2688,
+                      "y": 532,
+                      "w": 345.8,
+                      "h": 42.4
+                    }
+                  },
+                  {
+                    "id": "n_xqeieq9fzv",
+                    "type": "division",
+                    "name": "ACOO Tendering",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFE699",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#0000FF",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 1740,
+                      "y": 516,
+                      "w": 345.8,
+                      "h": 42.4
                     }
                   }
                 ],
