@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-11-11T07:19:27.412Z",
+  "updatedAt": "2026-11-11T07:23:23.583Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -8477,7 +8477,7 @@
       "basedOn": "v_pem_2026r3",
       "createdAt": "2026-10-16T02:26:36.993Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-11-11T07:19:21.605Z",
+      "updatedAt": "2026-11-11T07:23:18.633Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE ELECTRIC MANUFACTURING CO., LTD. (PEM) 2027",
@@ -8919,8 +8919,8 @@
                 },
                 "link": "#4472C4",
                 "box": {
-                  "x": 700,
-                  "y": 324,
+                  "x": 644,
+                  "y": 1020,
                   "w": 321.2,
                   "h": 42.2
                 }
@@ -8951,36 +8951,6 @@
                 "box": {
                   "x": 660,
                   "y": 1160,
-                  "w": 316.8,
-                  "h": 45.4
-                }
-              },
-              {
-                "id": "n_f40kzz10bk",
-                "type": "department",
-                "name": "Project Management Office (PMO)",
-                "nameEn": "",
-                "code": "",
-                "title": "",
-                "head": "",
-                "hc": 0,
-                "staff": false,
-                "layout": "auto",
-                "note": "",
-                "children": [],
-                "style": {
-                  "fill": "#FFFFFF",
-                  "line": "#4472C4",
-                  "lw": 1.33,
-                  "text": "#000000",
-                  "bold": false,
-                  "size": 12,
-                  "align": "l"
-                },
-                "link": "#4472C4",
-                "box": {
-                  "x": 656,
-                  "y": 1020,
                   "w": 316.8,
                   "h": 45.4
                 }
