@@ -226,6 +226,26 @@ textarea.inp{min-height:84px;resize:vertical;line-height:1.5}
 .wire-ui .wh-end{r:calc(6px * var(--hz, 1));fill:#0d6672}
 .wire-ui .wh-seg{r:calc(5px * var(--hz, 1));fill:#c27c0e}
 .wire-ui .wh:hover{stroke:#13202a}
+.wire-ui .wh.wh-segline{stroke:transparent;stroke-width:calc(11px * var(--hz, 1));fill:none}
+.wire-ui .wh.wh-segline:hover{stroke:rgba(194,124,14,.32)}
+.wire-ui .wh-segline.hz{cursor:ns-resize}
+.wire-ui .wh-segline.vt{cursor:ew-resize}
+.links .lk-hit{fill:none;stroke:transparent;stroke-width:calc(9px * var(--hz, 1));pointer-events:stroke;cursor:pointer}
+.links .lk-hit:hover{stroke:rgba(13,102,114,.18)}
+.lk.hl{stroke:#c27c0e!important;stroke-width:3.5}
+.marq{position:absolute;border:1.5px dashed var(--accent);background:rgba(13,102,114,.08);pointer-events:none;z-index:7}
+.stage.multi .rh{display:none!important}
+.node.marq-hit{outline:2px dashed var(--accent);outline-offset:3px}
+.canvas.boxsel{cursor:crosshair}
+.lk-menu{position:fixed;z-index:80;background:var(--surface);color:var(--ink);border:1px solid var(--line-strong);border-radius:10px;box-shadow:var(--shadow);padding:6px;display:grid;gap:2px;min-width:220px;max-width:340px;max-height:60vh;overflow:auto}
+.lk-menu .lk-mh{font-size:11.5px;color:var(--muted);padding:2px 6px 4px}
+.lk-menu button{display:grid;gap:1px;text-align:left;border:0;background:none;padding:6px 8px;border-radius:6px;cursor:pointer;color:var(--ink)}
+.lk-menu button:hover,.lk-menu button:focus-visible{background:var(--surface-2)}
+.lk-menu small{color:var(--muted);font-size:11.5px}
+.al-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.al-grid.two{grid-template-columns:repeat(2,1fr)}
+.multi-list{margin:0;padding-left:18px;max-height:200px;overflow:auto;font-size:12.5px}
+.multi-list li.cur a{font-weight:700}
 
 /* unit boxes: colours, weight and alignment come from each unit's style (taken from the Excel charts) */
 .node{position:absolute;width:200px;height:88px;padding:5px 8px;display:flex;flex-direction:column;justify-content:safe center;cursor:pointer;user-select:none;-webkit-user-select:none;font-family:var(--f-doc);line-height:1.17;overflow:visible}
@@ -943,6 +963,7 @@ const I = {
   panelR: ic('<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M15 4v16"/>'),
   layers: ic('<path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/>'),
   fit: ic('<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>'),
+  marq: ic('<rect x="3" y="3" width="14" height="12" rx="1.5" stroke-dasharray="3 2.5"/><path d="M13 12l7 3-3 1.2-1.2 3z"/>'),
   more: ic('<circle cx="5" cy="12" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="19" cy="12" r="1.2"/>'),
   history: ic('<path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/><path d="M12 8v4l3 2"/>'),
   settings: ic('<path d="M4 6h9M17 6h3M4 12h3M11 12h9M4 18h11M19 18h1"/><circle cx="15" cy="6" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="18" r="2"/>'),
@@ -1040,6 +1061,8 @@ const S = {
   versionId: null,
   tab: 'chart',
   selected: null,
+  multi: new Set(),    // structure chart: several boxes selected together (the last one clicked is S.selected)
+  boxSel: false,       // structure chart: drag on an empty area draws a selection box instead of panning
   compareWith: null,
   views: {},           // versionId -> { x, y, z }
   collapsed: {},       // versionId -> Set(nodeId)
@@ -1570,6 +1593,51 @@ function wireOf(P, C, L) {
   const l = L.links.find(o => o.id === C.n.id);
   return l ? wireFromPath(P, C, l.auto || l.d) : null;
 }
+// a click on a line selects the box it leads to; where several lines run on top of each other, ask which
+function lineClick(x, y) {
+  const v = curVersion();
+  const ids = [...new Set(document.elementsFromPoint(x, y).filter(el => el.classList && el.classList.contains('lk-hit')).map(el => el.dataset.lk))].filter(id => find(v.root, id));
+  if (!ids.length) return false;
+  if (ids.length === 1) selectNode(ids[0]);
+  else lineChooser(v, ids, x, y);
+  return true;
+}
+function closeLineChooser() {
+  const m = $('#lk-menu');
+  if (!m) return;
+  m.remove();
+  $$('.lk.hl').forEach(el => el.classList.remove('hl'));
+  document.removeEventListener('pointerdown', lineChooser.out, true);
+  document.removeEventListener('keydown', lineChooser.key, true);
+}
+function lineChooser(v, ids, x, y) {
+  closeLineChooser();
+  const m = document.createElement('div');
+  m.id = 'lk-menu';
+  m.className = 'lk-menu';
+  m.setAttribute('role', 'menu');
+  m.innerHTML = `<div class="lk-mh">เส้นซ้อนกันตรงนี้ ${ids.length} เส้น · เลือกเส้นที่จะปรับ</div>` + ids.map(id => { const f = find(v.root, id); return `<button role="menuitem" data-lk-pick="${id}"><b>${esc(f.node.name || 'ไม่มีชื่อ')}</b><small>เส้นจาก ${esc(f.parent ? f.parent.name : '')}</small></button>`; }).join('');
+  document.body.appendChild(m);
+  const r = m.getBoundingClientRect();
+  m.style.left = Math.max(8, Math.min(x + 8, innerWidth - r.width - 8)) + 'px';
+  m.style.top = Math.max(8, Math.min(y + 8, innerHeight - r.height - 8)) + 'px';
+  // point at a name: its line lights up on the chart
+  m.addEventListener('pointerover', ev => { const b = ev.target.closest('[data-lk-pick]'); $$('.lk.hl').forEach(el => el.classList.remove('hl')); if (b) $(`.lk[data-lk="${b.dataset.lkPick}"]`)?.classList.add('hl'); });
+  m.addEventListener('click', ev => { const b = ev.target.closest('[data-lk-pick]'); if (!b) return; closeLineChooser(); selectNode(b.dataset.lkPick); });
+  lineChooser.out = ev => { if (!ev.target.closest('#lk-menu')) closeLineChooser(); };
+  lineChooser.key = ev => { if (ev.key === 'Escape') { ev.stopPropagation(); closeLineChooser(); } };
+  document.addEventListener('pointerdown', lineChooser.out, true);
+  document.addEventListener('keydown', lineChooser.key, true);
+  m.querySelector('button')?.focus();
+}
+// one more turn pair in the line (a step you can drag to lead it around a box or off another line), or one less
+function wireBend(P, C, w, more) {
+  if (!more) { if (w.k.length >= 2) w.k = w.k.slice(0, -2); return w; }
+  const pts = wirePts(P, C, w), n = w.k.length, Q = pts[n + 0], X = pts[n + 1], E = pts[n + 2];
+  const ax = n % 2 === 0 ? WSIDE[w.a.s] : otherAx(WSIDE[w.a.s]), i = ax === 'v' ? 1 : 0, o = 1 - i;
+  w.k = w.k.concat([Math.round((Q[i] + X[i]) / 2), Math.round((X[o] + E[o]) / 2)]);
+  return w;
+}
 // the point on a box edge nearest to (X, Y), as a side and a place along it (snaps to the middle)
 function nearestEnd(b, X, Y, free) {
   const cx = clamp(X, b.x, b.x + b.w), cy = clamp(Y, b.y, b.y + b.h);
@@ -1587,7 +1655,8 @@ function wireUI(v, L, id) {
   const w = C && P && wireOf(P, C, L);
   if (!w) return '';
   const pts = wirePts(P, C, w), last = pts.length - 1;
-  const segs = w.k.map((c, i) => { const a = pts[i + 1], b = pts[i + 2]; return `<circle class="wh wh-seg" data-wh="seg" data-j="${i}" r="5" cx="${(a[0] + b[0]) / 2}" cy="${(a[1] + b[1]) / 2}"><title>ลากเพื่อเลื่อนแนวเส้น</title></circle>`; }).join('');
+  const legs = w.k.map((c, i) => { const a = pts[i + 1], b = pts[i + 2], hz = Math.abs(a[1] - b[1]) < 0.5; return `<line class="wh wh-segline ${hz ? 'hz' : 'vt'}" data-wh="seg" data-j="${i}" x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}"><title>ลากเพื่อเลื่อนแนวเส้นช่วงนี้</title></line>`; }).join('');
+  const segs = legs + w.k.map((c, i) => { const a = pts[i + 1], b = pts[i + 2]; return `<circle class="wh wh-seg" data-wh="seg" data-j="${i}" r="5" cx="${(a[0] + b[0]) / 2}" cy="${(a[1] + b[1]) / 2}"><title>ลากเพื่อเลื่อนแนวเส้น</title></circle>`; }).join('');
   return `<svg class="wire-ui" width="${L.w}" height="${L.h}" viewBox="0 0 ${L.w} ${L.h}"><path class="wsel" d="${ptsD(pts)}"/>
     <circle class="wh wh-end" data-wh="a" r="6" cx="${pts[0][0]}" cy="${pts[0][1]}"><title>จุดเชื่อมที่หน่วยแม่ · ลากไปตามขอบกล่อง</title></circle>
     <circle class="wh wh-end" data-wh="b" r="6" cx="${pts[last][0]}" cy="${pts[last][1]}"><title>จุดเชื่อมที่หน่วยนี้ · ลากไปตามขอบกล่อง</title></circle>${segs}</svg>`;
@@ -2045,7 +2114,7 @@ function homeHTML() {
 
 /* ---------- workspace ---------- */
 function canvasHTML() {
-  return `<div class="canvas" id="canvas" tabindex="0" aria-label="แผนผังโครงสร้างองค์กร"><div class="stage" id="stage"></div><div class="cv-over" id="cv-over"></div>
+  return `<div class="canvas${S.boxSel && S.page === 'structure' ? ' boxsel' : ''}" id="canvas" tabindex="0" aria-label="แผนผังโครงสร้างองค์กร"><div class="stage" id="stage"></div><div class="cv-over" id="cv-over"></div>
       <div class="zoomctl"><button class="ibtn" data-act="zoom-out" title="ย่อ" aria-label="ย่อ">${I.minus}</button><button class="zv" data-act="zoom-reset" id="zv" title="ขนาดจริง 100%">100%</button><button class="ibtn" data-act="zoom-in" title="ขยาย" aria-label="ขยาย">${I.plus}</button><button class="ibtn" data-act="zoom-fit" title="พอดีหน้าจอ" aria-label="พอดีหน้าจอ">${I.fit}</button></div></div>`;
 }
 // the structure chart, or the same chart with headcounts on the Workforce page
@@ -2141,6 +2210,7 @@ function toolsHTML(v) {
     <div class="tools-r">
       ${S.tab === 'chart' ? `<div class="tabs" role="group" aria-label="การจัดวางกล่อง" title="${edit ? 'จัดวางอิสระ: ลากกล่องเพื่อย้าย ลากจุดที่มุมเพื่อปรับขนาด' : 'แก้ไขได้เฉพาะ Draft'}">
         <button class="tab" data-act="layout-auto" aria-pressed="${!isFree(v)}" aria-selected="${!isFree(v)}" ${edit ? '' : 'disabled'}>จัดอัตโนมัติ</button><button class="tab" data-act="layout-free" aria-pressed="${isFree(v)}" aria-selected="${isFree(v)}" ${edit ? '' : 'disabled'}>จัดวางอิสระ</button></div>` : ''}
+      ${S.tab === 'chart' && edit && isFree(v) ? `<button class="tbtn keep${S.boxSel ? ' on' : ''}" data-act="box-sel" aria-pressed="${S.boxSel}" title="ลากบนพื้นที่ว่างเพื่อเลือกหลายกล่อง แล้วลากกล่องใดก็ได้เพื่อย้ายทั้งกลุ่ม (ไม่เปิดโหมดนี้: กด Shift ค้างแล้วลาก)">${I.marq}<span class="tl">เลือกหลายกล่อง</span></button>` : ''}
       ${S.tab === 'chart' ? `<select class="inp sm" data-change="level" aria-label="ระดับที่แสดง"><option value="" ${lv === '' ? 'selected' : ''}>แสดงทุกระดับ</option><option value="2" ${lv === '2' ? 'selected' : ''}>แสดง 2 ระดับ</option><option value="3" ${lv === '3' ? 'selected' : ''}>แสดง 3 ระดับ</option><option value="4" ${lv === '4' ? 'selected' : ''}>แสดง 4 ระดับ</option></select>` : ''}
       <details class="dd"><summary class="tbtn keep" title="Export">${I.download}<span class="tl">Export</span></summary><div class="dd-menu right">
         <button data-act="print-chart">${I.download}พิมพ์ / PDF สำหรับลงนามอนุมัติ (A3 แนวนอน)</button>
@@ -2174,7 +2244,7 @@ function renderStage() {
   const L = computeLayout(v, col);
   S.layout = L;
   const structure = S.page === 'structure';
-  const ctx = { col, roll: rollup(v.root), edit: chartEdit(v), free: !!L.free, v, diff: structure && S.compareWith && byId(S.compareWith) ? diffVersions(byId(S.compareWith), v) : null };
+  const ctx = { col, roll: rollup(v.root), edit: chartEdit(v), free: !!L.free, v, sel: structure ? new Set(selSet(v)) : null, diff: structure && S.compareWith && byId(S.compareWith) ? diffVersions(byId(S.compareWith), v) : null };
   if (!structure && S.wf) {
     const sel = wfCurId(v), focus = sel !== '__out' && sel !== v.root.id ? new Set() : null;
     if (focus) walk(find(v.root, sel).node, n => focus.add(n.id));
@@ -2185,10 +2255,11 @@ function renderStage() {
     }
   }
   let html = frameHTML(L.frame);
-  html += `<svg class="links" width="${L.w}" height="${L.h}" viewBox="0 0 ${L.w} ${L.h}">${L.links.map(l => `<path class="lk ${l.cls || ''}" d="${l.d}" stroke="${l.color}"/>`).join('')}</svg>`;
+  html += `<svg class="links" width="${L.w}" height="${L.h}" viewBox="0 0 ${L.w} ${L.h}">${L.links.map(l => `<path class="lk ${l.cls || ''}" ${l.id ? `data-lk="${l.id}"` : ''} d="${l.d}" stroke="${l.color}"/>`).join('')}${ctx.free && ctx.edit ? L.links.filter(l => l.id).map(l => `<path class="lk-hit" data-lk="${l.id}" d="${l.d}"><title>คลิกเพื่อเลือกเส้นนี้</title></path>`).join('') : ''}</svg>`;
   html += L.nodes.map(it => nodeHTML(it, ctx)).join('');
-  if (ctx.free && ctx.edit && S.selected) html += wireUI(v, L, S.selected);
+  if (ctx.free && ctx.edit && S.selected && ctx.sel.size === 1) html += wireUI(v, L, S.selected);
   stage.classList.toggle('free', ctx.free);
+  stage.classList.toggle('multi', !!ctx.sel && ctx.sel.size > 1);
   stage.classList.toggle('editable', ctx.edit);
   stage.style.width = L.w + 'px';
   stage.style.height = L.h + 'px';
@@ -2237,7 +2308,7 @@ function nodeHTML(it, ctx) {
   const tip = [n.name, n.nameEn, TYPES[n.type].th + (n.staff ? ' · Staff' : '') + (n.code ? ' · ' + n.code : ''), n.title && n.head ? n.title + ': ' + n.head : '', n.note].filter(Boolean).join('\n');
   const fpx = ctx.free ? ptPx(st, ctx.v) : fontPx(st, n);
   const css = `left:${it.x}px;top:${it.y}px;${ctx.free ? `width:${it.w}px;height:${it.h}px;` : ''}background:${st.fill || 'transparent'};border:${st.line ? Math.max(1, +st.lw || 1) : 1}px ${DASH[st.dash] || 'solid'} ${st.line || 'transparent'};color:${st.text};font-weight:${st.bold ? 700 : 400};font-size:${fpx.toFixed(2)}px;text-align:${st.align === 'c' ? 'center' : st.align === 'r' ? 'right' : 'left'}`;
-  const isSel = wf ? n.id === wf.sel && n.id !== ctx.v.root.id : n.id === S.selected;
+  const isSel = wf ? n.id === wf.sel && n.id !== ctx.v.root.id : (ctx.sel ? ctx.sel.has(n.id) : n.id === S.selected);
   return `<div class="node${isSel ? ' sel' : ''}${d ? ' d-' + d : ''}${wf && wf.focus && !wf.focus.has(n.id) ? ' wf-dim' : ''}" data-id="${n.id}" style="${css}" title="${esc(tip)}">
     <div class="x-txt"><span class="x-name">${esc(n.name || 'ไม่มีชื่อ')}</span>${n.nameEn && n.type !== 'company' ? `<span class="x-en">${esc(n.nameEn)}</span>` : ''}${sub ? `<span class="x-sub">${esc(sub)}</span>` : ''}</div>
     ${pill ? `<span class="x-pill">${pill}</span>` : ''}${badge}
@@ -2298,17 +2369,33 @@ function revealNode(id) {
     applyView();
   }
 }
+// the boxes selected together; a single box unless several were picked and the current one is among them
+function selSet(v) {
+  if (!S.selected || !v) return [];
+  if (S.multi.size > 1 && S.multi.has(S.selected)) return [...S.multi].filter(id => find(v.root, id));
+  return [S.selected];
+}
 function selectNode(id, o = {}) {
+  if (o.toggle && id) {
+    // Ctrl / Shift + click: add the box to the selection, or take it out
+    const v = curVersion(), cur = new Set(selSet(v));
+    if (cur.has(id)) { cur.delete(id); id = [...cur].pop() || null; } else cur.add(id);
+    S.multi = cur;
+  } else if (o.many) {
+    S.multi = new Set(o.many);
+    id = o.many[o.many.length - 1] || null;
+  } else S.multi = new Set(id ? [id] : []);
   S.selected = id;
   if (id && isNarrow() && o.sheet !== false) { S.ui.insp = true; S.sheetAt = performance.now(); }
+  const v = curVersion(), sel = selSet(v);
   $$('.node.sel').forEach(el => el.classList.remove('sel'));
-  if (id) { const el = $(`.node[data-id="${id}"]`); if (el) el.classList.add('sel'); }
+  sel.forEach(x => $(`.node[data-id="${x}"]`)?.classList.add('sel'));
   $$('.ol-row.sel').forEach(el => el.classList.remove('sel'));
   if (id) { const row = $(`.ol-row[data-id="${id}"]`); if (row) row.classList.add('sel'); }
-  const v = curVersion();
-  // free layout: handles on the selected box's line
+  // free layout: handles on the selected box's line (one box only)
   const st = $('#stage');
-  if (st && S.layout && S.layout.free) { st.querySelector('.wire-ui')?.remove(); if (id && v && chartEdit(v)) st.insertAdjacentHTML('beforeend', wireUI(v, S.layout, id)); }
+  st?.classList.toggle('multi', sel.length > 1);
+  if (st && S.layout && S.layout.free) { st.querySelector('.wire-ui')?.remove(); if (id && v && chartEdit(v) && sel.length === 1) st.insertAdjacentHTML('beforeend', wireUI(v, S.layout, id)); }
   setHTML('#insp', inspHTML(v));
   setHTML('#tools', toolsHTML(v));
   const ws = $('#ws'); if (ws) ws.classList.toggle('insp-open', S.ui.insp);
@@ -2390,6 +2477,13 @@ function bindCanvas() {
       if (w0) { live = { kind: 'wire', node: f.node, h: wh.dataset.wh, j: +wh.dataset.j || 0, P, C, w0, sx: e.clientX, sy: e.clientY, snap: snapshot(v0), moved: false }; capture(e); }
       return;
     }
+    // a selection box: Shift+drag, or any drag in "เลือกหลายกล่อง" mode, starting off the boxes
+    if (freeEdit && S.page === 'structure' && pts.size === 1 && !e.target.closest('.node, .rh') && (e.shiftKey || S.boxSel)) {
+      live = { kind: 'marq', sx: e.clientX, sy: e.clientY, keep: new Set(e.shiftKey && S.boxSel || e.ctrlKey || e.metaKey ? selSet(v0) : []), lk: !!e.target.closest('.lk-hit'), moved: false };
+      e.preventDefault();
+      capture(e);
+      return;
+    }
     const rh = freeEdit && e.target.closest('.rh');
     if (rh && pts.size === 1) {
       const f = find(v0.root, rh.closest('.node').dataset.id);
@@ -2418,7 +2512,7 @@ function bindCanvas() {
     }
     const nodeEl = e.target.closest('.node');
     if (nodeEl) drag = { id: nodeEl.dataset.id, sx: e.clientX, sy: e.clientY, started: false, el: nodeEl, target: null };
-    else { const w = view(); pan = { sx: e.clientX, sy: e.clientY, ox: w.x, oy: w.y, moved: false }; cv.classList.add('panning'); capture(e); }
+    else { const w = view(); pan = { sx: e.clientX, sy: e.clientY, ox: w.x, oy: w.y, moved: false, lk: freeEdit && !!e.target.closest('.lk-hit') }; cv.classList.add('panning'); capture(e); }
   });
   cv.addEventListener('pointermove', e => {
     const p = pts.get(e.pointerId);
@@ -2437,6 +2531,18 @@ function bindCanvas() {
       if (!live.moved && Math.abs(dx) + Math.abs(dy) < 2) return;
       live.moved = true;
       const v = curVersion();
+      if (live.kind === 'marq') {
+        const r = cv.getBoundingClientRect(), w = view();
+        const x0 = Math.min(live.sx, e.clientX) - r.left, y0 = Math.min(live.sy, e.clientY) - r.top, bw = Math.abs(e.clientX - live.sx), bh = Math.abs(e.clientY - live.sy);
+        if (!live.el) { live.el = document.createElement('div'); live.el.className = 'marq'; cv.appendChild(live.el); }
+        Object.assign(live.el.style, { left: x0 + 'px', top: y0 + 'px', width: bw + 'px', height: bh + 'px' });
+        // boxes wholly inside the rectangle, in sheet coordinates
+        const X0 = (x0 - w.x) / w.z, Y0 = (y0 - w.y) / w.z, X1 = X0 + bw / w.z, Y1 = Y0 + bh / w.z;
+        live.hits = S.layout.nodes.filter(it => it.x >= X0 && it.y >= Y0 && it.x + it.w <= X1 && it.y + it.h <= Y1).map(it => it.n.id);
+        const on = new Set([...live.keep, ...live.hits]);
+        $$('#stage .node').forEach(el => el.classList.toggle('marq-hit', on.has(el.dataset.id)));
+        return;
+      }
       if (live.kind === 'wire') {
         const r = $('#stage').getBoundingClientRect(), X = (e.clientX - r.left) / z, Y = (e.clientY - r.top) / z;
         const w = clone(live.w0), { P, C } = live;
@@ -2498,12 +2604,16 @@ function bindCanvas() {
         drag.kind = 'move';
         drag.started = true;
         drag.snap = snapshot(v);
+        // several boxes selected and this is one of them: they all move (Shift: each with everything under it)
+        const many = selSet(v), group = many.length > 1 && many.includes(drag.id);
+        const roots = group ? many.map(id => find(v.root, id).node) : [f.node], seen = new Set();
         drag.nodes = [];
-        if (e.shiftKey) walk(f.node, n => { if (okBox(n.box)) drag.nodes.push(n); }); else drag.nodes.push(f.node);
+        drag.group = group;
+        roots.forEach(r => (e.shiftKey ? (fn => walk(r, fn)) : (fn => fn(r)))(n => { if (okBox(n.box) && !seen.has(n.id)) { seen.add(n.id); drag.nodes.push(n); } }));
         drag.orig = new Map(drag.nodes.map(n => [n.id, { x: n.box.x, y: n.box.y }]));
-        const ids = new Set(drag.nodes.map(n => n.id));
-        drag.wires = drag.nodes.filter(n => n !== f.node && okWire(n.wire) && ids.has(find(v.root, n.id).parent.id)).map(n => ({ n, k: n.wire.k.slice() }));
-        if (S.selected !== drag.id) selectNode(drag.id, { sheet: false });
+        // lines whose both ends move keep their shape
+        drag.wires = drag.nodes.filter(n => okWire(n.wire) && seen.has((find(v.root, n.id).parent || {}).id)).map(n => ({ n, k: n.wire.k.slice() }));
+        if (!group && S.selected !== drag.id) selectNode(drag.id, { sheet: false });
         capture(e);
         return;
       }
@@ -2540,6 +2650,17 @@ function bindCanvas() {
   const end = e => {
     pts.delete(e.pointerId);
     if (pinch) { if (pts.size < 2) pinch = null; return; }
+    if (live && live.kind === 'marq') {
+      const l = live;
+      live = null;
+      l.el?.remove();
+      $$('#stage .node.marq-hit').forEach(el => el.classList.remove('marq-hit'));
+      if (e.type !== 'pointerup') return;
+      if (!l.moved) { if (!(l.lk && lineClick(e.clientX, e.clientY))) selectNode(null); return; }
+      const ids = [...new Set([...l.keep, ...(l.hits || [])])];
+      if (ids.length > 1) selectNode(null, { many: ids }); else selectNode(ids[0] || null);
+      return;
+    }
     if (live) {
       const l = live;
       live = null;
@@ -2552,15 +2673,16 @@ function bindCanvas() {
       const d = drag;
       drag = null;
       cancelAnimationFrame(relinkRaf);
-      commitLive(d.nodes.length > 1 ? 'ย้ายกล่องพร้อมหน่วยย่อย' : 'ย้ายตำแหน่งกล่อง', d.snap);
+      commitLive(d.group ? `ย้าย ${d.nodes.length} กล่องพร้อมกัน` : d.nodes.length > 1 ? 'ย้ายกล่องพร้อมหน่วยย่อย' : 'ย้ายตำแหน่งกล่อง', d.snap);
       return;
     }
     if (drag) {
       const d = drag;
       if (d.started) { const target = d.target; cleanupDrag(); if (target && e.type === 'pointerup') opReparent(d.id, target); }
-      else { drag = null; if (e.type === 'pointerup') { if (S.page !== 'structure') wfSelect(d.id); else selectNode(d.id); } }
+      else { drag = null; if (e.type === 'pointerup') { if (S.page !== 'structure') wfSelect(d.id); else selectNode(d.id, { toggle: e.ctrlKey || e.metaKey || e.shiftKey }); } }
     }
     if (pan) {
+      if (!pan.moved && e.type === 'pointerup' && pan.lk && lineClick(e.clientX, e.clientY)) { pan = null; cv.classList.remove('panning'); return; }
       if (!pan.moved && e.type === 'pointerup' && S.page !== 'structure') wfSelect(null, { zoom: false });
       else if (!pan.moved && e.type === 'pointerup' && S.selected) { S.ui.insp = false; selectNode(null); }
       pan = null;
@@ -2631,8 +2753,8 @@ function inspHTML(v) {
   if (!v) return '';
   const parts = [];
   if (S.compareWith && byId(S.compareWith)) parts.push(diffHTML(v));
-  const f = S.selected ? find(v.root, S.selected) : null;
-  parts.push(f ? nodePanelHTML(v, f) : versionPanelHTML(v));
+  const f = S.selected ? find(v.root, S.selected) : null, many = selSet(v);
+  parts.push(many.length > 1 ? multiPanelHTML(v, many) : f ? nodePanelHTML(v, f) : versionPanelHTML(v));
   return parts.join('');
 }
 function versionPanelHTML(v) {
@@ -2709,7 +2831,7 @@ function nodePanelHTML(v, f) {
     ${f.parent ? `<label class="check"><input type="checkbox" id="nf-staff" data-f="staff" ${n.staff ? 'checked' : ''}><span>หน่วยงานขึ้นตรง (Staff)<small>วางไว้ด้านข้างสายบังคับบัญชา เช่น สำนักตรวจสอบภายใน เลขานุการ</small></span></label>` : ''}
     ${styleControls(n)}
     ${isFree(v) && okBox(n.box) ? `<div class="field"><span>ตำแหน่งและขนาดกล่อง (px)</span><div class="row4">${['x', 'y', 'w', 'h'].map(k => `<label>${{ x: 'X', y: 'Y', w: 'กว้าง', h: 'สูง' }[k]}<input type="number" id="nf-b${k}" data-bx="${k}" value="${Math.round(n.box[k])}" ${k === 'w' ? `min="${MIN_W}"` : k === 'h' ? `min="${MIN_H}"` : ''}></label>`).join('')}</div>
-      <small class="muted">ลากกล่องเพื่อย้าย · ลากจุดที่ขอบ/มุมเพื่อปรับขนาด · Shift+ลาก = ย้ายพร้อมหน่วยย่อย · Ctrl+ลากไปวางบนกล่องอื่น = ย้ายสังกัด · ปุ่มลูกศร = ขยับทีละ 1 px</small></div>` : ''}
+      <small class="muted">ลากกล่องเพื่อย้าย · ลากจุดที่ขอบ/มุมเพื่อปรับขนาด · Shift+ลาก = ย้ายพร้อมหน่วยย่อย · Ctrl+ลากไปวางบนกล่องอื่น = ย้ายสังกัด · ปุ่มลูกศร = ขยับทีละ 1 px · Shift+ลากบนพื้นที่ว่าง หรือ Ctrl/Shift+คลิก = เลือกหลายกล่องเพื่อย้ายพร้อมกัน</small></div>` : ''}
     ${isFree(v) && okBox(n.box) && f.parent ? wireFieldHTML(v, f) : ''}
     ${subsidiaryLink(n)}
     <label class="field"><span>การจัดวางหน่วยย่อย</span><select class="inp" id="nf-layout" data-f="layout">
@@ -2731,8 +2853,45 @@ function wireFieldHTML(v, f) {
   const sel = (end, order) => `<select class="inp" data-wire="${end}" aria-label="${end === 'a' ? 'ด้านที่เส้นออกจากหน่วยแม่' : 'ด้านที่เส้นเข้าหน่วยนี้'}">${order.map(k => `<option value="${k}" ${w[end].s === k ? 'selected' : ''}>${WSIDE_TH[k]}</option>`).join('')}</select>`;
   return `<div class="field wire-f"><span>เส้นเชื่อมกับหน่วยแม่${okWire(f.node.wire) ? ' <span class="tag">ปรับเอง</span>' : ''}</span>
     <div class="row2"><label>ออกจาก “${esc(f.parent.name || 'หน่วยแม่')}”${sel('a', ['b', 't', 'l', 'r'])}</label><label>เข้ากล่องนี้${sel('b', ['t', 'l', 'r', 'b'])}</label></div>
-    <small class="muted">บนผัง: ลากจุดกลมที่ปลายเส้นเพื่อเลื่อนจุดเชื่อมไปตามขอบกล่อง · ลากจุดสีส้มเพื่อเลื่อนแนวเส้น · Alt = ไม่จัดให้ตรงตาราง</small>
-    ${okWire(f.node.wire) ? `<button class="btn sm" data-act="wire-reset">${I.undo}คืนค่าเส้นอัตโนมัติ</button>` : ''}</div>`;
+    <small class="muted">บนผัง: คลิกที่เส้นเพื่อเลือก (เส้นซ้อนกันจะมีรายการให้เลือก) · ลากจุดกลมที่ปลายเส้นเพื่อเลื่อนจุดเชื่อมไปตามขอบกล่อง · ลากช่วงเส้นหรือจุดสีส้มเพื่อเลื่อนแนวเส้น · Alt = ไม่จัดให้ตรงตาราง</small>
+    <div class="btnrow"><button class="btn sm" data-act="wire-bend" data-d="1" title="เพิ่มขั้นในเส้น แล้วลากช่วงใหม่ออกจากเส้นอื่นหรือเลี่ยงกล่อง">${I.plus}เพิ่มจุดหัก</button>${w.k && w.k.length >= 2 ? `<button class="btn sm" data-act="wire-bend" data-d="0">${I.minus}ลดจุดหัก</button>` : ''}${okWire(f.node.wire) ? `<button class="btn sm" data-act="wire-reset">${I.undo}คืนค่าเส้นอัตโนมัติ</button>` : ''}</div></div>`;
+}
+// several boxes selected: move them together, line them up, spread them evenly
+function multiPanelHTML(v, ids) {
+  const edit = canEdit(v) && isFree(v), names = ids.map(id => find(v.root, id).node);
+  const b = (a, label, title) => `<button class="btn sm" data-act="align" data-a="${a}" title="${esc(title)}">${label}</button>`;
+  return `<section class="panel"><div class="ip-head"><div><h3>เลือกหลายกล่อง</h3><h2>${ids.length} กล่อง</h2></div><button class="ibtn ip-close" data-act="close-insp" aria-label="ปิด">${I.close}</button></div>
+    ${edit ? `<p class="muted">ลากกล่องใดก็ได้ในกลุ่มเพื่อย้ายทั้งหมด · ปุ่มลูกศร = ขยับทีละ 1 px (Shift = 10 px) · Ctrl/Shift+คลิก = เพิ่มหรือเอากล่องออก · Esc = เลิกเลือก</p>
+    <div class="field"><span>จัดแนว (ตามขอบของกลุ่ม)</span><div class="al-grid">${b('l', 'ชิดซ้าย', 'ขอบซ้ายตรงกัน')}${b('cx', 'กึ่งกลางแนวตั้ง', 'จุดกึ่งกลางอยู่แนวตั้งเดียวกัน')}${b('r', 'ชิดขวา', 'ขอบขวาตรงกัน')}${b('t', 'ชิดบน', 'ขอบบนตรงกัน')}${b('cy', 'กึ่งกลางแนวนอน', 'จุดกึ่งกลางอยู่แนวนอนเดียวกัน')}${b('b', 'ชิดล่าง', 'ขอบล่างตรงกัน')}</div></div>
+    ${ids.length > 2 ? `<div class="field"><span>เว้นระยะเท่ากัน</span><div class="al-grid two">${b('dx', 'แนวนอน', 'ระยะห่างระหว่างกล่องในแนวนอนเท่ากัน')}${b('dy', 'แนวตั้ง', 'ระยะห่างระหว่างกล่องในแนวตั้งเท่ากัน')}</div></div>` : ''}
+    <div class="field"><span>ขนาดเท่ากับ “${esc(find(v.root, S.selected).node.name || '')}” (กล่องที่คลิกล่าสุด)</span><div class="al-grid two">${b('w', 'กว้างเท่ากัน', 'ความกว้างเท่ากล่องที่คลิกล่าสุด')}${b('h', 'สูงเท่ากัน', 'ความสูงเท่ากล่องที่คลิกล่าสุด')}</div></div>`
+    : `<p class="muted">${isFree(v) ? 'ย้ายและจัดแนวได้ใน Draft' : 'ย้ายและจัดแนวหลายกล่องได้ในโหมด “จัดวางอิสระ”'}</p>`}
+    <div class="field"><span>กล่องที่เลือก</span><ul class="multi-list">${names.map(n => `<li${n.id === S.selected ? ' class="cur"' : ''}><a href="#" data-act="sel-one" data-id="${n.id}">${esc(n.name || 'ไม่มีชื่อ')}</a></li>`).join('')}</ul></div>
+    <button class="btn sm ghost" data-act="sel-clear">เลิกเลือกทั้งหมด</button></section>`;
+}
+// line up / spread / size the selected boxes
+function alignBoxes(how) {
+  const v = curVersion(), ids = selSet(v);
+  if (ids.length < 2 || !isFree(v)) return;
+  mutate({ l: 'จัดชิดซ้าย', r: 'จัดชิดขวา', t: 'จัดชิดบน', b: 'จัดชิดล่าง', cx: 'จัดกึ่งกลางแนวตั้ง', cy: 'จัดกึ่งกลางแนวนอน', dx: 'เว้นระยะแนวนอนเท่ากัน', dy: 'เว้นระยะแนวตั้งเท่ากัน', w: 'ปรับความกว้างเท่ากัน', h: 'ปรับความสูงเท่ากัน' }[how] || 'จัดแนวกล่อง', vv => {
+    const bs = ids.map(id => find(vv.root, id)).filter(f => f && okBox(f.node.box)).map(f => f.node.box);
+    const L = Math.min(...bs.map(b => b.x)), R = Math.max(...bs.map(b => b.x + b.w)), T = Math.min(...bs.map(b => b.y)), B = Math.max(...bs.map(b => b.y + b.h));
+    const ref = find(vv.root, S.selected).node.box;
+    const spread = (pos, size, set) => {
+      const o = bs.slice().sort((a, b) => a[pos] - b[pos]), first = o[0], last = o[o.length - 1];
+      const room = last[pos] + last[size] - first[pos] - o.reduce((t, b) => t + b[size], 0), gap = room / (o.length - 1);
+      let at = first[pos];
+      o.forEach(b => { set(b, Math.round(at)); at += b[size] + gap; });
+    };
+    bs.forEach(b => {
+      if (how === 'l') b.x = L; else if (how === 'r') b.x = R - b.w; else if (how === 't') b.y = T; else if (how === 'b') b.y = B - b.h;
+      else if (how === 'cx') b.x = Math.round((L + R) / 2 - b.w / 2); else if (how === 'cy') b.y = Math.round((T + B) / 2 - b.h / 2);
+      else if (how === 'w') b.w = ref.w; else if (how === 'h') b.h = ref.h;
+    });
+    if (how === 'dx') spread('x', 'w', (b, x) => { b.x = x; });
+    if (how === 'dy') spread('y', 'h', (b, y) => { b.y = y; });
+    return S.selected;
+  });
 }
 function styleControls(n) {
   const st = styleOf(n);
@@ -5129,6 +5288,18 @@ const A = {
       foot: [{ label: 'ยกเลิก', onClick: c => c() }, { label: 'จัดอัตโนมัติ', cls: 'primary', onClick: c => { c(); S.views[v.id] = null; mutate('เปลี่ยนเป็นจัดวางอัตโนมัติ', v2 => { unfreezeLayout(v2); return undefined; }); } }],
     });
   },
+  'align': el => alignBoxes(el.dataset.a),
+  'sel-one': el => selectNode(el.dataset.id, { reveal: true }),
+  'sel-clear': () => selectNode(null),
+  'box-sel': () => { S.boxSel = !S.boxSel; setHTML('#tools', toolsHTML(curVersion())); $('#canvas')?.classList.toggle('boxsel', S.boxSel); },
+  'wire-bend': el => mutate(el.dataset.d === '1' ? 'เพิ่มจุดหักของเส้นเชื่อม' : 'ลดจุดหักของเส้นเชื่อม', v => {
+    const f = find(v.root, S.selected), L = S.layout;
+    const C = f && f.parent && L && L.nodes.find(o => o.n.id === f.node.id), P = C && L.nodes.find(o => o.n.id === f.parent.id);
+    const w = P && wireOf(P, C, L);
+    if (!w) return undefined;
+    f.node.wire = wireBend(P, C, w, el.dataset.d === '1');
+    return f.node.id;
+  }),
   'wire-reset': () => mutate('คืนค่าเส้นเชื่อมอัตโนมัติ', v => { const f = find(v.root, S.selected); if (!f) return undefined; delete f.node.wire; return f.node.id; }),
   'swatch': el => { const p = PALETTE[+el.dataset.k]; const patch = { fill: p.fill, text: p.text }; if (p.line) patch.line = p.line; setStyle(patch); },
   'select-row': el => selectNode(el.dataset.id),
@@ -5578,11 +5749,10 @@ document.addEventListener('keydown', e => {
   if (!f) return;
   if (e.key.startsWith('Arrow') && !mod && !e.altKey && isFree(v) && canEdit(v) && okBox(f.node.box) && S.tab === 'chart') {
     e.preventDefault();
-    const step = e.shiftKey ? 10 : 1;
-    beginEdit(v, v.id + 'nudge' + f.node.id);
-    f.node.box.x += e.key === 'ArrowLeft' ? -step : e.key === 'ArrowRight' ? step : 0;
-    f.node.box.y += e.key === 'ArrowUp' ? -step : e.key === 'ArrowDown' ? step : 0;
-    touch(v, 'ย้ายตำแหน่งกล่อง');
+    const step = e.shiftKey ? 10 : 1, ids = selSet(v);
+    beginEdit(v, v.id + 'nudge' + ids.join(','));
+    ids.forEach(id => { const b = find(v.root, id).node.box; if (!okBox(b)) return; b.x += e.key === 'ArrowLeft' ? -step : e.key === 'ArrowRight' ? step : 0; b.y += e.key === 'ArrowUp' ? -step : e.key === 'ArrowDown' ? step : 0; });
+    touch(v, ids.length > 1 ? `ย้ายตำแหน่ง ${ids.length} กล่อง` : 'ย้ายตำแหน่งกล่อง');
     renderStage();
     setHTML('#insp', inspHTML(v));
     return;
@@ -5599,7 +5769,7 @@ document.addEventListener('keydown', e => {
   if (!canEdit(v) || S.tab !== 'chart') return;
   if (e.key === 'Tab') { e.preventDefault(); const id = opAddChild(f.node.id); if (id) afterAdd(id); }
   else if (e.key === 'Enter') { e.preventDefault(); const id = opAddSibling(f.node.id); if (id) afterAdd(id); }
-  else if (e.key === 'Delete' || e.key === 'Backspace') { e.preventDefault(); opDelete(f.node.id); }
+  else if (e.key === 'Delete' || e.key === 'Backspace') { e.preventDefault(); if (selSet(v).length > 1) toast('เลือกไว้หลายกล่อง — ลบได้ทีละหน่วย คลิกเลือกกล่องเดียวก่อน'); else opDelete(f.node.id); }
   else if (e.key === 'F2') { e.preventDefault(); startRename(f.node.id); }
 });
 document.addEventListener('error', e => { if (e.target && e.target.tagName === 'IMG') e.target.remove(); }, true);
