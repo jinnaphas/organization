@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-11-16T03:02:53.395Z",
+  "updatedAt": "2026-11-16T03:14:20.633Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -25354,7 +25354,7 @@
       "basedOn": "v_uvqp16jnsx",
       "createdAt": "2026-11-13T02:03:38.990Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-11-16T03:02:41.921Z",
+      "updatedAt": "2026-11-16T03:13:32.700Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE ELECTRIC MANUFACTURING CO., LTD. (PEM) 2027",
@@ -27404,6 +27404,36 @@
                           "w": 370.9,
                           "h": 63.2
                         }
+                      },
+                      {
+                        "id": "n_i15qnou70s",
+                        "type": "line",
+                        "name": "Factory 4.0 Business (PEM108)",
+                        "nameEn": "",
+                        "code": "",
+                        "title": "",
+                        "head": "",
+                        "hc": 0,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [],
+                        "style": {
+                          "fill": "#FFE699",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#0000FF",
+                          "bold": true,
+                          "size": 14,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "box": {
+                          "x": 3072,
+                          "y": 736,
+                          "w": 370.9,
+                          "h": 60
+                        }
                       }
                     ],
                     "style": {
@@ -27949,7 +27979,7 @@
                   {
                     "id": "n_f11209g0ba",
                     "type": "line",
-                    "name": "115KV Transformer and Equipment Business (PEM108",
+                    "name": "115KV Transformer and Equipment Business (PEM110)",
                     "nameEn": "",
                     "code": "",
                     "title": "",
@@ -27970,8 +28000,8 @@
                     },
                     "link": "#70AD47",
                     "box": {
-                      "x": 3156,
-                      "y": 752,
+                      "x": 3316,
+                      "y": 908,
                       "w": 370.9,
                       "h": 63.2
                     }
