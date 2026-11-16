@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-11-16T03:14:20.633Z",
+  "updatedAt": "2026-11-16T03:17:14.954Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -25354,7 +25354,7 @@
       "basedOn": "v_uvqp16jnsx",
       "createdAt": "2026-11-13T02:03:38.990Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-11-16T03:13:32.700Z",
+      "updatedAt": "2026-11-16T03:17:05.864Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE ELECTRIC MANUFACTURING CO., LTD. (PEM) 2027",
@@ -27429,8 +27429,8 @@
                         },
                         "link": "#70AD47",
                         "box": {
-                          "x": 3072,
-                          "y": 736,
+                          "x": 3060,
+                          "y": 780,
                           "w": 370.9,
                           "h": 60
                         }
@@ -28000,10 +28000,40 @@
                     },
                     "link": "#70AD47",
                     "box": {
-                      "x": 3316,
-                      "y": 908,
+                      "x": 3372,
+                      "y": 1020,
                       "w": 370.9,
                       "h": 63.2
+                    }
+                  },
+                  {
+                    "id": "n_rh6zleyvue",
+                    "type": "line",
+                    "name": "ESG Business (PEM109",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": "#FFE699",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#0000FF",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 3540,
+                      "y": 780,
+                      "w": 370.9,
+                      "h": 60
                     }
                   }
                 ],
