@@ -268,6 +268,10 @@ textarea.inp{min-height:84px;resize:vertical;line-height:1.5}
 .stage.free .n-add{display:none!important}
 .stage.free .n-tog{left:18px;transform:none}
 .stage.free.editable [data-fr]{cursor:move}
+.stage.editable{user-select:none;-webkit-user-select:none}
+.stage .sh-title.fr-sel,.stage .sh-legend.fr-sel,.stage .sh-cell.fr-sel{outline:calc(2.5px * var(--hz, 1)) solid var(--accent);outline-offset:calc(3px * var(--hz, 1))}
+.stage .sh-title.marq-hit,.stage .sh-legend.marq-hit,.stage .sh-cell.marq-hit{outline:calc(2px * var(--hz, 1)) dashed var(--accent);outline-offset:calc(3px * var(--hz, 1))}
+.multi-list li.fr-li{color:var(--muted)}
 .rh{position:absolute;width:calc(10px * var(--hz,1));height:calc(10px * var(--hz,1));margin:calc(-5px * var(--hz,1));background:#fff;border:calc(1.5px * var(--hz,1)) solid var(--accent);display:none;z-index:4}
 .node.sel .rh{display:block}
 .rh-nw{left:0;top:0;cursor:nwse-resize} .rh-n{left:50%;top:0;cursor:ns-resize} .rh-ne{left:100%;top:0;cursor:nesw-resize} .rh-e{left:100%;top:50%;cursor:ew-resize}
@@ -1063,6 +1067,7 @@ const S = {
   selected: null,
   multi: new Set(),    // structure chart: several boxes selected together (the last one clicked is S.selected)
   boxSel: false,       // structure chart: drag on an empty area draws a selection box instead of panning
+  frSel: new Set(),    // structure chart (free layout): sheet parts selected too — 'title', 'legend', 'footer'
   compareWith: null,
   views: {},           // versionId -> { x, y, z }
   collapsed: {},       // versionId -> Set(nodeId)
@@ -2254,12 +2259,12 @@ function renderStage() {
       if (S.recOnly) { const rec = new Set(); walk(v.root, n => { if (recOpen(v.companyCode, n.id).length) rec.add(n.id); }); ctx.wf.focus = rec; }
     }
   }
-  let html = frameHTML(L.frame);
+  let html = frameHTML(L.frame, structure && ctx.free && ctx.edit ? S.frSel : null);
   html += `<svg class="links" width="${L.w}" height="${L.h}" viewBox="0 0 ${L.w} ${L.h}">${L.links.map(l => `<path class="lk ${l.cls || ''}" ${l.id ? `data-lk="${l.id}"` : ''} d="${l.d}" stroke="${l.color}"/>`).join('')}${ctx.free && ctx.edit ? L.links.filter(l => l.id).map(l => `<path class="lk-hit" data-lk="${l.id}" d="${l.d}"><title>คลิกเพื่อเลือกเส้นนี้</title></path>`).join('') : ''}</svg>`;
   html += L.nodes.map(it => nodeHTML(it, ctx)).join('');
   if (ctx.free && ctx.edit && S.selected && ctx.sel.size === 1) html += wireUI(v, L, S.selected);
   stage.classList.toggle('free', ctx.free);
-  stage.classList.toggle('multi', !!ctx.sel && ctx.sel.size > 1);
+  stage.classList.toggle('multi', !!ctx.sel && ctx.sel.size + S.frSel.size > 1);
   stage.classList.toggle('editable', ctx.edit);
   stage.style.width = L.w + 'px';
   stage.style.height = L.h + 'px';
@@ -2275,14 +2280,15 @@ function wfCrumbsHTML(v, cur) {
   return `<nav class="crumbs wf-crumbs" aria-label="ลำดับหน่วยงาน"><button class="crumb" data-act="wf-unit" data-id="${v.root.id}" ${trail.length <= 1 && cur !== '__out' ? 'aria-current="true"' : ''}>${I.people}ทั้งบริษัท</button>${trail.slice(1).map((n, i) => `<span class="crumb-sep">›</span><button class="crumb" data-act="wf-unit" data-id="${n.id}" ${i === trail.length - 2 ? 'aria-current="true"' : ''}>${esc(n.name || 'ไม่มีชื่อ')}</button>`).join('')}${cur === '__out' ? '<span class="crumb-sep">›</span><span class="crumb" aria-current="true">ยังไม่ได้อยู่ในผัง</span>' : ''}</nav>`;
 }
 const chartEdit = v => S.page === 'structure' && canEdit(v);
-function frameHTML(fr) {
+function frameHTML(fr, sel) {
   if (!fr) return '';
+  const on = k => (sel && sel.has(k) ? ' fr-sel' : '');
   const pos = b => `left:${b.x}px;top:${b.y}px;width:${b.w}px;height:${b.h}px`;
   let h = '';
   const cell = c => c.map((l, k) => isRule(l) ? '<span class="sh-rule"></span>' : `<span>${esc(l)}${k === 0 && c.length > 1 && !/:\s*$/.test(l) ? ' :' : ''}</span>`).join('');
-  if (fr.title) h += `<div class="sh-title" data-fr="title" style="${pos(fr.title)}"><div class="sh-face" style="color:${fr.title.color};font-size:${fr.title.fs}px">${fr.title.lines.map(l => `<div>${esc(l)}</div>`).join('')}</div></div>`;
-  if (fr.legend) h += `<div class="sh-legend" data-fr="legend" style="${pos(fr.legend)};font-size:${fr.legend.fs}px">${fr.legend.lines.map(esc).join('\n')}</div>`;
-  if (fr.footer && fr.footer.boxes) h += `<div class="sh-foot abs" data-fr="footer">${fr.footer.cells.map((c, i) => `<div class="sh-cell" data-fr="footer" style="${pos(fr.footer.boxes[i])};font-size:${fr.footer.fs}px">${cell(c)}</div>`).join('')}</div>`;
+  if (fr.title) h += `<div class="sh-title${on('title')}" data-fr="title" style="${pos(fr.title)}"><div class="sh-face" style="color:${fr.title.color};font-size:${fr.title.fs}px">${fr.title.lines.map(l => `<div>${esc(l)}</div>`).join('')}</div></div>`;
+  if (fr.legend) h += `<div class="sh-legend${on('legend')}" data-fr="legend" style="${pos(fr.legend)};font-size:${fr.legend.fs}px">${fr.legend.lines.map(esc).join('\n')}</div>`;
+  if (fr.footer && fr.footer.boxes) h += `<div class="sh-foot abs" data-fr="footer">${fr.footer.cells.map((c, i) => `<div class="sh-cell${on('footer')}" data-fr="footer" style="${pos(fr.footer.boxes[i])};font-size:${fr.footer.fs}px">${cell(c)}</div>`).join('')}</div>`;
   else if (fr.footer) h += `<div class="sh-foot" data-fr="footer" style="${pos(fr.footer)};font-size:${fr.footer.fs}px;grid-template-columns:repeat(${fr.footer.cells.length},minmax(0,1fr))">${fr.footer.cells.map(c => `<div class="sh-cell">${cell(c)}</div>`).join('')}</div>`;
   return h;
 }
@@ -2384,7 +2390,8 @@ function selectNode(id, o = {}) {
   } else if (o.many) {
     S.multi = new Set(o.many);
     id = o.many[o.many.length - 1] || null;
-  } else S.multi = new Set(id ? [id] : []);
+    S.frSel = new Set(o.frames || []);
+  } else { S.multi = new Set(id ? [id] : []); S.frSel = new Set(o.frames || []); }
   S.selected = id;
   if (id && isNarrow() && o.sheet !== false) { S.ui.insp = true; S.sheetAt = performance.now(); }
   const v = curVersion(), sel = selSet(v);
@@ -2394,7 +2401,8 @@ function selectNode(id, o = {}) {
   if (id) { const row = $(`.ol-row[data-id="${id}"]`); if (row) row.classList.add('sel'); }
   // free layout: handles on the selected box's line (one box only)
   const st = $('#stage');
-  st?.classList.toggle('multi', sel.length > 1);
+  st?.classList.toggle('multi', sel.length + S.frSel.size > 1);
+  $$('#stage [data-fr]').forEach(el => el.classList.toggle('fr-sel', S.frSel.has(el.dataset.fr)));
   if (st && S.layout && S.layout.free) { st.querySelector('.wire-ui')?.remove(); if (id && v && chartEdit(v) && sel.length === 1) st.insertAdjacentHTML('beforeend', wireUI(v, S.layout, id)); }
   setHTML('#insp', inspHTML(v));
   setHTML('#tools', toolsHTML(v));
@@ -2463,6 +2471,18 @@ function bindCanvas() {
   let relinkRaf = 0;
   const redraw = () => { cancelAnimationFrame(relinkRaf); relinkRaf = requestAnimationFrame(renderStage); };
   const snapTo = (x, e) => (e.altKey ? x : Math.round(x / SNAP) * SNAP);
+  // moving several things at once: the selected boxes (Shift: each with everything under it) and the selected sheet parts
+  const groupDrag = (v, shift, from, sx, sy) => {
+    const seen = new Set(), nodes = [];
+    selSet(v).forEach(id => { const r = find(v.root, id).node; (shift ? fn => walk(r, fn) : fn => fn(r))(n => { if (okBox(n.box) && !seen.has(n.id)) { seen.add(n.id); nodes.push(n); } }); });
+    const fb = frameBoxesOf(v, [...S.frSel]);
+    const frames = [...S.frSel].filter(k => fb[k]).map(k => ({ k, o: clone(fb[k]) }));
+    const ref = from.node ? from.node.box : [].concat(fb[from.frame])[0];
+    return { kind: 'move', started: true, group: true, id: from.node ? from.node.id : null, nodes, frames, ref: { x: ref.x, y: ref.y }, sx, sy, snap: snapshot(v),
+      orig: new Map(nodes.map(n => [n.id, { x: n.box.x, y: n.box.y }])),
+      wires: nodes.filter(n => okWire(n.wire) && seen.has((find(v.root, n.id).parent || {}).id)).map(n => ({ n, k: n.wire.k.slice() })) };
+  };
+  cv.addEventListener('dragstart', e => e.preventDefault());
   cv.addEventListener('pointerdown', e => {
     if (e.target.closest('.zoomctl, button, textarea, input, select')) return;
     if (e.pointerType === 'mouse' && e.button !== 0) return;
@@ -2478,8 +2498,9 @@ function bindCanvas() {
       return;
     }
     // a selection box: Shift+drag, or any drag in "เลือกหลายกล่อง" mode, starting off the boxes
-    if (freeEdit && S.page === 'structure' && pts.size === 1 && !e.target.closest('.node, .rh') && (e.shiftKey || S.boxSel)) {
-      live = { kind: 'marq', sx: e.clientX, sy: e.clientY, keep: new Set(e.shiftKey && S.boxSel || e.ctrlKey || e.metaKey ? selSet(v0) : []), lk: !!e.target.closest('.lk-hit'), moved: false };
+    if (freeEdit && S.page === 'structure' && pts.size === 1 && !e.target.closest('.node, .rh, .sh-title, .sh-legend, .sh-cell') && (e.shiftKey || S.boxSel)) {
+      const add = e.shiftKey && S.boxSel || e.ctrlKey || e.metaKey;
+      live = { kind: 'marq', sx: e.clientX, sy: e.clientY, keep: new Set(add ? selSet(v0) : []), keepFr: new Set(add ? S.frSel : []), lk: !!e.target.closest('.lk-hit'), moved: false };
       e.preventDefault();
       capture(e);
       return;
@@ -2493,13 +2514,17 @@ function bindCanvas() {
     }
     const part = freeEdit && !e.target.closest('.node') && e.target.closest('[data-fr]');
     if (part && pts.size === 1) {
+      e.preventDefault();
+      getSelection()?.removeAllRanges();
       const key = part.dataset.fr, fr = S.layout.frame || {};
+      // one of several things selected: they all move
+      if (S.frSel.has(key) && selSet(v0).length + S.frSel.size > 1) { drag = groupDrag(v0, e.shiftKey, { frame: key }, e.clientX, e.clientY); capture(e); return; }
       if (!v0.doc.frameBoxes) v0.doc.frameBoxes = {};
       const fb = v0.doc.frameBoxes;
       const pick = b => ({ x: b.x, y: b.y, w: b.w, h: b.h });
       if (key === 'footer') fb.footer = fr.footer.boxes ? fr.footer.boxes.map(pick) : fr.footer.cells.map((c, i) => ({ x: fr.footer.x + i * fr.footer.w / fr.footer.cells.length, y: fr.footer.y, w: fr.footer.w / fr.footer.cells.length, h: fr.footer.h }));
       else fb[key] = pick(fr[key]);
-      live = { kind: 'frame', key, sx: e.clientX, sy: e.clientY, o: JSON.parse(JSON.stringify(fb[key])), snap: snapshot(v0), moved: false };
+      live = { kind: 'frame', key, sx: e.clientX, sy: e.clientY, o: JSON.parse(JSON.stringify(fb[key])), snap: snapshot(v0), moved: false, add: e.ctrlKey || e.metaKey || e.shiftKey };
       capture(e);
       return;
     }
@@ -2538,9 +2563,13 @@ function bindCanvas() {
         Object.assign(live.el.style, { left: x0 + 'px', top: y0 + 'px', width: bw + 'px', height: bh + 'px' });
         // boxes wholly inside the rectangle, in sheet coordinates
         const X0 = (x0 - w.x) / w.z, Y0 = (y0 - w.y) / w.z, X1 = X0 + bw / w.z, Y1 = Y0 + bh / w.z;
-        live.hits = S.layout.nodes.filter(it => it.x >= X0 && it.y >= Y0 && it.x + it.w <= X1 && it.y + it.h <= Y1).map(it => it.n.id);
-        const on = new Set([...live.keep, ...live.hits]);
+        const inside = b => b.x >= X0 && b.y >= Y0 && b.x + b.w <= X1 && b.y + b.h <= Y1, fr = S.layout.frame || {};
+        live.hits = S.layout.nodes.filter(inside).map(it => it.n.id);
+        // the footer table moves as one piece: covering any of its cells takes the whole table
+        live.frHits = ['title', 'legend'].filter(k => fr[k] && inside(fr[k])).concat(fr.footer && (fr.footer.boxes || [fr.footer]).some(inside) ? ['footer'] : []);
+        const on = new Set([...live.keep, ...live.hits]), onFr = new Set([...live.keepFr, ...live.frHits]);
         $$('#stage .node').forEach(el => el.classList.toggle('marq-hit', on.has(el.dataset.id)));
+        $$('#stage .sh-title, #stage .sh-legend, #stage .sh-cell').forEach(el => el.classList.toggle('marq-hit', onFr.has(el.dataset.fr)));
         return;
       }
       if (live.kind === 'wire') {
@@ -2589,9 +2618,10 @@ function bindCanvas() {
     if (!drag) return;
     const dist = Math.hypot(e.clientX - drag.sx, e.clientY - drag.sy);
     if (drag.kind === 'move') {
-      const z = view().z, o = drag.orig.get(drag.id);
+      const z = view().z, o = drag.ref || drag.orig.get(drag.id);
       const ddx = snapTo(o.x + (e.clientX - drag.sx) / z, e) - o.x, ddy = snapTo(o.y + (e.clientY - drag.sy) / z, e) - o.y;
       drag.nodes.forEach(n => { const p = drag.orig.get(n.id); n.box.x = p.x + ddx; n.box.y = p.y + ddy; });
+      if (drag.frames && drag.frames.length) { const fb = curVersion().doc.frameBoxes, mv = b => Object.assign({}, b, { x: b.x + ddx, y: b.y + ddy }); drag.frames.forEach(({ k, o: b }) => { fb[k] = Array.isArray(b) ? b.map(mv) : mv(b); }); }
       (drag.wires || []).forEach(({ n, k }) => { let ax = WSIDE[n.wire.a.s]; n.wire.k = k.map(c => { const r = c + (ax === 'v' ? ddy : ddx); ax = otherAx(ax); return r; }); });
       redraw();
       return;
@@ -2604,16 +2634,20 @@ function bindCanvas() {
         drag.kind = 'move';
         drag.started = true;
         drag.snap = snapshot(v);
-        // several boxes selected and this is one of them: they all move (Shift: each with everything under it)
-        const many = selSet(v), group = many.length > 1 && many.includes(drag.id);
-        const roots = group ? many.map(id => find(v.root, id).node) : [f.node], seen = new Set();
+        // several things selected and this box is one of them: they all move (Shift: each box with everything under it)
+        const many = selSet(v);
+        if (many.includes(drag.id) && many.length + S.frSel.size > 1) {
+          Object.assign(drag, groupDrag(v, e.shiftKey, { node: f.node }, drag.sx, drag.sy));
+          capture(e);
+          return;
+        }
+        const seen = new Set();
         drag.nodes = [];
-        drag.group = group;
-        roots.forEach(r => (e.shiftKey ? (fn => walk(r, fn)) : (fn => fn(r)))(n => { if (okBox(n.box) && !seen.has(n.id)) { seen.add(n.id); drag.nodes.push(n); } }));
+        (e.shiftKey ? (fn => walk(f.node, fn)) : (fn => fn(f.node)))(n => { if (okBox(n.box) && !seen.has(n.id)) { seen.add(n.id); drag.nodes.push(n); } });
         drag.orig = new Map(drag.nodes.map(n => [n.id, { x: n.box.x, y: n.box.y }]));
         // lines whose both ends move keep their shape
         drag.wires = drag.nodes.filter(n => okWire(n.wire) && seen.has((find(v.root, n.id).parent || {}).id)).map(n => ({ n, k: n.wire.k.slice() }));
-        if (!group && S.selected !== drag.id) selectNode(drag.id, { sheet: false });
+        if (S.selected !== drag.id) selectNode(drag.id, { sheet: false });
         capture(e);
         return;
       }
@@ -2654,26 +2688,27 @@ function bindCanvas() {
       const l = live;
       live = null;
       l.el?.remove();
-      $$('#stage .node.marq-hit').forEach(el => el.classList.remove('marq-hit'));
+      $$('#stage .marq-hit').forEach(el => el.classList.remove('marq-hit'));
       if (e.type !== 'pointerup') return;
       if (!l.moved) { if (!(l.lk && lineClick(e.clientX, e.clientY))) selectNode(null); return; }
-      const ids = [...new Set([...l.keep, ...(l.hits || [])])];
-      if (ids.length > 1) selectNode(null, { many: ids }); else selectNode(ids[0] || null);
+      const ids = [...new Set([...l.keep, ...(l.hits || [])])], frames = [...new Set([...l.keepFr, ...(l.frHits || [])])];
+      if (ids.length > 1) selectNode(null, { many: ids, frames }); else selectNode(ids[0] || null, { frames });
       return;
     }
     if (live) {
       const l = live;
       live = null;
       cancelAnimationFrame(relinkRaf);
-      if (l.moved) commitLive(l.kind === 'wire' ? 'ปรับเส้นเชื่อม' : l.kind === 'resize' ? 'ปรับขนาดกล่อง' : 'ย้ายหัวกระดาษ / ท้ายกระดาษ', l.snap);
+      if (l.moved) { commitLive(l.kind === 'wire' ? 'ปรับเส้นเชื่อม' : l.kind === 'resize' ? 'ปรับขนาดกล่อง' : 'ย้ายหัวกระดาษ / ท้ายกระดาษ', l.snap); if (l.kind === 'frame') selectFrame(l.key, false); }
       else if (l.kind === 'resize') renderStage();
+      else if (l.kind === 'frame' && e.type === 'pointerup') selectFrame(l.key, l.add);
       return;
     }
     if (drag && drag.kind === 'move') {
       const d = drag;
       drag = null;
       cancelAnimationFrame(relinkRaf);
-      commitLive(d.group ? `ย้าย ${d.nodes.length} กล่องพร้อมกัน` : d.nodes.length > 1 ? 'ย้ายกล่องพร้อมหน่วยย่อย' : 'ย้ายตำแหน่งกล่อง', d.snap);
+      commitLive(d.group ? `ย้าย ${d.nodes.length} กล่อง${d.frames && d.frames.length ? ' และหัว/ท้ายกระดาษ' : ''}พร้อมกัน` : d.nodes.length > 1 ? 'ย้ายกล่องพร้อมหน่วยย่อย' : 'ย้ายตำแหน่งกล่อง', d.snap);
       return;
     }
     if (drag) {
@@ -2753,8 +2788,8 @@ function inspHTML(v) {
   if (!v) return '';
   const parts = [];
   if (S.compareWith && byId(S.compareWith)) parts.push(diffHTML(v));
-  const f = S.selected ? find(v.root, S.selected) : null, many = selSet(v);
-  parts.push(many.length > 1 ? multiPanelHTML(v, many) : f ? nodePanelHTML(v, f) : versionPanelHTML(v));
+  const f = S.selected ? find(v.root, S.selected) : null, many = selSet(v), frs = [...S.frSel];
+  parts.push(many.length > 1 || (many.length && frs.length) ? multiPanelHTML(v, many, frs) : frs.length ? framesPanelHTML(v, frs) : f ? nodePanelHTML(v, f) : versionPanelHTML(v));
   return parts.join('');
 }
 function versionPanelHTML(v) {
@@ -2857,17 +2892,46 @@ function wireFieldHTML(v, f) {
     <div class="btnrow"><button class="btn sm" data-act="wire-bend" data-d="1" title="เพิ่มขั้นในเส้น แล้วลากช่วงใหม่ออกจากเส้นอื่นหรือเลี่ยงกล่อง">${I.plus}เพิ่มจุดหัก</button>${w.k && w.k.length >= 2 ? `<button class="btn sm" data-act="wire-bend" data-d="0">${I.minus}ลดจุดหัก</button>` : ''}${okWire(f.node.wire) ? `<button class="btn sm" data-act="wire-reset">${I.undo}คืนค่าเส้นอัตโนมัติ</button>` : ''}</div></div>`;
 }
 // several boxes selected: move them together, line them up, spread them evenly
-function multiPanelHTML(v, ids) {
-  const edit = canEdit(v) && isFree(v), names = ids.map(id => find(v.root, id).node);
+function multiPanelHTML(v, ids, frs = []) {
+  const edit = canEdit(v) && isFree(v), names = ids.map(id => find(v.root, id).node), boxes = ids.length > 1;
   const b = (a, label, title) => `<button class="btn sm" data-act="align" data-a="${a}" title="${esc(title)}">${label}</button>`;
-  return `<section class="panel"><div class="ip-head"><div><h3>เลือกหลายกล่อง</h3><h2>${ids.length} กล่อง</h2></div><button class="ibtn ip-close" data-act="close-insp" aria-label="ปิด">${I.close}</button></div>
+  return `<section class="panel"><div class="ip-head"><div><h3>เลือกหลายกล่อง</h3><h2>${ids.length} กล่อง${frs.length ? ' + ' + frs.map(k => esc(FR_TH[k])).join(', ') : ''}</h2></div><button class="ibtn ip-close" data-act="close-insp" aria-label="ปิด">${I.close}</button></div>
     ${edit ? `<p class="muted">ลากกล่องใดก็ได้ในกลุ่มเพื่อย้ายทั้งหมด · ปุ่มลูกศร = ขยับทีละ 1 px (Shift = 10 px) · Ctrl/Shift+คลิก = เพิ่มหรือเอากล่องออก · Esc = เลิกเลือก</p>
-    <div class="field"><span>จัดแนว (ตามขอบของกลุ่ม)</span><div class="al-grid">${b('l', 'ชิดซ้าย', 'ขอบซ้ายตรงกัน')}${b('cx', 'กึ่งกลางแนวตั้ง', 'จุดกึ่งกลางอยู่แนวตั้งเดียวกัน')}${b('r', 'ชิดขวา', 'ขอบขวาตรงกัน')}${b('t', 'ชิดบน', 'ขอบบนตรงกัน')}${b('cy', 'กึ่งกลางแนวนอน', 'จุดกึ่งกลางอยู่แนวนอนเดียวกัน')}${b('b', 'ชิดล่าง', 'ขอบล่างตรงกัน')}</div></div>
+    ${boxes ? `<div class="field"><span>จัดแนว (ตามขอบของกลุ่ม)</span><div class="al-grid">${b('l', 'ชิดซ้าย', 'ขอบซ้ายตรงกัน')}${b('cx', 'กึ่งกลางแนวตั้ง', 'จุดกึ่งกลางอยู่แนวตั้งเดียวกัน')}${b('r', 'ชิดขวา', 'ขอบขวาตรงกัน')}${b('t', 'ชิดบน', 'ขอบบนตรงกัน')}${b('cy', 'กึ่งกลางแนวนอน', 'จุดกึ่งกลางอยู่แนวนอนเดียวกัน')}${b('b', 'ชิดล่าง', 'ขอบล่างตรงกัน')}</div></div>
     ${ids.length > 2 ? `<div class="field"><span>เว้นระยะเท่ากัน</span><div class="al-grid two">${b('dx', 'แนวนอน', 'ระยะห่างระหว่างกล่องในแนวนอนเท่ากัน')}${b('dy', 'แนวตั้ง', 'ระยะห่างระหว่างกล่องในแนวตั้งเท่ากัน')}</div></div>` : ''}
-    <div class="field"><span>ขนาดเท่ากับ “${esc(find(v.root, S.selected).node.name || '')}” (กล่องที่คลิกล่าสุด)</span><div class="al-grid two">${b('w', 'กว้างเท่ากัน', 'ความกว้างเท่ากล่องที่คลิกล่าสุด')}${b('h', 'สูงเท่ากัน', 'ความสูงเท่ากล่องที่คลิกล่าสุด')}</div></div>`
+    <div class="field"><span>ขนาดเท่ากับ “${esc(find(v.root, S.selected).node.name || '')}” (กล่องที่คลิกล่าสุด)</span><div class="al-grid two">${b('w', 'กว้างเท่ากัน', 'ความกว้างเท่ากล่องที่คลิกล่าสุด')}${b('h', 'สูงเท่ากัน', 'ความสูงเท่ากล่องที่คลิกล่าสุด')}</div></div>` : ''}`
     : `<p class="muted">${isFree(v) ? 'ย้ายและจัดแนวได้ใน Draft' : 'ย้ายและจัดแนวหลายกล่องได้ในโหมด “จัดวางอิสระ”'}</p>`}
-    <div class="field"><span>กล่องที่เลือก</span><ul class="multi-list">${names.map(n => `<li${n.id === S.selected ? ' class="cur"' : ''}><a href="#" data-act="sel-one" data-id="${n.id}">${esc(n.name || 'ไม่มีชื่อ')}</a></li>`).join('')}</ul></div>
+    <div class="field"><span>ที่เลือก</span><ul class="multi-list">${names.map(n => `<li${n.id === S.selected ? ' class="cur"' : ''}><a href="#" data-act="sel-one" data-id="${n.id}">${esc(n.name || 'ไม่มีชื่อ')}</a></li>`).join('')}${frs.map(k => `<li class="fr-li">${esc(FR_TH[k])}</li>`).join('')}</ul></div>
     <button class="btn sm ghost" data-act="sel-clear">เลิกเลือกทั้งหมด</button></section>`;
+}
+const FR_TH = { title: 'หัวกระดาษ', legend: 'คำอธิบายตัวย่อ', footer: 'ตารางท้ายผัง (ช่องลงนาม)' };
+// sheet parts get boxes of their own the first time they move (until then they follow the chart)
+function frameBoxesOf(v, keys) {
+  const fr = (S.layout && S.layout.frame) || {};
+  if (!v.doc) return {};
+  if (!v.doc.frameBoxes) v.doc.frameBoxes = {};
+  const fb = v.doc.frameBoxes, pick = b => ({ x: b.x, y: b.y, w: b.w, h: b.h });
+  keys.forEach(key => {
+    if (!fr[key]) return;
+    if (key === 'footer') fb.footer = fr.footer.boxes ? fr.footer.boxes.map(pick) : fr.footer.cells.map((c, i) => ({ x: fr.footer.x + i * fr.footer.w / fr.footer.cells.length, y: fr.footer.y, w: fr.footer.w / fr.footer.cells.length, h: fr.footer.h }));
+    else fb[key] = pick(fr[key]);
+  });
+  return fb;
+}
+// click a sheet part: select it alone, or with Ctrl / Shift add it to (or take it out of) what is selected
+function selectFrame(key, add) {
+  const v = curVersion();
+  if (!add) { selectNode(null, { frames: [key] }); return; }
+  const fr = new Set(S.frSel), ids = selSet(v);
+  if (fr.has(key)) fr.delete(key); else fr.add(key);
+  if (ids.length > 1) selectNode(null, { many: ids, frames: [...fr] }); else selectNode(ids[0] || null, { frames: [...fr] });
+}
+// only sheet parts selected
+function framesPanelHTML(v, frs) {
+  return `<section class="panel"><div class="ip-head"><div><h3>หัวกระดาษ / ท้ายกระดาษ</h3><h2>${frs.map(k => esc(FR_TH[k])).join(' · ')}</h2></div><button class="ibtn ip-close" data-act="close-insp" aria-label="ปิด">${I.close}</button></div>
+    <p class="muted">ลากเพื่อย้าย · ปุ่มลูกศร = ขยับทีละ 1 px (Shift = 10 px) · Shift+ลากบนพื้นที่ว่าง หรือ Ctrl/Shift+คลิก = เลือกพร้อมกล่องอื่นแล้วย้ายไปด้วยกัน · Esc = เลิกเลือก</p>
+    <p class="muted">แก้ข้อความได้ที่ “ข้อมูลเวอร์ชัน” (คลิกพื้นที่ว่างบนผัง)</p>
+    <button class="btn sm ghost" data-act="sel-clear">เลิกเลือก</button></section>`;
 }
 // line up / spread / size the selected boxes
 function alignBoxes(how) {
@@ -5744,7 +5808,20 @@ document.addEventListener('keydown', e => {
   if (mod && k === 'z') { e.preventDefault(); if (e.shiftKey) redo(); else undo(); return; }
   if (mod && k === 'y') { e.preventDefault(); redo(); return; }
   if (S.page !== 'structure') return;
-  if (e.key === 'Escape' && S.selected) { selectNode(null); return; }
+  if (e.key === 'Escape' && (S.selected || S.frSel.size)) { selectNode(null); return; }
+  // sheet parts selected (with or without boxes): arrow keys nudge everything selected
+  if (e.key.startsWith('Arrow') && !mod && !e.altKey && S.frSel.size && isFree(v) && canEdit(v) && S.tab === 'chart') {
+    e.preventDefault();
+    const step = e.shiftKey ? 10 : 1, dx = e.key === 'ArrowLeft' ? -step : e.key === 'ArrowRight' ? step : 0, dy = e.key === 'ArrowUp' ? -step : e.key === 'ArrowDown' ? step : 0, ids = selSet(v);
+    beginEdit(v, v.id + 'nudge' + ids.join(',') + [...S.frSel].join(','));
+    ids.forEach(id => { const b = find(v.root, id).node.box; if (okBox(b)) { b.x += dx; b.y += dy; } });
+    const fb = frameBoxesOf(v, [...S.frSel]), mv = b => Object.assign({}, b, { x: b.x + dx, y: b.y + dy });
+    S.frSel.forEach(k => { if (fb[k]) fb[k] = Array.isArray(fb[k]) ? fb[k].map(mv) : mv(fb[k]); });
+    touch(v, 'ย้ายตำแหน่ง');
+    renderStage();
+    setHTML('#insp', inspHTML(v));
+    return;
+  }
   const f = S.selected ? find(v.root, S.selected) : null;
   if (!f) return;
   if (e.key.startsWith('Arrow') && !mod && !e.altKey && isFree(v) && canEdit(v) && okBox(f.node.box) && S.tab === 'chart') {
