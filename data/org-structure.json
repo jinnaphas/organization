@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-11-13T02:11:29.954Z",
+  "updatedAt": "2026-11-16T03:02:53.395Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -25354,7 +25354,7 @@
       "basedOn": "v_uvqp16jnsx",
       "createdAt": "2026-11-13T02:03:38.990Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-11-13T02:11:04.054Z",
+      "updatedAt": "2026-11-16T03:02:41.921Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE ELECTRIC MANUFACTURING CO., LTD. (PEM) 2027",
@@ -25370,45 +25370,45 @@
             "h": 138.8
           },
           "legend": {
-            "x": 1543.6,
-            "y": 1773.2,
+            "x": 1328,
+            "y": 1936,
             "w": 722,
             "h": 144.4
           },
           "footer": [
             {
-              "x": 140.9,
-              "y": 1973.3,
+              "x": 148,
+              "y": 2132,
               "w": 447.9,
               "h": 115.8
             },
             {
-              "x": 589.3,
-              "y": 1972.8,
+              "x": 596.4,
+              "y": 2131.5,
               "w": 447.9,
               "h": 115.8
             },
             {
-              "x": 1037.6,
-              "y": 1972.8,
+              "x": 1044.6999999999998,
+              "y": 2131.5,
               "w": 447.9,
               "h": 115.8
             },
             {
-              "x": 1486,
-              "y": 1972.8,
+              "x": 1493.1,
+              "y": 2131.5,
               "w": 492,
               "h": 115.8
             },
             {
-              "x": 1979.4,
-              "y": 1973.3,
+              "x": 1986.5,
+              "y": 2132,
               "w": 492,
               "h": 115.8
             },
             {
-              "x": 2473.5,
-              "y": 1973.3,
+              "x": 2480.6,
+              "y": 2132,
               "w": 492,
               "h": 115.8
             }
@@ -26042,459 +26042,6 @@
                 "note": "",
                 "children": [
                   {
-                    "id": "n_pem_23",
-                    "type": "line",
-                    "name": "Polymer Product & Electrical Equipment Business (PEM101)",
-                    "nameEn": "",
-                    "code": "PEM101",
-                    "title": "",
-                    "head": "",
-                    "hc": 1,
-                    "staff": false,
-                    "layout": "auto",
-                    "note": "",
-                    "children": [
-                      {
-                        "id": "n_pem_24",
-                        "type": "section",
-                        "name": "Sale & Operation Plan and Proposal Section",
-                        "nameEn": "",
-                        "code": "",
-                        "title": "",
-                        "head": "",
-                        "hc": 3,
-                        "staff": false,
-                        "layout": "auto",
-                        "note": "",
-                        "children": [],
-                        "style": {
-                          "fill": "#FFFFFF",
-                          "line": "#70AD47",
-                          "lw": 1.33,
-                          "text": "#000000",
-                          "bold": false,
-                          "size": 12,
-                          "align": "l"
-                        },
-                        "link": "#70AD47",
-                        "box": {
-                          "x": 1717.3,
-                          "y": 680.2,
-                          "w": 323.3,
-                          "h": 41.3
-                        }
-                      },
-                      {
-                        "id": "n_pem_25",
-                        "type": "section",
-                        "name": "Warehouse and Material Management Section",
-                        "nameEn": "",
-                        "code": "",
-                        "title": "",
-                        "head": "",
-                        "hc": 6,
-                        "staff": false,
-                        "layout": "auto",
-                        "note": "",
-                        "children": [],
-                        "style": {
-                          "fill": "#FFFFFF",
-                          "line": "#70AD47",
-                          "lw": 1.33,
-                          "text": "#000000",
-                          "bold": false,
-                          "size": 12,
-                          "align": "l"
-                        },
-                        "link": "#70AD47",
-                        "box": {
-                          "x": 1716.6,
-                          "y": 739.9,
-                          "w": 323.3,
-                          "h": 39.8
-                        }
-                      },
-                      {
-                        "id": "n_pem_27",
-                        "type": "section",
-                        "name": "Production Management Section",
-                        "nameEn": "",
-                        "code": "",
-                        "title": "",
-                        "head": "",
-                        "hc": 25,
-                        "staff": false,
-                        "layout": "auto",
-                        "note": "",
-                        "children": [],
-                        "style": {
-                          "fill": "#FFFFFF",
-                          "line": "#70AD47",
-                          "lw": 1.33,
-                          "text": "#000000",
-                          "bold": false,
-                          "size": 12,
-                          "align": "l"
-                        },
-                        "link": "#70AD47",
-                        "box": {
-                          "x": 1715.7,
-                          "y": 795.7,
-                          "w": 323.3,
-                          "h": 41.6
-                        }
-                      },
-                      {
-                        "id": "n_pem_26",
-                        "type": "section",
-                        "name": "Engineering & Testing & Quality Assurance Section",
-                        "nameEn": "",
-                        "code": "",
-                        "title": "",
-                        "head": "",
-                        "hc": 3,
-                        "staff": false,
-                        "layout": "auto",
-                        "note": "",
-                        "children": [],
-                        "style": {
-                          "fill": "#FFFFFF",
-                          "line": "#70AD47",
-                          "lw": 1.33,
-                          "text": "#000000",
-                          "bold": false,
-                          "size": 12,
-                          "align": "l"
-                        },
-                        "link": "#70AD47",
-                        "box": {
-                          "x": 1716.1,
-                          "y": 847.7,
-                          "w": 323.3,
-                          "h": 41.9
-                        }
-                      }
-                    ],
-                    "style": {
-                      "fill": "#FFE699",
-                      "line": "#70AD47",
-                      "lw": 1.33,
-                      "text": "#0000FF",
-                      "bold": true,
-                      "size": 14,
-                      "align": "l"
-                    },
-                    "box": {
-                      "x": 1646.8,
-                      "y": 604.3,
-                      "w": 393.7,
-                      "h": 62.6
-                    },
-                    "link": "#70AD47"
-                  },
-                  {
-                    "id": "n_pem_61",
-                    "type": "line",
-                    "name": "SF6 free LBS & Switching Device Business (PEM102)",
-                    "nameEn": "",
-                    "code": "PEM102",
-                    "title": "",
-                    "head": "",
-                    "hc": 1,
-                    "staff": false,
-                    "layout": "auto",
-                    "note": "",
-                    "children": [
-                      {
-                        "id": "n_pem_62",
-                        "type": "section",
-                        "name": "Sale & Operation Plan and Proposal Section",
-                        "nameEn": "",
-                        "code": "",
-                        "title": "",
-                        "head": "",
-                        "hc": 2,
-                        "staff": false,
-                        "layout": "auto",
-                        "note": "",
-                        "children": [],
-                        "style": {
-                          "fill": "#FFFFFF",
-                          "line": "#70AD47",
-                          "lw": 1.33,
-                          "text": "#000000",
-                          "bold": false,
-                          "size": 12,
-                          "align": "l"
-                        },
-                        "link": "#70AD47",
-                        "box": {
-                          "x": 1712.6,
-                          "y": 983,
-                          "w": 325.1,
-                          "h": 32.5
-                        }
-                      },
-                      {
-                        "id": "n_pem_63",
-                        "type": "section",
-                        "name": "Warehouse and Material Management Section",
-                        "nameEn": "",
-                        "code": "",
-                        "title": "",
-                        "head": "",
-                        "hc": 3,
-                        "staff": false,
-                        "layout": "auto",
-                        "note": "",
-                        "children": [],
-                        "style": {
-                          "fill": "#FFFFFF",
-                          "line": "#70AD47",
-                          "lw": 1.33,
-                          "text": "#000000",
-                          "bold": false,
-                          "size": 12,
-                          "align": "l"
-                        },
-                        "link": "#70AD47",
-                        "box": {
-                          "x": 1711.4,
-                          "y": 1029.8,
-                          "w": 325.7,
-                          "h": 30.9
-                        }
-                      },
-                      {
-                        "id": "n_pem_64",
-                        "type": "section",
-                        "name": "Production Management Section",
-                        "nameEn": "",
-                        "code": "",
-                        "title": "",
-                        "head": "",
-                        "hc": 17,
-                        "staff": false,
-                        "layout": "auto",
-                        "note": "",
-                        "children": [],
-                        "style": {
-                          "fill": "#FFFFFF",
-                          "line": "#70AD47",
-                          "lw": 1.33,
-                          "text": "#000000",
-                          "bold": false,
-                          "size": 12,
-                          "align": "l"
-                        },
-                        "link": "#70AD47",
-                        "box": {
-                          "x": 1713.7,
-                          "y": 1079.9,
-                          "w": 323.3,
-                          "h": 40.7
-                        }
-                      },
-                      {
-                        "id": "n_pem_65",
-                        "type": "section",
-                        "name": "Engineering & Testing & Quality Assurance Section",
-                        "nameEn": "",
-                        "code": "",
-                        "title": "",
-                        "head": "",
-                        "hc": 4,
-                        "staff": false,
-                        "layout": "auto",
-                        "note": "",
-                        "children": [],
-                        "style": {
-                          "fill": "#FFFFFF",
-                          "line": "#70AD47",
-                          "lw": 1.33,
-                          "text": "#000000",
-                          "bold": false,
-                          "size": 12,
-                          "align": "l"
-                        },
-                        "link": "#70AD47",
-                        "box": {
-                          "x": 1712.8,
-                          "y": 1130.7,
-                          "w": 323.3,
-                          "h": 40.2
-                        }
-                      }
-                    ],
-                    "style": {
-                      "fill": "#FFE699",
-                      "line": "#70AD47",
-                      "lw": 1.33,
-                      "text": "#0000FF",
-                      "bold": true,
-                      "size": 14,
-                      "align": "l"
-                    },
-                    "link": "#70AD47",
-                    "box": {
-                      "x": 1649.8,
-                      "y": 909.5,
-                      "w": 388.4,
-                      "h": 64.5
-                    }
-                  },
-                  {
-                    "id": "n_pem_39",
-                    "type": "line",
-                    "name": "Distribution Transformer Business (PEM103)",
-                    "nameEn": "",
-                    "code": "PEM103",
-                    "title": "",
-                    "head": "",
-                    "hc": 1,
-                    "staff": false,
-                    "layout": "auto",
-                    "note": "",
-                    "children": [
-                      {
-                        "id": "n_pem_40",
-                        "type": "section",
-                        "name": "Sale & Operation Plan and Proposal Section",
-                        "nameEn": "",
-                        "code": "",
-                        "title": "",
-                        "head": "",
-                        "hc": 4,
-                        "staff": false,
-                        "layout": "auto",
-                        "note": "",
-                        "children": [],
-                        "style": {
-                          "fill": "#FFFFFF",
-                          "line": "#70AD47",
-                          "lw": 1.33,
-                          "text": "#000000",
-                          "bold": false,
-                          "size": 12,
-                          "align": "l"
-                        },
-                        "link": "#70AD47",
-                        "box": {
-                          "x": 1710.3,
-                          "y": 1261.1,
-                          "w": 322.7,
-                          "h": 39.2
-                        }
-                      },
-                      {
-                        "id": "n_pem_41",
-                        "type": "section",
-                        "name": "Warehouse and Material Management Section",
-                        "nameEn": "",
-                        "code": "",
-                        "title": "",
-                        "head": "",
-                        "hc": 4,
-                        "staff": false,
-                        "layout": "auto",
-                        "note": "",
-                        "children": [],
-                        "style": {
-                          "fill": "#FFFFFF",
-                          "line": "#70AD47",
-                          "lw": 1.33,
-                          "text": "#000000",
-                          "bold": false,
-                          "size": 12,
-                          "align": "l"
-                        },
-                        "link": "#70AD47",
-                        "box": {
-                          "x": 1709.1,
-                          "y": 1311.9,
-                          "w": 323.3,
-                          "h": 33.7
-                        }
-                      },
-                      {
-                        "id": "n_pem_38",
-                        "type": "section",
-                        "name": "Production Management Section",
-                        "nameEn": "",
-                        "code": "",
-                        "title": "",
-                        "head": "",
-                        "hc": 42,
-                        "staff": false,
-                        "layout": "auto",
-                        "note": "",
-                        "children": [],
-                        "style": {
-                          "fill": "#FFFFFF",
-                          "line": "#70AD47",
-                          "lw": 1.33,
-                          "text": "#000000",
-                          "bold": false,
-                          "size": 12,
-                          "align": "l"
-                        },
-                        "link": "#70AD47",
-                        "box": {
-                          "x": 1708.4,
-                          "y": 1353.8,
-                          "w": 323.3,
-                          "h": 35.8
-                        }
-                      },
-                      {
-                        "id": "n_pem_42",
-                        "type": "section",
-                        "name": "Engineering & Testing & Quality Assurance Section",
-                        "nameEn": "",
-                        "code": "",
-                        "title": "",
-                        "head": "",
-                        "hc": 6,
-                        "staff": false,
-                        "layout": "auto",
-                        "note": "",
-                        "children": [],
-                        "style": {
-                          "fill": "#FFFFFF",
-                          "line": "#70AD47",
-                          "lw": 1.33,
-                          "text": "#000000",
-                          "bold": false,
-                          "size": 12,
-                          "align": "l"
-                        },
-                        "link": "#70AD47",
-                        "box": {
-                          "x": 1708.4,
-                          "y": 1396.6,
-                          "w": 323.3,
-                          "h": 37.8
-                        }
-                      }
-                    ],
-                    "style": {
-                      "fill": "#FFE699",
-                      "line": "#70AD47",
-                      "lw": 1.33,
-                      "text": "#0000FF",
-                      "bold": true,
-                      "size": 14,
-                      "align": "l"
-                    },
-                    "link": "#70AD47",
-                    "box": {
-                      "x": 1647.7,
-                      "y": 1197.4,
-                      "w": 386,
-                      "h": 55.9
-                    }
-                  },
-                  {
                     "id": "n_pem_43",
                     "type": "division",
                     "name": "Business Logistic & Vendor Management Division",
@@ -26531,8 +26078,8 @@
                         },
                         "link": "#70AD47",
                         "box": {
-                          "x": 1710.2,
-                          "y": 1526.7,
+                          "x": 3462.2,
+                          "y": 1842.7,
                           "w": 319.3,
                           "h": 43.5
                         }
@@ -26561,8 +26108,8 @@
                         },
                         "link": "#70AD47",
                         "box": {
-                          "x": 1710.2,
-                          "y": 1585.1,
+                          "x": 3462.2,
+                          "y": 1901.1,
                           "w": 319.3,
                           "h": 43
                         }
@@ -26579,260 +26126,23 @@
                     },
                     "link": "#70AD47",
                     "box": {
-                      "x": 1692,
-                      "y": 1456,
+                      "x": 3444,
+                      "y": 1772,
                       "w": 337,
                       "h": 49.7
                     },
                     "wire": {
                       "a": {
-                        "s": "b",
-                        "t": 0.4999999999999996
+                        "s": "r",
+                        "t": 0.377
                       },
                       "b": {
                         "s": "r",
                         "t": 0.5
                       },
-                      "k": []
-                    }
-                  },
-                  {
-                    "id": "n_pem_35",
-                    "type": "line",
-                    "name": "Switchgear & Switchboard and Digital Engineering Business (PEM104)",
-                    "nameEn": "",
-                    "code": "PEM104",
-                    "title": "",
-                    "head": "",
-                    "hc": 1,
-                    "staff": false,
-                    "layout": "auto",
-                    "note": "",
-                    "children": [
-                      {
-                        "id": "n_pem_103",
-                        "type": "section",
-                        "name": "Sale & Operation Plan Section",
-                        "nameEn": "",
-                        "code": "",
-                        "title": "",
-                        "head": "",
-                        "hc": 2,
-                        "staff": false,
-                        "layout": "auto",
-                        "note": "",
-                        "children": [],
-                        "style": {
-                          "fill": "#FFFFFF",
-                          "line": "#70AD47",
-                          "lw": 1.33,
-                          "text": "#000000",
-                          "bold": false,
-                          "size": 11,
-                          "align": "l"
-                        },
-                        "link": "#70AD47",
-                        "box": {
-                          "x": 2170.2,
-                          "y": 675.6,
-                          "w": 324.6,
-                          "h": 40.3
-                        }
-                      },
-                      {
-                        "id": "n_pem_138",
-                        "type": "section",
-                        "name": "Commercial & Technical Proposal Section",
-                        "nameEn": "",
-                        "code": "",
-                        "title": "",
-                        "head": "",
-                        "hc": 13,
-                        "staff": false,
-                        "layout": "auto",
-                        "note": "",
-                        "children": [],
-                        "style": {
-                          "fill": "#FFFFFF",
-                          "line": "#70AD47",
-                          "lw": 1.33,
-                          "text": "#000000",
-                          "bold": false,
-                          "size": 11,
-                          "align": "l"
-                        },
-                        "link": "#70AD47",
-                        "box": {
-                          "x": 2169.1,
-                          "y": 724.9,
-                          "w": 325.8,
-                          "h": 48.6
-                        }
-                      },
-                      {
-                        "id": "n_pem_104",
-                        "type": "section",
-                        "name": "Warehouse and Material Management Section",
-                        "nameEn": "",
-                        "code": "",
-                        "title": "",
-                        "head": "",
-                        "hc": 5,
-                        "staff": false,
-                        "layout": "auto",
-                        "note": "",
-                        "children": [],
-                        "style": {
-                          "fill": "#FFFFFF",
-                          "line": "#70AD47",
-                          "lw": 1.33,
-                          "text": "#000000",
-                          "bold": false,
-                          "size": 11,
-                          "align": "l"
-                        },
-                        "link": "#70AD47",
-                        "box": {
-                          "x": 2169.6,
-                          "y": 790.1,
-                          "w": 326,
-                          "h": 46.5
-                        }
-                      },
-                      {
-                        "id": "n_pem_112",
-                        "type": "section",
-                        "name": "Production Management Section",
-                        "nameEn": "",
-                        "code": "",
-                        "title": "",
-                        "head": "",
-                        "hc": 18,
-                        "staff": false,
-                        "layout": "auto",
-                        "note": "",
-                        "children": [],
-                        "style": {
-                          "fill": "#FFFFFF",
-                          "line": "#70AD47",
-                          "lw": 1.33,
-                          "text": "#000000",
-                          "bold": false,
-                          "size": 11,
-                          "align": "l"
-                        },
-                        "link": "#70AD47",
-                        "box": {
-                          "x": 2169.7,
-                          "y": 847.8,
-                          "w": 326.9,
-                          "h": 41.5
-                        }
-                      },
-                      {
-                        "id": "n_pem_111",
-                        "type": "section",
-                        "name": "Testing & Quality Assurance Section",
-                        "nameEn": "",
-                        "code": "",
-                        "title": "",
-                        "head": "",
-                        "hc": 6,
-                        "staff": false,
-                        "layout": "auto",
-                        "note": "",
-                        "children": [],
-                        "style": {
-                          "fill": "#FFFFFF",
-                          "line": "#70AD47",
-                          "lw": 1.33,
-                          "text": "#000000",
-                          "bold": false,
-                          "size": 12,
-                          "align": "l"
-                        },
-                        "link": "#70AD47",
-                        "box": {
-                          "x": 2171.8,
-                          "y": 901.9,
-                          "w": 326.7,
-                          "h": 36.7
-                        }
-                      },
-                      {
-                        "id": "n_pem_184",
-                        "type": "section",
-                        "name": "Project Management Section",
-                        "nameEn": "",
-                        "code": "",
-                        "title": "",
-                        "head": "",
-                        "hc": 2,
-                        "staff": false,
-                        "layout": "auto",
-                        "note": "",
-                        "children": [],
-                        "style": {
-                          "fill": "#FFFFFF",
-                          "line": "#000000",
-                          "lw": 1.33,
-                          "text": "#000000",
-                          "bold": false,
-                          "size": 12,
-                          "align": "l"
-                        },
-                        "box": {
-                          "x": 2172.4,
-                          "y": 955.8,
-                          "w": 326.9,
-                          "h": 42.5
-                        }
-                      },
-                      {
-                        "id": "n_pem_105",
-                        "type": "section",
-                        "name": "Installation, Commissioning, Maintenance and Services Section",
-                        "nameEn": "",
-                        "code": "",
-                        "title": "",
-                        "head": "",
-                        "hc": 10,
-                        "staff": false,
-                        "layout": "auto",
-                        "note": "",
-                        "children": [],
-                        "style": {
-                          "fill": "#FFFFFF",
-                          "line": "#000000",
-                          "lw": 1.33,
-                          "text": "#000000",
-                          "bold": false,
-                          "size": 12,
-                          "align": "l"
-                        },
-                        "box": {
-                          "x": 2173.6,
-                          "y": 1010.8,
-                          "w": 326.9,
-                          "h": 59.4
-                        }
-                      }
-                    ],
-                    "style": {
-                      "fill": "#FFE699",
-                      "line": "#70AD47",
-                      "lw": 1.33,
-                      "text": "#0000FF",
-                      "bold": true,
-                      "size": 14,
-                      "align": "l"
-                    },
-                    "link": "#70AD47",
-                    "box": {
-                      "x": 2125.7,
-                      "y": 603.8,
-                      "w": 370.9,
-                      "h": 63.2
+                      "k": [
+                        3178
+                      ]
                     }
                   },
                   {
@@ -26872,8 +26182,8 @@
                         },
                         "link": "#70AD47",
                         "box": {
-                          "x": 2169.8,
-                          "y": 1218.3,
+                          "x": 2715.5,
+                          "y": 1325.8999999999999,
                           "w": 321,
                           "h": 42.3
                         }
@@ -26902,8 +26212,8 @@
                         },
                         "link": "#70AD47",
                         "box": {
-                          "x": 2168.2,
-                          "y": 1273.2,
+                          "x": 2713.8999999999996,
+                          "y": 1380.8,
                           "w": 322.8,
                           "h": 36.5
                         }
@@ -26932,8 +26242,8 @@
                         },
                         "link": "#70AD47",
                         "box": {
-                          "x": 2168.6,
-                          "y": 1320.5,
+                          "x": 2714.2999999999997,
+                          "y": 1428.1,
                           "w": 322.8,
                           "h": 36.7
                         }
@@ -26962,8 +26272,8 @@
                         },
                         "link": "#70AD47",
                         "box": {
-                          "x": 2168.2,
-                          "y": 1366.4,
+                          "x": 2713.8999999999996,
+                          "y": 1474,
                           "w": 322.8,
                           "h": 37
                         }
@@ -26980,8 +26290,8 @@
                     },
                     "link": "#70AD47",
                     "box": {
-                      "x": 2126.3,
-                      "y": 1156.4,
+                      "x": 2672,
+                      "y": 1264,
                       "w": 366.2,
                       "h": 51.7
                     }
@@ -27023,8 +26333,8 @@
                         },
                         "link": "#70AD47",
                         "box": {
-                          "x": 2160,
-                          "y": 1486.7,
+                          "x": 2705.7,
+                          "y": 1594.3,
                           "w": 321,
                           "h": 39.7
                         }
@@ -27053,8 +26363,8 @@
                         },
                         "link": "#70AD47",
                         "box": {
-                          "x": 2158.4,
-                          "y": 1537.3,
+                          "x": 2704.1,
+                          "y": 1644.8999999999999,
                           "w": 322.8,
                           "h": 36.7
                         }
@@ -27083,8 +26393,8 @@
                         },
                         "link": "#70AD47",
                         "box": {
-                          "x": 2158.7,
-                          "y": 1585.2,
+                          "x": 2704.3999999999996,
+                          "y": 1692.8,
                           "w": 322.8,
                           "h": 36.7
                         }
@@ -27113,8 +26423,8 @@
                         },
                         "link": "#70AD47",
                         "box": {
-                          "x": 2158.4,
-                          "y": 1630.6,
+                          "x": 2704.1,
+                          "y": 1738.1999999999998,
                           "w": 322.8,
                           "h": 37
                         }
@@ -27131,8 +26441,8 @@
                     },
                     "link": "#70AD47",
                     "box": {
-                      "x": 2116.5,
-                      "y": 1424.8,
+                      "x": 2662.2,
+                      "y": 1532.3999999999999,
                       "w": 366.2,
                       "h": 51.3
                     }
@@ -27187,8 +26497,8 @@
                             },
                             "link": "#70AD47",
                             "box": {
-                              "x": 2656.5,
-                              "y": 764.4,
+                              "x": 2178.3,
+                              "y": 911.6,
                               "w": 322.8,
                               "h": 49.8
                             }
@@ -27217,8 +26527,8 @@
                             },
                             "link": "#70AD47",
                             "box": {
-                              "x": 2656.5,
-                              "y": 823.7,
+                              "x": 2178.3,
+                              "y": 970.9000000000001,
                               "w": 322.8,
                               "h": 38.4
                             }
@@ -27247,8 +26557,8 @@
                             },
                             "link": "#70AD47",
                             "box": {
-                              "x": 2655.4,
-                              "y": 876.5,
+                              "x": 2177.2000000000003,
+                              "y": 1023.7,
                               "w": 322.8,
                               "h": 40
                             }
@@ -27265,8 +26575,8 @@
                         },
                         "link": "#70AD47",
                         "box": {
-                          "x": 2633,
-                          "y": 698.1,
+                          "x": 2154.8,
+                          "y": 845.3000000000001,
                           "w": 346.9,
                           "h": 51.4
                         }
@@ -27308,8 +26618,8 @@
                             },
                             "link": "#70AD47",
                             "box": {
-                              "x": 2657.7,
-                              "y": 989.7,
+                              "x": 2179.5,
+                              "y": 1136.9,
                               "w": 322.8,
                               "h": 43.2
                             }
@@ -27338,8 +26648,8 @@
                             },
                             "link": "#70AD47",
                             "box": {
-                              "x": 2656,
-                              "y": 1044.2,
+                              "x": 2177.8,
+                              "y": 1191.4,
                               "w": 322.8,
                               "h": 43.8
                             }
@@ -27368,8 +26678,8 @@
                             },
                             "link": "#70AD47",
                             "box": {
-                              "x": 2656,
-                              "y": 1100.5,
+                              "x": 2177.8,
+                              "y": 1247.7,
                               "w": 322.8,
                               "h": 45.6
                             }
@@ -27398,8 +26708,8 @@
                             },
                             "link": "#70AD47",
                             "box": {
-                              "x": 2656,
-                              "y": 1155,
+                              "x": 2177.8,
+                              "y": 1302.2,
                               "w": 322.8,
                               "h": 43.4
                             }
@@ -27428,8 +26738,8 @@
                             },
                             "link": "#70AD47",
                             "box": {
-                              "x": 2656,
-                              "y": 1210.7,
+                              "x": 2177.8,
+                              "y": 1357.9,
                               "w": 322.8,
                               "h": 49
                             }
@@ -27446,8 +26756,8 @@
                         },
                         "link": "#70AD47",
                         "box": {
-                          "x": 2632,
-                          "y": 927,
+                          "x": 2153.8,
+                          "y": 1074.2,
                           "w": 346.9,
                           "h": 46.8
                         }
@@ -27489,8 +26799,8 @@
                             },
                             "link": "#70AD47",
                             "box": {
-                              "x": 2656,
-                              "y": 1378.1,
+                              "x": 2177.8,
+                              "y": 1525.3,
                               "w": 322.8,
                               "h": 38.4
                             }
@@ -27519,8 +26829,8 @@
                             },
                             "link": "#70AD47",
                             "box": {
-                              "x": 2656,
-                              "y": 1426,
+                              "x": 2177.8,
+                              "y": 1573.2,
                               "w": 322.8,
                               "h": 39.5
                             }
@@ -27549,8 +26859,8 @@
                             },
                             "link": "#70AD47",
                             "box": {
-                              "x": 2656,
-                              "y": 1479.5,
+                              "x": 2177.8,
+                              "y": 1626.7,
                               "w": 322.8,
                               "h": 38.9
                             }
@@ -27579,8 +26889,8 @@
                             },
                             "link": "#70AD47",
                             "box": {
-                              "x": 2655.5,
-                              "y": 1528.4,
+                              "x": 2177.3,
+                              "y": 1675.6000000000001,
                               "w": 322.8,
                               "h": 45.1
                             }
@@ -27609,8 +26919,8 @@
                             },
                             "link": "#70AD47",
                             "box": {
-                              "x": 2654.7,
-                              "y": 1581.1,
+                              "x": 2176.5,
+                              "y": 1728.3,
                               "w": 322.8,
                               "h": 45.8
                             }
@@ -27639,8 +26949,8 @@
                             },
                             "link": "#70AD47",
                             "box": {
-                              "x": 2654.7,
-                              "y": 1634.7,
+                              "x": 2176.5,
+                              "y": 1781.9,
                               "w": 322.8,
                               "h": 45.6
                             }
@@ -27657,8 +26967,8 @@
                         },
                         "link": "#70AD47",
                         "box": {
-                          "x": 2632,
-                          "y": 1323,
+                          "x": 2153.8,
+                          "y": 1470.2,
                           "w": 346.9,
                           "h": 46.6
                         }
@@ -27675,8 +26985,8 @@
                     },
                     "link": "#70AD47",
                     "box": {
-                      "x": 2602.2,
-                      "y": 608.8,
+                      "x": 2124,
+                      "y": 756,
                       "w": 379.1,
                       "h": 70.6
                     }
@@ -27705,8 +27015,8 @@
                     },
                     "link": "#70AD47",
                     "box": {
-                      "x": 2636.6,
-                      "y": 1770.4,
+                      "x": 2632,
+                      "y": 1936.6000000000001,
                       "w": 345.8,
                       "h": 42.1
                     },
@@ -27749,8 +27059,8 @@
                     },
                     "link": "#70AD47",
                     "box": {
-                      "x": 2636.6,
-                      "y": 1825.8,
+                      "x": 2632,
+                      "y": 1992,
                       "w": 345.8,
                       "h": 41.8
                     },
@@ -27793,8 +27103,8 @@
                     },
                     "link": "#70AD47",
                     "box": {
-                      "x": 2636.6,
-                      "y": 1879.1,
+                      "x": 2632,
+                      "y": 2045.3,
                       "w": 345.8,
                       "h": 42.4
                     },
@@ -27837,8 +27147,8 @@
                     },
                     "link": "#70AD47",
                     "box": {
-                      "x": 2688,
-                      "y": 468,
+                      "x": 2224,
+                      "y": 608,
                       "w": 345.8,
                       "h": 42.4
                     }
@@ -27855,7 +27165,247 @@
                     "staff": false,
                     "layout": "auto",
                     "note": "",
-                    "children": [],
+                    "children": [
+                      {
+                        "id": "n_pem_35",
+                        "type": "line",
+                        "name": "Switchgear & Switchboard and Digital Engineering Business (PEM104)",
+                        "nameEn": "",
+                        "code": "PEM104",
+                        "title": "",
+                        "head": "",
+                        "hc": 1,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [
+                          {
+                            "id": "n_pem_103",
+                            "type": "section",
+                            "name": "Sale & Operation Plan Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 2,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 11,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 2708.5,
+                              "y": 807.8000000000001,
+                              "w": 324.6,
+                              "h": 40.3
+                            }
+                          },
+                          {
+                            "id": "n_pem_138",
+                            "type": "section",
+                            "name": "Commercial & Technical Proposal Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 13,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 11,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 2707.4,
+                              "y": 857.1,
+                              "w": 325.8,
+                              "h": 48.6
+                            }
+                          },
+                          {
+                            "id": "n_pem_104",
+                            "type": "section",
+                            "name": "Warehouse and Material Management Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 5,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 11,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 2707.9,
+                              "y": 922.3000000000002,
+                              "w": 326,
+                              "h": 46.5
+                            }
+                          },
+                          {
+                            "id": "n_pem_112",
+                            "type": "section",
+                            "name": "Production Management Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 18,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 11,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 2708,
+                              "y": 980,
+                              "w": 326.9,
+                              "h": 41.5
+                            }
+                          },
+                          {
+                            "id": "n_pem_111",
+                            "type": "section",
+                            "name": "Testing & Quality Assurance Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 6,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 2710.1000000000004,
+                              "y": 1034.1,
+                              "w": 326.7,
+                              "h": 36.7
+                            }
+                          },
+                          {
+                            "id": "n_pem_184",
+                            "type": "section",
+                            "name": "Project Management Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 2,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#000000",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "box": {
+                              "x": 2710.7000000000003,
+                              "y": 1088,
+                              "w": 326.9,
+                              "h": 42.5
+                            }
+                          },
+                          {
+                            "id": "n_pem_105",
+                            "type": "section",
+                            "name": "Installation, Commissioning, Maintenance and Services Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 10,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#000000",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "box": {
+                              "x": 2711.9,
+                              "y": 1143,
+                              "w": 326.9,
+                              "h": 59.4
+                            }
+                          }
+                        ],
+                        "style": {
+                          "fill": "#FFE699",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#0000FF",
+                          "bold": true,
+                          "size": 14,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "box": {
+                          "x": 2664,
+                          "y": 736,
+                          "w": 370.9,
+                          "h": 63.2
+                        }
+                      }
+                    ],
                     "style": {
                       "fill": "#FFE699",
                       "line": "#70AD47",
@@ -27867,8 +27417,8 @@
                     },
                     "link": "#70AD47",
                     "box": {
-                      "x": 2688,
-                      "y": 532,
+                      "x": 2676,
+                      "y": 608,
                       "w": 345.8,
                       "h": 42.4
                     }
@@ -27877,6 +27427,529 @@
                     "id": "n_xqeieq9fzv",
                     "type": "division",
                     "name": "ACOO Tendering",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [
+                      {
+                        "id": "n_pem_23",
+                        "type": "line",
+                        "name": "Polymer Product & Electrical Equipment Business (PEM101)",
+                        "nameEn": "",
+                        "code": "PEM101",
+                        "title": "",
+                        "head": "",
+                        "hc": 1,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [
+                          {
+                            "id": "n_pem_24",
+                            "type": "section",
+                            "name": "Sale & Operation Plan and Proposal Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 3,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 1710.5,
+                              "y": 799.9000000000001,
+                              "w": 323.3,
+                              "h": 41.3
+                            }
+                          },
+                          {
+                            "id": "n_pem_25",
+                            "type": "section",
+                            "name": "Warehouse and Material Management Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 6,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 1709.8,
+                              "y": 859.6,
+                              "w": 323.3,
+                              "h": 39.8
+                            }
+                          },
+                          {
+                            "id": "n_pem_27",
+                            "type": "section",
+                            "name": "Production Management Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 25,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 1708.9,
+                              "y": 915.4000000000001,
+                              "w": 323.3,
+                              "h": 41.6
+                            }
+                          },
+                          {
+                            "id": "n_pem_26",
+                            "type": "section",
+                            "name": "Engineering & Testing & Quality Assurance Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 3,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 1709.3,
+                              "y": 967.4000000000001,
+                              "w": 323.3,
+                              "h": 41.9
+                            }
+                          }
+                        ],
+                        "style": {
+                          "fill": "#FFE699",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#0000FF",
+                          "bold": true,
+                          "size": 14,
+                          "align": "l"
+                        },
+                        "box": {
+                          "x": 1640,
+                          "y": 724,
+                          "w": 393.7,
+                          "h": 62.6
+                        },
+                        "link": "#70AD47",
+                        "wire": {
+                          "a": {
+                            "s": "l",
+                            "t": 0.5
+                          },
+                          "b": {
+                            "s": "l",
+                            "t": 0.4999999999999993
+                          },
+                          "k": [
+                            1608
+                          ]
+                        }
+                      },
+                      {
+                        "id": "n_pem_61",
+                        "type": "line",
+                        "name": "SF6 free LBS & Switching Device Business (PEM102)",
+                        "nameEn": "",
+                        "code": "PEM102",
+                        "title": "",
+                        "head": "",
+                        "hc": 1,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [
+                          {
+                            "id": "n_pem_62",
+                            "type": "section",
+                            "name": "Sale & Operation Plan and Proposal Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 2,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 1705.8,
+                              "y": 1102.7,
+                              "w": 325.1,
+                              "h": 32.5
+                            }
+                          },
+                          {
+                            "id": "n_pem_63",
+                            "type": "section",
+                            "name": "Warehouse and Material Management Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 3,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 1704.6000000000001,
+                              "y": 1149.5,
+                              "w": 325.7,
+                              "h": 30.9
+                            }
+                          },
+                          {
+                            "id": "n_pem_64",
+                            "type": "section",
+                            "name": "Production Management Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 17,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 1706.9,
+                              "y": 1199.6000000000001,
+                              "w": 323.3,
+                              "h": 40.7
+                            }
+                          },
+                          {
+                            "id": "n_pem_65",
+                            "type": "section",
+                            "name": "Engineering & Testing & Quality Assurance Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 4,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 1706,
+                              "y": 1250.4,
+                              "w": 323.3,
+                              "h": 40.2
+                            }
+                          }
+                        ],
+                        "style": {
+                          "fill": "#FFE699",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#0000FF",
+                          "bold": true,
+                          "size": 14,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "box": {
+                          "x": 1643,
+                          "y": 1029.2,
+                          "w": 388.4,
+                          "h": 64.5
+                        },
+                        "wire": {
+                          "a": {
+                            "s": "l",
+                            "t": 0.5
+                          },
+                          "b": {
+                            "s": "l",
+                            "t": 0.5
+                          },
+                          "k": [
+                            1608
+                          ]
+                        }
+                      },
+                      {
+                        "id": "n_pem_39",
+                        "type": "line",
+                        "name": "Distribution Transformer Business (PEM103)",
+                        "nameEn": "",
+                        "code": "PEM103",
+                        "title": "",
+                        "head": "",
+                        "hc": 1,
+                        "staff": false,
+                        "layout": "auto",
+                        "note": "",
+                        "children": [
+                          {
+                            "id": "n_pem_40",
+                            "type": "section",
+                            "name": "Sale & Operation Plan and Proposal Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 4,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 1703.5,
+                              "y": 1380.8,
+                              "w": 322.7,
+                              "h": 39.2
+                            }
+                          },
+                          {
+                            "id": "n_pem_41",
+                            "type": "section",
+                            "name": "Warehouse and Material Management Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 4,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 1702.3,
+                              "y": 1431.6000000000001,
+                              "w": 323.3,
+                              "h": 33.7
+                            }
+                          },
+                          {
+                            "id": "n_pem_38",
+                            "type": "section",
+                            "name": "Production Management Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 42,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 1701.6000000000001,
+                              "y": 1473.5,
+                              "w": 323.3,
+                              "h": 35.8
+                            }
+                          },
+                          {
+                            "id": "n_pem_42",
+                            "type": "section",
+                            "name": "Engineering & Testing & Quality Assurance Section",
+                            "nameEn": "",
+                            "code": "",
+                            "title": "",
+                            "head": "",
+                            "hc": 6,
+                            "staff": false,
+                            "layout": "auto",
+                            "note": "",
+                            "children": [],
+                            "style": {
+                              "fill": "#FFFFFF",
+                              "line": "#70AD47",
+                              "lw": 1.33,
+                              "text": "#000000",
+                              "bold": false,
+                              "size": 12,
+                              "align": "l"
+                            },
+                            "link": "#70AD47",
+                            "box": {
+                              "x": 1701.6000000000001,
+                              "y": 1516.3,
+                              "w": 323.3,
+                              "h": 37.8
+                            }
+                          }
+                        ],
+                        "style": {
+                          "fill": "#FFE699",
+                          "line": "#70AD47",
+                          "lw": 1.33,
+                          "text": "#0000FF",
+                          "bold": true,
+                          "size": 14,
+                          "align": "l"
+                        },
+                        "link": "#70AD47",
+                        "box": {
+                          "x": 1640.9,
+                          "y": 1317.1000000000001,
+                          "w": 386,
+                          "h": 55.9
+                        },
+                        "wire": {
+                          "a": {
+                            "s": "l",
+                            "t": 0.5
+                          },
+                          "b": {
+                            "s": "l",
+                            "t": 0.5000000000000008
+                          },
+                          "k": [
+                            1608
+                          ]
+                        }
+                      }
+                    ],
+                    "style": {
+                      "fill": "#FFE699",
+                      "line": "#70AD47",
+                      "lw": 1.33,
+                      "text": "#0000FF",
+                      "bold": true,
+                      "size": 14,
+                      "align": "l"
+                    },
+                    "link": "#70AD47",
+                    "box": {
+                      "x": 1796,
+                      "y": 604,
+                      "w": 345.8,
+                      "h": 42.4
+                    }
+                  },
+                  {
+                    "id": "n_f11209g0ba",
+                    "type": "line",
+                    "name": "115KV Transformer and Equipment Business (PEM108",
                     "nameEn": "",
                     "code": "",
                     "title": "",
@@ -27897,10 +27970,10 @@
                     },
                     "link": "#70AD47",
                     "box": {
-                      "x": 1740,
-                      "y": 516,
-                      "w": 345.8,
-                      "h": 42.4
+                      "x": 3156,
+                      "y": 752,
+                      "w": 370.9,
+                      "h": 63.2
                     }
                   }
                 ],
