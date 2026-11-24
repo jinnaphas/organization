@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-11-24T08:15:19.018Z",
+  "updatedAt": "2026-11-24T08:16:28.888Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -25358,7 +25358,7 @@
       "basedOn": "v_uvqp16jnsx",
       "createdAt": "2026-11-13T02:03:38.990Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-11-24T08:13:06.242Z",
+      "updatedAt": "2026-11-24T08:16:22.198Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE ELECTRIC MANUFACTURING CO., LTD. (PEM) 2027",
@@ -25906,10 +25906,10 @@
                         "note": "",
                         "children": [],
                         "style": {
-                          "fill": "#FFFFFF",
+                          "fill": "#FBE5D6",
                           "line": "#ED7D31",
                           "lw": 1.33,
-                          "text": "#000000",
+                          "text": "#FF0000",
                           "bold": false,
                           "size": 12,
                           "align": "l"
@@ -25919,8 +25919,9 @@
                           "x": 1190.5,
                           "y": 656.8000000000001,
                           "w": 343.5,
-                          "h": 56.7
-                        }
+                          "h": 35.19999999999993
+                        },
+                        "hl": true
                       }
                     ],
                     "style": {
@@ -27215,36 +27216,6 @@
                             }
                           },
                           {
-                            "id": "n_pem_184",
-                            "type": "section",
-                            "name": "Project Management Section",
-                            "nameEn": "",
-                            "code": "",
-                            "title": "",
-                            "head": "",
-                            "hc": 2,
-                            "staff": false,
-                            "layout": "auto",
-                            "note": "",
-                            "children": [],
-                            "style": {
-                              "fill": "#002060",
-                              "line": "#4472C4",
-                              "lw": 1.33,
-                              "text": "#FFFFFF",
-                              "bold": false,
-                              "size": 12,
-                              "align": "l"
-                            },
-                            "box": {
-                              "x": 2710.7000000000003,
-                              "y": 1088,
-                              "w": 326.9,
-                              "h": 42.5
-                            },
-                            "link": "#4472C4"
-                          },
-                          {
                             "id": "n_pem_105",
                             "type": "section",
                             "name": "Installation, Commissioning, Maintenance and Services Section",
@@ -27268,7 +27239,7 @@
                             },
                             "box": {
                               "x": 2711.9,
-                              "y": 1143,
+                              "y": 1093,
                               "w": 326.9,
                               "h": 59.4
                             },
