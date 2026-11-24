@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-11-16T07:36:18.242Z",
+  "updatedAt": "2026-11-24T06:56:29.967Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -25358,7 +25358,7 @@
       "basedOn": "v_uvqp16jnsx",
       "createdAt": "2026-11-13T02:03:38.990Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-11-16T03:24:02.866Z",
+      "updatedAt": "2026-11-24T06:56:04.976Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE ELECTRIC MANUFACTURING CO., LTD. (PEM) 2027",
@@ -25800,8 +25800,8 @@
                 },
                 "link": "#4472C4",
                 "box": {
-                  "x": 644,
-                  "y": 1020,
+                  "x": 660,
+                  "y": 1024,
                   "w": 321.2,
                   "h": 42.2
                 }
@@ -25830,8 +25830,8 @@
                 },
                 "link": "#4472C4",
                 "box": {
-                  "x": 660,
-                  "y": 1160,
+                  "x": 668,
+                  "y": 1148,
                   "w": 316.8,
                   "h": 45.4
                 }
@@ -25860,7 +25860,7 @@
                 },
                 "link": "#4472C4",
                 "box": {
-                  "x": 656,
+                  "x": 664,
                   "y": 1084,
                   "w": 316.8,
                   "h": 46.1
@@ -25973,7 +25973,7 @@
                   {
                     "id": "n_259q6uwkwk",
                     "type": "division",
-                    "name": "RAMI 4.0 ( Smart Factory ) Team",
+                    "name": "RAMI4.0 (STEM, DE& DBTP) Team (TRL 1-6)",
                     "nameEn": "",
                     "code": "",
                     "title": "",
@@ -26145,7 +26145,7 @@
                         "t": 0.5
                       },
                       "k": [
-                        3096
+                        3076
                       ]
                     }
                   },
@@ -26884,7 +26884,7 @@
                       },
                       "k": [
                         585.5,
-                        3056
+                        3076
                       ]
                     }
                   },
@@ -27196,10 +27196,10 @@
                             "note": "",
                             "children": [],
                             "style": {
-                              "fill": "#FFFFFF",
-                              "line": "#000000",
+                              "fill": "#002060",
+                              "line": "#4472C4",
                               "lw": 1.33,
-                              "text": "#000000",
+                              "text": "#FFFFFF",
                               "bold": false,
                               "size": 12,
                               "align": "l"
@@ -27209,7 +27209,8 @@
                               "y": 1088,
                               "w": 326.9,
                               "h": 42.5
-                            }
+                            },
+                            "link": "#4472C4"
                           },
                           {
                             "id": "n_pem_105",
@@ -27225,10 +27226,10 @@
                             "note": "",
                             "children": [],
                             "style": {
-                              "fill": "#FFFFFF",
-                              "line": "#000000",
+                              "fill": "#002060",
+                              "line": "#4472C4",
                               "lw": 1.33,
-                              "text": "#000000",
+                              "text": "#FFFFFF",
                               "bold": false,
                               "size": 12,
                               "align": "l"
@@ -27238,7 +27239,8 @@
                               "y": 1143,
                               "w": 326.9,
                               "h": 59.4
-                            }
+                            },
+                            "link": "#4472C4"
                           }
                         ],
                         "style": {
