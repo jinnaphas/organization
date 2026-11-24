@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-11-24T08:02:32.718Z",
+  "updatedAt": "2026-11-24T08:15:19.018Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -25358,7 +25358,7 @@
       "basedOn": "v_uvqp16jnsx",
       "createdAt": "2026-11-13T02:03:38.990Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-11-24T07:14:19.506Z",
+      "updatedAt": "2026-11-24T08:13:06.242Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE ELECTRIC MANUFACTURING CO., LTD. (PEM) 2027",
@@ -25882,7 +25882,7 @@
                   {
                     "id": "n_pem_22",
                     "type": "office",
-                    "name": "Product & Digital Engineering Development Office",
+                    "name": "New Product Development",
                     "nameEn": "",
                     "code": "",
                     "title": "",
@@ -25893,15 +25893,15 @@
                     "note": "",
                     "children": [
                       {
-                        "id": "n_pem_81",
-                        "type": "department",
-                        "name": "Digital and Automation Development for Production and Operation Management (DE, Factory 4.0)",
+                        "id": "n_y1k5hq2s5y",
+                        "type": "office",
+                        "name": "115KV Transformer and Equipmen",
                         "nameEn": "",
                         "code": "",
                         "title": "",
                         "head": "",
-                        "hc": 14,
-                        "staff": false,
+                        "hc": 0,
+                        "staff": true,
                         "layout": "auto",
                         "note": "",
                         "children": [],
@@ -25916,18 +25916,18 @@
                         },
                         "link": "#ED7D31",
                         "box": {
-                          "x": 1199.3,
-                          "y": 637.1,
-                          "w": 334.6,
-                          "h": 68.8
+                          "x": 1190.5,
+                          "y": 656.8000000000001,
+                          "w": 343.5,
+                          "h": 56.7
                         }
                       }
                     ],
                     "style": {
-                      "fill": "#FFFFFF",
+                      "fill": "#FBE5D6",
                       "line": "#ED7D31",
                       "lw": 1.33,
-                      "text": "#000000",
+                      "text": "#FF0000",
                       "bold": true,
                       "size": 16,
                       "align": "l"
@@ -25938,7 +25938,8 @@
                       "y": 572.1,
                       "w": 367.5,
                       "h": 56.7
-                    }
+                    },
+                    "hl": true
                   },
                   {
                     "id": "n_pem_37",
@@ -25965,7 +25966,7 @@
                     "link": "#ED7D31",
                     "box": {
                       "x": 1172,
-                      "y": 720,
+                      "y": 740,
                       "w": 360,
                       "h": 48.5
                     }
@@ -25995,11 +25996,42 @@
                     "link": "#ED7D31",
                     "box": {
                       "x": 1172,
-                      "y": 788,
+                      "y": 808,
                       "w": 360,
                       "h": 48.5
                     },
                     "hl": true
+                  },
+                  {
+                    "id": "n_a4gkriv9da",
+                    "type": "division",
+                    "name": "Operation Management",
+                    "nameEn": "",
+                    "code": "",
+                    "title": "",
+                    "head": "",
+                    "hc": 0,
+                    "staff": false,
+                    "layout": "auto",
+                    "note": "",
+                    "children": [],
+                    "style": {
+                      "fill": "#FBE5D6",
+                      "line": "#ED7D31",
+                      "lw": 1.33,
+                      "text": "#FF0000",
+                      "bold": true,
+                      "size": 12,
+                      "align": "l"
+                    },
+                    "link": "#ED7D31",
+                    "hl": true,
+                    "box": {
+                      "x": 1172,
+                      "y": 872.5,
+                      "w": 360,
+                      "h": 48.5
+                    }
                   }
                 ],
                 "style": {
