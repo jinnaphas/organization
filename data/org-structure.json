@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-11-24T06:56:29.967Z",
+  "updatedAt": "2026-11-24T06:58:47.832Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -25358,7 +25358,7 @@
       "basedOn": "v_uvqp16jnsx",
       "createdAt": "2026-11-13T02:03:38.990Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-11-24T06:56:04.976Z",
+      "updatedAt": "2026-11-24T06:58:38.749Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE ELECTRIC MANUFACTURING CO., LTD. (PEM) 2027",
@@ -27223,7 +27223,7 @@
                             "hc": 10,
                             "staff": false,
                             "layout": "auto",
-                            "note": "",
+                            "note": "ย้ายไป Project Management งาน Service Switchgear",
                             "children": [],
                             "style": {
                               "fill": "#002060",
