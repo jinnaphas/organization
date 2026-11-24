@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-11-24T07:14:24.286Z",
+  "updatedAt": "2026-11-24T08:01:56.215Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -16676,7 +16676,7 @@
       "basedOn": "v_psp_2026r3",
       "createdAt": "2026-10-16T02:18:37.847Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-11-11T05:47:39.817Z",
+      "updatedAt": "2026-11-24T08:01:48.463Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE SYSTEM & PROJECT CO., LTD. (PSP) 2027",
@@ -19960,7 +19960,7 @@
                     "box": {
                       "x": 696,
                       "y": 579,
-                      "w": 328,
+                      "w": 332,
                       "h": 64
                     },
                     "hl": true
@@ -19968,7 +19968,7 @@
                   {
                     "id": "n_1dckk5gox4",
                     "type": "office",
-                    "name": "Ecosystem Capital Management",
+                    "name": "Platform Ecosystem and Relationship Capital",
                     "nameEn": "",
                     "code": "",
                     "title": "",
@@ -19990,8 +19990,8 @@
                     "link": "#4472C4",
                     "hl": true,
                     "box": {
-                      "x": 696,
-                      "y": 656,
+                      "x": 700,
+                      "y": 953,
                       "w": 328,
                       "h": 64
                     }
@@ -20021,8 +20021,8 @@
                     "link": "#4472C4",
                     "hl": true,
                     "box": {
-                      "x": 696,
-                      "y": 732,
+                      "x": 700,
+                      "y": 652,
                       "w": 328,
                       "h": 64
                     }
@@ -20030,7 +20030,7 @@
                   {
                     "id": "n_73wlrnhfal",
                     "type": "office",
-                    "name": "Customer Experience & Platform Capital Management",
+                    "name": "Customer Capital Development",
                     "nameEn": "",
                     "code": "",
                     "title": "",
@@ -20052,9 +20052,9 @@
                     "link": "#4472C4",
                     "hl": true,
                     "box": {
-                      "x": 696,
-                      "y": 808,
-                      "w": 328,
+                      "x": 703,
+                      "y": 875,
+                      "w": 325,
                       "h": 64
                     }
                   },
@@ -20083,9 +20083,9 @@
                     "link": "#4472C4",
                     "hl": true,
                     "box": {
-                      "x": 696,
-                      "y": 884,
-                      "w": 328,
+                      "x": 704,
+                      "y": 800,
+                      "w": 324,
                       "h": 64
                     }
                   },
@@ -20114,8 +20114,8 @@
                     "link": "#4472C4",
                     "hl": true,
                     "box": {
-                      "x": 696,
-                      "y": 960,
+                      "x": 703,
+                      "y": 726,
                       "w": 328,
                       "h": 64
                     }
