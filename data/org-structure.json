@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "org-structure-studio",
-  "updatedAt": "2026-11-24T06:58:47.832Z",
+  "updatedAt": "2026-11-24T07:14:24.286Z",
   "updatedBy": "@jinnaphas",
   "importedFrom": "Organization_Current_2026-2027.xlsx",
   "companies": [
@@ -25358,7 +25358,7 @@
       "basedOn": "v_uvqp16jnsx",
       "createdAt": "2026-11-13T02:03:38.990Z",
       "createdBy": "@jinnaphas",
-      "updatedAt": "2026-11-24T06:58:38.749Z",
+      "updatedAt": "2026-11-24T07:14:19.506Z",
       "updatedBy": "@jinnaphas",
       "doc": {
         "title": "PRECISE ELECTRIC MANUFACTURING CO., LTD. (PEM) 2027",
@@ -27293,7 +27293,7 @@
                       {
                         "id": "n_rh6zleyvue",
                         "type": "line",
-                        "name": "ESG Business (PEM109",
+                        "name": "ESG Business (PEM109)",
                         "nameEn": "",
                         "code": "",
                         "title": "",
